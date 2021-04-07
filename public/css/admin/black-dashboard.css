@@ -14702,7 +14702,7 @@ fieldset[disabled] .btn-link.active {
 }
 
 .form-control:focus {
-  border-color: #e14eca;
+  border-color: #00f2c3;
   background-color: transparent;
   box-shadow: none;
 }
@@ -20443,3 +20443,9 @@ Copyright (c) 2015 Daniel Eden
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+
+
+.font-12{
+    font-size: 11px;
+    
+}
