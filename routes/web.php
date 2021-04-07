@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/posts', function () {
     return view('admin.create');
 });
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

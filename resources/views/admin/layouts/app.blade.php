@@ -19,6 +19,8 @@
   <link href="{{ asset('css/admin/black-dashboard.css') }}" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+  <script src="https://cdn.tiny.cloud/1/y74enrkq09ucachhq42iiiq6zue7pidn7fdbj9owxkhwq6n4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 </head>
 
 <body class="">
