@@ -54,6 +54,18 @@
                         </div>
                        
                     </div>
+                    <div class=" form-row">
+                        <label for="uploadImageFile"> &nbsp; Glavna slika: &nbsp; </label>
+                        <input class="form-control" type="file" id="uploadImageFileAddPost" name="uploadImageFile[]" onchange="showImageHereFuncAddPost();" multiple required />
+                        <label for="showImageHere" class="mr-3">Preview slike -></label>
+                        <div class="valid-feedback">
+                            Super!
+                        </div>
+                        <div class="invalid-feedback">
+                            Slika je obavezna.
+                        </div>
+                        <div id="showImageHereAddPost"></div>
+                    </div>
                   
                    <button type="submit" class="btn btn-success">Objavi</button>
                 </form>
@@ -105,6 +117,20 @@
           
             tinymce.init(editor_config);
           </script>
-        
+            <script>
+                 function showImageHereFuncAddPost() {
+                    $("#showImageHereAddPost").empty();
+                    var total_file = document.getElementById("uploadImageFileAddPost").files
+                        .length;
+                    for (var i = 0; i < total_file; i++) {
+                        $("#showImageHereAddPost").append(
+
+                            "<img src='" +
+                            URL.createObjectURL(event.target.files[i]) +
+                            "' height='200px' width=' 400px' style='border-style: solid; border-color:#00f2c3;border-width:1px ' class='mr-2 mb-2'>"
+                        );
+                    }
+                }
+            </script>
 
     @endsection
