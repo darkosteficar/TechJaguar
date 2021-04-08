@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.dashboard');
-})->name('post.store');
+})->name('post.storee');
+
+Route::post('/posts/store',[PostController::class,'store'])->name('post.store');
 Route::get('/posts', function () {
     return view('admin.create');
 });

@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="post_content">Sadržaj</label>
-                        <textarea name="post_content " id="post_content" cols="30" rows="10" class="form-control my-editor"></textarea>
+                        <textarea name="post_content" id="post_content" cols="30" rows="10" class="form-control my-editor"></textarea>
                     </div>
 
                     <div class="form-group mt-3">
@@ -69,7 +69,7 @@
         <script>
             var editor_config = {
               path_absolute : "/",
-              selector: 'textarea',
+              selector: '#post_content',
               relative_urls: false,
               plugins: [
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
