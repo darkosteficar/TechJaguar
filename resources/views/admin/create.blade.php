@@ -11,6 +11,9 @@
         </ul>
         </div><br />
         @endif
+        @if (session()->has('status'))
+            {{ session('status') }}
+        @endif
         <div class="card">
             <div class="card-body">
                 <form method="post" action="{{ route('post.store', []) }}" enctype="multipart/form-data">
@@ -56,7 +59,7 @@
                     </div>
                     <div class=" form-row">
                         <label for="uploadImageFile"> &nbsp; Glavna slika: &nbsp; </label>
-                        <input class="form-control" type="file" id="uploadImageFileAddPost" name="uploadImageFile[]" onchange="showImageHereFuncAddPost();" multiple required />
+                        <input class="form-control" type="file" id="uploadImageFileAddPost" name="post_image" onchange="showImageHereFuncAddPost();"  />
                         <label for="showImageHere" class="mr-3">Preview slike -></label>
                         <div class="valid-feedback">
                             Super!

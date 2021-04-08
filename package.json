@@ -16,6 +16,8 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "selectize": "^0.12.6"
+        "@tailwindcss/forms": "^0.3.2",
+        "selectize": "^0.12.6",
+        "tailwindcss": "^2.1.1"
     }
 }

@@ -40,13 +40,13 @@
         </div>
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="{{ route('admin.dashboard', []) }}">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p class=" font-weight-normal font-12">Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="{{ route('posts.create', []) }}">
               <i class="tim-icons icon-atom"></i>
               <p class=" font-weight-normal font-12">Objave</p>
             </a>
