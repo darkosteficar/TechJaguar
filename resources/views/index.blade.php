@@ -58,34 +58,17 @@
             class="font-semibold text-2xl text-green-400 pl-10 bg-gray-700 w-full py-10 border border-green-400 ">
             Updated news</p>
         <div class="lg:flex absolute  left-64 top-12 ">
-            <div class="mr-6 ">
-                <div class="image image__overlay_border  mb-4">
-                    <img src="images/topImage.jpg" alt="" width="320">
-                    <div class="image__overlay "></div>
-                </div>
-                <p class="font-semibold text-white text-lg">New Gaming Equipment Trends in 2021</p>
-            </div>
-            <div class="mr-6 ">
-                <div class="image image__overlay_border  mb-4">
-                    <img src="images/topImage.jpg" alt="" width="320">
-                    <div class="image__overlay "></div>
-                </div>
-                <p class="font-semibold text-white text-lg">New Gaming Equipment Trends in 2021</p>
-            </div>
-            <div class="mr-6 ">
-                <div class="image image__overlay_border  mb-4">
-                    <img src="images/topImage.jpg" alt="" width="320">
-                    <div class="image__overlay "></div>
-                </div>
-                <p class="font-semibold text-white text-lg">New Gaming Equipment Trends in 2021</p>
-            </div>
-            <div class="mr-6 ">
-                <div class="image image__overlay_border  mb-4">
-                    <img src="images/topImage.jpg" alt="" width="320">
-                    <div class="image__overlay "></div>
-                </div>
-                <p class="font-semibold text-white text-lg">New Gaming Equipment Trends in 2021</p>
-            </div>
+            @foreach ($news as $post)
+                <div class="mr-6 ">
+                    <div class="image image__overlay_border border border-green-400 mb-4 ">
+                        <img src="{{ '/images/'. $post->post_image }}" alt="" width="320" height="180" >
+                        <div class="image__overlay "></div>
+                    </div>
+                    <p class="font-semibold text-white text-lg">{{ $post->post_title }}</p>
+                </div>    
+            @endforeach
+           
+            
 
         </div>
     </div>

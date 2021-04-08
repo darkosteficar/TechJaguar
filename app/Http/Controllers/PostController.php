@@ -38,4 +38,12 @@ class PostController extends Controller
     {
         return view('admin.create');
     }
+
+    public function read()
+    {
+
+        $posts = Post::paginate(5);
+
+        return view('admin.posts',['posts'=>$posts]);
+    }
 }

@@ -48,13 +48,13 @@
           <li>
             <a href="{{ route('posts.create', []) }}">
               <i class="tim-icons icon-atom"></i>
-              <p class=" font-weight-normal font-12">Objave</p>
+              <p class=" font-weight-normal font-12">Nova objava</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="{{ route('posts.read', []) }}">
               <i class="tim-icons icon-pin"></i>
-              <p class=" font-weight-normal font-12">Maps</p>
+              <p class=" font-weight-normal font-12">Objave</p>
             </a>
           </li>
           <li>
