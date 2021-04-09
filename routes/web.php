@@ -28,7 +28,9 @@ Route::post('/register',[UserController::class,'store']);
 
 Route::get('/admin/dashboard',[PostController::class,'index'])->name('admin.dashboard');
 Route::post('/posts/store',[PostController::class,'store'])->name('post.store');
+Route::post('/posts/delete',[PostController::class,'delete'])->name('post.delete');
 Route::get('/posts',[PostController::class,'create'])->name('posts.create');
+Route::get('/posts/{post}/edit',[PostController::class,'update'])->name('posts.update');
 Route::get('/posts/all',[PostController::class,'read'])->name('posts.read');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {

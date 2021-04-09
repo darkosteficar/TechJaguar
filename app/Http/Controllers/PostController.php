@@ -18,7 +18,7 @@ class PostController extends Controller
       
         $request->post_image->move(public_path('images'), $imageName);
         
-        Post::create([
+        auth()->user()->posts()->create([
             'post_title'=>request()->post_title,
             'body'=>request()->post_content,
             'post_image'=>$imageName
@@ -42,8 +42,24 @@ class PostController extends Controller
     public function read()
     {
 
-        $posts = Post::paginate(5);
+        $posts = Post::paginate(10);
 
         return view('admin.posts',['posts'=>$posts]);
+    }
+
+    public function delete(Request $request)
+    {
+        $post = Post::find($request->id);
+        $post->delete();
+
+        session()->flash('status','Sljedeća objava je uspješno obrisana: ');
+        session()->flash('title', $request->post_title );
+        return redirect()->route('posts.read');
+    }
+
+    public function update(Post $post)
+    {
+       
+        return view('admin.update',['post'=>$post]);
     }
 }

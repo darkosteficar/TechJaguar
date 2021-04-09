@@ -102,8 +102,8 @@
     </div>
 
 </div>
-<div class="w-10/12 mx-auto pt-10 px-5">
-    <p class="text-semibold text-gray-300 text-lg ">
+<div class="w-10/12 mx-auto pt-10 px-5 text-gray-200">
+    <p class="text-semibold  text-lg ">
         {!! $post[0]->body !!}
     </p>
 

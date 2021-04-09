@@ -184,13 +184,13 @@ sup {
 }
 
 a {
-  color: #e14eca;
+  color: #2bffc6;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #c221a9;
+  color: #23d8a8;
   text-decoration: none;
 }
 
@@ -5484,9 +5484,9 @@ input[type="button"].btn-block {
 
 .page-item.active .page-link {
   z-index: 1;
-  color: #ffffff;
-  background-color: #e14eca;
-  border-color: #e14eca;
+  color: #252525;
+  background-color: #00f2c3;
+  border-color: #ffffff;
 }
 
 .page-item.disabled .page-link {
@@ -5494,7 +5494,7 @@ input[type="button"].btn-block {
   pointer-events: none;
   cursor: auto;
   background-color: transparent;
-  border-color: #e3e3e3;
+  border-color: #ffffff;
 }
 
 .pagination-lg .page-link {
@@ -16496,13 +16496,13 @@ h6 {
 }
 
 a {
-  color: #ba54f5;
+  color: #2bffc6;
   font-weight: 300;
 }
 
 a:hover,
 a:focus {
-  color: #e14eca;
+  color: #24c096;
 }
 
 h1,
@@ -17713,10 +17713,10 @@ table.tablesorter thead tr .headerSortDown {
 .sidebar[data="green"],
 .off-canvas-sidebar[data="green"] {
   background: #0098f0;
-  background: -webkit-linear-gradient(0deg, #0098f0 0%, #00f2c3 100%);
-  background: -o-linear-gradient(0deg, #0098f0 0%, #00f2c3 100%);
-  background: -moz-linear-gradient(0deg, #0098f0 0%, #00f2c3 100%);
-  background: linear-gradient(0deg, #0098f0 0%, #00f2c3 100%);
+  background: -webkit-linear-gradient(0deg, #0098f0 0%, #00a584 100%);
+  background: -o-linear-gradient(0deg, #0098f0 0%, #00a584 100%);
+  background: -moz-linear-gradient(0deg, #0098f0 0%, #00a584 100%);
+  background: linear-gradient(0deg, #0098f0 0%, #008d71 100%);
 }
 
 .sidebar .user,
