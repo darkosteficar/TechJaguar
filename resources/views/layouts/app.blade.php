@@ -20,30 +20,33 @@
                             class="text-green-400 font-semibold text-3xl mr-20 hover:text-green-50 transition ease-in-out duration-500">
                             BCompare</p>
                     </div>
-                    <div class="relative">
-                        <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
-                         hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
-                        News</p>
-                        <div class="flex bg-gray-700 justify-between items-center px-4 text-green-400 font-bold text-xl rounded-md border border-green-500">
+                    <div class="relative ">
+                        <button id="news-dropdown-button" class="border-t-4  border-transparent rounded-sm
+                        hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
+                            <p class="text-green-400 font-bold text-xl  ">
+                           News</p>
+                        </button>
+                       
+                        <div class="hidden absolute top-10 z-20 bg-gray-700 justify-between  px-4 text-green-400 font-bold text-xl rounded-sm border border-green-500" id="news-dropdown">
                             <div class="mr-4">
-                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-500 transition ease-in duration-500 ">
-                                    <a href=""><p class="text-center text-xl text-gray-300">Manufacturers</p></a>
+                                <div class="bg-gray-700 mt-2 border border-gray-700 hover:border-green-500 hover:bg-gray-500 transition ease-in duration-500 ">
+                                    <a href=""><p class="text-center text-xl text-gray-300 px-4 ">Manufacturers</p></a>
                                 </div>
                                 <hr class="mb-2">
-                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm font-semibold">
                                     <a href=""><p class="text-center">AMD</p></a>
                                 </div>
                                 
-                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm font-semibold">
                                     <a href=""><p class="text-center">Nvidia</p></a>
                                 </div>
-                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm font-semibold">
                                     <a href=""><p class="text-center">Intel</p></a>
                                 </div>
                             </div>
-                            <div class="ml-4">
+                            <div class="mx-4 my-2">
                                 <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-500 transition ease-in duration-500 ">
-                                    <a href=""><p class="text-center text-xl text-gray-300">Categories</p></a>
+                                    <a href=""><p class="text-center text-xl text-gray-300 px-4">Categories</p></a>
                                 </div>
                                 <hr class="mb-2">
                                 <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
@@ -134,7 +137,18 @@
 
         </div>
     </footer>
+    <script>
+      
 
+            const menuBtn = document.querySelector('#news-dropdown-button')
+            const dropdown = document.querySelector('#news-dropdown')
+
+            menuBtn.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden')
+                dropdown.classList.toggle('flex')
+            })
+        
+    </script>
 
 
 </body>

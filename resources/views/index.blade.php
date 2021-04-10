@@ -238,9 +238,10 @@
 
 
 
-<div class="border border-gray-700 mx-32 mb-16">
+<div class=" mx-32 mb-16">
     <div class="bg-gray-800  pt-6">
-        <p class="font-semibold text-4xl text-gray-200 pl ml-10 pt-2 pb-6  w-1/4">AMD</p>
+        <p class="font-semibold text-4xl text-gray-200 pl ml-10 pt-2 pb-2  w-1/4">AMD</p>
+        <hr class="mb-6">
         <div class="w-5/6 mx-auto ">
         
             <div class=" mb-52 flex items-center">
@@ -282,7 +283,9 @@
                 </div>
             </div>
         </div>
+       
     </div>
+
     
 </div>
 
