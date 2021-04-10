@@ -9,13 +9,18 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = Post::get();
-        return view('index',['news'=>$news]);
+        $popular = Post::take(1)->orderByDesc('views')->get();
+        $body = preg_replace('/<img[\s\S]+?>/', '', $popular[0]->body);
+        $body = substr($body,0,280) . '...';
+        $popular[0]->body = $body;
+
+        $news = Post::take(5)->get();
+        return view('index',['news'=>$news,'popular'=>$popular]);
     }
 
-    public function post()
+    public function post(Post $post)
     {
-        $post = Post::where('id','3')->get();
+        
         
         return view('post',['post'=>$post]);
     }

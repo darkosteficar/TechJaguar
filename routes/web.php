@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('/',[NewsController::class,'index'])->name('index');
-Route::get('/post',[NewsController::class,'post'])->name('post.view');
+Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');
 
 Route::post('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/login',[UserController::class,'login'])->name('login');

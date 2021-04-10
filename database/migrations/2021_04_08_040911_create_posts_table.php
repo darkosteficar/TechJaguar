@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('post_image');
             $table->string('post_title');
             $table->text('body');
+            $table->integer('views');
             $table->integer('gpu_id')->default('0');
             $table->integer('cpu_id')->default('0');
             $table->timestamps();

@@ -104,7 +104,7 @@
 </div>
 <div class="w-10/12 mx-auto pt-10 px-5 text-gray-200">
     <p class="text-semibold  text-lg ">
-        {!! $post[0]->body !!}
+        {!! $post->body !!}
     </p>
 
     <div class="w-11/12 mx-auto">
@@ -162,47 +162,7 @@
         </table>
     </div>
 
-    <!-- component -->
-    <div class="bg-white rounded-sm w-full border-2 border-green-400">
-        <div class="flex justify-center w-full py-2 bg-gray-800">
-            <p class=" text-2xl font-bold text-gray-400 text-center  py-1">
-                RTX
-                3000
-                Series</p>
-        </div>
-
-        <div class="overflow-x-auto ">
-            <table class="table-auto border-collapse w-full">
-                <thead>
-                    <tr class="rounded-lg text-sm font-medium text-gray-700 text-left bg-green-400"
-                        style="font-size: 0.9674rem">
-                        <th class="px-4 py-2  ">Title</th>
-                        <th class="px-4 py-2 ">Author</th>
-                        <th class="px-4 py-2 ">Views</th>
-                    </tr>
-                </thead>
-                <tbody class="text-sm font-normal text-gray-300">
-                    <tr class=" hover:bg-gray-500  border-transparent py-10  ">
-                        <td class="px-4 py-4 bg-gray-800">Intro to CSS</td>
-                        <td class="px-4 py-4 ">Adam</td>
-                        <td class="px-4 py-4 ">858</td>
-                    </tr>
-                    <tr class="hover:bg-gray-500  border-transparent py-4">
-
-                        <td class="px-4 py-4 bg-gray-800">Adam</td>
-                        <td class="px-4 py-4">112</td>
-                    </tr>
-                    <tr class="hover:bg-gray-500  border-transparent">
-                        <td class="px-4 py-4 bg-gray-800 text-gray-300 font-semibold">Intro to JavaScript
-                        </td>
-                        <td class="px-4 py-4">Chris</td>
-                        <td class="px-4 py-4">1,280</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </div>
+    
 </div>
 </div>
 @endsection
