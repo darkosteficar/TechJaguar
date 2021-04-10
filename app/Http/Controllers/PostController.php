@@ -62,4 +62,46 @@ class PostController extends Controller
        
         return view('admin.update',['post'=>$post]);
     }
+
+    public function save(Request $request)
+    {
+        
+        $post = Post::find($request->post_id);
+        if($post !== null){
+            $this->validate($request,[
+                'post_title'=>'required|max:40',
+                'post_content'=>'required',
+            ]);
+            $post->post_title = $request->post_title;
+            $post->body = $request->post_content;
+            if($request->post_image !== null){
+                $this->validate($request,[
+                    'post_image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                ]);
+                $imageName = time().'.'.$request->post_image->extension();  
+            
+                $request->post_image->move(public_path('images'), $imageName);
+                $post->post_image = $imageName;
+            }
+            $optionals = array('gpu_id','cpu_id','mobo_id');
+            foreach($optionals as $option){
+                if($request->$option !== null){
+                    $this->validate($request,[
+                        $option=>'integer'
+                    ]);
+                    $post->$option = $request->$option;
+                }
+            }
+
+            $post->save();
+            
+            session()->flash('status','Objava uspješno ažurirana.');
+            return redirect()->route('posts.read');
+    
+        }
+
+        session()->flash('error','Objava ne postoji!');
+        return redirect()->route('posts.read');
+        
+    }
 }

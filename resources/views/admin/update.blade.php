@@ -12,12 +12,20 @@
         </div><br />
         @endif
         @if (session()->has('status'))
-            {{ session('status') }}
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
         @endif
         <div class="card">
             <div class="card-body">
-                <form method="post" action="{{ route('post.store', []) }}" enctype="multipart/form-data">
-        
+                <form method="post" action="{{ route('posts.save', []) }}" enctype="multipart/form-data">
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
                     @csrf
                     <div class="form-group">
                         <label for="post_title">Naslov</label>
@@ -25,14 +33,14 @@
                     </div>
                     <div class="form-group">
                         <label for="post_content">Sadržaj</label>
-                        <textarea name="post_content" id="post_content" cols="30" rows="10" class="form-control my-editor"></textarea>
+                        <textarea name="post_content" id="post_content" cols="70" rows="10" class="form-control my-editor" value="">{{ $post->body }}</textarea>
                     </div>
 
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-3">
                                 <label for="">GPU</label>
-                                <select name="" id="select-gpu">
+                                <select name="gpu_id" id="select-gpu">
                                     <option value=""></option>
                                     <option value="22">Basdasd</option>
                                    
@@ -40,7 +48,7 @@
                             </div>
                             <div class="col-3">
                                 <label for="">CPU</label>
-                                <select name="" id="select-cpu">
+                                <select name="cpu_id" id="select-cpu">
                                     <option value=""></option>
                                     <option value="22">Basdasd</option>
                                    
@@ -48,7 +56,7 @@
                             </div>
                             <div class="col-3">
                                 <label for="">Matična ploča</label>
-                                <select name="" id="select-mobo">
+                                <select name="mobo_id" id="select-mobo">
                                     <option value=""></option>
                                     <option value="22">Basdadfgdfgdfgdfgdfgdfgdfgdfgdfgdfgsd dfgdfgdfgdfg sdfsdf sdf sdfsdf</option>
                                    
@@ -84,7 +92,9 @@
         <script>
             var editor_config = {
               path_absolute : "/",
+              height: 600,
               selector: '#post_content',
+             
               relative_urls: false,
               plugins: [
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
@@ -117,8 +127,12 @@
                 });
               }
             };
-          
+            
             tinymce.init(editor_config);
+           
+          </script>
+          <script>
+              tinyMCE.activeEditor.setContent('<span>some</span> html');
           </script>
             <script>
                  function showImageHereFuncAddPost() {

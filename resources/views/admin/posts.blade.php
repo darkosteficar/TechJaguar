@@ -35,16 +35,19 @@
                             <td class="text-center">{{ $post->id }}</td>
                             <td>{{ $post->user->username }}</td>
                             <td>{{ $post->post_title }}</td>
-                            <td><a href="{{ route('posts.update', ['post'=>$post->id]) }}">EDIT</a></td>
+                            <td>33</td>
                             
                             <td class="text-right">&euro; 92,144</td>
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
                                     <i class="tim-icons icon-single-02"></i>
                                 </button>
-                                <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-settings"></i>
-                                </button>
+                                <a href="{{ route('posts.update', ['post'=>$post->id]) }}">
+                                    <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
+                                        <i class="tim-icons icon-settings"></i>
+                                    </button>
+                                 </a>
+                                
                                 <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-icon btn-sm" data-target="#deleteModal{{ $post->id }}" data-toggle="modal">
                                     <i class="tim-icons icon-simple-remove"></i>
                                 </button>
