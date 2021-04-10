@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-gray-800 font-source">
-    <div class="w-3/4 mx-auto ">
+    <div class="w-3/4 mx-auto">
         <nav>
             <div class="lg:flex justify-between mt-10">
                 <div class="lg:flex items-center">
@@ -20,10 +20,52 @@
                             class="text-green-400 font-semibold text-3xl mr-20 hover:text-green-50 transition ease-in-out duration-500">
                             BCompare</p>
                     </div>
-
-                    <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
+                    <div class="relative">
+                        <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
                          hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
                         News</p>
+                        <div class="flex bg-gray-700 justify-between items-center px-4 text-green-400 font-bold text-xl rounded-md border border-green-500">
+                            <div class="mr-4">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-500 transition ease-in duration-500 ">
+                                    <a href=""><p class="text-center text-xl text-gray-300">Manufacturers</p></a>
+                                </div>
+                                <hr class="mb-2">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">AMD</p></a>
+                                </div>
+                                
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">Nvidia</p></a>
+                                </div>
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">Intel</p></a>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-500 transition ease-in duration-500 ">
+                                    <a href=""><p class="text-center text-xl text-gray-300">Categories</p></a>
+                                </div>
+                                <hr class="mb-2">
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">News</p></a>
+                                </div>
+                                
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">Hardware</p></a>
+                                </div>
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">Software</p></a>
+                                </div>
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">Leaks</p></a>
+                                </div>
+                                <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
+                                    <a href=""><p class="text-center">Rumours</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
                         hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
                         Compare</p>
@@ -76,6 +118,7 @@
                     </div>
                 </div>
             </div>
+           
         </nav>
 
       @yield('content')
