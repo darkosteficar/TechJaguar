@@ -20,8 +20,11 @@ class NewsController extends Controller
 
     public function post(Post $post)
     {
-        
-        
         return view('post',['post'=>$post]);
+    }
+
+    public function category()
+    {
+        return view('category');
     }
 }

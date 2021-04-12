@@ -70,8 +70,9 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
-       
-        return view('admin.update',['post'=>$post]);
+        $categories = Category::all();
+        $manufacturers = Manufacturer::all();
+        return view('admin.update',['post'=>$post,'categories'=>$categories,'manufacturers'=>$manufacturers]);
     }
 
     public function save(Request $request)
@@ -85,6 +86,8 @@ class PostController extends Controller
             ]);
             $post->post_title = $request->post_title;
             $post->body = $request->post_content;
+            $post->category_id = $request->category_id;
+            $post->manufacturer_id = $request->manufacturer_id;
             if($request->post_image !== null){
                 $this->validate($request,[
                     'post_image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'

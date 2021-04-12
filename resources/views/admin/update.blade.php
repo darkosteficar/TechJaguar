@@ -65,6 +65,30 @@
                         </div>
                        
                     </div>
+
+                    <div class="form-group mt-3">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="exampleFormControlSelect1">Kategorija</label>
+                                <select class="form-control" name="category_id" style="background-color: #27293D">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" @if ($category->id === $post->category_id)
+                                            selected
+                                        @endif>{{ $category->name }}</option>    
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="exampleFormControlSelect1">Proizvođač</label>
+                                <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
+                                    @foreach ($manufacturers as $manufacturer)
+                                        <option value="{{ $manufacturer->id }}" @if($post->manufacturer_id === $manufacturer->id)selected @endif>{{ $manufacturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class=" form-row">
                         <label for="uploadImageFile"> &nbsp; Glavna slika: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="post_image" onchange="showImageHereFuncAddPost();"  />

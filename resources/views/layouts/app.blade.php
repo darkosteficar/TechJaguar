@@ -14,12 +14,14 @@
         <nav>
             <div class="lg:flex justify-between mt-10">
                 <div class="lg:flex items-center">
+                    <a href="{{ route('index', []) }}">
                     <div class="flex lg:mb-0 mb-3">
                         <img src="images/logo.png" alt="" width="40" class="mr-4">
                         <p
                             class="text-green-400 font-semibold text-3xl mr-20 hover:text-green-50 transition ease-in-out duration-500">
                             BCompare</p>
                     </div>
+                </a>
                     <div class="relative ">
                         <button id="news-dropdown-button" class="border-t-4  border-transparent rounded-sm
                         hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
@@ -34,7 +36,7 @@
                                 </div>
                                 <hr class="mb-2">
                                 <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm font-semibold">
-                                    <a href=""><p class="text-center">AMD</p></a>
+                                    <a href="{{ route('post.category', []) }}"><p class="text-center">AMD</p></a>
                                 </div>
                                 
                                 <div class="bg-gray-700 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm font-semibold">
@@ -123,8 +125,11 @@
             </div>
            
         </nav>
-
-      @yield('content')
+    </div>
+    <div class="mx-auto">
+        @yield('content')
+    </div>
+   
 
 
 
