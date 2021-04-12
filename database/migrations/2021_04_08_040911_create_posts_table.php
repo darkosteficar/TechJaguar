@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('post_title');
             $table->text('body');
             $table->integer('views');
+            $table->integer('category_id')->constrained()->onDelete('cascade');
+            $table->integer('manufacturer_id')->constrained()->onDelete('cascade');
             $table->integer('gpu_id')->default('0');
             $table->integer('cpu_id')->default('0');
             $table->timestamps();

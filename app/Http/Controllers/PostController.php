@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function store(Request $request)
     {
+     
         $this->validate($request,[
             'post_title'=>'required|max:40',
             'post_content'=>'required',
-            'post_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'post_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id'=> 'required',
+            'manufacturer_id' => 'required'
         ]);
         $imageName = time().'.'.$request->post_image->extension();  
       
@@ -21,7 +26,10 @@ class PostController extends Controller
         auth()->user()->posts()->create([
             'post_title'=>request()->post_title,
             'body'=>request()->post_content,
-            'post_image'=>$imageName
+            'category_id'=>request()->category_id,
+            'manufacturer_id'=>request()->manufacturer_id,
+            'post_image'=>$imageName,
+            'views' => 0
         ]);
 
         session()->flash('status','Post has been succesfully created!');
@@ -36,7 +44,10 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.create');
+        $categories = Category::all();
+        $manufacturers = Manufacturer::all();
+
+        return view('admin.create',['categories'=>$categories,'manufacturers'=>$manufacturers]);
     }
 
     public function read()

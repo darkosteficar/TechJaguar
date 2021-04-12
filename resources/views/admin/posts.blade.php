@@ -24,6 +24,9 @@
                         <th>Autor</th>
                         <th>Naslov</th>
                         <th>Broj komentara</th>
+                        <th>Kategorija</th>
+                        <th>Proizvođač</th>
+                        <th>Vrijeme</th>
                         <th class="text-right">Slika</th>
                         <th class="text-right">Actions</th>
                     </tr>
@@ -36,6 +39,9 @@
                             <td>{{ $post->user->username }}</td>
                             <td>{{ $post->post_title }}</td>
                             <td>33</td>
+                            <td>{{ $post->category->name }}</td>
+                            <td>{{ $post->manufacturer->name }}</td>
+                            <td>{{ $post->created_at }}</td>
                             
                             <td class="text-right">&euro; 92,144</td>
                             <td class="td-actions text-right">
