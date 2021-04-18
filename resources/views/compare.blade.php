@@ -85,7 +85,7 @@
 
 @foreach ($apps as $app)
 <div class="w-1/3 mx-auto">
-    <canvas id="myChart{{ $app}}" ></canvas>
+    <canvas id="myChart{{ $app }}" ></canvas>
 </div>
 @endforeach
 
@@ -134,7 +134,7 @@
     plugins: {
         title: {
             display: true,
-            text: 'Cinebench'
+            text: result[0]['app'],
         }
     },
     }

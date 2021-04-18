@@ -32,7 +32,7 @@ class CompareController extends Controller
         }
         $query = Result::where('cpu','=',$cpu1)->orWhere('cpu','=',$cpu2)->where('app','=',$app)->toSql();
           
-        dd($overall,$query);
+      
         return view('compare',['results'=>$overall,'apps'=>$apps]);
     }
 }
