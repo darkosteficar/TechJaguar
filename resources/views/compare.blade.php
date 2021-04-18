@@ -97,14 +97,14 @@
     var results = {!! json_encode($results) !!};
     var apps = {!! json_encode($apps) !!};
     results.forEach(result => {
-    var ctx = document.getElementById('myChart'+result[0][0]).getContext('2d');
+    var ctx = document.getElementById('myChart'+result[0]['app']).getContext('2d');
     var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-    labels: [result[0][1], result[1][1]],
+    labels: [result[0]['cpu'], result[1]['cpu']],
     datasets: [{
         label: 'Score',
-        data: [12, 19],
+        data: [result[0]['score'], result[1]['score']],
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
