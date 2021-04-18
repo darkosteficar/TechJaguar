@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ use App\Http\Controllers\UserController;
 Route::get('/',[NewsController::class,'index'])->name('index');
 Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');
 Route::get('/category',[NewsController::class,'category'])->name('post.category');
+
+Route::get('/compare',[CompareController::class,'compare'])->name('compare');
 
 Route::post('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/login',[UserController::class,'login'])->name('login');

@@ -7,6 +7,8 @@
     <title>BCompare</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
+    <script src="{{ asset('js/chartjs.min.js') }}"></script>
+
 </head>
 
 <body class="bg-gray-800 font-source">
