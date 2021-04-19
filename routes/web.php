@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompareController;
+use App\Http\Controllers\ComponentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,9 @@ Route::get('/posts',[PostController::class,'create'])->name('posts.create');
 Route::get('/posts/{post}/edit',[PostController::class,'update'])->name('posts.update');
 Route::post('/posts/update',[PostController::class,'save'])->name('posts.save');
 Route::get('/posts/all',[PostController::class,'read'])->name('posts.read');
+
+Route::get('/admin/components',[ComponentController::class,'index'])->name('admin.components.index');
+Route::get('/admin/components/chipsets',[ComponentController::class,'create_chipset'])->name('chipsets.index');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

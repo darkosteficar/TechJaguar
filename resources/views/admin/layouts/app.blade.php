@@ -58,9 +58,9 @@
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-bell-55"></i>
-              <p class=" font-weight-normal font-12">Notifications</p>
+            <a href="{{ route('admin.components.index', []) }}">
+              <i class="tim-icons icon-components"></i>
+              <p class=" font-weight-normal font-12">Komponente</p>
             </a>
           </li>
           <li>
