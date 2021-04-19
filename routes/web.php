@@ -40,7 +40,12 @@ Route::post('/posts/update',[PostController::class,'save'])->name('posts.save');
 Route::get('/posts/all',[PostController::class,'read'])->name('posts.read');
 
 Route::get('/admin/components',[ComponentController::class,'index'])->name('admin.components.index');
-Route::get('/admin/components/chipsets',[ComponentController::class,'create_chipset'])->name('chipsets.index');
+Route::get('/admin/components/chipsets',[ComponentController::class,'read_chipset'])->name('chipsets.index');
+Route::get('/admin/components/chipsets/create',[ComponentController::class,'create_chipset'])->name('chipsets.create');
+Route::get('/admin/components/chipsets/{chipset}',[ComponentController::class,'edit_chipset'])->name('chipsets.edit');
+Route::post('/admin/components/chipsets/update',[ComponentController::class,'update_chipset'])->name('chipsets.update');
+Route::post('/admin/components/chipsets/store',[ComponentController::class,'store_chipset'])->name('chipsets.store');
+Route::delete('/admin/components/chipsets/delete',[ComponentController::class,'delete_chipset'])->name('chipsets.delete');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

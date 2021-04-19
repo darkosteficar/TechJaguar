@@ -59,7 +59,7 @@
                                 </button>
                             </td>
                         </tr>
-                        <x-deleteModal :post="$post"/>
+                        <x-deleteModals.post :post="$post"/>
                     @endforeach
                    
                 </tbody>

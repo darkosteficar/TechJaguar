@@ -1,39 +1,67 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <h1>Novi chipset</h1>
-        @if ($errors->any())
+<div class="d-flex">
+    <h2>CHIPSETOVI</h2>
+    <a href="{{ route('chipsets.create', []) }}">
+        <button class="btn btn-success ml-5">Novi chipset</button>
+    </a>
+</div>
+     
+        @if (Session::has('message'))
         <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        </div><br />
-        @endif
-        @if (session()->has('status'))
+            {{ session('message') }}
+        </div>
+        @elseif(session('status'))
+        <div class="alert alert-success">
             {{ session('status') }}
-        @endif
-        <div class="card">
-            <div class="card-body">
-                <form method="post" action="{{ route('chipset.store', []) }}" enctype="multipart/form-data">
-        
-                    @csrf
-                    <div class="form-group">
-                        <label for="chipset_name">Ime</label>
-                        <input class="form-control" type="text" name="chipset_name" data="green">
-                    </div>
-                    <div class="form-group">
-                        <label for="chipset_description">Opis</label>
-                        <textarea class="form-control" name="chipset_description" data="green"></textarea>
-                    </div>
-                  
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
-                </form>
-            </div>
+            @if (session('title'))
+               <strong> {{ session('title') }} </strong>
+            @endif
         </div>
         
-       
+        @endif
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th>Ime</th>
+                        <th>Opis</th>
+                        <th class="text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
     
-
-@endsection
+                    @foreach ($chipsets as $chipset)
+                        <tr>
+                            <td class="text-center">{{ $chipset->id }}</td>
+                            <td>{{ $chipset->name }}</td>
+                            <td>{{ Str::limit($chipset->description,50)  }}</td>
+                            <td class="td-actions text-right">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </button>
+                                <a href="{{ route('chipsets.edit', ['chipset'=>$chipset->id]) }}">
+                                    <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
+                                        <i class="tim-icons icon-settings"></i>
+                                    </button>
+                                 </a>
+                                
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-icon btn-sm" data-target="#deleteModal{{ $chipset->id }}" data-toggle="modal">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <x-deleteModals.chipset :chipset="$chipset"/>
+                    @endforeach
+                   
+                </tbody>
+            </table>
+            <div >
+                {{ $chipsets->links('pagination::bootstrap-4') }}
+            </div>
+        </div>
+       
+         
+    @endsection
