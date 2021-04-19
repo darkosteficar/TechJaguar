@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Cpu;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateManufacturersTable extends Migration
 {
@@ -29,5 +30,10 @@ class CreateManufacturersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('manufacturers');
+    }
+
+    public function cpus()
+    {
+        return $this->hasMany(Cpu::class);
     }
 }

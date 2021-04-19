@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\ComponentController;
 
@@ -40,12 +42,21 @@ Route::post('/posts/update',[PostController::class,'save'])->name('posts.save');
 Route::get('/posts/all',[PostController::class,'read'])->name('posts.read');
 
 Route::get('/admin/components',[ComponentController::class,'index'])->name('admin.components.index');
+
 Route::get('/admin/components/chipsets',[ComponentController::class,'read_chipset'])->name('chipsets.index');
 Route::get('/admin/components/chipsets/create',[ComponentController::class,'create_chipset'])->name('chipsets.create');
 Route::get('/admin/components/chipsets/{chipset}',[ComponentController::class,'edit_chipset'])->name('chipsets.edit');
 Route::post('/admin/components/chipsets/update',[ComponentController::class,'update_chipset'])->name('chipsets.update');
 Route::post('/admin/components/chipsets/store',[ComponentController::class,'store_chipset'])->name('chipsets.store');
 Route::delete('/admin/components/chipsets/delete',[ComponentController::class,'delete_chipset'])->name('chipsets.delete');
+
+Route::get('/admin/components/cpus/create',[ComponentController::class,'create_cpu'])->name('cpus.create');
+Route::post('/admin/components/cpus/store',[ComponentController::class,'store_cpu'])->name('cpus.store');
+
+Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
+Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');
+
+Route::get('/admin/results/create',[ResultController::class,'create'])->name('results.create');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

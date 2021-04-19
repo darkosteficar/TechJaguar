@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cpu;
 use App\Models\Chipset;
+use App\Models\ChipsetCpu;
 use Illuminate\Http\Request;
 
 class ComponentController extends Controller
@@ -14,8 +16,6 @@ class ComponentController extends Controller
 
     public function create_chipset()
     {
-     
-        
         return view('admin.components.chipsets.create');
     }
 
@@ -76,7 +76,36 @@ class ComponentController extends Controller
         
         session()->flash('error','Chipset ne postoji!');
         return redirect()->route('chipsets.index');
+    }
 
 
+    public function create_cpu()
+    {
+
+        $chipsets = Chipset::all();
+        return view('admin.components.cpus.create',['chipsets'=>$chipsets]);
+    }
+
+    public function store_cpu(Request $r)
+    {
+
+        $this->validate($r,[
+            'cpu_name'=>'required|max:40',
+            'cpu_chipsets'=>'required',
+        ]);
+
+        $cpu = Cpu::create([
+            'name'=>$r->cpu_name,
+        ]);
+            
+        foreach($r->cpu_chipsets as $chipset){
+            ChipsetCpu::create([
+                'cpu_id'=>$cpu->id,
+                'chipset_id'=>$chipset,
+            ]);
+        }
+
+        session()->flash('status','Procesor uspješno kreiran');
+        return redirect()->back();
     }
 }

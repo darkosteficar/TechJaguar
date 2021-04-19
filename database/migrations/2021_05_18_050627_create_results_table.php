@@ -15,8 +15,10 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->string('app');
-            $table->string('cpu');
+            $table->integer('cpu_id')->unsigned();
+            $table->integer('app_id')->unsigned();
+            $table->foreign('cpu_id')->references('id')->on('cpus')->onDelete('cascade');
+            $table->foreign('app_id')->references('id')->on('apps')->onDelete('cascade');
             $table->integer('score');
             $table->timestamps();
         });
