@@ -66,15 +66,15 @@
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="{{ route('apps.create', []) }}">
               <i class="tim-icons icon-single-02"></i>
-              <p class=" font-weight-normal font-12">User Profile</p>
+              <p class=" font-weight-normal font-12">Aplikacije</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="{{ route('results.index', []) }}">
               <i class="tim-icons icon-puzzle-10"></i>
-              <p class=" font-weight-normal font-12">Table List</p>
+              <p class=" font-weight-normal font-12">Rezultati</p>
             </a>
           </li>
           <li>
@@ -178,8 +178,8 @@
       <div class="content">
             <div class="d-flex">
                 <h1>Novi rezultat</h1>
-                <a href="{{ route('chipsets.index', []) }}">
-                    <button class="btn btn-success ml-5">Aplikacije</button>
+                <a href="{{ route('results.index', []) }}">
+                    <button class="btn btn-success ml-5">Rezultati</button>
                 </a>
             </div>
            
@@ -200,19 +200,19 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{ route('apps.store', []) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('results.store', []) }}" enctype="multipart/form-data">
                 
                             @csrf
                             <div class="form-group w-50 mx-auto">
                                 <label for="chipset_name">Rezultat</label>
-                                <input class="form-control" type="text" name="app_name" data="green">
+                                <input class="form-control" type="text" name="result" data="green">
                             </div>
                             <div class="container">
                                 <div class="row">
                                    
                                     <div class="col-sm">
                                         <label for="">Procesor</label>
-                                        <select name="" id="">
+                                        <select name="cpu" id="">
                                             @foreach ($cpus as $cpu)
                                                 <option value="{{ $cpu->id }}">{{ $cpu->name }}</option>
                                             @endforeach
@@ -220,8 +220,8 @@
                                         </select>
                                     </div>
                                     <div class="col-sm">
-                                        <label for="">Aplikacija</label>
-                                        <select name="" id="">
+                                        <label for="app">Aplikacija</label>
+                                        <select name="app" id="">
                                             @foreach ($apps as $app)
                                                 <option value="{{ $app->id }}">{{ $app->name }}</option>
                                             @endforeach

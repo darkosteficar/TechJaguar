@@ -72,10 +72,11 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
-                        hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
-                        Compare</p>
+                    <a href="{{ route('compare', []) }}">
+                        <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
+                            hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
+                            Compare</p>
+                    </a>
                     <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
                        hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
                         Build</p>

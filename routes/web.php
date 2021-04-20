@@ -56,7 +56,10 @@ Route::post('/admin/components/cpus/store',[ComponentController::class,'store_cp
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');
 
+Route::get('/admin/results',[ResultController::class,'index'])->name('results.index');
 Route::get('/admin/results/create',[ResultController::class,'create'])->name('results.create');
+Route::post('/admin/results/store',[ResultController::class,'store'])->name('results.store');
+Route::delete('/admin/results/delete',[ResultController::class,'delete'])->name('results.delete');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

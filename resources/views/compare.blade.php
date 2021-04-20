@@ -85,7 +85,7 @@
 
 @foreach ($apps as $app)
 <div class="w-1/3 mx-auto">
-    <canvas id="myChart{{ $app }}" ></canvas>
+    <canvas id="myChart{{ $app->id }}" ></canvas>
 </div>
 @endforeach
 
@@ -93,15 +93,15 @@
 
 
 <script>
-
+    var names = {!! json_encode($names) !!}; 
     var results = {!! json_encode($results) !!};
     var apps = {!! json_encode($apps) !!};
     results.forEach(result => {
-    var ctx = document.getElementById('myChart'+result[0]['app']).getContext('2d');
+    var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
     var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-    labels: [result[0]['cpu'], result[1]['cpu']],
+    labels: [names[0], names[1]],
     datasets: [{
         label: 'Score',
         data: [result[0]['score'], result[1]['score']],
@@ -134,7 +134,7 @@
     plugins: {
         title: {
             display: true,
-            text: result[0]['app'],
+            text: result[2],
         }
     },
     }

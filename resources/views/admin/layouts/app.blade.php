@@ -64,15 +64,15 @@
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="{{ route('apps.create', []) }}">
               <i class="tim-icons icon-single-02"></i>
-              <p class=" font-weight-normal font-12">User Profile</p>
+              <p class=" font-weight-normal font-12">Aplikacije</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="{{ route('results.index', []) }}">
               <i class="tim-icons icon-puzzle-10"></i>
-              <p class=" font-weight-normal font-12">Table List</p>
+              <p class=" font-weight-normal font-12">Rezultati</p>
             </a>
           </li>
           <li>

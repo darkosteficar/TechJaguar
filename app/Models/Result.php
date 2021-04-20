@@ -13,13 +13,13 @@ class Result extends Model
 
     protected $guarded = [];
 
-    public function cpus()
+    public function cpu()
     {
-        return $this->hasOne(Cpu::class);
+        return $this->belongsTo(Cpu::class);
     }
 
-    public function apps()
+    public function app()
     {
-        return $this->hasOne(App::class);
+        return $this->belongsTo(App::class);
     }
 }
