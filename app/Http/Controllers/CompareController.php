@@ -13,6 +13,7 @@ class CompareController extends Controller
     public function compare()
     {
         $cpus = Cpu::all();
+        $cpus2 = Cpu::all();
         $cpu1= Cpu::find(1);
         $cpu2= Cpu::find(3);
         $cpu1_id = $cpu1->id;
