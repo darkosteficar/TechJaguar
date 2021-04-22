@@ -20,6 +20,12 @@ use App\Http\Controllers\ComponentController;
 |
 */
 
+Route::get('/hehe', function () {
+
+    return view('hehe');
+})->name('hehe');
+
+
 
 Route::get('/',[NewsController::class,'index'])->name('index');
 Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');

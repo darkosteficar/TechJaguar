@@ -3,82 +3,64 @@
 
 @section('content')
 
+
+
+
 <div class="flex justify-between  w-3/5 mx-auto my-10 ">
-    <div class="container ">
-        <p class="font-bold text-2xl text-gray-300 mb-3 text-center">GPU 1</p>
+        <div class="container ">
+            <p class="font-bold text-2xl text-gray-300 mb-3 text-center">CPU 1</p>
 
-        <div class="select-box mx-auto">
-            <div class="options-container bg-gray-700 font-medium">
-                <div class="option">
-                    <input type="hidden" name="" class="gpuId" value="2">
-                    <input type="radio" class="radio" id="automobiles" name="category" />
-                    <label for="automobiles">AMD Radeon RX 5700 XT</label>
-
+            <div class="select-box mx-auto">
+                <div class="options-container bg-gray-700 font-medium">
+                    @foreach ($cpus as $cpu)
+                        <div class="option">
+                            <input type="hidden" name="" class="gpuId" value="{{ $cpu->id }}">
+                            <input type="radio" class="radio" id="automobiles" name="category" />
+                            <label for="cpus">{{ $cpu->name }}</label>
+                        </div>
+                    @endforeach
                 </div>
 
-                <div class="option">
-                    <input type="hidden" name="" class="gpuId" value="3">
-                    <input type="radio " class="radio " id="film" name="category" />
-                    <label for="film">Nvidia GeForce RTX 2080 Ti</label>
-
+                <div class="selected">
+                    Select a CPU
                 </div>
 
-                <div class="option  ">
-                    <input type="radio" class="radio " id="science" name="category" />
-                    <label for="science">Nvidia GeForce RTX 3070</label>
-                    <input type="hidden" name="" class="gpuId" value="4">
+                <div class="search-box">
+                    <input type="text" class="bg-gray-600 text-green-400" placeholder="RX 5700 XT,RTX 3060 Ti..." />
                 </div>
-
-
-            </div>
-
-            <div class="selected">
-                Select a Graphics Card
-            </div>
-
-            <div class="search-box">
-                <input type="text" class="bg-gray-600 text-green-400" placeholder="RX 5700 XT,RTX 3060 Ti..." />
             </div>
         </div>
-    </div>
-    <div class="container ml-5">
-        <p class="font-bold text-2xl text-gray-300 mb-3 text-center">GPU 2</p>
+        <div class="container ml-5">
+            <p class="font-bold text-2xl text-gray-300 mb-3 text-center">CPU 2</p>
 
-        <div class="select-box mx-auto">
-            <div class="options-container bg-gray-700 font-medium">
-                <div class="option">
-                    <input type="radio" class="radio" id="automobiles" name="category" />
-                    <label for="automobiles">AMD Radeon RX 5700 XT</label>
+            <div class="select-box mx-auto">
+                <div class="options-container2 bg-gray-700 font-medium">
+                    @foreach ($cpus as $cpu)
+                        <div class="option2">
+                            <input type="radio" class="cpu2_id radio " id="automobiles" name="category" />
+                            <label class="cpu2_label" for="automobiles">{{ $cpu->name }}</label>
+                        </div>   
+                    @endforeach
+                </div>
+                <div class="selected2">
+                    Select a CPU
                 </div>
 
-                <div class="option">
-                    <input type="radio " class="radio " id="film" name="category" />
-                    <label for="film">Nvidia GeForce RTX 2080 Ti</label>
+                <div class="search-box2">
+                    <input type="text" class="cpu2_input text-green-400 bg-gray-600" class="bg-gray-600 text-green-400" placeholder="RX 5700 XT,RTX 3060 Ti..." />
                 </div>
-
-                <div class="option  ">
-                    <input type="radio" class="radio " id="science" name="category" />
-                    <label for="science">Nvidia GeForce RTX 3070</label>
-                </div>
-
-
-            </div>
-
-            <div class="selected">
-                Select a Graphics Card
-            </div>
-
-            <div class="search-box">
-                <input type="text" class="bg-gray-600 text-green-400" placeholder="RX 5700 XT,RTX 3060 Ti..." />
             </div>
         </div>
-    </div>
-    <div class="mt-7 ml-12">
-        <button
-            class=" hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-600 text-green-400 transition ease-in duration-300">
-            COMPARE
-        </button>
-    </div>
+        <div class="mt-7 ml-12">
+            <form action="{{ route('compare', []) }}" method="GET">
+                <input type="hidden" name="cpu1" id="cpu1_id">
+                <input type="hidden" name="cpu2" id="cpu2_id">
+                <button class="hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-600 text-green-400 transition ease-in duration-300" type="submit">
+                    COMPARE
+                </button>
+        </form>
+        </div>
+
 </div>
 
 
@@ -148,7 +130,7 @@
     const optionsContainer = document.querySelector(".options-container");
     const searchBox = document.querySelector(".search-box input");
 
-    const gpu1Id = document.getElementById("idOfGpu");
+    const gpu1Id = document.getElementById("cpu1_id");
 
     const optionsList = document.querySelectorAll(".option");
 
@@ -168,7 +150,7 @@
             selected.innerHTML = o.querySelector("label").innerHTML;
             var id = o.querySelector("input").value;
             optionsContainer.classList.remove("active");
-            gpu1Id.setAttribute("placeholder", id);
+            gpu1Id.setAttribute("value", id);
         });
     });
 
@@ -179,6 +161,54 @@
     const filterList = searchTerm => {
         searchTerm = searchTerm.toLowerCase();
         optionsList.forEach(option => {
+            let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
+            if (label.indexOf(searchTerm) != -1) {
+                option.style.display = "block";
+            } else {
+                option.style.display = "none";
+            }
+        });
+    };
+
+</script>
+
+
+<script>
+    const selected2 = document.querySelector(".selected2");
+    const optionsContainer2 = document.querySelector(".options-container2");
+    const searchBox2 = document.querySelector(".search-box2 input");
+
+    const gpu2Id = document.getElementById("cpu2_id");
+
+    const optionsList2 = document.querySelectorAll(".option2");
+
+    selected2.addEventListener("click", () => {
+        optionsContainer2.classList.toggle("active");
+
+        searchBox2.value = "";
+        filterList("");
+
+        if (optionsContainer2.classList.contains("active")) {
+            searchBox2.focus();
+        }
+    });
+
+    optionsList2.forEach(o => {
+        o.addEventListener("click", () => {
+            selected2.innerHTML = o.querySelector("label").innerHTML;
+            var id = o.querySelector("cpu2_id").value;
+            optionsContainer2.classList.remove("active");
+            gpu2Id.setAttribute("value", id);
+        });
+    });
+
+    searchBox2.addEventListener("keyup", function (e) {
+        filterList(e.target.value);
+    });
+
+    const filterList2 = searchTerm => {
+        searchTerm = searchTerm.toLowerCase();
+        optionsList2.forEach(option => {
             let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
             if (label.indexOf(searchTerm) != -1) {
                 option.style.display = "block";

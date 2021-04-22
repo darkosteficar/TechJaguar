@@ -12,7 +12,7 @@ class CompareController extends Controller
 {
     public function compare()
     {
-
+        $cpus = Cpu::all();
         $cpu1= Cpu::find(1);
         $cpu2= Cpu::find(3);
         $cpu1_id = $cpu1->id;
@@ -31,6 +31,6 @@ class CompareController extends Controller
             }
         }
  
-        return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names]);
+        return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus]);
     }
 }
