@@ -14,9 +14,9 @@
                 <div class="options-container bg-gray-700 font-medium">
                     @foreach ($cpus as $cpu)
                         <div class="option">
-                            <input type="hidden" name="" class="gpuId" value="{{ $cpu->id }}">
-                            <input type="radio" class="radio" id="automobiles" name="category" />
+                            <input type="radio" class="radio" id="automobiles" name="category" value="{{ $cpu->id }}"/>
                             <label for="cpus">{{ $cpu->name }}</label>
+                            <input type="hidden" name="" class="gpuId" >
                         </div>
                     @endforeach
                 </div>
@@ -37,8 +37,9 @@
                 <div class="options-container2 bg-gray-700 font-medium">
                     @foreach ($cpus as $cpu)
                         <div class="option2">
-                            <input type="radio" class="cpu2_id radio " id="automobiles" name="category" />
-                            <label class="cpu2_label" for="automobiles">{{ $cpu->name }}</label>
+                            <input type="radio" class="cpu2_id radio" id="automobiles" name="category" value="{{ $cpu->id }}"/>
+                            <label for="cpus">{{ $cpu->name }}</label>
+                            <input type="hidden" name="" class="gpuId" >
                         </div>   
                     @endforeach
                 </div>
@@ -184,33 +185,31 @@
 
     selected2.addEventListener("click", () => {
         optionsContainer2.classList.toggle("active");
-
         searchBox2.value = "";
         filterList("");
-
         if (optionsContainer2.classList.contains("active")) {
             searchBox2.focus();
         }
     });
 
-    optionsList2.forEach(o => {
-        o.addEventListener("click", () => {
-            selected2.innerHTML = o.querySelector("label").innerHTML;
-            var id = o.querySelector("cpu2_id").value;
+    optionsList2.forEach(o1 => {
+        o1.addEventListener("click", () => {
+            selected2.innerHTML = o1.querySelector("label").innerHTML;
+            var id = o1.querySelector("input").value;
             optionsContainer2.classList.remove("active");
             gpu2Id.setAttribute("value", id);
         });
     });
 
     searchBox2.addEventListener("keyup", function (e) {
-        filterList(e.target.value);
+        filterList2(e.target.value);
     });
 
-    const filterList2 = searchTerm => {
-        searchTerm = searchTerm.toLowerCase();
+    const filterList2 = searchTerm2 => {
+        searchTerm2 = searchTerm2.toLowerCase();
         optionsList2.forEach(option => {
             let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
-            if (label.indexOf(searchTerm) != -1) {
+            if (label.indexOf(searchTerm2) != -1) {
                 option.style.display = "block";
             } else {
                 option.style.display = "none";
