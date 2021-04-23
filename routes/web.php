@@ -20,10 +20,6 @@ use App\Http\Controllers\ComponentController;
 |
 */
 
-Route::get('/hehe', function () {
-
-    return view('hehe');
-})->name('hehe');
 
 
 

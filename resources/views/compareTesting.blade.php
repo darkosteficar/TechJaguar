@@ -3,15 +3,15 @@
 
 @section('content')
 
-@if (session()->has('error')))
-    <div class="bg-red-500 text-center w-1/3 mx-auto font-semibold  text-white py-4 mt-6 rounded-sm">
-        {{ session('error') }}
-    </div><br />
-    @endif
+
 
 
 <div class="flex justify-between  w-3/5 mx-auto my-10 ">
-    
+    @if (session()->has('error')))
+    <div class="bg-red-500 text-center">
+        {{ session('status') }}
+    </div><br />
+    @endif
    
         <div class="container ">
             <p class="font-bold text-2xl text-gray-300 mb-3 text-center">CPU 1</p>
@@ -28,12 +28,7 @@
                 </div>
 
                 <div class="selected">
-                    @if (isset($names))
-                        {{ $names[0] }}
-                    @else
-                        Select a CPU
-                    @endif
-                    
+                    Select a CPU
                 </div>
 
                 <div class="search-box">
@@ -55,12 +50,7 @@
                     @endforeach
                 </div>
                 <div class="selected2">
-                    @if (isset($names))
-                        {{ $names[1] }}
-                    @else
-                        Select a CPU
-                    @endif
-                    
+                    Select a CPU
                 </div>
 
                 <div class="search-box2">
@@ -79,10 +69,6 @@
         </div>
 
 </div>
-<div class="bg-green-600 text-white font-semibold w-1/2 mx-auto text-center py-3 rounded-sm">
-    No matching comparisons found
-</div>
-
 
 @if (isset($names))
     @foreach ($apps as $app)
@@ -95,56 +81,59 @@
 
 
 
+
+
+
 <script>
-    <?php  if(isset($names)){ ?>
-  var names = {!! json_encode($names) !!}; 
-  var results = {!! json_encode($results) !!};
-  var apps = {!! json_encode($apps) !!};
-  results.forEach(result => {
-  var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
-  var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-  labels: [names[0], names[1]],
-  datasets: [{
-      label: 'Score',
-      data: [result[0]['score'], result[1]['score']],
-      backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1
-  }]
-  },
-  options: {
-  scales: {
-      y: {
-          beginAtZero: true
-      }
-  },
-  indexAxis: 'y',
-  plugins: {
-      title: {
-          display: true,
-          text: result[2],
-      }
-  },
-  }
-  });
-  });
-  <?php } ?>
+      <?php  if(isset($names)){ ?>
+    var names = {!! json_encode($names) !!}; 
+    var results = {!! json_encode($results) !!};
+    var apps = {!! json_encode($apps) !!};
+    results.forEach(result => {
+    var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+    labels: [names[0], names[1]],
+    datasets: [{
+        label: 'Score',
+        data: [result[0]['score'], result[1]['score']],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    }]
+    },
+    options: {
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    },
+    indexAxis: 'y',
+    plugins: {
+        title: {
+            display: true,
+            text: result[2],
+        }
+    },
+    }
+    });
+    });
+    <?php } ?>
 
 </script>
 
