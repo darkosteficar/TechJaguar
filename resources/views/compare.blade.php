@@ -79,9 +79,13 @@
         </div>
 
 </div>
-<div class="bg-green-600 text-white font-semibold w-1/2 mx-auto text-center py-3 rounded-sm">
-    No matching comparisons found
-</div>
+
+@if (session()->has('status')))
+    <div class="bg-green-600 text-white font-semibold w-1/2 mx-auto text-center py-3 mb-12 rounded-sm">
+        {{ session('status') }}
+    </div>
+@endif
+
 
 
 @if (isset($names))
@@ -100,6 +104,13 @@
   var names = {!! json_encode($names) !!}; 
   var results = {!! json_encode($results) !!};
   var apps = {!! json_encode($apps) !!};
+  var cpu_ids = {!! json_encode($cpu_ids) !!};
+  const gpu1_setId = document.getElementById("cpu1_id");
+  const gpu2_setId = document.getElementById("cpu2_id");
+  var cpu1_set_id = cpu_ids[0];
+  var cpu2_set_id = cpu_ids[1];
+  gpu1_setId.setAttribute("value", cpu1_set_id);
+  gpu2_setId.setAttribute("value", cpu2_set_id);
   results.forEach(result => {
   var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
   var myChart = new Chart(ctx, {
