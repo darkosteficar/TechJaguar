@@ -77,9 +77,11 @@
                             hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
                             Compare</p>
                     </a>
+                    <a href="{{ route('build', []) }}">
                     <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
                        hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
                         Build</p>
+                    </a>
                 </div>
                 <div class="lg:flex lg:items-center">
                     @auth
