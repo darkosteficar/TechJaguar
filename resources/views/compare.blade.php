@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="search-box">
-                    <input type="text" class="bg-gray-600 text-green-400" placeholder="RX 5700 XT,RTX 3060 Ti..." />
+                    <input type="text" class="bg-gray-600 text-green-400  focus:ring-3 focus:border-green-400 focus:border-2 disable-outline" placeholder="RX 5700 XT,RTX 3060 Ti..." />
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="search-box2">
-                    <input type="text" class="cpu2_input text-green-400 bg-gray-600" class="bg-gray-600 text-green-400" placeholder="RX 5700 XT,Ryzen 5 2600X..." />
+                    <input type="text" class="cpu2_input bg-gray-600 text-green-400  focus:ring-3 focus:border-green-300 focus:border-2 disable-outline" placeholder="RX 5700 XT,Ryzen 5 2600X..." />
                 </div>
             </div>
         </div>

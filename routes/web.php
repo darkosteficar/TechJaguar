@@ -59,6 +59,11 @@ Route::delete('/admin/components/chipsets/delete',[ComponentController::class,'d
 Route::get('/admin/components/cpus/create',[ComponentController::class,'create_cpu'])->name('cpus.create');
 Route::post('/admin/components/cpus/store',[ComponentController::class,'store_cpu'])->name('cpus.store');
 
+Route::get('/admin/components/rams',[ComponentController::class,'read_ram'])->name('rams.index');
+Route::get('/admin/components/rams/create',[ComponentController::class,'create_ram'])->name('rams.create');
+Route::post('/admin/components/rams/store',[ComponentController::class,'store_ram'])->name('rams.store');
+Route::delete('/admin/components/rams/delete',[ComponentController::class,'delete_ram'])->name('rams.delete');
+
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');
 
