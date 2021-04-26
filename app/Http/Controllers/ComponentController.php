@@ -185,4 +185,72 @@ class ComponentController extends Controller
         session()->flash('status','Radna memorija '.$r->ram_name.' uspješno obrisana.');
         return redirect()->back();
     }
+
+    public function edit_ram(Ram $ram)
+    {
+        $images = Image::where('imageable_type','App\Models\Ram')->where('imageable_id',$ram->id)->get();
+        $manu = Manufacturer::all();
+        return view('admin.components.rams.edit',['ram'=>$ram,'manufacturers'=>$manu,'images'=>$images]);
+    }
+
+    public function update_ram(Request $request)
+    {
+        $imagesToDelete = Image::where('imageable_type','App\Models\Ram')->where('imageable_id',$request->ram_id)->get();
+        $imagesModel = Image::where('imageable_type','App\Models\Ram')->where('imageable_id',$request->ram_id);
+        $ram = Ram::find($request->ram_id);
+        if($ram !== null){
+            $this->validate($request,[
+                'ram_name'=>'required',
+                'ram_speed'=>'required|integer',
+                'ram_size'=>'required|integer',
+                'ram_type'=>'required',
+                'ram_manufacturer'=>'required',
+                'ram_heat_spreader'=>'required|boolean',
+                'ram_voltage'=>'required|numeric',
+                'ram_timings'=>'required',
+                'ram_price'=>'required|numeric',
+                
+            ]);
+            $ram->name = $request->ram_name;
+            $ram->speed = $request->ram_speed;
+            $ram->size = $request->ram_size;
+            $ram->type = $request->ram_type;
+            $ram->manufacturer_id = $request->ram_manufacturer;
+            $ram->heat_spreader = $request->ram_heat_spreader;
+            $ram->voltage = $request->ram_voltage;
+            $ram->timings = $request->ram_timings;
+            $ram->price = $request->ram_price;
+            if($request->ram_images !== null){
+                $this->validate($request,[
+                    'ram_images'=>"required|array",
+                    'ram_images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+                ]);
+                foreach($imagesToDelete as $image){
+                    File::delete(public_path('images/'.$image->path));
+                }
+                $imagesModel->delete();
+                foreach($request->ram_images as $image){
+                    $imageName = time().rand().'.'.$image->extension();  
+                    $image->move(public_path('images'), $imageName);
+                    Image::create([
+                        'path'=>$imageName,
+                        'imageable_id' => $ram->id,
+                        'imageable_type'=> 'App\Models\Ram',
+                    ]);
+                }
+            }
+           
+
+            $ram->save();
+            
+            session()->flash('status','Radna memorija uspješno ažurirana.');
+            return redirect()->route('rams.index');
+    
+        }
+
+        session()->flash('error','Radna memorija ne postoji!');
+        return redirect()->route('rams.index');
+    
+    
+    }
 }

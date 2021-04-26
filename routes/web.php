@@ -63,6 +63,8 @@ Route::get('/admin/components/rams',[ComponentController::class,'read_ram'])->na
 Route::get('/admin/components/rams/create',[ComponentController::class,'create_ram'])->name('rams.create');
 Route::post('/admin/components/rams/store',[ComponentController::class,'store_ram'])->name('rams.store');
 Route::delete('/admin/components/rams/delete',[ComponentController::class,'delete_ram'])->name('rams.delete');
+Route::get('/admin/components/rams/{ram}',[ComponentController::class,'edit_ram'])->name('rams.edit');
+Route::post('/admin/components/rams/update',[ComponentController::class,'update_ram'])->name('rams.update');
 
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');

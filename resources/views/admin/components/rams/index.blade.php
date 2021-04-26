@@ -51,7 +51,7 @@
                                 <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
                                     <i class="tim-icons icon-single-02"></i>
                                 </button>
-                                <a href="{{ route('chipsets.edit', ['chipset'=>$ram->id]) }}">
+                                <a href="{{ route('rams.edit', ['ram'=>$ram->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>
                                     </button>
