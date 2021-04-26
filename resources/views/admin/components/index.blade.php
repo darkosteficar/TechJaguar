@@ -38,7 +38,9 @@
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
                         <h3 class="my-auto mr-4">Pohrana podataka</h3>
-                        <button class="btn btn-success btn-small">Pregled</button>
+                        <a href="{{ route('storages.index', []) }}">
+                            <button class="btn btn-success btn-small">Pregled</button>
+                        </a>
                     </div>
                 </div>
                 <hr>
@@ -58,8 +60,19 @@
                 <hr>
                 <div class="row">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
+                        <h3 class="my-auto mr-4">Napajanja</h3>
+                        <a href="{{ route('psus.index', []) }}">
+                            <button class="btn btn-success btn-small">Pregled</button>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="d-flex flex-row align-items-center justify-content-between w-50">
                         <h3 class="my-auto mr-4">Hlađenje</h3>
-                        <button class="btn btn-success btn-small">Pregled</button>
+                        <a href="{{ route('coolers.index', []) }}">
+                            <button class="btn btn-success btn-small">Pregled</button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -66,6 +66,34 @@ Route::delete('/admin/components/rams/delete',[ComponentController::class,'delet
 Route::get('/admin/components/rams/{ram}',[ComponentController::class,'edit_ram'])->name('rams.edit');
 Route::post('/admin/components/rams/update',[ComponentController::class,'update_ram'])->name('rams.update');
 
+Route::get('/admin/components/storages',[ComponentController::class,'read_storage'])->name('storages.index');
+Route::get('/admin/components/storages/create',[ComponentController::class,'create_storage'])->name('storages.create');
+Route::post('/admin/components/storages/store',[ComponentController::class,'store_storage'])->name('storages.store');
+Route::delete('/admin/components/storages/delete',[ComponentController::class,'delete_storage'])->name('storages.delete');
+Route::get('/admin/components/storages/{storage}',[ComponentController::class,'edit_storage'])->name('storages.edit');
+Route::post('/admin/components/storages/update',[ComponentController::class,'update_storage'])->name('storages.update');
+
+Route::get('/admin/components/coolers',[ComponentController::class,'read_cooler'])->name('coolers.index');
+Route::get('/admin/components/coolers/create',[ComponentController::class,'create_cooler'])->name('coolers.create');
+Route::post('/admin/components/coolers/store',[ComponentController::class,'store_cooler'])->name('coolers.store');
+Route::delete('/admin/components/coolers/delete',[ComponentController::class,'delete_cooler'])->name('coolers.delete');
+Route::get('/admin/components/coolers/{cooler}',[ComponentController::class,'edit_cooler'])->name('coolers.edit');
+Route::post('/admin/components/coolers/update',[ComponentController::class,'update_cooler'])->name('coolers.update');
+
+Route::get('/admin/components/psus',[ComponentController::class,'read_psu'])->name('psus.index');
+Route::get('/admin/components/psus/create',[ComponentController::class,'create_psu'])->name('psus.create');
+Route::post('/admin/components/psus/store',[ComponentController::class,'store_psu'])->name('psus.store');
+Route::delete('/admin/components/psus/delete',[ComponentController::class,'delete_psu'])->name('psus.delete');
+Route::get('/admin/components/psus/{psu}',[ComponentController::class,'edit_psu'])->name('psus.edit');
+Route::post('/admin/components/psus/update',[ComponentController::class,'update_psu'])->name('psus.update');
+
+Route::get('/admin/components/cases',[ComponentController::class,'read_case'])->name('cases.index');
+Route::get('/admin/components/cases/create',[ComponentController::class,'create_case'])->name('cases.create');
+Route::post('/admin/components/cases/store',[ComponentController::class,'store_case'])->name('cases.store');
+Route::delete('/admin/components/cases/delete',[ComponentController::class,'delete_case'])->name('cases.delete');
+Route::get('/admin/components/cases/{case}',[ComponentController::class,'edit_case'])->name('cases.edit');
+Route::post('/admin/components/cases/update',[ComponentController::class,'update_case'])->name('cases.update');
+
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');
 
