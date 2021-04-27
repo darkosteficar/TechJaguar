@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cpu;
+use App\Models\Gpu;
 use App\Models\Psu;
 use App\Models\Ram;
+use App\Models\Mobo;
 use App\Models\Image;
 use App\Models\Cooler;
+use App\Models\PcCase;
 use App\Models\Chipset;
 use App\Models\Storage;
 use App\Models\ChipsetCpu;
@@ -86,25 +89,57 @@ class ComponentController extends Controller
     }
 
 
+    // Processors
+
+    public function read_cpu()
+    {
+        $cpus = Cpu::paginate(10);
+        return view('admin.components.cpus.index',['cpus'=>$cpus]);
+    }
+
     public function create_cpu()
     {
-
+        $manufacturers = Manufacturer::all();
         $chipsets = Chipset::all();
-        return view('admin.components.cpus.create',['chipsets'=>$chipsets]);
+        return view('admin.components.cpus.create',['manufacturers'=>$manufacturers,'chipsets'=>$chipsets]);
     }
 
     public function store_cpu(Request $r)
     {
-
         $this->validate($r,[
-            'cpu_name'=>'required|max:40',
-            'cpu_chipsets'=>'required',
+            'name'=>'required',
+            'price'=>'required|numeric',
+            'manufacturer_id'=>'required|integer',
+            'socket'=>'required',
+            'base_clock'=>'required|decimal',
+            'boost_clock'=>'required|decimal',
+            'tdp'=>'required|integer',
+            'core_count'=>'required|integer',
+            'microarchitecture'=>'required',
+            'litography'=>'required|integer',
+            'series'=>'required',
+            'integrated_graphics'=>'required',
+            'smt'=>'required',
+            'images'=>"required|array",
+            'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+        ]);
+    
+        $mobo = Mobo::create([
+            'name'=>$r->name,
+            'price'=>$r->price,
+            'manufacturer_id'=>$r->manufacturer_id,
+            'socket'=>$r->socket,
+            'base_clock'=>$r->base_clock,
+            'boost_clock'=>$r->boost_clock,
+            'tdp'=>$r->tdp,
+            'core_count'=>$r->core_count,
+            'microarchitecture'=>$r->microarchitecture,
+            'litography'=>$r->litography,
+            'series'=>$r->series,
+            'integrated_graphics'=>$r->integrated_graphics,
+            'smt'=>$r->smt,
         ]);
 
-        $cpu = Cpu::create([
-            'name'=>$r->cpu_name,
-        ]);
-            
         foreach($r->cpu_chipsets as $chipset){
             ChipsetCpu::create([
                 'cpu_id'=>$cpu->id,
@@ -112,10 +147,288 @@ class ComponentController extends Controller
             ]);
         }
 
-        session()->flash('status','Procesor uspješno kreiran');
+        foreach($r->images as $image){
+            $imageName = time().rand().'.'.$image->extension();  
+            $image->move(public_path('images'), $imageName);
+            Image::create([
+                'path'=>$imageName,
+                'imageable_id' => $cpu->id,
+                'imageable_type'=> 'App\Models\Cpu',
+            ]);
+        }
+        
+        session()->flash('status','Procesor uspješno dodan.');
+        return redirect()->route('cpus.index');
+       
+    }
+
+    public function delete_cpu(Request $r)
+    {
+        $cpu = Cpu::find($r->id);
+        $cpu->delete();
+        $array = array();
+        $imagesToDelete = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$r->id)->get();
+        $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$r->id);
+        foreach($imagesToDelete as $image){
+            File::delete(public_path('images/'.$image->path));
+        }
+        $images->delete();
+        session()->flash('status','Procesor '.$r->name.' uspješno obrisan.');
         return redirect()->back();
     }
 
+    public function edit_cpu(Cpu $cpu)
+    {
+        $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$cpu->id)->get();
+        $manu = Manufacturer::all();
+        $chip = Chipset::all();
+        $appliedChipsets = ChipsetCpu::where('cpu_id',$cpu->id)->get();
+        dd($appliedChipsets);
+        return view('admin.components.cpus.edit',['cpu'=>$cpu,'manufacturers'=>$manu,'images'=>$images,'chipsets'=>$chip,'appliedChipsets'=>$appliedChipsets]);
+    }
+
+    public function update_cpu(Request $request)
+    {
+        
+        $imagesToDelete = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$request->id)->get();
+        $imagesModel = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$request->id);
+        $cpu = Cpu::find($request->id);
+        if($cpu !== null){
+            $this->validate($request,[
+                'name'=>'required',
+                'price'=>'required|numeric',
+                'manufacturer_id'=>'required|integer',
+                'socket'=>'required',
+                'base_clock'=>'required|float',
+                'boost_clock'=>'required|float',
+                'tdp'=>'required|integer',
+                'core_count'=>'required|integer',
+                'microarchitecture'=>'required',
+                'litography'=>'required|integer',
+                'series'=>'required',
+                'integrated_graphics'=>'required',
+                'smt'=>'required',
+                
+            ]);
+            $cpu->name = $request->name;
+            $cpu->price = $request->price;
+            $cpu->manufacturer_id = $request->manufacturer_id;
+            $cpu->socket = $request->socket;
+            $cpu->base_clock = $request->base_clock;
+            $cpu->boost_clock = $request->boost_clock;
+            $cpu->tdp = $request->tdp;
+            $cpu->core_count = $request->core_count;
+            $cpu->microarchitecture = $request->microarchitecture;
+            $cpu->litography = $request->litography;
+            $cpu->series = $request->series;
+            $cpu->integrated_graphics = $request->integrated_graphics;
+            $cpu->smt = $request->smt;
+
+            $chipsetReset = ChipsetCpu::where('cpu_id',$request->id)->delete();
+
+            foreach($r->cpu_chipsets as $chipset){
+                ChipsetCpu::create([
+                    'cpu_id'=>$cpu->id,
+                    'chipset_id'=>$chipset,
+                ]);
+            }
+
+            if($request->images !== null){
+                $this->validate($request,[
+                    'images'=>"required|array",
+                    'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+                ]);
+                foreach($imagesToDelete as $image){
+                    File::delete(public_path('images/'.$image->path));
+                }
+                $imagesModel->delete();
+                foreach($request->images as $image){
+                    $imageName = time().rand().'.'.$image->extension();  
+                    $image->move(public_path('images'), $imageName);
+                    Image::create([
+                        'path'=>$imageName,
+                        'imageable_id' => $cpu->id,
+                        'imageable_type'=> 'App\Models\Cpu',
+                    ]);
+                }
+            }
+           
+
+            $cpu->save();
+            
+            session()->flash('status','Procesor uspješno ažuriran.');
+            return redirect()->route('cpus.index');
+    
+        }
+
+        session()->flash('error','Procesor ne postoji!');
+        return redirect()->route('cpus.index');
+    
+    
+    }
+
+    // Gpus
+
+    public function read_gpu()
+    {
+        $gpus = Gpu::paginate(10);
+        return view('admin.components.gpus.index',['gpus'=>$gpus]);
+    }
+
+    public function create_gpu()
+    {
+        $manufacturers = Manufacturer::all();
+        $chipsets = Chipset::all();
+        return view('admin.components.gpus.create',['manufacturers'=>$manufacturers,'chipsets'=>$chipsets]);
+    }
+
+    public function store_gpu(Request $r)
+    {
+        $this->validate($r,[
+            'name'=>'required',
+            'price'=>'required|numeric',
+            'manufacturer_id'=>'required|integer',
+            'chipset_id'=>'required|integer',
+            'series'=>'required',
+            'gpu_bus'=>'required',
+            'vram_type'=>'required',
+            'vram'=>'required|integer',
+            'length'=>'required',
+            'interface'=>'required',
+            'power_connector'=>'required',
+            'power_req'=>'required',
+            'crossfire'=>'required',
+            'images'=>"required|array",
+            'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+        ]);
+    
+        $gpu = Gpu::create([
+            'name'=>$r->name,
+            'price'=>$r->price,
+            'manufacturer_id'=>$r->manufacturer_id,
+            'chipset_id'=>$r->chipset_id,
+            'series'=>$r->series,
+            'gpu_bus'=>$r->gpu_bus,
+            'vram_type'=>$r->vram_type,
+            'vram'=>$r->vram,
+            'length'=>$r->length,
+            'interface'=>$r->interface,
+            'power_connector'=>$r->power_connector,
+            'crossfire'=>$r->crossfire,
+            'smt'=>$r->smt,
+        ]);
+
+        foreach($r->images as $image){
+            $imageName = time().rand().'.'.$image->extension();  
+            $image->move(public_path('images'), $imageName);
+            Image::create([
+                'path'=>$imageName,
+                'imageable_id' => $cpu->id,
+                'imageable_type'=> 'App\Models\Gpu',
+            ]);
+        }
+        
+        session()->flash('status','Grafička kartica uspješno dodana.');
+        return redirect()->route('gpus.index');
+       
+    }
+
+    public function delete_gpu(Request $r)
+    {
+        $gpu = Gpu::find($r->id);
+        $gpu->delete();
+        $array = array();
+        $imagesToDelete = Image::where('imageable_type','App\Models\Gpu')->where('imageable_id',$r->id)->get();
+        $images = Image::where('imageable_type','App\Models\Gpu')->where('imageable_id',$r->id);
+        foreach($imagesToDelete as $image){
+            File::delete(public_path('images/'.$image->path));
+        }
+        $images->delete();
+        session()->flash('status','Grafička kartica '.$r->name.' uspješno obrisana.');
+        return redirect()->back();
+    }
+
+    public function edit_gpu(Gpu $gpu)
+    {
+        $images = Image::where('imageable_type','App\Models\Gpu')->where('imageable_id',$gpu->id)->get();
+        $manu = Manufacturer::all();
+        $chip = Chipset::all();
+        return view('admin.components.gpus.edit',['gpu'=>$gpu,'manufacturers'=>$manu,'images'=>$images,'chipsets'=>$chip]);
+    }
+
+    public function update_gpu(Request $request)
+    {
+        
+        $imagesToDelete = Image::where('imageable_type','App\Models\Gpu')->where('imageable_id',$request->id)->get();
+        $imagesModel = Image::where('imageable_type','App\Models\Gpu')->where('imageable_id',$request->id);
+        $gpu = Gpu::find($request->id);
+        if($gpu !== null){
+            $this->validate($request,[
+                'name'=>'required',
+                'price'=>'required|numeric',
+                'manufacturer_id'=>'required|integer',
+                'chipset_id'=>'required|integer',
+                'series'=>'required',
+                'gpu_bus'=>'required',
+                'vram_type'=>'required',
+                'vram'=>'required|integer',
+                'length'=>'required',
+                'interface'=>'required',
+                'power_connector'=>'required',
+                'power_req'=>'required',
+                'crossfire'=>'required',
+                
+            ]);
+            $gpu->name = $request->name;
+            $gpu->price = $request->price;
+            $gpu->manufacturer_id = $request->manufacturer_id;
+            $gpu->chipset_id = $request->chipset_id;
+            $gpu->series = $request->series;
+            $gpu->gpu_bus = $request->gpu_bus;
+            $gpu->vram_type = $request->vram_type;
+            $gpu->vram = $request->vram;
+            $gpu->length = $request->length;
+            $gpu->power_connector = $request->power_connector;
+            $gpu->interface = $request->interface;
+            $gpu->power_req = $request->power_req;
+            $gpu->crossfire = $request->crossfire;
+
+            if($request->images !== null){
+                $this->validate($request,[
+                    'images'=>"required|array",
+                    'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+                ]);
+                foreach($imagesToDelete as $image){
+                    File::delete(public_path('images/'.$image->path));
+                }
+                $imagesModel->delete();
+                foreach($request->images as $image){
+                    $imageName = time().rand().'.'.$image->extension();  
+                    $image->move(public_path('images'), $imageName);
+                    Image::create([
+                        'path'=>$imageName,
+                        'imageable_id' => $gpu->id,
+                        'imageable_type'=> 'App\Models\Gpu',
+                    ]);
+                }
+            }
+           
+
+            $gpu->save();
+            
+            session()->flash('status','Procesor uspješno ažuriran.');
+            return redirect()->route('gpus.index');
+    
+        }
+
+        session()->flash('error','Procesor ne postoji!');
+        return redirect()->route('gpus.index');
+    
+    
+    }
+
+
+    // Rams
 
     public function read_ram()
     {
@@ -708,31 +1021,31 @@ class ComponentController extends Controller
             'name'=>'required',
             'price'=>'required|numeric',
             'manufacturer_id'=>'required|integer',
-            'height'=>'required',
+            'height'=>'required|integer',
             'width'=>'required|integer',
-            'type'=>'required|integer',
-            '2_5_bays'=>'required|integer',
+            'type'=>'required',
+            'num_2_5_bays'=>'required|integer',
             'length'=>'required|integer',
-            '3_5_bays'=>'required',
+            'num_3_5_bays'=>'required',
             'max_gpu_length'=>'required',
             'expansion_slots'=>'required|integer',
             'front_panel_usb'=>'required|integer',
-            'motherboard_form_factor'=>'required|integer',
+            'motherboard_form_factor'=>'required',
             'side_panel_glass'=>'required|integer',
             'power_supply_shroud'=>'required|integer',
             'images'=>"required|array",
             'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
     
-        $psu = Psu::create([
+        $case = PcCase::create([
             'name'=>$r->name,
             'price'=>$r->price,
             'manufacturer_id'=>$r->manufacturer_id,
             'height'=>$r->height,
             'width'=>$r->width,
             'type'=>$r->type,
-            '2_5_bays'=>$r->2_5_bays,
-            '3_5_bays'=>$r->3_5_bays,
+            'num_2_5_bays'=>$r->num_2_5_bays,
+            'num_3_5_bays'=>$r->num_3_5_bays,
             'length'=>$r->length,
             'max_gpu_length'=>$r->max_gpu_length,
             'expansion_slots'=>$r->expansion_slots,
@@ -749,69 +1062,77 @@ class ComponentController extends Controller
             Image::create([
                 'path'=>$imageName,
                 'imageable_id' => $psu->id,
-                'imageable_type'=> 'App\Models\Psu',
+                'imageable_type'=> 'App\Models\PcCase',
             ]);
         }
         
-        session()->flash('status','Napajanje uspješno dodano.');
-        return redirect()->route('psus.index');
+        session()->flash('status','Kućište uspješno dodano.');
+        return redirect()->route('cases.index');
        
     }
 
     public function delete_pcCase(Request $r)
     {
-        $psu = Psu::find($r->id);
-        $psu->delete();
+        $case = PcCase::find($r->id);
+        $case->delete();
         $array = array();
-        $imagesToDelete = Image::where('imageable_type','App\Models\Psu')->where('imageable_id',$r->id)->get();
-        $images = Image::where('imageable_type','App\Models\Psu')->where('imageable_id',$r->id);
+        $imagesToDelete = Image::where('imageable_type','App\Models\PcCase')->where('imageable_id',$r->id)->get();
+        $images = Image::where('imageable_type','App\Models\PcCase')->where('imageable_id',$r->id);
         foreach($imagesToDelete as $image){
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Napajanje '.$r->name.' uspješno obrisano.');
+        session()->flash('status','Kućište '.$r->name.' uspješno obrisano.');
         return redirect()->back();
     }
 
     public function edit_pcCase(PcCase $case)
     {
-        $images = Image::where('imageable_type','App\Models\Psu')->where('imageable_id',$psu->id)->get();
+        $images = Image::where('imageable_type','App\Models\PcCase')->where('imageable_id',$case->id)->get();
         $manu = Manufacturer::all();
-        return view('admin.components.psus.edit',['psu'=>$psu,'manufacturers'=>$manu,'images'=>$images]);
+        return view('admin.components.cases.edit',['case'=>$case,'manufacturers'=>$manu,'images'=>$images]);
     }
 
     public function update_pcCase(Request $request)
     {
         
-        $imagesToDelete = Image::where('imageable_type','App\Models\Psu')->where('imageable_id',$request->id)->get();
-        $imagesModel = Image::where('imageable_type','App\Models\Psu')->where('imageable_id',$request->id);
-        $psu = Psu::find($request->id);
-        if($psu !== null){
+        $imagesToDelete = Image::where('imageable_type','App\Models\PcCase')->where('imageable_id',$request->id)->get();
+        $imagesModel = Image::where('imageable_type','App\Models\PcCase')->where('imageable_id',$request->id);
+        $case = PcCase::find($request->id);
+        if($case !== null){
             $this->validate($request,[
                 'name'=>'required',
                 'price'=>'required|numeric',
                 'manufacturer_id'=>'required|integer',
-                'efficiency_rating'=>'required',
-                'molex_4pin_connectors'=>'required|integer',
-                'sata_connectors'=>'required|integer',
-                'pcie_6_2_pin_connectors'=>'required|integer',
-                'length'=>'required|integer',
+                'height'=>'required|integer',
+                'width'=>'required|integer',
                 'type'=>'required',
-                'modular'=>'required',
-                'wattage'=>'required|integer',
+                'num_2_5_bays'=>'required|integer',
+                'length'=>'required|integer',
+                'num_3_5_bays'=>'required',
+                'max_gpu_length'=>'required',
+                'expansion_slots'=>'required|integer',
+                'front_panel_usb'=>'required|integer',
+                'motherboard_form_factor'=>'required',
+                'side_panel_glass'=>'required|integer',
+                'power_supply_shroud'=>'required|integer',
                 
             ]);
-            $psu->name = $request->name;
-            $psu->price = $request->price;
-            $psu->manufacturer_id = $request->manufacturer_id;
-            $psu->efficiency_rating = $request->efficiency_rating;
-            $psu->molex_4pin_connectors = $request->molex_4pin_connectors;
-            $psu->length = $request->length;
-            $psu->sata_connectors = $request->sata_connectors;
-            $psu->pcie_6_2_pin_connectors = $request->pcie_6_2_pin_connectors;
-            $psu->type = $request->type;
-            $psu->modular = $request->modular;
-            $psu->wattage = $request->wattage;
+            $case->name = $request->name;
+            $case->price = $request->price;
+            $case->manufacturer_id = $request->manufacturer_id;
+            $case->length = $request->length;
+            $case->height = $request->height;
+            $case->width = $request->width;
+            $case->num_2_5_bays = $request->num_2_5_bays;
+            $case->num_3_5_bays = $request->num_3_5_bays;
+            $case->max_gpu_length = $request->max_gpu_length;
+            $case->expansion_slots = $request->expansion_slots;
+            $case->front_panel_usb = $request->front_panel_usb;
+            $case->type = $request->type;
+            $case->motherboard_form_factor = $request->motherboard_form_factor;
+            $case->side_panel_glass = $request->side_panel_glass;
+            $case->power_supply_shroud = $request->power_supply_shroud;
             if($request->images !== null){
                 $this->validate($request,[
                     'images'=>"required|array",
@@ -826,24 +1147,210 @@ class ComponentController extends Controller
                     $image->move(public_path('images'), $imageName);
                     Image::create([
                         'path'=>$imageName,
-                        'imageable_id' => $psu->id,
-                        'imageable_type'=> 'App\Models\Psu',
+                        'imageable_id' => $case->id,
+                        'imageable_type'=> 'App\Models\PcCase',
                     ]);
                 }
             }
            
 
-            $psu->save();
+            $case->save();
             
-            session()->flash('status','Napajanje uspješno ažurirano.');
-            return redirect()->route('psus.index');
+            session()->flash('status','Kućište uspješno ažurirano.');
+            return redirect()->route('cases.index');
     
         }
 
-        session()->flash('error','Napajanje ne postoji!');
-        return redirect()->route('psus.index');
+        session()->flash('error','Kućište ne postoji!');
+        return redirect()->route('cases.index');
     
     
     }
+
+    // Motherboards
+
+    public function read_mobo()
+    {
+        $mobos = Mobo::paginate(10);
+        return view('admin.components.mobos.index',['mobos'=>$mobos]);
+    }
+
+    public function create_mobo()
+    {
+        $manufacturers = Manufacturer::all();
+        $chipsets = Chipset::all();
+        return view('admin.components.mobos.create',['manufacturers'=>$manufacturers,'chipsets'=>$chipsets]);
+    }
+
+    public function store_mobo(Request $r)
+    {
+        $this->validate($r,[
+            'name'=>'required',
+            'price'=>'required|numeric',
+            'manufacturer_id'=>'required|integer',
+            'chipset_id'=>'required|integer',
+            'socket'=>'required',
+            'max_memory'=>'required|integer',
+            'memory_slots'=>'required|integer',
+            'form_factor'=>'required',
+            'memory_type'=>'required',
+            'pci_e_x16_slots'=>'required|integer',
+            'pci_e_x8_slots'=>'required|integer',
+            'pci_e_x4_slots'=>'required|integer',
+            'pci_e_x1_slots'=>'required|integer',
+            'm_2_slots'=>'required|integer',
+            'sata_ports'=>'required|integer',
+            'usb_2_0_headers'=>'required|integer',
+            'usb_3_2_gen1_headers'=>'required|integer',
+            'usb_3_2_gen2_headers'=>'required|integer',
+            'wireless_support'=>'required',
+            'images'=>"required|array",
+            'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+        ]);
+    
+        $mobo = Mobo::create([
+            'name'=>$r->name,
+            'price'=>$r->price,
+            'manufacturer_id'=>$r->manufacturer_id,
+            'chipset_id'=>$r->chipset_id,
+            'socket'=>$r->socket,
+            'max_memory'=>$r->max_memory,
+            'memory_slots'=>$r->memory_slots,
+            'form_factor'=>$r->form_factor,
+            'memory_type'=>$r->memory_type,
+            'pci_e_x16_slots'=>$r->pci_e_x16_slots,
+            'pci_e_x8_slots'=>$r->pci_e_x8_slots,
+            'pci_e_x4_slots'=>$r->pci_e_x4_slots,
+            'pci_e_x1_slots'=>$r->pci_e_x1_slots,
+            'm_2_slots'=>$r->m_2_slots,
+            'sata_ports'=>$r->sata_ports,
+            'usb_2_0_headers'=>$r->usb_2_0_headers,
+            'usb_3_2_gen1_headers'=>$r->usb_3_2_gen1_headers,
+            'usb_3_2_gen2_headers'=>$r->usb_3_2_gen2_headers,
+            'wireless_support'=>$r->wireless_support,
+        ]);
+
+        foreach($r->images as $image){
+            $imageName = time().rand().'.'.$image->extension();  
+            $image->move(public_path('images'), $imageName);
+            Image::create([
+                'path'=>$imageName,
+                'imageable_id' => $mobo->id,
+                'imageable_type'=> 'App\Models\Mobo',
+            ]);
+        }
+        
+        session()->flash('status','Matična ploča uspješno dodana.');
+        return redirect()->route('mobos.index');
+       
+    }
+
+    public function delete_mobo(Request $r)
+    {
+        $mobo = Mobo::find($r->id);
+        $mobo->delete();
+        $array = array();
+        $imagesToDelete = Image::where('imageable_type','App\Models\Mobo')->where('imageable_id',$r->id)->get();
+        $images = Image::where('imageable_type','App\Models\Mobo')->where('imageable_id',$r->id);
+        foreach($imagesToDelete as $image){
+            File::delete(public_path('images/'.$image->path));
+        }
+        $images->delete();
+        session()->flash('status','Matična ploča '.$r->name.' uspješno obrisana.');
+        return redirect()->back();
+    }
+
+    public function edit_mobo(Mobo $mobo)
+    {
+        $images = Image::where('imageable_type','App\Models\Mobo')->where('imageable_id',$mobo->id)->get();
+        $manu = Manufacturer::all();
+        $chip = Chipset::all();
+        return view('admin.components.mobos.edit',['mobo'=>$mobo,'manufacturers'=>$manu,'images'=>$images,'chipsets'=>$chip]);
+    }
+
+    public function update_mobo(Request $request)
+    {
+        
+        $imagesToDelete = Image::where('imageable_type','App\Models\Mobo')->where('imageable_id',$request->id)->get();
+        $imagesModel = Image::where('imageable_type','App\Models\Mobo')->where('imageable_id',$request->id);
+        $mobo = Mobo::find($request->id);
+        if($mobo !== null){
+            $this->validate($request,[
+                'name'=>'required',
+                'price'=>'required|numeric',
+                'manufacturer_id'=>'required|integer',
+                'chipset_id'=>'required|integer',
+                'socket'=>'required',
+                'max_memory'=>'required|integer',
+                'memory_slots'=>'required|integer',
+                'form_factor'=>'required',
+                'memory_type'=>'required',
+                'pci_e_x16_slots'=>'required|integer',
+                'pci_e_x8_slots'=>'required|integer',
+                'pci_e_x4_slots'=>'required|integer',
+                'pci_e_x1_slots'=>'required|integer',
+                'm_2_slots'=>'required|integer',
+                'sata_ports'=>'required|integer',
+                'usb_2_0_headers'=>'required|integer',
+                'usb_3_2_gen1_headers'=>'required|integer',
+                'usb_3_2_gen2_headers'=>'required|integer',
+                'wireless_support'=>'required',
+                
+            ]);
+            $mobo->name = $request->name;
+            $mobo->price = $request->price;
+            $mobo->manufacturer_id = $request->manufacturer_id;
+            $mobo->chipset_id = $request->chipset_id;
+            $mobo->socket = $request->socket;
+            $mobo->max_memory = $request->max_memory;
+            $mobo->memory_slots = $request->memory_slots;
+            $mobo->form_factor = $request->form_factor;
+            $mobo->memory_type = $request->memory_type;
+            $mobo->pci_e_x16_slots = $request->pci_e_x16_slots;
+            $mobo->pci_e_x8_slots = $request->pci_e_x8_slots;
+            $mobo->pci_e_x4_slots = $request->pci_e_x4_slots;
+            $mobo->pci_e_x1_slots = $request->pci_e_x1_slots;
+            $mobo->m_2_slots = $request->m_2_slots;
+            $mobo->sata_ports = $request->sata_ports;
+            $mobo->usb_2_0_headers = $request->usb_2_0_headers;
+            $mobo->usb_3_2_gen1_headers = $request->usb_3_2_gen1_headers;
+            $mobo->usb_3_2_gen2_headers = $request->usb_3_2_gen2_headers;
+            $mobo->wireless_support = $request->wireless_support;
+
+            if($request->images !== null){
+                $this->validate($request,[
+                    'images'=>"required|array",
+                    'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+                ]);
+                foreach($imagesToDelete as $image){
+                    File::delete(public_path('images/'.$image->path));
+                }
+                $imagesModel->delete();
+                foreach($request->images as $image){
+                    $imageName = time().rand().'.'.$image->extension();  
+                    $image->move(public_path('images'), $imageName);
+                    Image::create([
+                        'path'=>$imageName,
+                        'imageable_id' => $mobo->id,
+                        'imageable_type'=> 'App\Models\Mobo',
+                    ]);
+                }
+            }
+           
+
+            $mobo->save();
+            
+            session()->flash('status','Matična ploča uspješno ažurirana.');
+            return redirect()->route('mobos.index');
+    
+        }
+
+        session()->flash('error','Matična ploča ne postoji!');
+        return redirect()->route('mobos.index');
+    
+    
+    }
+
+    
 
 }

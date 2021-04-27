@@ -2,21 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Image;
+use App\Models\Chipset;
+use App\Models\Manufacturer;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Cpu extends Model
+class Mobo extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
-    
-    public function chipsets()
-    {
-        return $this->belongsToMany(Chipset::class,'chipset_cpus');
-    }
+
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class);
+    }
+
+    public function chipset()
+    {
+        return $this->belongsTo(Chipset::class);
     }
 
     public function images()

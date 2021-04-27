@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novo kućište</h1>
-    <a href="{{ route('cases.index', []) }}">
-        <button class="btn btn-success ml-5">Kućišta</button>
+    <h1>Nova grafička kartica</h1>
+    <a href="{{ route('gpus.index', []) }}">
+        <button class="btn btn-success ml-5">Grafičke kartice</button>
     </a>
 </div>
    
@@ -25,7 +25,7 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <form method="post" action="{{ route('cases.store', []) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('gpus.store', []) }}" enctype="multipart/form-data">
         
                     @csrf
                     <div class="form-group">
@@ -48,7 +48,39 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Dužina</label>
+                                <label for="series">Serija</label>
+                                <input class="form-control" type="text" name="series" data="green" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="gpu_bus">GPU bus </label>
+                                <input class="form-control" type="text" name="gpu_bus" data="green" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="vram_type">Vrsta VRAM-a</label>
+                                <input class="form-control" type="text" name="vram_type" data="green" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="vram">Količina VRAM-a</label>
+                                <input class="form-control" type="text" name="vram" data="green" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="length">Duljina grafičke kartice</label>
                                 <input class="form-control" type="text" name="length" data="green" >
                             </div>
                         </div>
@@ -56,90 +88,43 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="height">Visina</label>
-                                <input class="form-control" type="text" name="height" data="green" >
+                                <label for="interface">Sučelje</label>
+                                <input class="form-control" type="text" name="interface" data="green" >
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="width">Širina</label>
-                                <input class="form-control" type="text" name="width" data="green" >
+                                <label for="power_connector">Priključak napajanja</label>
+                                <input class="form-control" type="text" name="power_connector" data="green" >
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="type">Tip</label>
-                                <input class="form-control" type="text" name="type" data="green" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="num_2_5_bays">Broj 2.5 inčnih postolja</label>
-                                <input class="form-control" type="text" name="num_2_5_bays" data="green" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="num_3_5_bays">Broj 3.5 inčnih postolja</label>
-                                <input class="form-control" type="text" name="num_3_5_bays" data="green" >     
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="max_gpu_length">Maksimalna duljina grafičke kartice</label>
-                                <input class="form-control" type="text" name="max_gpu_length" data="green" >     
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="expansion_slots">Broj ekspanzijskih slotova</label>
-                                <input class="form-control" type="text" name="expansion_slots" data="green" >     
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="front_panel_usb">Broj USB portova na prednjem panelu</label>
-                                <input class="form-control" type="text" name="front_panel_usb" data="green" >     
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="motherboard_form_factor">Podržane veličine matičnih ploča</label>
-                                <input class="form-control" type="text" name="motherboard_form_factor" data="green" >     
+                                <label for="power_req">Minimalna snaga napajanja</label>
+                                <input class="form-control" type="text" name="power_req" data="green" >
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="side_panel_glass">Stakleni lijevi panel</label>
-                                <select class="form-control" name="side_panel_glass" style="background-color: #27293D">
+                                <label for="crossfire">Crossfire/SLI podrška</label>
+                                <select class="form-control" name="crossfire" style="background-color: #27293D">
                                         <option value="0">Ne</option>
                                         <option value="1">Da</option>
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="power_supply_shroud">Kavez za napajanje</label>
-                                <select class="form-control" name="power_supply_shroud" style="background-color: #27293D">
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
-                               </select>
+                                <label for="chipset_id">Chipset</label>
+                                <select class="form-control" style="background-color: #27293D" name="chipset_id">
+                                    @foreach ($chipsets as $chipset)
+                                        <option value="{{ $chipset->id }}">{{ $chipset->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-4">
                                 <label for="manufacturer_id">Proizvođač</label>

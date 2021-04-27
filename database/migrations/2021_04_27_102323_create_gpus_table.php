@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCpusTable extends Migration
+class CreateGpusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,22 @@ class CreateCpusTable extends Migration
      */
     public function up()
     {
-        Schema::create('cpus', function (Blueprint $table) {
+        Schema::create('gpus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',50);
+            $table->integer('chipset_id')->unsigned();
             $table->float('price',12,2);
             $table->foreignId('manufacturer_id')->constrained()->onDelete('cascade');
-            $table->string('socket',15);
-            $table->float('base_clock');
-            $table->float('boost_clock');
-            $table->integer('tdp');
-            $table->integer('microarchitecture');
-            $table->integer('core_count');
-            $table->integer('litography');
+            $table->foreign('chipset_id')->references('id')->on('chipsets')->onDelete('cascade');
             $table->string('series', 20);
-            $table->boolean('integrated_graphics');
-            $table->boolean('smt');
+            $table->string('gpu_bus',15);
+            $table->string('vram_type');
+            $table->integer('vram');
+            $table->integer('length');
+            $table->string('interface');
+            $table->string('power_connector');
+            $table->integer('power_req');
+            $table->boolean('crossfire');
             $table->timestamps();
         });
     }
@@ -39,6 +40,6 @@ class CreateCpusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cpus');
+        Schema::dropIfExists('gpus');
     }
 }

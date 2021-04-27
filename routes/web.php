@@ -94,6 +94,27 @@ Route::delete('/admin/components/cases/delete',[ComponentController::class,'dele
 Route::get('/admin/components/cases/{case}',[ComponentController::class,'edit_case'])->name('cases.edit');
 Route::post('/admin/components/cases/update',[ComponentController::class,'update_case'])->name('cases.update');
 
+Route::get('/admin/components/mobos',[ComponentController::class,'read_mobo'])->name('mobos.index');
+Route::get('/admin/components/mobos/create',[ComponentController::class,'create_mobo'])->name('mobos.create');
+Route::post('/admin/components/mobos/store',[ComponentController::class,'store_mobo'])->name('mobos.store');
+Route::delete('/admin/components/mobos/delete',[ComponentController::class,'delete_mobo'])->name('mobos.delete');
+Route::get('/admin/components/mobos/{mobo}',[ComponentController::class,'edit_mobo'])->name('mobos.edit');
+Route::post('/admin/components/mobos/update',[ComponentController::class,'update_mobo'])->name('mobos.update');
+
+Route::get('/admin/components/cpus',[ComponentController::class,'read_cpu'])->name('cpus.index');
+Route::get('/admin/components/cpus/create',[ComponentController::class,'create_cpu'])->name('cpus.create');
+Route::post('/admin/components/cpus/store',[ComponentController::class,'store_cpu'])->name('cpus.store');
+Route::delete('/admin/components/cpus/delete',[ComponentController::class,'delete_cpu'])->name('cpus.delete');
+Route::get('/admin/components/cpus/{cpu}',[ComponentController::class,'edit_cpu'])->name('cpus.edit');
+Route::post('/admin/components/cpus/update',[ComponentController::class,'update_cpu'])->name('cpus.update');
+
+Route::get('/admin/components/gpus',[ComponentController::class,'read_gpu'])->name('gpus.index');
+Route::get('/admin/components/gpus/create',[ComponentController::class,'create_gpu'])->name('gpus.create');
+Route::post('/admin/components/gpus/store',[ComponentController::class,'store_gpu'])->name('gpus.store');
+Route::delete('/admin/components/gpus/delete',[ComponentController::class,'delete_gpu'])->name('gpus.delete');
+Route::get('/admin/components/gpus/{gpu}',[ComponentController::class,'edit_gpu'])->name('gpus.edit');
+Route::post('/admin/components/gpus/update',[ComponentController::class,'update_gpu'])->name('gpus.update');
+
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');
 

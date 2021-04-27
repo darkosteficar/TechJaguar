@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Promjena kućišta</h1>
-    <a href="{{ route('cases.index', []) }}">
-        <button class="btn btn-success ml-5">Kućišta</button>
+    <h1>Promjena matične ploče</h1>
+    <a href="{{ route('mobos.index', []) }}">
+        <button class="btn btn-success ml-5">Matične ploče</button>
     </a>
 </div>
    
@@ -25,14 +25,14 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <form method="post" action="{{ route('cases.update', []) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('mobos.update', []) }}" enctype="multipart/form-data">
         
                     @csrf
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
                                 <label for="name">Ime</label>
-                                <input class="form-control" type="text" name="name" data="green" value="{{ $case->name }}">
+                                <input class="form-control" type="text" name="name" data="green" value="{{ $mobo->name }}">
                             </div>
                         </div>
                        
@@ -41,79 +41,119 @@
                         <div class="row">
                             <div class="col-3">
                                 <label for="price">Cijena</label>
-                                <input class="form-control" type="text" name="price" data="green" value="{{ $case->price }}">
+                                <input class="form-control" type="text" name="price" data="green" value="{{ $mobo->price }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Dužina</label>
-                                <input class="form-control" type="text" name="length" data="green" value="{{ $case->length }}">
+                                <label for="socket">Socket</label>
+                                <input class="form-control" type="text" name="socket" data="green" value="{{ $mobo->socket }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="height">Visina</label>
-                                <input class="form-control" type="text" name="height" data="green" value="{{ $case->height }}">
+                                <label for="max_memory">Maksimalan kapacitet memorije</label>
+                                <input class="form-control" type="text" name="max_memory" data="green" value="{{ $mobo->max_memory }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="width">Širina</label>
-                                <input class="form-control" type="text" name="width" data="green" value="{{ $case->width }}">
+                                <label for="memory_slots">Broj DIMM slotova</label>
+                                <input class="form-control" type="text" name="memory_slots" data="green" value="{{ $mobo->memory_slots }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="type">Tip</label>
-                                <input class="form-control" type="text" name="type" data="green" value="{{ $case->type }}">
+                                <label for="form_factor">Veličina</label>
+                                <input class="form-control" type="text" name="form_factor" data="green" value="{{ $mobo->form_factor }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="num_2_5_bays">Broj 2.5 inčnih postolja</label>
-                                <input class="form-control" type="text" name="num_2_5_bays" data="green" value="{{ $case->num_2_5_bays }}">
+                                <label for="pci_e_x16_slots">Broj PCI-E X16 slotova</label>
+                                <input class="form-control" type="text" name="pci_e_x16_slots" data="green" value="{{ $mobo->pci_e_x16_slots }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="num_3_5_bays">Broj 3.5 inčnih postolja</label>
-                                <input class="form-control" type="text" name="num_3_5_bays" data="green" value="{{ $case->num_3_5_bays }}">     
+                                <label for="pci_e_x8_slots">Broj PCI-E X8 slotova</label>
+                                <input class="form-control" type="text" name="pci_e_x8_slots" data="green" value="{{ $mobo->pci_e_x8_slots }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="max_gpu_length">Maksimalna duljina grafičke kartice</label>
-                                <input class="form-control" type="text" name="max_gpu_length" data="green" value="{{ $case->max_gpu_length }}">     
+                                <label for="pci_e_x4_slots">Broj PCI-E X4 slotova</label>
+                                <input class="form-control" type="text" name="pci_e_x4_slots" data="green" value="{{ $mobo->pci_e_x4_slots }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="expansion_slots">Broj ekspanzijskih slotova</label>
-                                <input class="form-control" type="text" name="expansion_slots" data="green" value="{{ $case->expansion_slots }}">     
+                                <label for="pci_e_x1_slots">Broj PCI-E X1 slotova</label>
+                                <input class="form-control" type="text" name="pci_e_x1_slots" data="green" value="{{ $mobo->pci_e_x1_slots }}">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="front_panel_usb">Broj USB portova na prednjem panelu</label>
-                                <input class="form-control" type="text" name="front_panel_usb" data="green" value="{{ $case->front_panel_usb }}">     
+                                <label for="memory_type">Vrsta memorije</label>
+                                <input class="form-control" type="text" name="memory_type" data="green" value="{{ $mobo->memory_type }}">     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="m_2_slots">Broj M.2 slotova</label>
+                                <input class="form-control" type="text" name="m_2_slots" data="green" value="{{ $mobo->m_2_slots }}">     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="m_2_slots">Broj SATA portova</label>
+                                <input class="form-control" type="text" name="m_2_slots" data="green" value="{{ $mobo->m_2_slots }}">     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="usb_2_0_headers">Broj USB 2.0 headera</label>
+                                <input class="form-control" type="text" name="usb_2_0_headers" data="green" value="{{ $mobo->usb_2_0_headers }}">     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="usb_3_2_gen1_headers">Broj USB 3.0 gen 1 headera</label>
+                                <input class="form-control" type="text" name="usb_3_2_gen1_headers" data="green" value="{{ $mobo->usb_3_2_gen1_headers }}">     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="usb_3_2_gen2_headers">Broj USB 3.0 gen 2 headera</label>
+                                <input class="form-control" type="text" name="usb_3_2_gen2_headers" data="green" value="{{ $mobo->usb_3_2_gen2_headers }}">     
                             </div>
                         </div>
                     </div>
@@ -121,16 +161,16 @@
                         <div class="row">
                             <div class="col-3">
                                 <label for="motherboard_form_factor">Podržane veličine matičnih ploča</label>
-                                <input class="form-control" type="text" name="motherboard_form_factor" data="green" value="{{ $case->motherboard_form_factor }}">     
+                                <input class="form-control" type="text" name="motherboard_form_factor" data="green" value="{{ $mobo->motherboard_form_factor }}">     
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="side_panel_glass">Stakleni lijevi panel</label>
-                                <select class="form-control" name="side_panel_glass" style="background-color: #27293D">
-                                    @if ($case->side_panel_glass == 0)
+                                <label for="wireless_support">Podrška za bežičnu vezu</label>
+                                <select class="form-control" name="wireless_support" style="background-color: #27293D">
+                                    @if ($case->wireless_support == 0)
                                         <option value="0">Ne</option>
                                         <option value="1">Da</option>
                                     @else
@@ -140,22 +180,20 @@
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="power_supply_shroud">Kavez za napajanje</label>
-                                <select class="form-control" name="power_supply_shroud" style="background-color: #27293D">
-                                    @if ($case->power_supply_shroud == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
-                                    @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
-                                    @endif
-                               </select>
+                                <label for="chipset_id">Chipset</label>
+                                <select class="form-control" style="background-color: #27293D" name="chipset_id">
+                                    @foreach ($chipsets as $chipset)
+                                    <option value="{{ $chipset->id }}" @if ($mobo->chipset_id == $chipset->id) selected
+                                        
+                                    @endif>{{ $chipset->name }}</option>
+                                @endforeach
+                                </select>
                             </div>
                             <div class="col-4">
                                 <label for="manufacturer_id">Proizvođač</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
-                                        <option value="{{ $manufacturer->id }}" @if ($ram->manufacturer_id == $manufacturer->id) selected
+                                        <option value="{{ $manufacturer->id }}" @if ($mobo->manufacturer_id == $manufacturer->id) selected
                                             
                                         @endif>{{ $manufacturer->name }}</option>
                                     @endforeach
@@ -168,6 +206,7 @@
                         @foreach ($images as $image)
                             <img src=" {{ asset('images/'.$image->path) }}" alt="" width="200">
                         @endforeach
+                       
                     </div>
                     <div class=" form-row">
                         <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
