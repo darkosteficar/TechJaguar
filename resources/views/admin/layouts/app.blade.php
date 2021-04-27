@@ -39,19 +39,25 @@
           </a>
         </div>
         <ul class="nav">
-          <li class="active ">
+            <li @if (Request::is('admin/dashboard'))
+            class="active"
+        @endif>
             <a href="{{ route('admin.dashboard', []) }}">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p class=" font-weight-normal font-12">Dashboard</p>
             </a>
           </li>
-          <li>
+          <li @if (Request::is('posts'))
+              class="active"
+          @endif>
             <a href="{{ route('posts.create', []) }}">
               <i class="tim-icons icon-atom"></i>
               <p class=" font-weight-normal font-12">Nova objava</p>
             </a>
           </li>
-          <li>
+          <li @if (Request::is('posts/all'))
+              class="active"
+          @endif>
             <a href="{{ route('posts.read', []) }}">
               <i class="tim-icons icon-pin"></i>
               <p class=" font-weight-normal font-12">Objave</p>

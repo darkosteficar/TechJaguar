@@ -111,8 +111,8 @@ class ComponentController extends Controller
             'price'=>'required|numeric',
             'manufacturer_id'=>'required|integer',
             'socket'=>'required',
-            'base_clock'=>'required|decimal',
-            'boost_clock'=>'required|decimal',
+            'base_clock'=>'required|numeric',
+            'boost_clock'=>'required|numeric',
             'tdp'=>'required|integer',
             'core_count'=>'required|integer',
             'microarchitecture'=>'required',
@@ -120,11 +120,12 @@ class ComponentController extends Controller
             'series'=>'required',
             'integrated_graphics'=>'required',
             'smt'=>'required',
+            'core_family'=>'required',
             'images'=>"required|array",
             'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
     
-        $mobo = Mobo::create([
+        $cpu = Cpu::create([
             'name'=>$r->name,
             'price'=>$r->price,
             'manufacturer_id'=>$r->manufacturer_id,
@@ -138,6 +139,7 @@ class ComponentController extends Controller
             'series'=>$r->series,
             'integrated_graphics'=>$r->integrated_graphics,
             'smt'=>$r->smt,
+            'core_family'=>$r->core_family,
         ]);
 
         foreach($r->cpu_chipsets as $chipset){
@@ -165,7 +167,10 @@ class ComponentController extends Controller
     public function delete_cpu(Request $r)
     {
         $cpu = Cpu::find($r->id);
+        $deleteChildren = ChipsetCpu::where('cpu_id',$r->id)->delete();
         $cpu->delete();
+       
+        
         $array = array();
         $imagesToDelete = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$r->id)->get();
         $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$r->id);
@@ -182,9 +187,12 @@ class ComponentController extends Controller
         $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$cpu->id)->get();
         $manu = Manufacturer::all();
         $chip = Chipset::all();
-        $appliedChipsets = ChipsetCpu::where('cpu_id',$cpu->id)->get();
-        dd($appliedChipsets);
-        return view('admin.components.cpus.edit',['cpu'=>$cpu,'manufacturers'=>$manu,'images'=>$images,'chipsets'=>$chip,'appliedChipsets'=>$appliedChipsets]);
+        $chipsets = array();
+        $appliedChipsets = ChipsetCpu::where('cpu_id',$cpu->id)->get()->toArray();
+        foreach($appliedChipsets as $chipset){
+            array_push($chipsets,$chipset['chipset_id']);
+        }
+        return view('admin.components.cpus.edit',['cpu'=>$cpu,'manufacturers'=>$manu,'images'=>$images,'chipsets'=>$chip,'appliedChipsets'=>$chipsets]);
     }
 
     public function update_cpu(Request $request)
@@ -199,8 +207,8 @@ class ComponentController extends Controller
                 'price'=>'required|numeric',
                 'manufacturer_id'=>'required|integer',
                 'socket'=>'required',
-                'base_clock'=>'required|float',
-                'boost_clock'=>'required|float',
+                'base_clock'=>'required|numeric',
+                'boost_clock'=>'required|numeric',
                 'tdp'=>'required|integer',
                 'core_count'=>'required|integer',
                 'microarchitecture'=>'required',
@@ -208,6 +216,7 @@ class ComponentController extends Controller
                 'series'=>'required',
                 'integrated_graphics'=>'required',
                 'smt'=>'required',
+                'core_family'=>'required',
                 
             ]);
             $cpu->name = $request->name;
@@ -223,10 +232,11 @@ class ComponentController extends Controller
             $cpu->series = $request->series;
             $cpu->integrated_graphics = $request->integrated_graphics;
             $cpu->smt = $request->smt;
+            $cpu->core_family = $request->core_family;
 
             $chipsetReset = ChipsetCpu::where('cpu_id',$request->id)->delete();
 
-            foreach($r->cpu_chipsets as $chipset){
+            foreach($request->cpu_chipsets as $chipset){
                 ChipsetCpu::create([
                     'cpu_id'=>$cpu->id,
                     'chipset_id'=>$chipset,

@@ -28,33 +28,31 @@
                 <form method="post" action="{{ route('cpus.update', []) }}" enctype="multipart/form-data">
         
                     @csrf
+                    <input type="hidden" name="id" id="" value="{{ $cpu->id }}">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
                                 <label for="name">Ime</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{ $cpu->name }}">
                             </div>
+                            <div class="col-3">
+                                <label for="core_count">Broj jezgri</label>
+                                <input class="form-control" type="text" name="core_count" data="green" value="{{ $cpu->core_count }}">     
+                            </div>
                         </div>
                        
                     </div>
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
                                 <label for="price">Cijena</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{ $cpu->price }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="socket">Socket</label>
                                 <input class="form-control" type="text" name="socket" data="green" value="{{ $cpu->socket }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="base_clock">Standarni takt</label>
                                 <input class="form-control" type="text" name="base_clock" data="green" value="{{ $cpu->base_clock }}">
@@ -67,45 +65,31 @@
                                 <label for="boost_clock">Pojačani takt</label>
                                 <input class="form-control" type="text" name="boost_clock" data="green" value="{{ $cpu->boost_clock }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="tdp">TDP</label>
                                 <input class="form-control" type="text" name="tdp" data="green" value="{{ $cpu->tdp }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="microarchitecture">Mikroarhitektura</label>
                                 <input class="form-control" type="text" name="microarchitecture" data="green" value="{{ $cpu->microarchitecture }}">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="core_count">Broj jezgri</label>
-                                <input class="form-control" type="text" name="core_count" data="green" value="{{ $cpu->core_count }}">     
-                            </div>
-                        </div>
-                    </div>
+
+                    
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
                                 <label for="litography">Litografija</label>
                                 <input class="form-control" type="text" name="litography" data="green" value="{{ $cpu->litography }}">     
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="series">Serija procesora</label>
                                 <input class="form-control" type="text" name="series" data="green" value="{{ $cpu->series }}">     
+                            </div>
+                            <div class="col-3">
+                                <label for="core_family">Obitelj procesora</label>
+                                <input class="form-control" type="text" name="core_family" data="green" value="{{ $cpu->core_family }}">     
                             </div>
                         </div>
                     </div>

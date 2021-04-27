@@ -26,6 +26,7 @@ class CreateCpusTable extends Migration
             $table->integer('core_count');
             $table->integer('litography');
             $table->string('series', 20);
+            $table->string('core_family',30);
             $table->boolean('integrated_graphics');
             $table->boolean('smt');
             $table->timestamps();
