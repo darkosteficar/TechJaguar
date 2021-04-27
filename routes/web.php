@@ -9,6 +9,7 @@ use App\Http\Controllers\BuildController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ManufacturerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,12 +88,12 @@ Route::delete('/admin/components/psus/delete',[ComponentController::class,'delet
 Route::get('/admin/components/psus/{psu}',[ComponentController::class,'edit_psu'])->name('psus.edit');
 Route::post('/admin/components/psus/update',[ComponentController::class,'update_psu'])->name('psus.update');
 
-Route::get('/admin/components/cases',[ComponentController::class,'read_case'])->name('cases.index');
-Route::get('/admin/components/cases/create',[ComponentController::class,'create_case'])->name('cases.create');
-Route::post('/admin/components/cases/store',[ComponentController::class,'store_case'])->name('cases.store');
-Route::delete('/admin/components/cases/delete',[ComponentController::class,'delete_case'])->name('cases.delete');
-Route::get('/admin/components/cases/{case}',[ComponentController::class,'edit_case'])->name('cases.edit');
-Route::post('/admin/components/cases/update',[ComponentController::class,'update_case'])->name('cases.update');
+Route::get('/admin/components/cases',[ComponentController::class,'read_pcCase'])->name('cases.index');
+Route::get('/admin/components/cases/create',[ComponentController::class,'create_pcCase'])->name('cases.create');
+Route::post('/admin/components/cases/store',[ComponentController::class,'store_pcCase'])->name('cases.store');
+Route::delete('/admin/components/cases/delete',[ComponentController::class,'delete_pcCase'])->name('cases.delete');
+Route::get('/admin/components/cases/{case}',[ComponentController::class,'edit_pcCase'])->name('cases.edit');
+Route::post('/admin/components/cases/update',[ComponentController::class,'update_pcCase'])->name('cases.update');
 
 Route::get('/admin/components/mobos',[ComponentController::class,'read_mobo'])->name('mobos.index');
 Route::get('/admin/components/mobos/create',[ComponentController::class,'create_mobo'])->name('mobos.create');
@@ -114,6 +115,13 @@ Route::post('/admin/components/gpus/store',[ComponentController::class,'store_gp
 Route::delete('/admin/components/gpus/delete',[ComponentController::class,'delete_gpu'])->name('gpus.delete');
 Route::get('/admin/components/gpus/{gpu}',[ComponentController::class,'edit_gpu'])->name('gpus.edit');
 Route::post('/admin/components/gpus/update',[ComponentController::class,'update_gpu'])->name('gpus.update');
+
+Route::get('/admin/components/manufacturers',[ManufacturerController::class,'read_manufacturer'])->name('manufacturers.index');
+Route::get('/admin/components/manufacturers/create',[ManufacturerController::class,'create_manufacturer'])->name('manufacturers.create');
+Route::post('/admin/components/manufacturers/store',[ManufacturerController::class,'store_manufacturer'])->name('manufacturers.store');
+Route::delete('/admin/components/manufacturers/delete',[ManufacturerController::class,'delete_manufacturer'])->name('manufacturers.delete');
+Route::get('/admin/components/manufacturers/{manufacturer}',[ManufacturerController::class,'edit_manufacturer'])->name('manufacturers.edit');
+Route::post('/admin/components/manufacturers/update',[ManufacturerController::class,'update_manufacturer'])->name('manufacturers.update');
 
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');

@@ -41,9 +41,9 @@
                         <tr>
                             <td class="text-center">{{ $gpu->id }}</td>
                             <td>{{ $gpu->name }}</td>
-                            <td>{{ $gpu->price }}</td>
+                            <td>{{ $gpu->price }} kn</td>
                             <td>{{ $gpu->manufacturer->name }}</td>
-                            <td>{{ $gpu->length }}</td>
+                            <td>{{ $gpu->length }} mm</td>
                             <td>{{ $gpu->series }}</td>
                             <td>{{ $gpu->chipset->name }}</td>
                             

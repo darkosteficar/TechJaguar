@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novo kućište</h1>
+    <h1>Nova matična ploča</h1>
     <a href="{{ route('mobos.index', []) }}">
-        <button class="btn btn-success ml-5">Kućišta</button>
+        <button class="btn btn-success ml-5">Matične ploče</button>
     </a>
 </div>
    
@@ -128,8 +128,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="m_2_slots">Broj SATA portova</label>
-                                <input class="form-control" type="text" name="m_2_slots" data="green" >     
+                                <label for="sata_ports">Broj SATA portova</label>
+                                <input class="form-control" type="text" name="sata_ports" data="green" >     
                             </div>
                         </div>
                     </div>
@@ -157,14 +157,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="motherboard_form_factor">Podržane veličine matičnih ploča</label>
-                                <input class="form-control" type="text" name="motherboard_form_factor" data="green" >     
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">

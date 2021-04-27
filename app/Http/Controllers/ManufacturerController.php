@@ -4,181 +4,86 @@ namespace App\Http\Controllers;
 
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ManufacturerController extends Controller
 {
-    public function read_manufacturers()
+    public function read_manufacturer()
     {
-        $manufacturer = Manufacturer::paginate(10);
-        return view('admin.components.manufacturers.index',['manufacturer'=>$manufacturer]);
+        $manufacturers = Manufacturer::paginate(10);
+        return view('admin.components.manufacturers.index',['manufacturers'=>$manufacturers]);
     }
 
-    public function create_manufacturers()
+    public function create_manufacturer()
     {
-        $manufacturers = Manufacturer::all();
-        $chipsets = Chipset::all();
-        return view('admin.components.cpus.create',['manufacturers'=>$manufacturers,'chipsets'=>$chipsets]);
+        return view('admin.components.manufacturers.create');
     }
 
-    public function store_manufacturers(Request $r)
+    public function store_manufacturer(Request $r)
     {
         $this->validate($r,[
             'name'=>'required',
-            'price'=>'required|numeric',
-            'manufacturer_id'=>'required|integer',
-            'socket'=>'required',
-            'base_clock'=>'required|decimal',
-            'boost_clock'=>'required|decimal',
-            'tdp'=>'required|integer',
-            'core_count'=>'required|integer',
-            'microarchitecture'=>'required',
-            'litography'=>'required|integer',
-            'series'=>'required',
-            'integrated_graphics'=>'required',
-            'smt'=>'required',
-            'images'=>"required|array",
-            'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            'description'=>'required',
+            'image'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
-    
-        $mobo = Mobo::create([
+        $imageName = time().rand().'.'.$r->image->extension();  
+        $manu = Manufacturer::create([
             'name'=>$r->name,
-            'price'=>$r->price,
-            'manufacturer_id'=>$r->manufacturer_id,
-            'socket'=>$r->socket,
-            'base_clock'=>$r->base_clock,
-            'boost_clock'=>$r->boost_clock,
-            'tdp'=>$r->tdp,
-            'core_count'=>$r->core_count,
-            'microarchitecture'=>$r->microarchitecture,
-            'litography'=>$r->litography,
-            'series'=>$r->series,
-            'integrated_graphics'=>$r->integrated_graphics,
-            'smt'=>$r->smt,
+            'description'=>$r->description,
+            'image'=>$imageName
         ]);
-
-        foreach($r->cpu_chipsets as $chipset){
-            ChipsetCpu::create([
-                'cpu_id'=>$cpu->id,
-                'chipset_id'=>$chipset,
-            ]);
-        }
-
-        foreach($r->images as $image){
-            $imageName = time().rand().'.'.$image->extension();  
-            $image->move(public_path('images'), $imageName);
-            Image::create([
-                'path'=>$imageName,
-                'imageable_id' => $cpu->id,
-                'imageable_type'=> 'App\Models\Cpu',
-            ]);
-        }
-        
-        session()->flash('status','Procesor uspješno dodan.');
-        return redirect()->route('cpus.index');
+        $r->image->move(public_path('images'), $imageName);
+       
+        session()->flash('status','Proizvođač uspješno dodan.');
+        return redirect()->route('manufacturers.index');
        
     }
 
-    public function delete_manufacturers(Request $r)
+    public function delete_manufacturer(Request $r)
     {
-        $cpu = Cpu::find($r->id);
-        $cpu->delete();
-        $array = array();
-        $imagesToDelete = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$r->id)->get();
-        $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$r->id);
-        foreach($imagesToDelete as $image){
-            File::delete(public_path('images/'.$image->path));
-        }
-        $images->delete();
-        session()->flash('status','Procesor '.$r->name.' uspješno obrisan.');
+        $manu = Manufacturer::find($r->id);
+        File::delete(public_path('images/'.$manu->image));
+        $manu->delete();
+        session()->flash('status','Proizvođač '.$r->name.' uspješno obrisan.');
         return redirect()->back();
     }
 
-    public function edit_manufacturers(Manufacturer $manufacturer)
+    public function edit_manufacturer(Manufacturer $manufacturer)
     {
-        $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$cpu->id)->get();
-        $manu = Manufacturer::all();
-        $chip = Chipset::all();
-        $appliedChipsets = ChipsetCpu::where('cpu_id',$cpu->id)->get();
-        dd($appliedChipsets);
-        return view('admin.components.cpus.edit',['cpu'=>$cpu,'manufacturers'=>$manu,'images'=>$images,'chipsets'=>$chip,'appliedChipsets'=>$appliedChipsets]);
+        return view('admin.components.manufacturers.edit',['manufacturer'=>$manufacturer]);
     }
 
-    public function update_manufacturers(Request $request)
+    public function update_manufacturer(Request $request)
     {
-        
-        $imagesToDelete = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$request->id)->get();
-        $imagesModel = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$request->id);
-        $cpu = Cpu::find($request->id);
-        if($cpu !== null){
+
+        $manu = Manufacturer::find($request->id);
+        if($manu !== null){
             $this->validate($request,[
                 'name'=>'required',
-                'price'=>'required|numeric',
-                'manufacturer_id'=>'required|integer',
-                'socket'=>'required',
-                'base_clock'=>'required|float',
-                'boost_clock'=>'required|float',
-                'tdp'=>'required|integer',
-                'core_count'=>'required|integer',
-                'microarchitecture'=>'required',
-                'litography'=>'required|integer',
-                'series'=>'required',
-                'integrated_graphics'=>'required',
-                'smt'=>'required',
-                
+                'description'=>'required',
             ]);
-            $cpu->name = $request->name;
-            $cpu->price = $request->price;
-            $cpu->manufacturer_id = $request->manufacturer_id;
-            $cpu->socket = $request->socket;
-            $cpu->base_clock = $request->base_clock;
-            $cpu->boost_clock = $request->boost_clock;
-            $cpu->tdp = $request->tdp;
-            $cpu->core_count = $request->core_count;
-            $cpu->microarchitecture = $request->microarchitecture;
-            $cpu->litography = $request->litography;
-            $cpu->series = $request->series;
-            $cpu->integrated_graphics = $request->integrated_graphics;
-            $cpu->smt = $request->smt;
-
-            $chipsetReset = ChipsetCpu::where('cpu_id',$request->id)->delete();
-
-            foreach($r->cpu_chipsets as $chipset){
-                ChipsetCpu::create([
-                    'cpu_id'=>$cpu->id,
-                    'chipset_id'=>$chipset,
-                ]);
-            }
-
-            if($request->images !== null){
-                $this->validate($request,[
-                    'images'=>"required|array",
-                    'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
-                ]);
-                foreach($imagesToDelete as $image){
-                    File::delete(public_path('images/'.$image->path));
-                }
-                $imagesModel->delete();
-                foreach($request->images as $image){
-                    $imageName = time().rand().'.'.$image->extension();  
-                    $image->move(public_path('images'), $imageName);
-                    Image::create([
-                        'path'=>$imageName,
-                        'imageable_id' => $cpu->id,
-                        'imageable_type'=> 'App\Models\Cpu',
-                    ]);
-                }
-            }
-           
-
-            $cpu->save();
-            
-            session()->flash('status','Procesor uspješno ažuriran.');
-            return redirect()->route('cpus.index');
+            $manu->name = $request->name;
+            $manu->description = $request->description;
     
-        }
+            if($request->image !== null){
+                $this->validate($request,[
+                    'image'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+                ]);
+                File::delete(public_path('images/'.$manu->image));
+                
+                $imageName = time().rand().'.'.$request->image->extension();  
+                $request->image->move(public_path('images'), $imageName);
+                $manu->image = $imageName;
+                
+            }
 
-        session()->flash('error','Procesor ne postoji!');
-        return redirect()->route('cpus.index');
+            $manu->save();
+           
+            session()->flash('status','Proizvođač uspješno ažuriran.');
+            return redirect()->route('manufacturers.index');
+        }
+        session()->flash('error','Proizvođač ne postoji!');
+        return redirect()->route('manufacturers.index');
     
     
     }

@@ -28,6 +28,7 @@
                 <form method="post" action="{{ route('cases.update', []) }}" enctype="multipart/form-data">
         
                     @csrf
+                    <input type="hidden" value="{{ $case->id }}" name="id">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
@@ -155,7 +156,7 @@
                                 <label for="manufacturer_id">Proizvođač</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
-                                        <option value="{{ $manufacturer->id }}" @if ($ram->manufacturer_id == $manufacturer->id) selected
+                                        <option value="{{ $manufacturer->id }}" @if ($case->manufacturer_id == $manufacturer->id) selected
                                             
                                         @endif>{{ $manufacturer->name }}</option>
                                     @endforeach

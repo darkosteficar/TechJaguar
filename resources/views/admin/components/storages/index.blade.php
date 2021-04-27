@@ -30,9 +30,9 @@
                         <th>Cijena</th>
                         <th>Proizvođač</th>
                         <th>Tip</th>
-                        <th>Cache</th>
-                        <th>Sučelje</th>
                         <th>Kapacitet</th>
+                        <th>Sučelje</th>
+                        <th>Cache</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -42,12 +42,12 @@
                         <tr>
                             <td class="text-center">{{ $storage->id }}</td>
                             <td>{{ $storage->name }}</td>
-                            <td>{{ $storage->price }}</td>
+                            <td>{{ $storage->price }} kn</td>
                             <td>{{ $storage->manufacturer->name }}</td>
                             <td>{{ $storage->type }}</td>
-                            <td>{{ $storage->capacity }}</td>
+                            <td>{{ $storage->capacity }} GB</td>
                             <td>{{ $storage->interface }}</td>
-                            <td>{{ $storage->cache }}</td>
+                            <td>{{ $storage->cache }} MB</td>
                             
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">

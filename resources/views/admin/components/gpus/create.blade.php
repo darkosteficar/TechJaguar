@@ -43,72 +43,51 @@
                                 <label for="price">Cijena</label>
                                 <input class="form-control" type="text" name="price" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="series">Serija</label>
                                 <input class="form-control" type="text" name="series" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="gpu_bus">GPU bus </label>
                                 <input class="form-control" type="text" name="gpu_bus" data="green" >
                             </div>
                         </div>
                     </div>
+                   
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
                                 <label for="vram_type">Vrsta VRAM-a</label>
                                 <input class="form-control" type="text" name="vram_type" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="vram">Količina VRAM-a</label>
                                 <input class="form-control" type="text" name="vram" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="length">Duljina grafičke kartice</label>
                                 <input class="form-control" type="text" name="length" data="green" >
                             </div>
                         </div>
                     </div>
+                   
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
                                 <label for="interface">Sučelje</label>
                                 <input class="form-control" type="text" name="interface" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
+                            <div class="col-3">
+                                <label for="power_req">Minimalna snaga napajanja</label>
+                                <input class="form-control" type="text" name="power_req" data="green" >
+                            </div>
                             <div class="col-3">
                                 <label for="power_connector">Priključak napajanja</label>
                                 <input class="form-control" type="text" name="power_connector" data="green" >
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="power_req">Minimalna snaga napajanja</label>
-                                <input class="form-control" type="text" name="power_req" data="green" >
-                            </div>
-                        </div>
-                    </div>
+                  
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">

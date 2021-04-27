@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Napajanja</h2>
+    <h2>Kućišta</h2>
     <a href="{{ route('cases.create', []) }}">
-        <button class="btn btn-success ml-5">Novo napajanje</button>
+        <button class="btn btn-success ml-5">Novo kućište</button>
     </a>
 </div>
      

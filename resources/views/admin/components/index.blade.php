@@ -89,7 +89,9 @@
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
                         <h4 class="my-auto mr-4">Proizvođači</h4>
-                        <button class="btn btn-success btn-small">Pregled</button>
+                        <a href="{{ route('manufacturers.index', []) }}">
+                            <button class="btn btn-success btn-small">Pregled</button>
+                        </a>
                     </div>
                 </div>
                 <hr>

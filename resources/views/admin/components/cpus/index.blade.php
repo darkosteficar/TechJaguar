@@ -4,7 +4,7 @@
 <div class="d-flex">
     <h2>Procesori</h2>
     <a href="{{ route('cpus.create', []) }}">
-        <button class="btn btn-success ml-5">Nova procesor</button>
+        <button class="btn btn-success ml-5">Novi procesor</button>
     </a>
 </div>
      

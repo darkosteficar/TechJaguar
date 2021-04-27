@@ -41,11 +41,11 @@
                         <tr>
                             <td class="text-center">{{ $cooler->id }}</td>
                             <td>{{ $cooler->name }}</td>
-                            <td>{{ $cooler->price }}</td>
+                            <td>{{ $cooler->price }} kn</td>
                             <td>{{ $cooler->manufacturer->name }}</td>
-                            <td>{{ $cooler->water_cooled }}</td>
-                            <td>{{ $cooler->noise_level }}</td>
-                            <td>{{ $cooler->max_power }}</td>
+                            <td> @if ($cooler->water_cooled == 1)Da @else Ne @endif</td>
+                            <td>{{ $cooler->noise_level }} db</td>
+                            <td>{{ $cooler->max_power }} W</td>
                             
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">

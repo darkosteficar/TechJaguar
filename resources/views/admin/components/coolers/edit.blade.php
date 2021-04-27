@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Promjena uređaja</h1>
+    <h1>Promjena hladnjaka</h1>
     <a href="{{ route('coolers.index', []) }}">
-        <button class="btn btn-success ml-5">Uređaji</button>
+        <button class="btn btn-success ml-5">Hladnjaci</button>
     </a>
 </div>
    
@@ -97,8 +97,8 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="nvme">Vodeno Hlađenje</label>
-                                <select class="form-control" name="nvme" style="background-color: #27293D">
+                                <label for="water_cooled">Vodeno Hlađenje</label>
+                                <select class="form-control" name="water_cooled" style="background-color: #27293D">
                                     @if ($cooler->water_cooled == 0)
                                         <option value="0">Ne</option>
                                         <option value="1">Da</option>
@@ -141,7 +141,7 @@
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Spremi</button>
                 </form>
             </div>
         </div>

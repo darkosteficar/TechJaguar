@@ -28,6 +28,7 @@
                 <form method="post" action="{{ route('gpus.update', []) }}" enctype="multipart/form-data">
         
                     @csrf
+                    <input type="hidden" value="{{ $gpu->id }}" name="id">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">

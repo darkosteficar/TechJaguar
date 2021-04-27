@@ -41,9 +41,9 @@
                         <tr>
                             <td class="text-center">{{ $psu->id }}</td>
                             <td>{{ $psu->name }}</td>
-                            <td>{{ $psu->price }}</td>
+                            <td>{{ $psu->price }} kn</td>
                             <td>{{ $psu->manufacturer->name }}</td>
-                            <td>{{ $psu->wattage }}</td>
+                            <td>{{ $psu->wattage }} W</td>
                             <td>{{ $psu->type }}</td>
                             <td>{{ $psu->efficiency_rating }}</td>
                             

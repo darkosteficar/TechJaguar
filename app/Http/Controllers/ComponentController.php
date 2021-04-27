@@ -58,7 +58,7 @@ class ComponentController extends Controller
 
         session()->flash('status','Sljedeći chipset je uspješno obrisan: ');
         session()->flash('title', $request->chipset_name );
-        return redirect()->route('chipset.index');
+        return redirect()->route('chipsets.index');
     }
 
     public function edit_chipset(Chipset $chipset)
@@ -315,7 +315,7 @@ class ComponentController extends Controller
             'interface'=>$r->interface,
             'power_connector'=>$r->power_connector,
             'crossfire'=>$r->crossfire,
-            'smt'=>$r->smt,
+            'power_req'=>$r->power_req,
         ]);
 
         foreach($r->images as $image){
@@ -323,7 +323,7 @@ class ComponentController extends Controller
             $image->move(public_path('images'), $imageName);
             Image::create([
                 'path'=>$imageName,
-                'imageable_id' => $cpu->id,
+                'imageable_id' => $gpu->id,
                 'imageable_type'=> 'App\Models\Gpu',
             ]);
         }
@@ -800,7 +800,7 @@ class ComponentController extends Controller
                 'manufacturer_id'=>'required|integer',
                 'fan_rpm'=>'required|',
                 'length'=>'required|numeric',
-                'heigth'=>'required|numeric',
+                'height'=>'required|numeric',
                 'width'=>'required|numeric',
                 'noise_level'=>'required',
                 'water_cooled'=>'required|boolean',
@@ -813,7 +813,7 @@ class ComponentController extends Controller
             $cooler->length = $request->length;
             $cooler->manufacturer_id = $request->manufacturer_id;
             $cooler->width = $request->width;
-            $cooler->heigth = $request->heigth;
+            $cooler->height = $request->height;
             $cooler->noise_level = $request->noise_level;
             $cooler->water_cooled = $request->water_cooled;
             $cooler->price = $request->price;
@@ -1006,7 +1006,7 @@ class ComponentController extends Controller
     public function read_pcCase()
     {
         $cases = PcCase::paginate(10);
-        return view('admin.components.psus.index',['cases'=>$cases]);
+        return view('admin.components.cases.index',['cases'=>$cases]);
     }
 
     public function create_pcCase()
@@ -1061,7 +1061,7 @@ class ComponentController extends Controller
             $image->move(public_path('images'), $imageName);
             Image::create([
                 'path'=>$imageName,
-                'imageable_id' => $psu->id,
+                'imageable_id' => $case->id,
                 'imageable_type'=> 'App\Models\PcCase',
             ]);
         }
