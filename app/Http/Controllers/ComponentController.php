@@ -184,7 +184,8 @@ class ComponentController extends Controller
 
     public function edit_cpu(Cpu $cpu)
     {
-        $images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$cpu->id)->get();
+        //$images = Image::where('imageable_type','App\Models\Cpu')->where('imageable_id',$cpu->id)->get();
+        $images = $cpu->images;
         $manu = Manufacturer::all();
         $chip = Chipset::all();
         $chipsets = array();

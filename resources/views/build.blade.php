@@ -123,10 +123,13 @@
             <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
                 <p class="w-1/5">PSU</p>
                 <div class="w-30">
-                    <div> <button
-                            class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
-                            Select Power Supply
-                        </button>
+                    <div>
+                        <a href="{{ route('build.psus', []) }}">
+                            <button
+                                class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                Select Power Supply
+                            </button>
+                        </a>
                     </div>
                 </div>
 

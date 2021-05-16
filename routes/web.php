@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\PsuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -33,6 +34,8 @@ Route::get('/compare',[CompareController::class,'compare'])->name('compare');
 
 Route::get('/build',[BuildController::class,'index'])->name('build');
 Route::get('/build/rams',[BuildController::class,'select_ram'])->name('build.rams');
+Route::get('/build/psus',[PsuController::class,'index'])->name('build.psus');
+
 
 Route::post('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/login',[UserController::class,'login'])->name('login');

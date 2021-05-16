@@ -18,8 +18,8 @@ class Ram extends Model
         return $this->belongsTo(Manufacturer::class);
     }
 
-    public function image()
+    public function images()
     {
-        return $this->morphTo(Image::class,'imageable');
+        return $this->morphMany(Image::class,'imageable');
     }
 }

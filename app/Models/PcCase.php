@@ -18,6 +18,6 @@ class PcCase extends Model
 
     public function images()
     {
-        return $this->morpTo(Image::class,'imageable_type');
+        return $this->morphMany(Image::class,'imageable');
     }
 }

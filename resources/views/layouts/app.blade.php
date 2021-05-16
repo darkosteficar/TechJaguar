@@ -18,7 +18,7 @@
                 <div class="lg:flex items-center">
                     <a href="{{ route('index', []) }}">
                     <div class="flex lg:mb-0 mb-3">
-                        <img src="images/logo.png" alt="" width="40" class="mr-4">
+                        <img src="../images/logo.png" alt="" width="40" class="mr-4">
                         <p
                             class="text-green-400 font-semibold text-3xl mr-20 hover:text-green-50 transition ease-in-out duration-500">
                             BCompare</p>

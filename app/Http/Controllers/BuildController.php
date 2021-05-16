@@ -13,6 +13,10 @@ class BuildController extends Controller
 
     public function select_ram()
     {
+        $rams = Ram::all();
+
+        dd($rams);
         return view('select.rams');
+        
     }
 }
