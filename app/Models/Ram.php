@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Build;
 use App\Models\Image;
 use App\Models\Manufacturer;
 use Illuminate\Database\Eloquent\Model;
@@ -21,5 +22,10 @@ class Ram extends Model
     public function images()
     {
         return $this->morphMany(Image::class,'imageable');
+    }
+
+    public function builds()
+    {
+        return $this->morphToMany(Build::class,'buildable');
     }
 }
