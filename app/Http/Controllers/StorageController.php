@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ram;
 use App\Models\Build;
+use App\Models\Storage;
 use App\Models\Buildable;
 use Illuminate\Http\Request;
 
-class RamController extends Controller
+class StorageController extends Controller
 {
     public function index()
     {
-        $rams = Ram::all();
-        return view('builds.rams',['rams'=>$rams]);
+        $storages = Storage::all();
+        return view('builds.storages',['storages'=>$storages]);
     }
 
     public function add(Request $r)
@@ -21,10 +21,10 @@ class RamController extends Controller
         Buildable::create([
             'build_id'=>$build->id,
             'buildable_id' => $r->id,
-            'buildable_type'=> 'App\Models\Ram',
+            'buildable_type'=> 'App\Models\storage',
         ]);
-        $ram = Ram::find($r->id);
-        session()->flash('item',$ram->name);
+        $storage = Storage::find($r->id);
+        session()->flash('item',$storage->name);
         session()->flash('success', 'Radna memorija ' );
         session()->flash('success2', ' uspješno dodana!' );
         return redirect()->route('build');
@@ -33,8 +33,8 @@ class RamController extends Controller
     public function remove(Request $r)
     {
         $build = Build::find(1);
-        $ram = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Ram')->where('buildable_id',$r->id)->first();
-        $ram->delete();
+        $storage = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\storage')->where('buildable_id',$r->id)->first();
+        $storage->delete();
         session()->flash('success', 'Radna memorija uspješno obrisana!' );
         return redirect()->route('build');   
     }

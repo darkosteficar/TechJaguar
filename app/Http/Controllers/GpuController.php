@@ -33,8 +33,8 @@ class GpuController extends Controller
     public function remove(Request $r)
     {
         $build = Build::find(1);
-        $build->gpu_id = null;
-        $build->save();
+        $gpu = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Gpu')->where('buildable_id',$r->id)->first();
+        $gpu->delete();
         session()->flash('success', 'Grafička kartica uspješno obrisana!' );
         return redirect()->route('build');   
     }

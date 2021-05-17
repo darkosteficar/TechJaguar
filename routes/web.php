@@ -5,6 +5,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\CpuController;
 use App\Http\Controllers\GpuController;
 use App\Http\Controllers\PsuController;
+use App\Http\Controllers\RamController;
 use App\Http\Controllers\MoboController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\CoolerController;
 use App\Http\Controllers\PcCaseController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\CompareController;
+use App\Http\Controllers\StorageController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ManufacturerController;
 
@@ -54,6 +56,14 @@ Route::delete('/build/cpu/remove',[CpuController::class,'remove'])->name('build.
 Route::get('/build/gpus',[GpuController::class,'index'])->name('build.gpu');
 Route::post('/build/gpu/add',[GpuController::class,'add'])->name('build.gpu.add');
 Route::delete('/build/gpu/remove',[GpuController::class,'remove'])->name('build.gpu.remove');
+
+Route::get('/build/rams',[RamController::class,'index'])->name('build.ram');
+Route::post('/build/ram/add',[RamController::class,'add'])->name('build.ram.add');
+Route::delete('/build/ram/remove',[RamController::class,'remove'])->name('build.ram.remove');
+
+Route::get('/build/storages',[StorageController::class,'index'])->name('build.storage');
+Route::post('/build/storage/add',[StorageController::class,'add'])->name('build.storage.add');
+Route::delete('/build/storage/remove',[StorageController::class,'remove'])->name('build.storage.remove');
 
 Route::get('/build/coolers',[CoolerController::class,'index'])->name('build.cooler');
 Route::post('/build/cooler/add',[CoolerController::class,'add'])->name('build.cooler.add');

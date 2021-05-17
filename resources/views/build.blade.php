@@ -2,6 +2,13 @@
 
 
 @section('content')
+@php
+    if(isset($components['gpus'])){
+        $gpu_id = $components['gpus'][0]->id;
+    }
+
+    
+@endphp
 <div class="flex mt-24 justify-between mx-24">
     <div class="w-1/5">
         <div class=" bg-gray-900 border border-green-400 p-2">
@@ -83,33 +90,47 @@
             </div>
             @endif
 
-
-
-
             @if(isset($components['gpus']))
-                @foreach ($components['gpus'] as $gpu)
-                    <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
-                        <p class="w-2/12 ">GPU</p>
-                        <div class="w-9/12">
-                            <div class="flex items-center p-3 space-x-3">
-                                <img src="images/{{ $gpu->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                                <p>{{ $gpu->name  }}</p>
+                
+                    <div class="pl-3 bg-gray-700 border border-green-400">
+                            <div class="flex items-center">
+                                <p class="w-2/12 my-2 -mr-4">GPUS </p>
+                                <div class="w-11/12 ">
+                                    @foreach ($components['gpus'] as $gpu)
+                                    
+                                    <div class="flex items-center  ">
+                                        <div class="w-9/12">
+                                            <div class="flex items-center p-3 space-x-3">
+                                                <img src="images/{{ $gpu->images()->first()->path }}" alt="" width="100" class="border border-green-400">
+                                                <p>{{ $gpu->name  }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex">
+                                        </div>
+                                        <p class="w-2/12">{{ number_format($gpu->price,2) }} kn</p>
+                                        <div class="w-1/12 ">
+                                            <form action="{{ route('build.gpu.remove', ['id'=>$gpu->id]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center"  type="submit">
+                                                    X
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex">
-                        </div>
-                        <p class="w-2/12">{{ number_format($gpu->price,2) }} kn</p>
-                        <div class="w-1/12 ">
-                            <form action="{{ route('build.gpu.remove', ['id'=>$gpu->id]) }}" method="post">
+                            <form action="{{ route('build.gpu.add', ['id'=>$gpu_id]) }}" method="POST">
                                 @csrf
-                                @method('DELETE')
-                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center"  type="submit">
-                                    X
-                                </button>
+                                <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none mt-2 mb-4 ml-2 ">
+                                    Add another GPU
+                                </button>  
                             </form>
+                           
                         </div>
-                    </div>
-                @endforeach
+                    
+                
             @else
             <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
                 <p class="w-1/5">GPU</p>
@@ -126,31 +147,116 @@
             @endif
 
            
+            @if(isset($components['rams']))
+                
+                    <div class="pl-3 bg-gray-700 border border-green-400">
+                            <div class="flex items-center">
+                                <p class="w-2/12 my-2 -mr-4">RAM </p>
+                                <div class="w-11/12 ">
+                                    @foreach ($components['rams'] as $ram)
+                                    
+                                    <div class="flex items-center  ">
+                                        <div class="w-9/12">
+                                            <div class="flex items-center p-3 space-x-3">
+                                                <img src="images/{{ $ram->images()->first()->path }}" alt="" width="100" class="border border-green-400">
+                                                <p>{{ $ram->name  }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex">
+                                        </div>
+                                        <p class="w-2/12">{{ number_format($ram->price,2) }} kn</p>
+                                        <div class="w-1/12 ">
+                                            <form action="{{ route('build.ram.remove', ['id'=>$ram->id]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center"  type="submit">
+                                                    X
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <a href="{{ route('build.ram', []) }}">
+                                <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                    Select RAM
+                                </button>
+                            </a>
+                           
+                        </div>
+                    
+                
+            @else
             <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
                 <p class="w-1/5">RAM</p>
                 <div class="w-30">
-                    <div> 
-                        <a href="{{ route('build.rams', []) }}"> 
-                            <button
-                            class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
-                            Select RAM
+                    <div>
+                        <a href="{{ route('build.ram', []) }}">
+                            <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                Select RAM
                             </button>
                         </a>
                     </div>
                 </div>
-
             </div>
+            @endif
+
+            @if(isset($components['storages']))
+                
+                    <div class="pl-3 bg-gray-700 border border-green-400">
+                            <div class="flex items-center">
+                                <p class="w-2/12 my-2 -mr-4">STORAGE </p>
+                                <div class="w-11/12 ">
+                                    @foreach ($components['storages'] as $storage)
+                                    
+                                    <div class="flex items-center  ">
+                                        <div class="w-9/12">
+                                            <div class="flex items-center p-3 space-x-3">
+                                                <img src="images/{{ $storage->images()->first()->path }}" alt="" width="100" class="border border-green-400">
+                                                <p>{{ $storage->name  }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex">
+                                        </div>
+                                        <p class="w-2/12">{{ number_format($storage->price,2) }} kn</p>
+                                        <div class="w-1/12 ">
+                                            <form action="{{ route('build.storage.remove', ['id'=>$storage->id]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center"  type="submit">
+                                                    X
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <a href="{{ route('build.storage', []) }}">
+                                <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                    Select STORAGE
+                                </button>
+                            </a>
+                           
+                        </div>
+                    
+                
+            @else
             <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
                 <p class="w-1/5">STORAGE</p>
                 <div class="w-30">
-                    <div> <button
-                            class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
-                            Select HDD/SSD
-                        </button>
+                    <div>
+                        <a href="{{ route('build.storage', []) }}">
+                            <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                Select STORAGE
+                            </button>
+                        </a>
                     </div>
                 </div>
-
             </div>
+            @endif
+
             @if(isset($components['mobo']))
                 <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
                     <p class="w-2/12 ">MOBO</p>

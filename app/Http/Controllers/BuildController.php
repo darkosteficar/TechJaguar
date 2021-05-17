@@ -39,8 +39,18 @@ class BuildController extends Controller
             $components['pc_case'] = $pc_case;
         }
         $gpus = $build->gpus;
-        if($gpus != null){
+        if(!$gpus->isEmpty()){
             $components['gpus'] = $gpus;
+        }
+
+        $rams = $build->rams;
+        if(!$rams->isEmpty()){
+            $components['rams'] = $rams;
+        }
+
+        $storages = $build->storages;
+        if(!$storages->isEmpty()){
+            $components['storages'] = $storages;
         }
         
             
