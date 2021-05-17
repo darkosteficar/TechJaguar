@@ -86,28 +86,44 @@
 
 
 
-            <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
-                <p class="w-2/12 ">GPU</p>
-                <div class="w-9/12">
-                    <div class="flex items-center p-3 space-x-3">
-                        <img src="images/topImage.jpg" alt="" width="100">
-                        <p>AMD Radeon RX 6800 XT</p>
+            @if(isset($components['gpus']))
+                @foreach ($components['gpus'] as $gpu)
+                    <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
+                        <p class="w-2/12 ">GPU</p>
+                        <div class="w-9/12">
+                            <div class="flex items-center p-3 space-x-3">
+                                <img src="images/{{ $gpu->images()->first()->path }}" alt="" width="100" class="border border-green-400">
+                                <p>{{ $gpu->name  }}</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                        </div>
+                        <p class="w-2/12">{{ number_format($gpu->price,2) }} kn</p>
+                        <div class="w-1/12 ">
+                            <form action="{{ route('build.gpu.remove', ['id'=>$gpu->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center"  type="submit">
+                                    X
+                                </button>
+                            </form>
+                        </div>
                     </div>
-
+                @endforeach
+            @else
+            <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
+                <p class="w-1/5">GPU</p>
+                <div class="w-30">
+                    <div>
+                        <a href="{{ route('build.gpu', []) }}">
+                            <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                Select GPU
+                            </button>
+                        </a>
+                    </div>
                 </div>
-                <div class="flex">
-
-                </div>
-                <p class="w-2/12">11,022.02 kn</p>
-                <div class="w-1/12">
-                    <a href="">
-                        <p class=" text-center hover:text-gray-300 text-xl">X</p>
-                    </a>
-                </div>
-
-
-
             </div>
+            @endif
 
            
             <div class="flex items-center pl-3 bg-gray-700 border border-green-400">

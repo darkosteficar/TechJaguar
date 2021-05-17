@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CpuController;
+use App\Http\Controllers\GpuController;
 use App\Http\Controllers\PsuController;
 use App\Http\Controllers\MoboController;
 use App\Http\Controllers\NewsController;
@@ -49,6 +50,10 @@ Route::delete('/build/mobo/remove',[MoboController::class,'remove'])->name('buil
 Route::get('/build/cpus',[CpuController::class,'index'])->name('build.cpu');
 Route::post('/build/cpu/add',[CpuController::class,'add'])->name('build.cpu.add');
 Route::delete('/build/cpu/remove',[CpuController::class,'remove'])->name('build.cpu.remove');
+
+Route::get('/build/gpus',[GpuController::class,'index'])->name('build.gpu');
+Route::post('/build/gpu/add',[GpuController::class,'add'])->name('build.gpu.add');
+Route::delete('/build/gpu/remove',[GpuController::class,'remove'])->name('build.gpu.remove');
 
 Route::get('/build/coolers',[CoolerController::class,'index'])->name('build.cooler');
 Route::post('/build/cooler/add',[CoolerController::class,'add'])->name('build.cooler.add');

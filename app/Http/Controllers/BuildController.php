@@ -38,6 +38,10 @@ class BuildController extends Controller
             $pc_case = PcCase::find($build->pc_case_id);
             $components['pc_case'] = $pc_case;
         }
+        $gpus = $build->gpus;
+        if($gpus != null){
+            $components['gpus'] = $gpus;
+        }
         
             
         return view('build',['components'=>$components]);
