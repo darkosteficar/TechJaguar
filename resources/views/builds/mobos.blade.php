@@ -46,32 +46,32 @@
         </div>
        
         <div class="w-5/6 mx-auto my-5 font-semibold text-green-400 ">
-            <p class="mb-1 font-semibold text-3xl text-gray-200">NAPAJANJA</p>
+            <p class="mb-1 font-semibold text-3xl text-gray-200">MATIČNE PLOČE</p>
             <hr class="mb-6 border border-green-400">
             <div class="">
                 <div class="flex justify-left pl-3 text-lg items-center font-semibold text-gray-200  bg-green-600 py-2 rounded-t-md border-b border-b-white">
                     <p class="w-1/12 "></p>
                     <p class="w-3/12" style="cursor: pointer">IME</p>
                     <p class="w-2/12">PROIZVOĐAČ</p>
-                    <p class="w-2/12">EFIKASNOST</p>
-                    <p class="w-1/12">TIP</p>
-                    <p class="w-1/12">SNAGA</p>
+                    <p class="w-2/12">SOCKET</p>
+                    <p class="w-1/12">VELIČINA</p>
+                    <p class="w-1/12">CHIPSET</p>
                     <p class="w-2/12"></p>
                 </div>
 
-                @foreach ($psus as $psu)
+                @foreach ($mobos as $mobo)
                     <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
 
                         <div class="w-1/12">
                             <div class="flex items-center py-2 ">
-                                <img src="../images/{{ $psu->images()->first()->path }}" alt="" width="70" class="border-green-500 border">
+                                <img src="../images/{{ $mobo->images()->first()->path }}" alt="" width="70" class="border-green-500 border">
                             </div>
                         </div>
                         <div class="flex w-3/12" >
-                            <p class="">{{ $psu->name }}</p>
+                            <p class="">{{ $mobo->name }}</p>
                         </div>
                         <div class="flex w-2/12">
-                            <p>{{ $psu->manufacturer->name }}</p>
+                            <p>{{ $mobo->manufacturer->name }}</p>
                         </div>
                         <div class="w-2/12 ">
                             <p>12 GB GDDR5</p>
@@ -86,9 +86,9 @@
                         <div class="w-1/12 flex justify-center">
                             
                             
-                            <form action="{{ route('build.psu.add', []) }}" method="POST">
+                            <form action="{{ route('build.mobo.add', []) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $psu->id }}">
+                                <input type="hidden" name="id" value="{{ $mobo->id }}">
                                 
                                 <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center">
                                     DODAJ

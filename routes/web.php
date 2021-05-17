@@ -2,11 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\CpuController;
 use App\Http\Controllers\PsuController;
+use App\Http\Controllers\MoboController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BuildController;
+use App\Http\Controllers\CoolerController;
+use App\Http\Controllers\PcCaseController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\ComponentController;
@@ -34,7 +38,25 @@ Route::get('/compare',[CompareController::class,'compare'])->name('compare');
 
 Route::get('/build',[BuildController::class,'index'])->name('build');
 Route::get('/build/rams',[BuildController::class,'select_ram'])->name('build.rams');
-Route::get('/build/psus',[PsuController::class,'index'])->name('build.psus');
+Route::get('/build/psus',[PsuController::class,'index'])->name('build.psu');
+Route::post('/build/psus',[PsuController::class,'add'])->name('build.psu.add');
+Route::delete('/build/psus/remove',[PsuController::class,'remove'])->name('build.psu.remove');
+
+Route::get('/build/mobos',[MoboController::class,'index'])->name('build.mobo');
+Route::post('/build/mobo/add',[MoboController::class,'add'])->name('build.mobo.add');
+Route::delete('/build/mobo/remove',[MoboController::class,'remove'])->name('build.mobo.remove');
+
+Route::get('/build/cpus',[CpuController::class,'index'])->name('build.cpu');
+Route::post('/build/cpu/add',[CpuController::class,'add'])->name('build.cpu.add');
+Route::delete('/build/cpu/remove',[CpuController::class,'remove'])->name('build.cpu.remove');
+
+Route::get('/build/coolers',[CoolerController::class,'index'])->name('build.cooler');
+Route::post('/build/cooler/add',[CoolerController::class,'add'])->name('build.cooler.add');
+Route::delete('/build/cooler/remove',[CoolerController::class,'remove'])->name('build.cooler.remove');
+
+Route::get('/build/pc_cases',[PcCaseController::class,'index'])->name('build.pc_case');
+Route::post('/build/pc_case/add',[PcCaseController::class,'add'])->name('build.pc_case.add');
+Route::delete('/build/pc_case/remove',[PcCaseController::class,'remove'])->name('build.pc_case.remove');
 
 
 Route::post('/logout',[UserController::class,'logout'])->name('logout');

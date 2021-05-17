@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cpu;
 use App\Models\Build;
-use App\Models\Cooler;
 use Illuminate\Http\Request;
 
-class CoolerController extends Controller
+class CpuController extends Controller
 {
     public function index()
     {
-        $coolers = Cooler::all();
-        return view('builds.coolers',['coolers'=>$coolers]);
+        $cpus = Cpu::all();
+        return view('builds.cpus',['cpus'=>$cpus]);
     }
 
     public function add(Request $r)
     {
         $build = Build::find(1);
-        $build->cooler_id = $r->id;
+        $build->cpu_id = $r->id;
         $build->save();
-        $cooler = Cooler::find($r->id);
-        session()->flash('item',$cooler->name);
-        session()->flash('success', 'Hladnjak ' );
+        $cpu = Cpu::find($r->id);
+        session()->flash('item',$cpu->name);
+        session()->flash('success', 'Procesor ' );
         session()->flash('success2', ' uspješno dodan!' );
         return redirect()->route('build');
 
@@ -29,9 +29,9 @@ class CoolerController extends Controller
     public function remove(Request $r)
     {
         $build = Build::find(1);
-        $build->cooler_id = null;
+        $build->cpu_id = null;
         $build->save();
-        session()->flash('success', 'Hladnjak uspješno obrisan!' );
+        session()->flash('success', 'Procesor uspješno obrisan!' );
         return redirect()->route('build');   
     }
 }
