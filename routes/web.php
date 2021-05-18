@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CpuController;
+use App\Http\Controllers\FanController;
 use App\Http\Controllers\GpuController;
 use App\Http\Controllers\PsuController;
 use App\Http\Controllers\RamController;
@@ -68,6 +69,10 @@ Route::delete('/build/storage/remove',[StorageController::class,'remove'])->name
 Route::get('/build/coolers',[CoolerController::class,'index'])->name('build.cooler');
 Route::post('/build/cooler/add',[CoolerController::class,'add'])->name('build.cooler.add');
 Route::delete('/build/cooler/remove',[CoolerController::class,'remove'])->name('build.cooler.remove');
+
+Route::get('/build/fans',[FanController::class,'index'])->name('build.fan');
+Route::post('/build/fan/add',[FanController::class,'add'])->name('build.fan.add');
+Route::delete('/build/fan/remove',[FanController::class,'remove'])->name('build.fan.remove');
 
 Route::get('/build/pc_cases',[PcCaseController::class,'index'])->name('build.pc_case');
 Route::post('/build/pc_case/add',[PcCaseController::class,'add'])->name('build.pc_case.add');
@@ -155,6 +160,14 @@ Route::post('/admin/components/gpus/store',[ComponentController::class,'store_gp
 Route::delete('/admin/components/gpus/delete',[ComponentController::class,'delete_gpu'])->name('gpus.delete');
 Route::get('/admin/components/gpus/{gpu}',[ComponentController::class,'edit_gpu'])->name('gpus.edit');
 Route::post('/admin/components/gpus/update',[ComponentController::class,'update_gpu'])->name('gpus.update');
+
+Route::get('/admin/components/fans',[ComponentController::class,'read_fan'])->name('fans.index');
+Route::get('/admin/components/fans/create',[ComponentController::class,'create_fan'])->name('fans.create');
+Route::post('/admin/components/fans/store',[ComponentController::class,'store_fan'])->name('fans.store');
+Route::delete('/admin/components/fans/delete',[ComponentController::class,'delete_fan'])->name('fans.delete');
+Route::get('/admin/components/fans/{fan}',[ComponentController::class,'edit_fan'])->name('fans.edit');
+Route::post('/admin/components/fans/update',[ComponentController::class,'update_fan'])->name('fans.update');
+
 
 Route::get('/admin/components/manufacturers',[ManufacturerController::class,'read_manufacturer'])->name('manufacturers.index');
 Route::get('/admin/components/manufacturers/create',[ManufacturerController::class,'create_manufacturer'])->name('manufacturers.create');

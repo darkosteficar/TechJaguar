@@ -16,7 +16,7 @@ class PcCaseController extends Controller
 
     public function add(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $build->pc_case_id = $r->id;
         $build->save();
         $pc_case = PcCase::find($r->id);
@@ -28,7 +28,7 @@ class PcCaseController extends Controller
 
     public function remove(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $build->pc_case_id = null;
         $build->save();
         session()->flash('success', 'Kućište uspješno obrisano!' );

@@ -257,6 +257,61 @@
             </div>
             @endif
 
+            @if(isset($components['fans']))
+                
+                    <div class="pl-3 bg-gray-700 border border-green-400">
+                            <div class="flex items-center">
+                                <p class="w-2/12 my-2 -mr-4">FANS </p>
+                                <div class="w-11/12 ">
+                                    @foreach ($components['fans'] as $fan)
+                                    
+                                    <div class="flex items-center  ">
+                                        <div class="w-9/12">
+                                            <div class="flex items-center p-3 space-x-3">
+                                                <img src="images/{{ $fan->images()->first()->path }}" alt="" width="100" class="border border-green-400">
+                                                <p>{{ $fan->name  }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex">
+                                        </div>
+                                        <p class="w-2/12">{{ number_format($fan->price,2) }} kn</p>
+                                        <div class="w-1/12 ">
+                                            <form action="{{ route('build.fan.remove', ['id'=>$fan->id]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center"  type="submit">
+                                                    X
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <a href="{{ route('build.fan', []) }}">
+                                <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                    Select FAN
+                                </button>
+                            </a>
+                           
+                        </div>
+                    
+                
+            @else
+            <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
+                <p class="w-1/5">FANS</p>
+                <div class="w-30">
+                    <div>
+                        <a href="{{ route('build.fan', []) }}">
+                            <button class="inline-block px-6 py-2 text-sm font-medium leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none my-2">
+                                Select fan
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             @if(isset($components['mobo']))
                 <div class="flex items-center pl-3 bg-gray-700 border border-green-400">
                     <p class="w-2/12 ">MOBO</p>

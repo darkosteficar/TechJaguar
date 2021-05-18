@@ -16,7 +16,7 @@ class MoboController extends Controller
 
     public function add(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $build->mobo_id = $r->id;
         $build->save();
         $mobo = Mobo::find($r->id);
@@ -28,7 +28,7 @@ class MoboController extends Controller
 
     public function remove(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $build->mobo_id = null;
         $build->save();
         session()->flash('success', 'Matična ploča uspješno obrisana!' );

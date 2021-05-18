@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class CoolerController extends Controller
 {
+    
     public function index()
     {
         $coolers = Cooler::all();
@@ -16,7 +17,7 @@ class CoolerController extends Controller
 
     public function add(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $build->cooler_id = $r->id;
         $build->save();
         $cooler = Cooler::find($r->id);
@@ -28,7 +29,7 @@ class CoolerController extends Controller
     }
     public function remove(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $build->cooler_id = null;
         $build->save();
         session()->flash('success', 'Hladnjak uspješno obrisan!' );

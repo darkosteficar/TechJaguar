@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cpu;
+use App\Models\Fan;
 use App\Models\Gpu;
 use App\Models\Psu;
 use App\Models\Ram;
@@ -1362,6 +1363,163 @@ class ComponentController extends Controller
     
     }
 
+
+
+
+     // Fans
+
+     public function read_fan()
+     {
+         $fans = Fan::paginate(10);
+         return view('admin.components.fans.index',['fans'=>$fans]);
+     }
+ 
+     public function create_fan()
+     {
+         $manufacturers = Manufacturer::all();
+         return view('admin.components.fans.create',['manufacturers'=>$manufacturers]);
+     }
+ 
+     public function store_fan(Request $r)
+     {
+         $this->validate($r,[
+             'name'=>'required',
+             'manufacturer_id'=>'required|integer',
+             'diameter'=>'required|integer',
+             'led'=>'required',
+             'speed'=>'required',
+             'noise'=>'required',
+             'bearings'=>'required',
+             'power_connector'=>'required',
+             'air_flow'=>'required',
+             'life'=>'required',
+             'power_consumption'=>'required|numeric',
+             'price'=>'required|numeric',
+             'images'=>"required|array",
+             'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+         ]);
+         
+         $fan = Fan::create([
+             'name'=>$r->name,
+             'diameter'=>$r->diameter,
+             'led'=>$r->led,
+             'speed'=>$r->speed,
+             'manufacturer_id'=>$r->manufacturer_id,
+             'noise'=>$r->noise,
+             'bearings'=>$r->bearings,
+             'power_connector'=>$r->power_connector,
+             'price'=>$r->price,
+             'air_flow'=>$r->air_flow,
+             'life'=>$r->life,
+             'power_consumption'=>$r->power_consumption,
+         ]);
+ 
+         foreach($r->images as $image){
+             $imageName = time().rand().'.'.$image->extension();  
+             $image->move(public_path('images'), $imageName);
+             Image::create([
+                 'path'=>$imageName,
+                 'imageable_id' => $fan->id,
+                 'imageable_type'=> 'App\Models\Fan',
+             ]);
+         }
+         
+         session()->flash('status','Ventilator uspješno dodan.');
+         return redirect()->route('fans.index');
+        
+     }
+ 
+     public function delete_fan(Request $r)
+     {
+         $fan = Fan::find($r->id);
+         $fan->delete();
+         $array = array();
+         $imagesToDelete = Image::where('imageable_type','App\Models\Fan')->where('imageable_id',$r->id)->get();
+         $images = Image::where('imageable_type','App\Models\Fan')->where('imageable_id',$r->id);
+         foreach($imagesToDelete as $image){
+             File::delete(public_path('images/'.$image->path));
+             $array[] = $image->path;
+         }
+         $images->delete();
+         session()->flash('status','Ventilator '.$r->name.' uspješno obrisan.');
+         return redirect()->back();
+     }
+ 
+     public function edit_fan(Fan $fan)
+     {
+         $images = Image::where('imageable_type','App\Models\Fan')->where('imageable_id',$fan->id)->get();
+         $manu = Manufacturer::all();
+         return view('admin.components.fans.edit',['fan'=>$fan,'manufacturers'=>$manu,'images'=>$images]);
+     }
+ 
+     public function update_fan(Request $request)
+     {
+         $imagesToDelete = Image::where('imageable_type','App\Models\Fan')->where('imageable_id',$request->id)->get();
+         $imagesModel = Image::where('imageable_type','App\Models\Fan')->where('imageable_id',$request->id);
+         $fan = Fan::find($request->id);
+         if($fan !== null){
+            $this->validate($request,[
+                'name'=>'required',
+                'manufacturer_id'=>'required|integer',
+                'diameter'=>'required|integer',
+                'led'=>'required',
+                'speed'=>'required',
+                'noise'=>'required',
+                'bearings'=>'required',
+                'power_connector'=>'required',
+                'air_flow'=>'required',
+                'life'=>'required',
+                'power_consumption'=>'required|numeric',
+                'price'=>'required|numeric',
+                
+            ]);
+             $fan->name = $request->name;
+             $fan->speed = $request->speed;
+             $fan->diameter = $request->diameter;
+             $fan->led = $request->led;
+             $fan->manufacturer_id = $request->manufacturer_id;
+             $fan->speed = $request->speed;
+             $fan->noise = $request->noise;
+             $fan->bearings = $request->bearings;
+             $fan->price = $request->price;
+             $fan->power_connector = $request->power_connector;
+             $fan->air_flow = $request->air_flow;
+             $fan->life = $request->life;
+             $fan->power_consumption = $request->power_consumption;
+             if($request->images !== null){
+                 $this->validate($request,[
+                     'images'=>"required|array",
+                     'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+                 ]);
+                 foreach($imagesToDelete as $image){
+                     File::delete(public_path('images/'.$image->path));
+                 }
+                 $imagesModel->delete();
+                 foreach($request->images as $image){
+                     $imageName = time().rand().'.'.$image->extension();  
+                     $image->move(public_path('images'), $imageName);
+                     Image::create([
+                         'path'=>$imageName,
+                         'imageable_id' => $fan->id,
+                         'imageable_type'=> 'App\Models\Fan',
+                     ]);
+                 }
+             }
+            
+ 
+             $fan->save();
+             
+             session()->flash('status','Ventilator uspješno ažuriran.');
+             return redirect()->route('fans.index');
+     
+         }
+ 
+         session()->flash('error','Ventilator ne postoji!');
+         return redirect()->route('fans.index');
+     
+     
+     }
+ 
     
 
 }

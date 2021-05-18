@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Fan;
 use App\Models\Gpu;
 use App\Models\Ram;
 use App\Models\Storage;
@@ -26,5 +27,10 @@ class Build extends Model
     public function gpus()
     {
         return $this->morphedByMany(Gpu::class,'buildable');
+    }
+
+    public function fans()
+    {
+        return $this->morphedByMany(Fan::class,'buildable');
     }
 }

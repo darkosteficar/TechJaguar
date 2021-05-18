@@ -17,7 +17,7 @@ class RamController extends Controller
 
     public function add(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         Buildable::create([
             'build_id'=>$build->id,
             'buildable_id' => $r->id,
@@ -32,7 +32,7 @@ class RamController extends Controller
     }
     public function remove(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $ram = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Ram')->where('buildable_id',$r->id)->first();
         $ram->delete();
         session()->flash('success', 'Radna memorija uspješno obrisana!' );

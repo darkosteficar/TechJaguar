@@ -17,7 +17,7 @@ class GpuController extends Controller
 
     public function add(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         Buildable::create([
             'build_id'=>$build->id,
             'buildable_id' => $r->id,
@@ -32,7 +32,7 @@ class GpuController extends Controller
     }
     public function remove(Request $r)
     {
-        $build = Build::find(1);
+        $build = Build::find(request()->cookie('build_id'));
         $gpu = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Gpu')->where('buildable_id',$r->id)->first();
         $gpu->delete();
         session()->flash('success', 'Grafička kartica uspješno obrisana!' );
