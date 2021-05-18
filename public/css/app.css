@@ -4473,6 +4473,10 @@ select{
   background-image: linear-gradient(to top left, var(--tw-gradient-stops));
 }
 
+.bg-vanishing-stripes{
+  background-image: url('/images/Vanishing-Stripes.svg');
+}
+
 .from-transparent{
   --tw-gradient-from: transparent;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -35758,6 +35762,10 @@ select{
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .sm\:bg-vanishing-stripes{
+    background-image: url('/images/Vanishing-Stripes.svg');
+  }
+
   .sm\:from-transparent{
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -66871,6 +66879,10 @@ select{
 
   .md\:bg-gradient-to-tl{
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .md\:bg-vanishing-stripes{
+    background-image: url('/images/Vanishing-Stripes.svg');
   }
 
   .md\:from-transparent{
@@ -97988,6 +98000,10 @@ select{
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .lg\:bg-vanishing-stripes{
+    background-image: url('/images/Vanishing-Stripes.svg');
+  }
+
   .lg\:from-transparent{
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -129103,6 +129119,10 @@ select{
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .xl\:bg-vanishing-stripes{
+    background-image: url('/images/Vanishing-Stripes.svg');
+  }
+
   .xl\:from-transparent{
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -160216,6 +160236,10 @@ select{
 
   .\32xl\:bg-gradient-to-tl{
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .\32xl\:bg-vanishing-stripes{
+    background-image: url('/images/Vanishing-Stripes.svg');
   }
 
   .\32xl\:from-transparent{

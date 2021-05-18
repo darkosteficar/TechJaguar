@@ -11,9 +11,10 @@
 
 </head>
 
-<body class="bg-gray-800 font-source">
-    <div class="bg-gray-200 pb-3 bg-opacity-5">
-        <div class="w-3/4 mx-auto">
+<body class="bg-gray-800 font-source bg-vanishing-stripes ">
+    
+    <div class="bg-gray-900 pb-3 bg-opacity-70">
+        <div class="w-3/4 mx-auto "> 
             <nav>
                 <div class="lg:flex justify-between mt-5 pt-2 ">
                     <div class="lg:flex items-center">
@@ -137,12 +138,12 @@
         @yield('content')
     </div>
    
-
+    
 
 
     <footer>
-        <div class="w-3/4 mx-auto">
-            <div class="bg-gray-700 text-gray-400  ">
+        <div class="w-3/4 mx-auto ">
+            <div class="bg-gray-900 bg-opacity-70 text-gray-400  ">
                 <p class="text-center pt-10 pb-5 font-semibold">BCompare Copyright &copy;2021. All rights reserved.</p>
 
             </div>

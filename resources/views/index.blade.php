@@ -1,17 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
+    
+</div>
 <div class="w-3/4 mx-auto">
     <section>
         <!-- top section -->
-        <div class="mt-32 w-2/3 lg:relative mx-auto ">
-            <div class="absolute w-full bg-white left-24  ">
+        
+        <div class="mt-20 w-3/4 lg:relative mx-auto ">
+            <div class="absolute w-full  left-24  ">
                 <div class="lg:flex lg:relative shadow-2xl ">
                     <div class="w-3/4 bg-gray-800">
                         <img src="images/{{ $popular[0]->post_image }}" alt="" class="">
                     </div>
 
-                    <div class="bg-gray-800 p-4 w-1/4 shadow-2xl border border-green-400 font-semibold text-lg text-white ">
+                    <div class="bg-gray-900 bg-opacity-60 p-4 w-1/4 shadow-2xl  font-semibold text-lg text-white ">
                         <p class="">{!! $popular[0]->body !!}</p>
                     </div>
                     <!--
@@ -27,12 +31,12 @@
 
             </div>
 
-            <div class="lg:relative right-44">
-                <div class="w-3/6">
-                    <p class="font-semibold text-green-400 text-2xl">Hot news</p>
+            <div class="lg:relative right-44 top-6 ">
+                <div class="w-4/6 bg-gray-900 p-4 bg-opacity-70">
+                    <p class="font-semibold text-green-400 text-2xl ">Popularno danas</p>
                     <a href="">
                         <p
-                            class="font-bold text-white text-6xl hover:text-gray-600 transition duration-100 ease-in ">
+                            class="font-bold text-white text-6xl  hover:text-gray-600 transition duration-100 ease-in ">
                             {{ $popular[0]->post_title }}</p>
                     </a>
 
@@ -40,40 +44,39 @@
 
             </div>
         </div>
+
         <!-- top section -->
     </section>
 
-    </div>
-    <div class="w-5/6 mx-auto pt-20">
+</div>
+
+    <div class=" mx-auto pt-20 ">
         <div class=" my-80 flex items-center  ">
             <div class=" relative w-full">
                 <p
-                    class="font-semibold text-2xl text-green-400 pl-10 bg-gray-700 w-full py-10 border border-green-400 ">
+                    class="font-semibold text-2xl text-green-400 pl-10  w-full py-14  bg-gray-900  bg-opacity-70">
                     Updated news</p>
                 <div class="lg:flex absolute  left-64 top-12 ">
                     @foreach ($news as $post)
                         <div class="mr-6 ">
                             <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                <div class="image image__overlay_border border border-green-400 mb-4 ">
+                                <div class="image image__overlay_border border border-green-400  ">
                                     <img src="{{ '/images/'. $post->post_image }}" alt="" width="320" height="180" >
                                     <div class="image__overlay "></div>
                                 </div>
-                        </a>
-                            <p class="font-semibold text-white text-lg">{{ $post->post_title }}</p>
+                            </a>
+                            <p class="font-semibold text-white text-lg bg-gray-900 bg-opacity-70 py-2 pl-2">{{ $post->post_title }}</p>
                         </div>    
                     @endforeach
-                
-                    
-
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="flex mx-10 ">
-        <div class="w-2/3 mx-auto mb-6 border border-green-400 pr-4 flex justify-between">
+    <div class="flex mx-10 -mt-16">
+        <div class="w-2/3 mx-auto mb-6 border border-green-400  flex justify-between">
             <div>
-                <div class="flex ">
+                <div class="flex bg-gray-900 bg-opacity-70 pr-4">
                     <div class="w-1/2 px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">GRAFIČKE KARTICE</p>
                         <div class="image image__overlay_border">
@@ -110,8 +113,8 @@
             
         </div>
 
-        <div class="w-2/3 mx-auto mb-6 border border-green-400 pr-4 flex justify-between">
-                <div class="flex">
+        <div class="w-2/3 mx-auto mb-6 border border-green-400  flex justify-between">
+                <div class="flex bg-gray-800 bg-opacity-70 pr-4">
                     <div class="w-1/2 px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">PROCESORI</p>
                         <div class="image image__overlay_border">
@@ -155,11 +158,11 @@
 
 
     <div class="flex mx-10 ">
-        <div class="w-2/3 mx-auto mb-32 border border-green-400 pr-4 flex justify-between">
+        <div class="w-2/3 mx-auto mb-32 border border-green-400  flex justify-between">
             <div>
-                <div class="flex ">
+                <div class="flex bg-gray-800 bg-opacity-70 pr-4">
                     <div class="w-1/2 px-5">
-                        <p class="text-green-400 text-2xl font-semibold my-6">GRAFIČKE KARTICE</p>
+                        <p class="text-green-400 text-2xl font-semibold my-6">RADNE MEMORIJE</p>
                         <div class="image image__overlay_border">
                             <img src="images/{{ $news[0]->post_image }}" alt="" class="w-full ">
                             <div class="image__overlay "></div>
@@ -194,10 +197,10 @@
             
         </div>
 
-        <div class="w-2/3 mx-auto mb-32 border border-green-400 pr-4 flex justify-between">
-                <div class="flex">
+        <div class="w-2/3 mx-auto mb-32 border border-green-400  flex justify-between">
+                <div class="flex bg-gray-900 bg-opacity-70 pr-4">
                     <div class="w-1/2 px-5">
-                        <p class="text-green-400 text-2xl font-semibold my-6">PROCESORI</p>
+                        <p class="text-green-400 text-2xl font-semibold my-6">OSTALO</p>
                         <div class="image image__overlay_border">
                             <img src="images/{{ $news[0]->post_image }}" alt="" class="w-full ">
                             <div class="image__overlay "></div>
@@ -239,15 +242,15 @@
 
 
 
-    <div class=" mx-32 mb-16">
-        <div class="bg-gray-800  pt-6">
-            <p class="font-semibold text-4xl text-gray-200 pl ml-10 pt-2 pb-2  w-1/4">AMD</p>
+    <div class=" mx-32 mb-16 ">
+        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
+            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">AMD</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
                 <div class=" mb-52 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 w-full py-6 border border-green-400 ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6  ">
                             HARDWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
@@ -264,10 +267,10 @@
                         </div>
                     </div>
                 </div>
-                <div class=" mb-60 flex items-center">
+                <div class=" mb-40 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 w-full py-6 border border-green-400 ">
-                            HARDWARE</p>
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6 border border-green-400 ">
+                            SOFTWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
                                 <div class="mr-6 " style="width:170px">
@@ -290,14 +293,15 @@
         
     </div>
 
-    <div class="border border-gray-700 mx-32 mb-16">
-        <div class="bg-gray-800  pt-6">
-            <p class="font-semibold text-4xl text-gray-200 pl ml-10 pt-2 pb-6  w-1/4">AMD</p>
+    <div class=" mx-32 mb-16 ">
+        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
+            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">NVIDIA</p>
+            <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
                 <div class=" mb-52 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 w-full py-6 border border-green-400 ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6  ">
                             HARDWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
@@ -314,10 +318,10 @@
                         </div>
                     </div>
                 </div>
-                <div class=" mb-60 flex items-center">
+                <div class=" mb-40 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 w-full py-6 border border-green-400 ">
-                            HARDWARE</p>
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6 border border-green-400 ">
+                            SOFTWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
                                 <div class="mr-6 " style="width:170px">
@@ -334,18 +338,21 @@
                     </div>
                 </div>
             </div>
+        
         </div>
+
         
     </div>
 
-    <div class="border border-gray-700 mx-32 mb-16">
-        <div class="bg-gray-800  pt-6">
-            <p class="font-semibold text-4xl text-gray-200 pl ml-10 pt-2 pb-6  w-1/4">AMD</p>
+    <div class=" mx-32 mb-16 ">
+        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
+            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">INTEL</p>
+            <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
                 <div class=" mb-52 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 w-full py-6 border border-green-400 ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6  ">
                             HARDWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
@@ -362,10 +369,10 @@
                         </div>
                     </div>
                 </div>
-                <div class=" mb-60 flex items-center">
+                <div class=" mb-40 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 w-full py-6 border border-green-400 ">
-                            HARDWARE</p>
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6 border border-green-400 ">
+                            SOFTWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
                                 <div class="mr-6 " style="width:170px">
@@ -382,7 +389,9 @@
                     </div>
                 </div>
             </div>
+        
         </div>
+
         
     </div>
 

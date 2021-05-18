@@ -1,14 +1,14 @@
 
 .image {
     position: relative;
-    border: #374151;
+    border: #34D399;
     border-width: 1px;
     border-style: solid;
     
 }
 
 .image:hover{
-    border: #4ADE80;
+    border: #34D399;
     border-width: 1px;
     border-style: solid;
 }
@@ -24,7 +24,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #4ADE80;
+    background: #34D399;
     color: #ffffff;
     font-family: 'Quicksand', sans-serif;
     display: flex;
@@ -40,7 +40,7 @@
 }
 
 .image__overlay--primary {
-    background: #4ADE80;
+    background: #34D399;
   
 }
 

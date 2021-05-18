@@ -11,7 +11,7 @@ class NewsController extends Controller
     {
         $popular = Post::take(1)->orderByDesc('views')->get();
         $body = preg_replace('/<img[\s\S]+?>/', '', $popular[0]->body);
-        $body = substr($body,0,280) . '...';
+        $body = substr($body,0,400) . '...';
         $popular[0]->body = $body;
 
         $news = Post::take(5)->get();

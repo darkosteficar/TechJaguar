@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -19,16 +20,32 @@ class PostController extends Controller
             'category_id'=> 'required',
             'manufacturer_id' => 'required'
         ]);
+        /*
         $imageName = time().'.'.$request->post_image->extension();  
       
+        $image = $request->file('post_image');
+        $filePath = public_path('/thumbnails');
+        $img = Image::make($image->path());    
+        $img->resize(110, 110);
         $request->post_image->move(public_path('images'), $imageName);
+            */
+
+        $image = $request->file('post_image');
+        $input['imagename'] = time().'.'.$image->extension();
+     
+        $filePath = public_path('images');
+
+        $img = Image::make($image->path());
+        //$img->resize(1920, 1080)->save($filePath.'/'.$input['imagename']);
+        $img->crop(940, 530)->save($filePath.'/'.$input['imagename']);
+
         
         auth()->user()->posts()->create([
             'post_title'=>request()->post_title,
             'body'=>request()->post_content,
             'category_id'=>request()->category_id,
             'manufacturer_id'=>request()->manufacturer_id,
-            'post_image'=>$imageName,
+            'post_image'=>$input['imagename'],
             'views' => 0
         ]);
 
@@ -92,10 +109,16 @@ class PostController extends Controller
                 $this->validate($request,[
                     'post_image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
                 ]);
-                $imageName = time().'.'.$request->post_image->extension();  
+
+                $image = $request->file('post_image');
+                $input['imagename'] = time().'.'.$image->extension();
             
-                $request->post_image->move(public_path('images'), $imageName);
-                $post->post_image = $imageName;
+                $filePath = public_path('images');
+
+                $img = Image::make($image->path());
+                $img->crop(940, 530)->save($filePath.'/'.$input['imagename']);
+                $post->post_image = $input['imagename'];
+
             }
             $optionals = array('gpu_id','cpu_id','mobo_id');
             foreach($optionals as $option){
