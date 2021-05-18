@@ -4477,6 +4477,18 @@ select{
   background-image: url('/images/Vanishing-Stripes.svg');
 }
 
+.bg-AMD-Thumbnail{
+  background-image: url('/images/AMD-Thumbnail.png');
+}
+
+.bg-Nvidia-Thumbnail{
+  background-image: url('/images/Nvidia-Thumbnail.png');
+}
+
+.bg-Intel-Thumbnail{
+  background-image: url('/images/Intel-Thumbnail.png');
+}
+
 .from-transparent{
   --tw-gradient-from: transparent;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -35766,6 +35778,18 @@ select{
     background-image: url('/images/Vanishing-Stripes.svg');
   }
 
+  .sm\:bg-AMD-Thumbnail{
+    background-image: url('/images/AMD-Thumbnail.png');
+  }
+
+  .sm\:bg-Nvidia-Thumbnail{
+    background-image: url('/images/Nvidia-Thumbnail.png');
+  }
+
+  .sm\:bg-Intel-Thumbnail{
+    background-image: url('/images/Intel-Thumbnail.png');
+  }
+
   .sm\:from-transparent{
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -66883,6 +66907,18 @@ select{
 
   .md\:bg-vanishing-stripes{
     background-image: url('/images/Vanishing-Stripes.svg');
+  }
+
+  .md\:bg-AMD-Thumbnail{
+    background-image: url('/images/AMD-Thumbnail.png');
+  }
+
+  .md\:bg-Nvidia-Thumbnail{
+    background-image: url('/images/Nvidia-Thumbnail.png');
+  }
+
+  .md\:bg-Intel-Thumbnail{
+    background-image: url('/images/Intel-Thumbnail.png');
   }
 
   .md\:from-transparent{
@@ -98004,6 +98040,18 @@ select{
     background-image: url('/images/Vanishing-Stripes.svg');
   }
 
+  .lg\:bg-AMD-Thumbnail{
+    background-image: url('/images/AMD-Thumbnail.png');
+  }
+
+  .lg\:bg-Nvidia-Thumbnail{
+    background-image: url('/images/Nvidia-Thumbnail.png');
+  }
+
+  .lg\:bg-Intel-Thumbnail{
+    background-image: url('/images/Intel-Thumbnail.png');
+  }
+
   .lg\:from-transparent{
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -129123,6 +129171,18 @@ select{
     background-image: url('/images/Vanishing-Stripes.svg');
   }
 
+  .xl\:bg-AMD-Thumbnail{
+    background-image: url('/images/AMD-Thumbnail.png');
+  }
+
+  .xl\:bg-Nvidia-Thumbnail{
+    background-image: url('/images/Nvidia-Thumbnail.png');
+  }
+
+  .xl\:bg-Intel-Thumbnail{
+    background-image: url('/images/Intel-Thumbnail.png');
+  }
+
   .xl\:from-transparent{
     --tw-gradient-from: transparent;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -160240,6 +160300,18 @@ select{
 
   .\32xl\:bg-vanishing-stripes{
     background-image: url('/images/Vanishing-Stripes.svg');
+  }
+
+  .\32xl\:bg-AMD-Thumbnail{
+    background-image: url('/images/AMD-Thumbnail.png');
+  }
+
+  .\32xl\:bg-Nvidia-Thumbnail{
+    background-image: url('/images/Nvidia-Thumbnail.png');
+  }
+
+  .\32xl\:bg-Intel-Thumbnail{
+    background-image: url('/images/Intel-Thumbnail.png');
   }
 
   .\32xl\:from-transparent{

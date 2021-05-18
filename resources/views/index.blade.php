@@ -243,25 +243,25 @@
 
 
     <div class=" mx-32 mb-16 ">
-        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
+        <div class="bg-AMD-Thumbnail bg-opacity-70 pb-2 pt-4">
             <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">AMD</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
                 <div class=" mb-52 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6  ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-900 bg-opacity-60 w-full py-6 border border-green-400 ">
                             HARDWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
-                                <div class="mr-6 " style="width:170px">
+                                <div class="mr-6 " style="width: 170px; ">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 mb-4">
+                                        <div class="image image__overlay_border border border-green-400  ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
                                             <div class="image__overlay "></div>
                                         </div>
-                                </a>
-                                    <p class="font-semibold text-white text-md">{{ $post->post_title }}</p>
+                                    </a>
+                                    <p class="font-semibold text-white text-base bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -269,18 +269,18 @@
                 </div>
                 <div class=" mb-40 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6 border border-green-400 ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-900 bg-opacity-60 w-full py-6 border border-green-400 ">
                             SOFTWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
                                 <div class="mr-6 " style="width:170px">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 mb-4">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
                                             <div class="image__overlay "></div>
                                         </div>
                                 </a>
-                                    <p class="font-semibold text-white text-md">{{ $post->post_title }}</p>
+                                    <p class="font-semibold text-white text-md bg-gray-900 bg-opacity-90 p-2">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -294,25 +294,25 @@
     </div>
 
     <div class=" mx-32 mb-16 ">
-        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
-            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">NVIDIA</p>
+        <div class="bg-Nvidia-Thumbnail bg-opacity-70 pb-2 pt-4">
+            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">AMD</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
                 <div class=" mb-52 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6  ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-900 bg-opacity-60 w-full py-6 border border-green-400 ">
                             HARDWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
-                                <div class="mr-6 " style="width:170px">
+                                <div class="mr-6 " style="width: 170px; ">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 mb-4">
+                                        <div class="image image__overlay_border border border-green-400  ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
                                             <div class="image__overlay "></div>
                                         </div>
-                                </a>
-                                    <p class="font-semibold text-white text-md">{{ $post->post_title }}</p>
+                                    </a>
+                                    <p class="font-semibold text-white text-base bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -320,18 +320,18 @@
                 </div>
                 <div class=" mb-40 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6 border border-green-400 ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-900 bg-opacity-60 w-full py-6 border border-green-400 ">
                             SOFTWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
                                 <div class="mr-6 " style="width:170px">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 mb-4">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
                                             <div class="image__overlay "></div>
                                         </div>
                                 </a>
-                                    <p class="font-semibold text-white text-md">{{ $post->post_title }}</p>
+                                    <p class="font-semibold text-white text-md bg-gray-900 bg-opacity-90 p-2">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -345,25 +345,25 @@
     </div>
 
     <div class=" mx-32 mb-16 ">
-        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
-            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">INTEL</p>
+        <div class="bg-Intel-Thumbnail bg-opacity-70 pb-2 pt-4">
+            <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">AMD</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
                 <div class=" mb-52 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6  ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-900 bg-opacity-60 w-full py-6 border border-green-400 ">
                             HARDWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
-                                <div class="mr-6 " style="width:170px">
+                                <div class="mr-6 " style="width: 170px; ">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 mb-4">
+                                        <div class="image image__overlay_border border border-green-400  ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
                                             <div class="image__overlay "></div>
                                         </div>
-                                </a>
-                                    <p class="font-semibold text-white text-md">{{ $post->post_title }}</p>
+                                    </a>
+                                    <p class="font-semibold text-white text-base bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -371,18 +371,18 @@
                 </div>
                 <div class=" mb-40 flex items-center">
                     <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-30 w-full py-6 border border-green-400 ">
+                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-900 bg-opacity-60 w-full py-6 border border-green-400 ">
                             SOFTWARE</p>
                         <div class="lg:flex absolute  left-64 top-12 ">
                             @foreach ($news as $post)
                                 <div class="mr-6 " style="width:170px">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 mb-4">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
                                             <div class="image__overlay "></div>
                                         </div>
                                 </a>
-                                    <p class="font-semibold text-white text-md">{{ $post->post_title }}</p>
+                                    <p class="font-semibold text-white text-md bg-gray-900 bg-opacity-90 p-2">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
