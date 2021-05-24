@@ -17,6 +17,7 @@ use App\Http\Controllers\PcCaseController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\StorageController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ManufacturerController;
 
@@ -175,6 +176,13 @@ Route::post('/admin/components/manufacturers/store',[ManufacturerController::cla
 Route::delete('/admin/components/manufacturers/delete',[ManufacturerController::class,'delete_manufacturer'])->name('manufacturers.delete');
 Route::get('/admin/components/manufacturers/{manufacturer}',[ManufacturerController::class,'edit_manufacturer'])->name('manufacturers.edit');
 Route::post('/admin/components/manufacturers/update',[ManufacturerController::class,'update_manufacturer'])->name('manufacturers.update');
+
+Route::get('/admin/components/categories',[CategoryController::class,'read_category'])->name('categories.index');
+Route::get('/admin/components/categories/create',[CategoryController::class,'create_category'])->name('categories.create');
+Route::post('/admin/components/categories/store',[CategoryController::class,'store_category'])->name('categories.store');
+Route::delete('/admin/components/categories/delete',[CategoryController::class,'delete_category'])->name('categories.delete');
+Route::get('/admin/components/categories/{category}',[CategoryController::class,'edit_category'])->name('categories.edit');
+Route::post('/admin/components/categories/update',[CategoryController::class,'update_category'])->name('categories.update');
 
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');

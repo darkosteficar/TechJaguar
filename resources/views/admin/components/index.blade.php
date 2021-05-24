@@ -106,6 +106,15 @@
                 <hr>
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
+                        <h4 class="my-auto mr-4">Kategorije</h4>
+                        <a href="{{ route('categories.index', []) }}">
+                            <button class="btn btn-success btn-small">Pregled</button>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row ">
+                    <div class="d-flex flex-row align-items-center justify-content-between w-50">
                         <h4 class="my-auto mr-4">Chipsetovi</h4>
                         <a href="{{ route('chipsets.index', []) }}">
                             <button class="btn btn-success btn-small">Pregled</button>
