@@ -21,9 +21,7 @@ class NewsController extends Controller
         foreach($keys as $key => $value){
             $categories_news = Category::where('name',$value)->first()->posts;
             if(sizeof($categories_news) != 0){
-                $body = preg_replace('/<img[\s\S]+?>/', '', $categories_news[0]->body);
-                $body = preg_replace('/<p>/', '', $categories_news[0]->body);
-                $body = substr($body,0,150) . '...';
+                $body = $this->filter_body($categories_news[0]);
                 $categories_news[0]->body = $body;
                 $categories[$key] = $categories_news;
             }
@@ -64,5 +62,13 @@ class NewsController extends Controller
     public function category()
     {
         return view('category');
+    }
+
+    public function filter_body($categories_news)
+    {
+        $body = preg_replace('/<img[\s\S]+?>/', '', $categories_news->body);
+        $body = preg_replace('/<[^>]*>/', '', $categories_news->body);
+        $body = substr($body,0,150) . '...';
+        return $body;
     }
 }
