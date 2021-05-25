@@ -14,9 +14,11 @@
                     <div class="2xl:w-4/6 bg-gray-900 p-4 bg-opacity-70 lg:w-2/4">
                         <p class="font-semibold text-green-400 text-2xl ">Popularno danas</p>
                         <a href="">
+                            <a href="{{ route('post.view', ['post'=>$popular[0]->id]) }}">
                             <p class="font-bold text-white 2xl:text-6xl md:text-4xl   hover:text-gray-600 transition duration-100 ease-in ">
                                 {{ $popular[0]->post_title }}
                             </p>
+                            </a>
                         </a>
                     </div>
 
@@ -69,10 +71,12 @@
                 <div class="sm:flex flex-row  pr-4">
                     <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">GRAFIČKE KARTICE</p>
+                        <a href="{{ route('post.view', ['post'=>$categories['gpus'][0]->id]) }}"> 
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['gpus'][0]->post_image }}" alt="" class="w-full ">
                             <div class="image__overlay "></div>
                         </div>
+                        </a>
                 
                         <p class="text-white text-2xl  my-2">{{ $categories['gpus'][0]->post_title }}</p>
                         <p class="text-gray-300 font-light my-5"> {{  $categories['gpus'][0]->body  }}</p>
@@ -107,11 +111,13 @@
                 <div class="sm:flex flex-row sm:flex-col  bg-gray-800 bg-opacity-70 pr-4">
                     <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">PROCESORI</p>
+                        <a href="{{ route('post.view', ['post'=>$categories['cpus'][0]->id]) }}">  
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['cpus'][0]->post_image }}" alt="" class="w-full ">
                             <div class="image__overlay "></div>
                         </div>
-                
+                        </a>
+
                         <p class="text-white text-2xl  my-2">{{ $categories['cpus'][0]->post_title }}</p>
                         <p class="text-gray-300 font-light my-5"> {{ $categories['cpus'][0]->body }}</p>
                         <a href="{{ route('post.view', ['post'=>$categories['cpus'][0]->id]) }}">    
@@ -152,10 +158,12 @@
                 <div class="sm:flex flex-row bg-gray-800 bg-opacity-70 pr-4">
                     <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">RADNE MEMORIJE</p>
+                        <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['rams'][0]->post_image }}" alt="" class="w-full ">
                             <div class="image__overlay "></div>
                         </div>
+                        </a>
                 
                         <p class="text-white text-2xl  my-2">{{ $categories['rams'][0]->post_title }}</p>
                         <p class="text-gray-300 font-light my-5"> {{ $categories['rams'][0]->body }}</p>
@@ -189,10 +197,12 @@
                 <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                     <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">SOFTVER</p>
+                        <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['soft'][0]->post_image }}" alt="" class="w-full ">
                             <div class="image__overlay "></div>
                         </div>
+                        </a>
                 
                         <p class="text-white text-2xl  my-2">{{ $categories['soft'][0]->post_title }}</p>
                         <p class="text-gray-300 font-light my-5"> {{ $categories['soft'][0]->body }}</p>

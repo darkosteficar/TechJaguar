@@ -54,9 +54,10 @@ class NewsController extends Controller
 
     public function post(Post $post)
     {
+        $posts = Post::take(3)->get();
         $post->views = $post->views + 1;
         $post->save();
-        return view('post',['post'=>$post]);
+        return view('post',['post'=>$post,'posts'=>$posts]);
     }
 
     public function category()
