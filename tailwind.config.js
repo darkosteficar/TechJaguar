@@ -1,5 +1,11 @@
 module.exports = {
-    purge: [],
+    mode: 'jit',                           //ADD THIS LINE
+    purge: [                               //CONFIGURE CORRECTLY
+        './storage/framework/views/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './config/*.php',
+    ],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {

@@ -4,7 +4,7 @@
 
     
 </div>
-    <div class="2xl:w-3/4 sm:w-full mx-auto 2xl:mb-32 sm:mb-2">
+    <div class="2xl:w-3/4 sm:w-full mx-auto 2xl:mb-44  sm:mb-2">
         <section>
             <!-- top section -->
             
@@ -48,7 +48,7 @@
                     Najnovije</p>
                 <div class="lg:flex lg:absolute lg:w-10/12 left-64 top-12 md:w-7/12 md:mx-auto ">
                     @foreach ($news as $post)
-                        <div class=" lg:mr-6 lg:ml-0 mx-16 my-2">
+                        <div class=" lg:mr-6 lg:ml-0 mx-24 my-2">
                             <a href="{{ route('post.view', ['post'=>$post->id]) }}">
                                 <div class="image image__overlay_border border border-green-400  ">
                                     <img class="object-cover w-full " src="{{ '/images/'. $post->post_image }}" alt="" width="320" height="180" >
@@ -63,11 +63,11 @@
         </div>
     </div>
 
-    <div class="flex mx-10 -mt-16">
-        <div class="w-2/3 mx-auto mb-6 border border-green-400  flex justify-between">
-            <div>
-                <div class="flex bg-gray-900 bg-opacity-70 pr-4">
-                    <div class="w-1/2 px-5">
+    <div class="lg:flex mx-10 -mt-16">
+        <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
+            <div class="bg-gray-900 bg-opacity-70">
+                <div class="sm:flex flex-row  pr-4">
+                    <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">GRAFIČKE KARTICE</p>
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['gpus'][0]->post_image }}" alt="" class="w-full ">
@@ -83,7 +83,7 @@
                         </a>
                         
                     </div>
-                    <div class="flex flex-wrap w-1/2 mt-12">
+                    <div class="flex flex-wrap md:w-1/2 w-full mt-12">
                             @foreach ($categories['gpus'] as $key => $post)
                                 @if ($key !== 0)
                                     <div class="mb-8 w-1/2 pl-6">
@@ -103,9 +103,9 @@
             
         </div>
 
-        <div class="w-2/3 mx-auto mb-6 border border-green-400  flex justify-between">
-                <div class="flex bg-gray-800 bg-opacity-70 pr-4">
-                    <div class="w-1/2 px-5">
+        <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
+                <div class="sm:flex flex-row sm:flex-col  bg-gray-800 bg-opacity-70 pr-4">
+                    <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">PROCESORI</p>
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['cpus'][0]->post_image }}" alt="" class="w-full ">
@@ -120,7 +120,7 @@
                             </button>
                         </a>
                     </div>
-                    <div class="w-1/2"> 
+                    <div class="md:w-1/2 w-full"> 
                         <div class="flex flex-wrap mt-12">
                         @foreach ($categories['cpus'] as $key => $post)
                             @if ($key !== 0)
@@ -146,11 +146,11 @@
     </div>
 
 
-    <div class="flex mx-10 ">
-        <div class="w-2/3 mx-auto mb-32 border border-green-400  flex justify-between">
+    <div class="lg:flex mx-10 mb-32 ">
+        <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
             
-                <div class="flex bg-gray-800 bg-opacity-70 pr-4">
-                    <div class="w-1/2 px-5">
+                <div class="sm:flex flex-row bg-gray-800 bg-opacity-70 pr-4">
+                    <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">RADNE MEMORIJE</p>
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['rams'][0]->post_image }}" alt="" class="w-full ">
@@ -165,7 +165,7 @@
                             </button>
                         </a>
                     </div>
-                    <div class="flex flex-wrap w-1/2 mt-12">
+                    <div class="flex flex-wrap md:w-1/2 w-full  mt-12">
                             @foreach ($categories['rams'] as $key => $post)
                                 @if ($key !== 0)
                                     <div class="mb-8 w-1/2 pl-6">
@@ -185,9 +185,9 @@
             
         </div>
 
-        <div class="w-2/3 mx-auto mb-32 border border-green-400  flex justify-between">
-                <div class="flex bg-gray-900 bg-opacity-70 pr-4">
-                    <div class="w-1/2 px-5">
+        <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
+                <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
+                    <div class="md:w-1/2 w-full px-5">
                         <p class="text-green-400 text-2xl font-semibold my-6">SOFTVER</p>
                         <div class="image image__overlay_border">
                             <img src="images/{{ $categories['soft'][0]->post_image }}" alt="" class="w-full ">
@@ -202,7 +202,7 @@
                             </button>
                         </a>
                     </div>
-                    <div class="w-1/2"> 
+                    <div class="md:w-1/2 w-full"> 
                         <div class="flex flex-wrap mt-12">
                         @foreach ($categories['soft'] as $key => $post)
                             @if ($key !== 0)
@@ -229,22 +229,22 @@
 
 
 
-    <div class=" mx-32 mb-16 ">
-        <div class="bg-gray-900 bg-opacity-80 pb-2 pt-4">
+    <div class="lg:mx-32 mx-16 mb-16 ">
+        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
             <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">AMD</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
-                <div class=" mb-52 flex items-center">
+                <div class=" lg:mb-52 mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border border-green-400 ">
                             HARDWARE</p>
-                        <div class="lg:flex absolute  left-64 top-12 ">
+                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-64 top-12 ">
                             @foreach ($manu_hard['amd'] as $post)
-                                <div class="mr-6 " style="width: 170px; ">
+                                <div class="mr-6 lg:mt-0 mt-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
                                         <div class="image image__overlay_border border border-green-400  ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
+                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
@@ -252,25 +252,27 @@
                                 </div>    
                             @endforeach
                         </div>
+                        
                     </div>
                 </div>
-                <div class=" mb-40 flex items-center">
+                <div class=" lg:mb-52 mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border border-green-400 ">
                             SOFTWARE</p>
-                        <div class="lg:flex absolute  left-64 top-12 ">
-                            @foreach ($manu_soft['amd'] as $post)
-                                <div class="mr-6 " style="width:170px">
+                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-64 top-12 ">
+                            @foreach ($manu_hard['amd'] as $post)
+                                <div class="mr-6 lg:mt-0 mt-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
+                                        <div class="image image__overlay_border border border-green-400  ">
+                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
-                                </a>
-                                    <p class="font-semibold text-white text-md bg-gray-900 bg-opacity-90 p-2">{{ $post->post_title }}</p>
+                                    </a>
+                                    <p class="font-semibold text-white text-base bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -280,22 +282,22 @@
         
     </div>
 
-    <div class=" mx-32 mb-16 ">
+    <div class="lg:mx-32 mx-16 mb-16 ">
         <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
             <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">Nvidia</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
-                <div class=" mb-52 flex items-center">
+                <div class=" lg:mb-52 mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border border-green-400 ">
                             HARDWARE</p>
-                        <div class="lg:flex absolute  left-64 top-12 ">
+                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-64 top-12 ">
                             @foreach ($manu_hard['nvidia'] as $post)
-                                <div class="mr-6 " style="width: 170px; ">
+                                <div class="mr-6 lg:mt-0 mt-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
                                         <div class="image image__overlay_border border border-green-400  ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
+                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
@@ -303,25 +305,27 @@
                                 </div>    
                             @endforeach
                         </div>
+                        
                     </div>
                 </div>
-                <div class=" mb-40 flex items-center">
+                <div class=" lg:mb-52 mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border border-green-400 ">
                             SOFTWARE</p>
-                        <div class="lg:flex absolute  left-64 top-12 ">
-                            @foreach ($manu_soft['nvidia'] as $post)
-                                <div class="mr-6 " style="width:170px">
+                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-64 top-12 ">
+                            @foreach ($manu_hard['nvidia'] as $post)
+                                <div class="mr-6 lg:mt-0 mt-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
+                                        <div class="image image__overlay_border border border-green-400  ">
+                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
-                                </a>
-                                    <p class="font-semibold text-white text-md bg-gray-900 bg-opacity-90 p-2">{{ $post->post_title }}</p>
+                                    </a>
+                                    <p class="font-semibold text-white text-base bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -331,22 +335,22 @@
         
     </div>
 
-    <div class=" mx-32 mb-16 ">
+    <div class="lg:mx-32 mx-16 mb-16 ">
         <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
             <p class="font-semibold text-4xl text-gray-200 pl ml-10  pb-4 text-green-400  w-1/4">Intel</p>
             <hr class="mb-6">
             <div class="w-5/6 mx-auto ">
             
-                <div class=" mb-52 flex items-center">
+                <div class=" lg:mb-52 mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border border-green-400 ">
                             HARDWARE</p>
-                        <div class="lg:flex absolute  left-64 top-12 ">
+                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-64 top-12 ">
                             @foreach ($manu_hard['intel'] as $post)
-                                <div class="mr-6 " style="width: 170px; ">
+                                <div class="mr-6 lg:mt-0 mt-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
                                         <div class="image image__overlay_border border border-green-400  ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
+                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
@@ -354,25 +358,27 @@
                                 </div>    
                             @endforeach
                         </div>
+                        
                     </div>
                 </div>
-                <div class=" mb-40 flex items-center">
+                <div class=" lg:mb-52 mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border border-green-400 ">
                             SOFTWARE</p>
-                        <div class="lg:flex absolute  left-64 top-12 ">
-                            @foreach ($manu_soft['intel'] as $post)
-                                <div class="mr-6 " style="width:170px">
+                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-64 top-12 ">
+                            @foreach ($manu_hard['intel'] as $post)
+                                <div class="mr-6 lg:mt-0 mt-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170"  >
+                                        <div class="image image__overlay_border border border-green-400  ">
+                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
-                                </a>
-                                    <p class="font-semibold text-white text-md bg-gray-900 bg-opacity-90 p-2">{{ $post->post_title }}</p>
+                                    </a>
+                                    <p class="font-semibold text-white text-base bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -381,7 +387,6 @@
 
         
     </div>
-
 
 
     <div class="w-3/4 mx-auto mb-32">
@@ -389,7 +394,7 @@
     <p class="text-white text-1xl font-semibold text-center mt-2">Get the lastest news and updates relevant to this
         website
     </p>
-    <div class="flex w-1/2 mx-auto space-x-3 mt-6">
+    <div class="lg:flex w-2/3 mx-auto lg:space-x-3 mt-6 space-y-2 lg:space-y-0 lg:items-center">
 
         <input type="text"
             class="outline-none bg-gray-800 border-green-400 border-2 w-full h-14 rounded-xl focus:border-gray-600 focus:bg-gray-700 pl-4 text-white text-xl font-semibold"
