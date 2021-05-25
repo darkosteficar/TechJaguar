@@ -15,13 +15,13 @@ class Comments extends Component
 
     public function addComment()
     {
-        auth()->user()->comments()->create([
+        $posted = auth()->user()->comments()->create([
             'comment'=>$this->comment, 
             'post_id' => $this->post->id,
             'parent_id'=> 0,
         ]);
-        session()->flash('message','Komentar uspješno postavljen!');
-     
+        $this->emit('posted',$posted->id);
+        
     
     }
 

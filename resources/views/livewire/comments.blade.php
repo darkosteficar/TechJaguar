@@ -47,7 +47,13 @@
                         5 Replies
                         </div>
                     </div>
-                    <div class="absolute bg-green-400 top-0  right-0 w-full h-full rounded-md bg-opacity-20">
+                    <div class="absolute bg-green-400 top-0 right-0 w-full h-full rounded-md bg-opacity-20 " 
+                    x-data='{show: false,id: {{ $comment->id }}}' x-show="show" x-init="@this.on('posted',(commentId) => { 
+                        if(id === commentId){
+                            show = true;
+                            setTimeout(() => {show = false},2000,console.log(commentId,id))
+                        }})"
+                    >
                     </div>
                 </div>
                 
