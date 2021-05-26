@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Manufacturer;
@@ -55,14 +56,20 @@ class NewsController extends Controller
     public function post(Post $post)
     {
         $posts = Post::take(3)->get();
+        $post->loadCount('comments');
+        
         $post->views = $post->views + 1;
         $post->save();
         return view('post',['post'=>$post,'posts'=>$posts]);
     }
 
-    public function category()
+    public function category(Category $category)
     {
-        return view('category');
+        $jj = (new DateTime('now -7 days'))->format('Y-m-d H:i:s');
+        $postsPopular = Post::whereDate('created_at','>=',$jj)->orderBy('views','DESC')->take(5)->get();
+        $posts = $category->posts()->paginate(10);
+        
+        return view('category',['postsPopular'=>$postsPopular,'category'=>$category,'posts'=>$posts]);
     }
 
     public function filter_body($categories_news)

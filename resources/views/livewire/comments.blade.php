@@ -26,7 +26,8 @@
 
             <!-- component -->
     <div class="space-y-4">
-        @foreach ($comments as $comment)
+        {{ $allComments->links() }}
+        @foreach ($allComments as $comment)
         <div class="flex ">
            
             <div class="flex-shrink-0 mr-3">
@@ -49,10 +50,10 @@
                     </div>
                     <div class="absolute bg-green-400 top-0 right-0 w-full h-full rounded-md bg-opacity-20 " 
                     x-data='{show: false,id: {{ $comment->id }}}' x-show="show" x-init="@this.on('posted',(commentId) => { 
-                        if(id === commentId){
+                       
                             show = true;
                             setTimeout(() => {show = false},2000,console.log(commentId,id))
-                        }})"
+                        })"
                     >
                     </div>
                 </div>
@@ -62,6 +63,7 @@
 
         
         @endforeach
+       <!--
     <div class="flex">
         <div class="flex-shrink-0 mr-3">
         <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
@@ -106,6 +108,7 @@
             </div>
         </div>
     </div>
+-->
     </div>
 
 </div>

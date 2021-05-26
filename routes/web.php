@@ -37,7 +37,7 @@ use App\Http\Controllers\ManufacturerController;
 
 Route::get('/',[NewsController::class,'index'])->name('index');
 Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');
-Route::get('/category',[NewsController::class,'category'])->name('post.category');
+Route::get('/category/{category}',[NewsController::class,'category'])->name('category');
 
 Route::get('/compare',[CompareController::class,'compare'])->name('compare');
 
