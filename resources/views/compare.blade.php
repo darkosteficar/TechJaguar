@@ -106,15 +106,35 @@
                 <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
               </label>
         </div>
-
+        <div class="ml-4 flex flex-col mt-4">
+            <p class="text-lg">Applications</p>
+            @foreach ($apps as $app)
+            <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+              </label>
+            @endforeach
+        </div>
 
      
         
     </div>
     <div class="w-2/5">
-        
+
+        @php
+            $count = 0;
+        @endphp
             @foreach ($apps as $app)
-            <div class=" mx-auto bg-gray-900 bg-opacity-90 px-24 py-4 border-t-2 border-green-400">
+            @php
+                $cpu1_res = $results[$count][0]['score'];
+                $cpu2_res = $results[$count][1]['score'];
+                $count++;
+            @endphp
+            <div class=" mx-auto bg-gray-900 bg-opacity-90 px-24 py-4 border-t-2 border-green-400 @if ($cpu1_res < $cpu2_res)
+               {{ "cpu2_win" }} 
+            @else
+            {{ "cpu1_win" }} 
+            @endif">
                 <canvas id="myChart{{ $app->id }}" ></canvas>
             </div>
             @endforeach
@@ -156,46 +176,72 @@
   var cpu2_set_id = cpu_ids[1];
   gpu1_setId.setAttribute("value", cpu1_set_id);
   gpu2_setId.setAttribute("value", cpu2_set_id);
+
   results.forEach(result => {
   var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
   var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-  labels: [names[0], names[1]],
-  datasets: [{
-      label: 'Score',
-      data: [result[0]['score'], result[1]['score']],
-      backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1
-  }]
+        labels: [names[0], names[1]],
+        datasets: [{
+            label: 'Score',
+            data: [result[0]['score'], result[1]['score']],
+            color:[
+                '#ffff'
+            ],
+            backgroundColor: [
+                'rgb(52, 211, 153,0.6)',
+                'rgb(52, 211, 153,0.6)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            hoverBackgroundColor: "#FFFFFF",
+            borderColor: [
+                'rgb(52, 211, 153,1)',
+                'rgb(52, 211, 153,1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 3
+        },
+       
+     ]
   },
   options: {
-  scales: {
-      y: {
-          beginAtZero: true
-      }
+    scales: {
+        y: {
+            beginAtZero: true,
+            grid:{
+                color: "#FFFFFF"
+            }
+        },
+        x:{
+            grid: {
+                color:  "#FFFFFF"
+            },
+        },
+      
+    
+     
   },
   indexAxis: 'y',
   plugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: '#34D399'
+            }
+        },
       title: {
           display: true,
+          color: '#34D399',
           text: result[2],
-      }
+      },
+      
   },
   }
   });

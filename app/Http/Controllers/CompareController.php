@@ -38,7 +38,7 @@ class CompareController extends Controller
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
                 }
-               
+             
                 return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids]);
             }
 
