@@ -43,5 +43,13 @@ class ResultController extends Controller
 
     }
 
+    public function delete(Request $request)
+    {
+        $result = Result::find($request->id);
+        $result->delete();
+        session()->flash('status','Rezultat uspješno izbrisan');
+        return redirect()->route('results.index');
+    }
+
     
 }

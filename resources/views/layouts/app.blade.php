@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCompare</title>
+    <title>Techuar</title>
+    <link rel="icon" href="{{ URL::asset('images/logo.png') }}" type="image/x-icon"/>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
     <script src="{{ asset('js/chartjs.min.js') }}"></script>
@@ -42,7 +43,7 @@
                             News</p>
                             </button>
                         
-                            <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900 bg-opacity-80 justify-between  px-4 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex" id="news-dropdown">
+                            <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900  justify-between  px-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex" id="news-dropdown">
                                 <div class="mr-4">
                                     <div class="bg-gray-700 mt-2 border border-gray-700 hover:border-green-500 hover:bg-gray-500 transition ease-in duration-500 ">
                                         <a href=""><p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 ">PROIZVOĐAČI</p></a>
@@ -50,7 +51,7 @@
                                     <hr class="mb-2">
                                     @foreach ($allManus as $manu)
                                         <div class="bg-gray-900 bg-opacity-80 p-1 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
-                                            <a href="{{ route('category', ['category'=>$manu->id]) }}"><p class="text-center">{{ $manu->name }}</p></a>
+                                            <a href="{{ route('manufacturer', ['manufacturer'=>$manu->id]) }}"><p class="text-center">{{ $manu->name }}</p></a>
                                         </div>
                                     @endforeach
                                     

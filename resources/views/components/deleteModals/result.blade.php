@@ -2,6 +2,7 @@
 
     <form action="{{ route('results.delete', ['id'=>$result->id]) }}" method="post">
         @csrf
+        @method('DELETE')
         <input type="hidden" name="post_title" value="{{ $result->id }}">
         <div class="modal fade modal-black" tabindex="-1" role="dialog" id="deleteModal{{ $result->id }}">
             <div class="modal-dialog " role="document">

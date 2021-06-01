@@ -5,13 +5,13 @@
         <div class="lg:w-2/12  w-11/12 bg-gray-900 bg-opacity-70 lg:ml-2 ml-4 border border-white rounded-sm">
             
             <p class="font-semibold text-xl text-green-500 ml-2 my-2 ">BROWSE</p>
-            @foreach ($allCats as $cat)
-                <a href="{{ route('category', ['category'=>$cat->id]) }}">
-                @if ($cat->name == $category->name)
-                    <p class="bg-green-500 font-light text-xl text-gray-800 pl-5 py border border-transparent hover:border-green-400">{{ $cat->name }}</p>
+            @foreach ($allManus as $manu)
+                <a href="{{ route('manufacturer', ['manufacturer'=>$manu->id]) }}">
+                @if ($manu->name == $manufacturer->name)
+                    <p class="bg-green-500 font-light text-xl text-gray-800 pl-5 py border border-transparent hover:border-green-400">{{ $manu->name }}</p>
                 
                 @else
-                    <p class=" font-light text-xl text-gray-200 pl-5 py hover:bg-green-500 hover:text-gray-800 border-2 border-transparent hover:border-green-400">{{ $cat->name }}</p>
+                    <p class=" font-light text-xl text-gray-200 pl-5 py hover:bg-green-500 hover:text-gray-800 border-2 border-transparent hover:border-green-400">{{ $manu->name }}</p>
                 </a> 
                 @endif   
                
@@ -20,7 +20,7 @@
         
         </div>
         <div class="lg:w-8/12 w-full px-5 ">
-            <p class="my-2 ml-2 font-bold text-3xl text-green-500 ">{{ $category->name }}</p>
+            <p class="my-2 ml-2 font-bold text-3xl text-green-500 ">{{ $manufacturer->name }}</p>
             <div class="flex flex-wrap">
                 @foreach ($posts as $post)
                

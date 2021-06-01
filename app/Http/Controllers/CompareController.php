@@ -38,13 +38,14 @@ class CompareController extends Controller
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
                 }
-            
+               
                 return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids]);
             }
 
             session()->flash('error','You have to select both CPUs for comparison');
             return redirect()->route('compare');
         }
+       
         return view('compare',['cpus'=>$cpus]);
         
         

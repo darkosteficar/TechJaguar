@@ -17,7 +17,10 @@
             <div class="w-full md:w-full flex items-end justify-end md:w-full px-3">
 
                 <div class="-mr-1">
-                    <input type='submit' class="bg-green-400 text-gray-700 font-medium py-1 px-4 border border-green-400 rounded-lg tracking-wide mr-1 hover:bg-green-600 hover:text-white"  value='Objavi'>
+                     <button type='submit' class="bg-green-400 text-gray-700 font-medium py-1 px-4 border border-green-400 rounded-lg tracking-wide mr-1 hover:bg-green-600 hover:text-white">
+                        Objavi
+                    </button>
+                        
                 </div>
             </div>
         </form>

@@ -17,7 +17,7 @@
             <p class="font-bold text-2xl text-gray-300 mb-3 text-center">CPU 1</p>
 
             <div class="select-box mx-auto">
-                <div class="options-container bg-gray-700 font-medium">
+                <div class="options-container bg-gray-900 bg-opacity-90 font-medium">
                     @foreach ($cpus as $cpu)
                         <div class="option">
                             <input type="radio" class="radio" id="automobiles" name="category" value="{{ $cpu->id }}"/>
@@ -37,15 +37,15 @@
                 </div>
 
                 <div class="search-box">
-                    <input type="text" class="bg-gray-600 text-green-400  focus:ring-3 focus:border-green-400 focus:border-2 disable-outline" placeholder="RX 5700 XT,RTX 3060 Ti..." />
+                    <input type="text" class="bg-gray-900 bg-opacity-90 text-green-400  focus:ring-3 focus:border-green-400 focus:border-2 disable-outline" placeholder="RX 5700 XT,RTX 3060 Ti..." />
                 </div>
             </div>
         </div>
         <div class="container ml-5">
-            <p class="font-bold text-2xl text-gray-300 mb-3 text-center">CPU 2</p>
+            <p class="font-bold text-2xl text-green-400  mb-3 text-center">CPU 2</p>
 
             <div class="select-box mx-auto">
-                <div class="options-container2 bg-gray-700 font-medium">
+                <div class="options-container2 bg-gray-900 opacity-90 font-medium">
                     @foreach ($cpus as $cpu)
                         <div class="option2">
                             <input type="radio" class="cpu2_id radio" id="automobiles" name="category" value="{{ $cpu->id }}"/>
@@ -54,7 +54,7 @@
                         </div>   
                     @endforeach
                 </div>
-                <div class="selected2">
+                <div class="selected2 bg-gray-900 bg-opacity-90">
                     @if (isset($names))
                         {{ $names[1] }}
                     @else
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="search-box2">
-                    <input type="text" class="cpu2_input bg-gray-600 text-green-400  focus:ring-3 focus:border-green-300 focus:border-2 disable-outline" placeholder="RX 5700 XT,Ryzen 5 2600X..." />
+                    <input type="text" class="cpu2_input bg-gray-900 text-green-400  focus:ring-3 focus:border-green-300 focus:border-2 disable-outline" placeholder="Ryzen 7 5800X,Ryzen 5 2600X..." />
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
             <form action="{{ route('compare', []) }}" method="GET">
                 <input type="hidden" name="cpu1" id="cpu1_id">
                 <input type="hidden" name="cpu2" id="cpu2_id">
-                <button class="hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-600 text-green-400 transition ease-in duration-300" type="submit">
+                <button class="hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-900 bg-opacity-90 border border-green-400 text-green-400 transition ease-in duration-300" type="submit">
                     COMPARE
                 </button>
         </form>
@@ -81,20 +81,65 @@
 </div>
 
 @if (session()->has('status')))
-    <div class="bg-green-600 text-white font-semibold w-1/2 mx-auto text-center py-3 mb-12 rounded-sm">
+    <div class="bg-green-600 text-white font-semibold w-1/2 mx-auto text-center py-3 mb-12 rounded-sm ">
         {{ session('status') }}
     </div>
 @endif
 
 
+<div class="flex justify-center">
+    @if (isset($names))
+    <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400">
+        <p class="text-xl font-semibold  ml-3 mt-1 mb-2">Filters</p>
+        <div class="ml-4 flex flex-col">
+            <p class="text-lg">Resolutions</p>
+            <label class="inline-flex items-center">
+              <span class="ml-2 text-lg mr-2">1080p</span>
+              <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+            </label>
+            <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">1440p</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+              </label>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">4K</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+              </label>
+        </div>
 
-@if (isset($names))
-    @foreach ($apps as $app)
-    <div class="w-1/3 mx-auto">
-        <canvas id="myChart{{ $app->id }}" ></canvas>
+
+     
+        
     </div>
-    @endforeach
-@endif
+    <div class="w-2/5">
+        
+            @foreach ($apps as $app)
+            <div class=" mx-auto bg-gray-900 bg-opacity-90 px-24 py-4 border-t-2 border-green-400">
+                <canvas id="myChart{{ $app->id }}" ></canvas>
+            </div>
+            @endforeach
+        
+    </div>
+    <div class="w-1/5 bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400">
+        <div class="p-4">
+            <p class="font-semibold text-lg">Config 1</p>
+            <p>CPU: {{ $names[0] }}</p>
+            <p>GPU: </p>
+            <p>RAM: </p>
+            <p>MOBO:</p>
+        </div>
+        <div class="p-4">
+            <p class="font-semibold text-lg">Config 2</p>
+            <p>CPU: {{ $names[1] }}</p>
+            <p>GPU: </p>
+            <p>RAM: </p>
+            <p>MOBO:</p>
+        </div>
+    </div>
+    @endif
+
+</div>
+
 
 
 

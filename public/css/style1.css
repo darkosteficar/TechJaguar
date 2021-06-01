@@ -93,7 +93,7 @@
   }
   
   .selected {
-    background: #2f3640;
+    background: #111827;
     border-radius: 8px;
     margin-bottom: 8px;
     color: #2ed19b;
@@ -211,7 +211,7 @@
   }
   
   .selected2 {
-    background: #2f3640;
+    background: #111827;
     border-radius: 8px;
     margin-bottom: 8px;
     color: #2ed19b;
