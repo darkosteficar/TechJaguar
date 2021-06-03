@@ -23,7 +23,8 @@ class AppController extends Controller
         $this->validate($r,[
             'name' => 'required',
             'resolution'=>'required',
-            'tag'=>'required'
+            'tag'=>'required',
+            'type'=>'required'
         ]);
 
         App::create($r->all());
@@ -42,13 +43,15 @@ class AppController extends Controller
         $this->validate($r,[
             'name' => 'required',
             'resolution'=>'required',
-            'tag'=>'required'
+            'tag'=>'required',
+            'type'=>'required'
         ]);
 
         $app = App::where('id',$r->id)->update([
             'name' => $r->name,
             'resolution' => $r->resolution,
-            'tag' => $r->tag
+            'tag' => $r->tag,
+            'type'=>$r->type
         ]);
 
         return redirect()->route('apps.index')->with('status', 'Aplikacija uspješno ažurirana!');

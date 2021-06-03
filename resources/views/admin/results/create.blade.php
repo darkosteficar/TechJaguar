@@ -204,11 +204,22 @@
                 
                             @csrf
                             <div class="form-group w-50 mx-auto">
-                                <label for="chipset_name">Rezultat</label>
-                                <input class="form-control" type="text" name="result" data="green">
+                                <div class="row">
+
+                                <div class="col-sm-6">
+                                    <label for="chipset_name">Rezultat</label>
+                                    <input class="form-control" type="text" name="result" data="green">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="chipset_name">Minimalni rezultat</label>
+                                    <input class="form-control" type="text" name="min_result" data="green">  
+                                </div>
+                               
+                                
+                            </div>
                             </div>
                             <div class="container">
-                                <div class="row">
+                                <div class="row mb-3">
                                    
                                     <div class="col-sm">
                                         <label for="">Procesor</label>
@@ -219,6 +230,19 @@
                                            
                                         </select>
                                     </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <label for="gpu">Grafička kartica</label>
+                                        <select name="gpu" id="">
+                                            @foreach ($gpus as $gpu)
+                                                <option value="{{ $gpu->id }}">{{ $gpu->name }}</option>
+                                            @endforeach
+                                           
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-sm">
                                         <label for="app">Aplikacija</label>
                                         <select name="app" id="">
@@ -228,6 +252,25 @@
                                            
                                         </select>
                                     </div>
+                                    <div class="col-sm">
+                                        <label for="">Matična ploča</label>
+                                        <select name="mobo" id="">
+                                            @foreach ($mobos as $mobo)
+                                                <option value="{{ $mobo->id }}">{{ $mobo->name }}</option>
+                                            @endforeach
+                                           
+                                        </select>
+                                    </div>
+                                    <div class="col-sm">
+                                        <label for="ram">Radna memorija</label>
+                                        <select name="ram" id="">
+                                            @foreach ($rams as $ram)
+                                                <option value="{{ $ram->id }}">{{ $ram->name }}</option>
+                                            @endforeach
+                                           
+                                        </select>
+                                    </div>
+                                    
                                 </div>
                                
                             </div>

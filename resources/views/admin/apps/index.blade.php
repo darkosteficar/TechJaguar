@@ -29,6 +29,7 @@
                         <th>Aplikacija</th>
                         <th>Rezolucija</th>
                         <th>Tag</th>
+                        <th>Tip</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -40,6 +41,7 @@
                             <td>{{ $app->name }}</td>
                             <td>{{ $app->resolution}}</td>
                             <td>{{ $app->tag }}</td>
+                            <td>{{ $app->type }}</td>
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
                                     <i class="tim-icons icon-single-02"></i>

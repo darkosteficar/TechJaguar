@@ -30,7 +30,7 @@ class CompareController extends Controller
                         $query->where('cpu_id','=',$cpu1_id)->orWhere('cpu_id','=',$cpu2_id);
                     })->get()->toArray();
                     if(count($graph) == 2){
-                        array_push($graph,$app->name);
+                        array_push($graph,$app->name,$app->type);
                         array_push($overall,$graph);
                     }
                 }
@@ -39,7 +39,7 @@ class CompareController extends Controller
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
                 }
-          
+                
                 foreach($overall as $result){
                     array_push($appNames, $result[2]);
                 }

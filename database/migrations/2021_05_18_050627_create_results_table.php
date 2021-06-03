@@ -17,9 +17,16 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->integer('cpu_id')->unsigned();
             $table->integer('app_id')->unsigned();
+            $table->integer('gpu_id')->unsigned();
+            $table->integer('mobo_id')->unsigned();
+            $table->integer('ram_id')->unsigned();
             $table->foreign('cpu_id')->references('id')->on('cpus')->onDelete('cascade');
             $table->foreign('app_id')->references('id')->on('apps')->onDelete('cascade');
+            $table->foreign('gpu_id')->references('id')->on('gpus')->onDelete('cascade');
+            $table->foreign('mobo_id')->references('id')->on('mobos')->onDelete('cascade');
+            $table->foreign('ram_id')->references('id')->on('rams')->onDelete('cascade');
             $table->integer('score');
+            $table->integer('score_min')->nullable();
             $table->timestamps();
         });
     }

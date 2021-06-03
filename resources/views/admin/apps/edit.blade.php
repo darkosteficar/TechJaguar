@@ -3,6 +3,7 @@
 @section('content')
 @php
     $resolutions = ['1080p'=>'1920x1080 piksela','1440p'=>'2560x1440 piksela','4K'=>'3840x2160 piksela'];
+    $types = ['game'=>'Igra','benchmark'=>'Benchmark','productivity'=>'Program'];
 @endphp
 <div class="d-flex">
     <h1>Ažuriranje aplikacije</h1>
@@ -53,9 +54,21 @@
                                 <input class="form-control" type="text" name="tag" data="green" value="{{ $app->tag }}">
                             </div>
                         </div>
-                       
-                       
-                       
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="smt">Tip</label>
+                                <select class="form-control"  style="background-color: #27293D" name="type">
+                                    @foreach ($types as $key => $type)
+                                        <option value="{{ $key }}" @if ($key == $app->type)
+                                            selected
+                                        @endif>{{ $type }}</option>
+                                    @endforeach
+                                 
+                               </select>
+                            </div>
+                        </div>
                     </div>
                     
                   

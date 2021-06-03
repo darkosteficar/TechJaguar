@@ -18,6 +18,7 @@ class CreateAppsTable extends Migration
             $table->string('resolution');
             $table->string('tag');
             $table->string('name');
+            $table->string('type');
             $table->timestamps();
         });
     }
