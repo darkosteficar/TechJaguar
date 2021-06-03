@@ -185,8 +185,12 @@ Route::delete('/admin/components/categories/delete',[CategoryController::class,'
 Route::get('/admin/components/categories/{category}',[CategoryController::class,'edit_category'])->name('categories.edit');
 Route::post('/admin/components/categories/update',[CategoryController::class,'update_category'])->name('categories.update');
 
+Route::get('/admin/components/apps',[AppController::class,'index'])->name('apps.index');
 Route::get('/admin/components/apps/create',[AppController::class,'create'])->name('apps.create');
 Route::post('/admin/components/apps/store',[AppController::class,'store'])->name('apps.store');
+Route::get('/admin/components/apps/edit/{app}',[AppController::class,'edit'])->name('apps.edit');
+Route::post('/admin/components/apps/update',[AppController::class,'update'])->name('apps.update');
+Route::delete('/admin/components/apps/delete',[AppController::class,'delete'])->name('apps.delete');
 
 Route::get('/admin/results',[ResultController::class,'index'])->name('results.index');
 Route::get('/admin/results/create',[ResultController::class,'create'])->name('results.create');

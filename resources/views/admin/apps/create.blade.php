@@ -29,9 +29,25 @@
         
                     @csrf
                     <div class="form-group">
-                        <label for="chipset_name">Ime</label>
-                        <input class="form-control" type="text" name="app_name" data="green">
+                        <div class="row">
+                            <div class="col-3"> <label for="chipset_name">Ime</label>
+                                <input class="form-control" type="text" name="name" data="green"></div>
+                                <div class="col-4">
+                                    <label for="smt">Rezolucija</label>
+                                    <select class="form-control"  style="background-color: #27293D" name="resolution">
+                                            <option value="1080p">1920x1080 piksela</option>
+                                            <option value="1440p">2560x1440 piksela</option>
+                                            <option value="4K">3840x2160 piksela</option>
+                                   </select>
+                                </div>
+                            <div class="col-3"> <label for="chipset_name">Tag</label>
+                                <input class="form-control" type="text" name="tag" data="green"></div>
+                        </div>
+                       
+                       
+                       
                     </div>
+                    
                   
                    <button type="submit" class="btn btn-success">Kreiraj</button>
                 </form>

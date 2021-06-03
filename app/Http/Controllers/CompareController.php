@@ -12,6 +12,7 @@ class CompareController extends Controller
 {
     public function compare(Request $request)
     {
+        $appNames = array();
         $cpus = Cpu::all();
         if($request->has('cpu1') && $request->has('cpu2')){
             if($request->cpu1 != null && $request->cpu2 != null){
@@ -38,7 +39,13 @@ class CompareController extends Controller
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
                 }
-             
+          
+                foreach($overall as $result){
+                    array_push($appNames, $result[2]);
+                }
+                $apps = App::whereIn('name',$appNames)->get();
+                //dd($usedApps[2][0]->id);
+                //dd($apps);
                 return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids]);
             }
 

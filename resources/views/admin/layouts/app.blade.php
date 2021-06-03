@@ -70,7 +70,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ route('apps.create', []) }}">
+            <a href="{{ route('apps.index', []) }}">
               <i class="tim-icons icon-single-02"></i>
               <p class=" font-weight-normal font-12">Aplikacije</p>
             </a>

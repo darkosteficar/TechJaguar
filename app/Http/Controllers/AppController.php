@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
+    public function index()
+    {
+        $apps = App::paginate(10);
+        return view('admin.apps.index',['apps'=>$apps]);
+    }
+
     public function create()
     {
         return view('admin.apps.create');
@@ -15,15 +21,37 @@ class AppController extends Controller
     public function store(Request $r)
     {
         $this->validate($r,[
-            'app_name' => 'required',
+            'name' => 'required',
+            'resolution'=>'required',
+            'tag'=>'required'
         ]);
 
-        App::create([
-            'name' => $r->app_name,
+        App::create($r->all());
+
+        return redirect()->back()->with('status','Aplikacija je uspješno dodana.');
+
+    }
+
+    public function edit(App $app)
+    {
+        return view('admin.apps.edit',['app'=>$app]);
+    }
+
+    public function update(Request $r)
+    {
+        $this->validate($r,[
+            'name' => 'required',
+            'resolution'=>'required',
+            'tag'=>'required'
         ]);
 
-        session()->flash('status','Aplikacija je uspješno dodana.');
-        return redirect()->back();
+        $app = App::where('id',$r->id)->update([
+            'name' => $r->name,
+            'resolution' => $r->resolution,
+            'tag' => $r->tag
+        ]);
 
+        return redirect()->route('apps.index')->with('status', 'Aplikacija uspješno ažurirana!');
+        
     }
 }

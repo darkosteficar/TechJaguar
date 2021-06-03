@@ -14,7 +14,7 @@
     
    
         <div class="container ">
-            <p class="font-bold text-2xl text-gray-300 mb-3 text-center">CPU 1</p>
+            <p class="font-bold text-2xl text-gray-200 mb-3 text-center">CPU 1</p>
 
             <div class="select-box mx-auto">
                 <div class="options-container bg-gray-900 bg-opacity-90 font-medium">
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="container ml-5">
-            <p class="font-bold text-2xl text-green-400  mb-3 text-center">CPU 2</p>
+            <p class="font-bold text-2xl text-gray-200  mb-3 text-center">CPU 2</p>
 
             <div class="select-box mx-auto">
                 <div class="options-container2 bg-gray-900 opacity-90 font-medium">
@@ -90,31 +90,32 @@
 <div class="flex justify-center">
     @if (isset($names))
     <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400">
-        <p class="text-xl font-semibold  ml-3 mt-1 mb-2">Filters</p>
+        <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
         <div class="ml-4 flex flex-col">
-            <p class="text-lg">Resolutions</p>
+            <p class="text-lg font-bold">Resolutions</p>
             <label class="inline-flex items-center">
               <span class="ml-2 text-lg mr-2">1080p</span>
-              <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+              <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1080p" checked onchange="filter(this)">
             </label>
             <label class="inline-flex items-center">
                 <span class="ml-2 text-lg mr-2">1440p</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1440p" checked onchange="filter(this)">
               </label>
               <label class="inline-flex items-center">
                 <span class="ml-2 text-lg mr-2">4K</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked>
               </label>
+              <p class="text-lg mt-4 font-bold">Apps</p>
+              @foreach ($apps as $app)
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
+                </label>
+              @endforeach
         </div>
-        <div class="ml-4 flex flex-col mt-4">
-            <p class="text-lg">Applications</p>
-            @foreach ($apps as $app)
-            <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" checked>
-              </label>
-            @endforeach
-        </div>
+
+      
+       
 
      
         
@@ -130,7 +131,7 @@
                 $cpu2_res = $results[$count][1]['score'];
                 $count++;
             @endphp
-            <div class=" mx-auto bg-gray-900 bg-opacity-90 px-24 py-4 border-t-2 border-green-400 @if ($cpu1_res < $cpu2_res)
+            <div class=" mx-auto bg-gray-900 bg-opacity-90  {{ $app->tag }} {{ $app->resolution  }} px-24 py-4 border-t-2 border-green-400 @if ($cpu1_res < $cpu2_res)
                {{ "cpu2_win" }} 
             @else
             {{ "cpu1_win" }} 
@@ -138,18 +139,23 @@
                 <canvas id="myChart{{ $app->id }}" ></canvas>
             </div>
             @endforeach
+
+            @php
+            $count = 0;
+        @endphp
+        
         
     </div>
     <div class="w-1/5 bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400">
         <div class="p-4">
-            <p class="font-semibold text-lg">Config 1</p>
+            <p class="font-semibold text-lg text-gray-200">Config 1</p>
             <p>CPU: {{ $names[0] }}</p>
             <p>GPU: </p>
             <p>RAM: </p>
             <p>MOBO:</p>
         </div>
         <div class="p-4">
-            <p class="font-semibold text-lg">Config 2</p>
+            <p class="font-semibold text-lg text-gray-200">Config 2</p>
             <p>CPU: {{ $names[1] }}</p>
             <p>GPU: </p>
             <p>RAM: </p>
@@ -179,6 +185,8 @@
 
   results.forEach(result => {
   var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
+  Chart.defaults.font.size = 14;
+  Chart.defaults.color = '#e6e6e6';
   var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -197,10 +205,11 @@
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)'
             ],
-            hoverBackgroundColor: "#FFFFFF",
+            hoverBackgroundColor: "rgb(17, 24, 39,0.7)",
+            hoverBorderColor: "rgb(52, 211, 153,1)",
             borderColor: [
-                'rgb(52, 211, 153,1)',
-                'rgb(52, 211, 153,1)',
+                'rgb(17, 24, 39,0.7)',
+                'rgb(17, 24, 39,0.7)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
@@ -216,13 +225,14 @@
         y: {
             beginAtZero: true,
             grid:{
-                color: "#FFFFFF"
+                color: "rgb(181, 181, 181,0.7)"
             }
         },
         x:{
             grid: {
-                color:  "#FFFFFF"
+                color:  "rgb(181, 181, 181,0.7)"
             },
+            
         },
       
     
@@ -233,13 +243,16 @@
         legend: {
             display: true,
             labels: {
-                color: '#34D399'
+                color: '#34D399',
             }
         },
       title: {
           display: true,
           color: '#34D399',
-          text: result[2],
+          text: result[2] ,
+          font:{
+            size: 17,
+          }
       },
       
   },
@@ -340,6 +353,26 @@
             }
         });
     };
+
+</script>
+
+<script>
+
+function filter(el){
+    console.log(el.id);
+    const fullHDChars = document.getElementsByClassName(el.id);
+    console.log(fullHDChars);
+    for (let index = 0; index < fullHDChars.length; index++) {
+        if(fullHDChars[index].classList.contains('hidden')){
+            fullHDChars[index].classList.remove('hidden');
+        }
+        else{
+            fullHDChars[index].classList.add('hidden');
+        }
+      
+        
+    }
+}
 
 </script>
 @endsection
