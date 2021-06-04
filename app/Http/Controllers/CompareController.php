@@ -29,7 +29,10 @@ class CompareController extends Controller
                     $graph = Result::where('app_id','=',$app->id)->where(function($query) use($cpu1_id,$cpu2_id){
                         $query->where('cpu_id','=',$cpu1_id)->orWhere('cpu_id','=',$cpu2_id);
                     })->get()->toArray();
-                    if(count($graph) == 2){
+                    if(count($graph) >= 2){
+                        foreach($graph as $graphy){
+                            
+                        }
                         array_push($graph,$app->name,$app->type);
                         array_push($overall,$graph);
                     }

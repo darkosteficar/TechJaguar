@@ -194,7 +194,9 @@ Route::delete('/admin/components/apps/delete',[AppController::class,'delete'])->
 
 Route::get('/admin/results',[ResultController::class,'index'])->name('results.index');
 Route::get('/admin/results/create',[ResultController::class,'create'])->name('results.create');
+Route::get('/admin/results/edit/{result}',[ResultController::class,'edit'])->name('results.edit');
 Route::post('/admin/results/store',[ResultController::class,'store'])->name('results.store');
+Route::post('/admin/results/update',[ResultController::class,'update'])->name('results.update');
 Route::delete('/admin/results/delete',[ResultController::class,'delete'])->name('results.delete');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', ]], function () {

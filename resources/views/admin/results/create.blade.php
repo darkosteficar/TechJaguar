@@ -20,8 +20,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.js" integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw==" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
   <script src="https://cdn.tiny.cloud/1/y74enrkq09ucachhq42iiiq6zue7pidn7fdbj9owxkhwq6n4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
 
 </head>
 
@@ -208,11 +207,11 @@
 
                                 <div class="col-sm-6">
                                     <label for="chipset_name">Rezultat</label>
-                                    <input class="form-control" type="text" name="result" data="green">
+                                    <input class="form-control" type="text" name="score" data="green">
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="chipset_name">Minimalni rezultat</label>
-                                    <input class="form-control" type="text" name="min_result" data="green">  
+                                    <input class="form-control" type="text" name="min_score" data="green">  
                                 </div>
                                
                                 
@@ -223,7 +222,7 @@
                                    
                                     <div class="col-sm">
                                         <label for="">Procesor</label>
-                                        <select name="cpu" id="">
+                                        <select name="cpu_id" id="">
                                             @foreach ($cpus as $cpu)
                                                 <option value="{{ $cpu->id }}">{{ $cpu->name }}</option>
                                             @endforeach
@@ -232,8 +231,8 @@
                                     </div>
                                     
                                     <div class="col-sm-6">
-                                        <label for="gpu">Grafička kartica</label>
-                                        <select name="gpu" id="">
+                                        <label for="gpu_id">Grafička kartica</label>
+                                        <select name="gpu_id" id="">
                                             @foreach ($gpus as $gpu)
                                                 <option value="{{ $gpu->id }}">{{ $gpu->name }}</option>
                                             @endforeach
@@ -244,8 +243,8 @@
 
                                 <div class="row">
                                     <div class="col-sm">
-                                        <label for="app">Aplikacija</label>
-                                        <select name="app" id="">
+                                        <label for="app_id">Aplikacija</label>
+                                        <select name="app_id" id="">
                                             @foreach ($apps as $app)
                                                 <option value="{{ $app->id }}">{{ $app->name }}</option>
                                             @endforeach
@@ -253,8 +252,8 @@
                                         </select>
                                     </div>
                                     <div class="col-sm">
-                                        <label for="">Matična ploča</label>
-                                        <select name="mobo" id="">
+                                        <label for="mobo_id">Matična ploča</label>
+                                        <select name="mobo_id" id="">
                                             @foreach ($mobos as $mobo)
                                                 <option value="{{ $mobo->id }}">{{ $mobo->name }}</option>
                                             @endforeach
@@ -262,8 +261,8 @@
                                         </select>
                                     </div>
                                     <div class="col-sm">
-                                        <label for="ram">Radna memorija</label>
-                                        <select name="ram" id="">
+                                        <label for="ram_id">Radna memorija</label>
+                                        <select name="ram_id" id="">
                                             @foreach ($rams as $ram)
                                                 <option value="{{ $ram->id }}">{{ $ram->name }}</option>
                                             @endforeach

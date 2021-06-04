@@ -15,7 +15,7 @@ class ResultController extends Controller
     public function index()
     {
         $results = Result::paginate(20);
-
+        
         return view('admin.results.index',['results'=>$results]);
         
     }
@@ -33,27 +33,69 @@ class ResultController extends Controller
     public function store(Request $r)
     {
         $this->validate($r,[
-            'result'=> 'required',
-            'app'=>'required',
-            'cpu'=>'required',
-            'gpu'=>'required',
-            'mobo'=>'required',
-            'ram'=>'required',
+            'score'=> 'required',
+            'app_id'=>'required',
+            'cpu_id'=>'required',
+            'gpu_id'=>'required',
+            'mobo_id'=>'required',
+            'ram_id'=>'required',
 
         ]);
         Result::create($r->all());
+        /*
         Result::create([
-            'score'=>$r->result,
+            'score'=>$r->score,
             'app_id'=>$r->app,
             'cpu_id'=>$r->cpu,
             'gpu_id'=>$r->gpu,
             'mobo_id'=>$r->mobo,
             'ram_id'=>$r->ram,
         ]);
+        */
 
         session()->flash('status','Rezultat uspješno kreiran.');
         return redirect()->back();
 
+    }
+
+    public function edit(Result $result)
+    {
+        $cpus = Cpu::all();
+        $apps = App::all();
+        $gpus = Gpu::all();
+        $mobos = Mobo::all();
+        $rams = Ram::all();
+        
+        return view('admin.results.edit',['cpus'=>$cpus,'apps'=>$apps,'gpus'=>$gpus,'mobos'=>$mobos,'rams'=>$rams,'result'=>$result]);
+        
+    }
+
+    public function update(Request $r)
+    {
+        $result = Result::find($r->id);
+        if(!empty($result)){
+            $this->validate($r,[
+                'score'=> 'required',
+                'app_id'=>'required',
+                'cpu_id'=>'required',
+                'gpu_id'=>'required',
+                'mobo_id'=>'required',
+                'ram_id'=>'required',
+            ]);
+
+            $result->score = $r->score;
+            $result->app_id = $r->app_id;
+            $result->cpu_id = $r->cpu_id;
+            $result->gpu_id = $r->gpu_id;
+            $result->mobo_id = $r->mobo_id;
+            $result->ram_id = $r->ram_id;
+            if(!empty($r->min_score)){
+                $result->min_score = $r->min_score;
+            }
+            $result->save();
+            return redirect()->route('results.index')->with('status','Rezultat uspješno ažuriran!');
+        }
+        return redirect()->route('results.index')->with('error','Rezultat ne postoji!');
     }
 
     public function delete(Request $request)

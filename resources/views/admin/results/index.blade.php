@@ -42,13 +42,13 @@
                             <td>{{ $result->score }}</td>
                             <td>{{ $result->app->name}}</td>
                             <td>{{ $result->cpu->name }}</td>
-                            <td>AMD Radeon RX 570</td>
-                            <td>G.SKill Ripjaws 3000 Mhz</td>
+                            <td>{{ $result->gpu->name }}</td>
+                            <td>{{ $result->ram->name }}</td>
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
                                     <i class="tim-icons icon-single-02"></i>
                                 </button>
-                                <a href="{{ route('chipsets.edit', ['chipset'=>$result->id]) }}">
+                                <a href="{{ route('results.edit', ['result'=>$result->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>
                                     </button>
