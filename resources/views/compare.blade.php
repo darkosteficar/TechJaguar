@@ -150,16 +150,14 @@
         <div class="p-4">
             <p class="font-semibold text-lg text-gray-200">Config 1</p>
             <p>CPU: {{ $names[0] }}</p>
-            <p>GPU: </p>
-            <p>RAM: </p>
-            <p>MOBO:</p>
+            <p>RAM: {{ $names[2] }}</p>
+            <p>MOBO: {{ $names[3] }}</p>
         </div>
         <div class="p-4">
             <p class="font-semibold text-lg text-gray-200">Config 2</p>
             <p>CPU: {{ $names[1] }}</p>
-            <p>GPU: </p>
-            <p>RAM: </p>
-            <p>MOBO:</p>
+            <p>RAM: {{ $names[2] }}</p>
+            <p>MOBO: {{ $names[3] }}</p>
         </div>
     </div>
     @endif
@@ -186,7 +184,8 @@
     var ctx = document.getElementById('myChart'+result[0]['app_id']).getContext('2d');
     Chart.defaults.font.size = 14;
     Chart.defaults.color = '#e6e6e6';
-    var myChart = new Chart(ctx, {
+    if(result[3] == 'game'){
+        var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
                 labels: [names[0], names[1]],
@@ -217,13 +216,86 @@
                     borderWidth: 3
                 },{
                     label: 'Min',
-                    data: [result[0]['score'], result[1]['score']],
+                    data: [result[0]['min_score'], result[1]['min_score']],
                     color:[
                         '#ffff'
                     ],
                     backgroundColor: [
                         'rgb(222, 222, 222,0.7)',
                         'rgb(222, 222, 222,0.7)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    hoverBackgroundColor: "rgb(17, 24, 39,0.7)",
+                    hoverBorderColor: "rgb(52, 211, 153,1)",
+                    borderColor: [
+                        'rgb(17, 24, 39,0.7)',
+                        'rgb(17, 24, 39,0.7)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 3
+                },
+            
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid:{
+                        color: "rgb(181, 181, 181,0.7)"
+                    }
+                },
+                x:{
+                    grid: {
+                        color:  "rgb(181, 181, 181,0.7)"
+                    },
+                    
+                },
+            
+            
+            
+        },
+        indexAxis: 'y',
+            plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#34D399',
+                        }
+                    },
+                title: {
+                    display: true,
+                    color: '#34D399',
+                    text: result[2] + ' - ' + result[4] ,
+                    font:{
+                        size: 17,
+                    }
+                },
+                
+            },
+        }
+    });
+    }
+    else{
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+                labels: [names[0], names[1]],
+                datasets: [{
+                    label: 'Score',
+                    data: [result[0]['score'], result[1]['score']],
+                    color:[
+                        '#ffff'
+                    ],
+                    backgroundColor: [
+                        'rgb(52, 211, 153,0.6)',
+                        'rgb(52, 211, 153,0.6)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
@@ -282,6 +354,8 @@
             },
         }
     });
+    }
+   
 });
  
 

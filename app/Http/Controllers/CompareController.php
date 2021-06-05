@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\App;
 use App\Models\Cpu;
+use App\Models\Gpu;
+use App\Models\Ram;
+use App\Models\Mobo;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +27,7 @@ class CompareController extends Controller
                 $cpu2_id = $cpu2->id;
                 $cpu_ids = array($cpu1_id,$cpu2_id);
                 $names = array($cpu1->name,$cpu2->name);
+                $picked = array($cpu1,$cpu2);
                 $overall = array();
                 $apps = App::all();
         
@@ -46,12 +50,17 @@ class CompareController extends Controller
                                 }
                             }
                         }
-                        array_push($graph1,$app->name,$app->type);
+                        $gpuName = Gpu::find($graphy['gpu_id']);
+                        $moboName = Mobo::find($graphy['mobo_id']);
+                        $ramName = Ram::find($graphy['ram_id']);
+                        array_push($graph1,$app->name,$app->type,$gpuName->name);
                         array_push($overall,$graph1);
                         $graph1 = array();
                     }
                 }
-                dd($overall);
+
+                array_push($names,$moboName->name,$ramName->name);
+                //dd($overall);
                 if(count($overall) == 0){
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
@@ -63,7 +72,7 @@ class CompareController extends Controller
                 $apps = App::whereIn('name',$appNames)->get();
                 //dd($usedApps[2][0]->id);
                 //dd($apps);
-                return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids]);
+                return view('compare',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids,'picked'=>$picked]);
             }
 
             session()->flash('error','You have to select both CPUs for comparison');
