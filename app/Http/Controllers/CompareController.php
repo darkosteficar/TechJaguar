@@ -12,6 +12,8 @@ class CompareController extends Controller
 {
     public function compare(Request $request)
     {
+        
+        $gpus = $graph1 = array();
         $appNames = array();
         $cpus = Cpu::all();
         if($request->has('cpu1') && $request->has('cpu2')){
@@ -30,14 +32,26 @@ class CompareController extends Controller
                         $query->where('cpu_id','=',$cpu1_id)->orWhere('cpu_id','=',$cpu2_id);
                     })->get()->toArray();
                     if(count($graph) >= 2){
+                        
                         foreach($graph as $graphy){
-                            
+                            array_push($gpus,$graphy['gpu_id']);
                         }
-                        array_push($graph,$app->name,$app->type);
-                        array_push($overall,$graph);
+
+                        $duplicateGpus = array_values(array_unique(array_diff_assoc($gpus,array_unique($gpus))));
+                        
+                        foreach($graph as $graphy){
+                            if($graphy['gpu_id'] == $duplicateGpus[0]){
+                                if(count($graph1) < 2){
+                                    array_push($graph1,$graphy);
+                                }
+                            }
+                        }
+                        array_push($graph1,$app->name,$app->type);
+                        array_push($overall,$graph1);
+                        $graph1 = array();
                     }
                 }
-              
+                dd($overall);
                 if(count($overall) == 0){
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
