@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="mt-7 ml-12">
-            <form action="{{ route('compare', []) }}" method="GET">
+            <form action="{{ route('compareCpu', []) }}" method="GET">
                 <input type="hidden" name="cpu1" id="cpu1_id">
                 <input type="hidden" name="cpu2" id="cpu2_id">
                 <button class="hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-900 bg-opacity-90 border border-green-400 text-green-400 transition ease-in duration-300" type="submit">

@@ -38,4 +38,9 @@ class StorageController extends Controller
         session()->flash('success', 'Radna memorija uspješno obrisana!' );
         return redirect()->route('build');   
     }
+
+
+
+
+    
 }

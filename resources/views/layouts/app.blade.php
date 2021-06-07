@@ -73,11 +73,29 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('compare', []) }}">
-                            <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
-                                hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
-                                Compare</p>
-                        </a>
+                           
+                        <div class="relative " x-data="{show: false}">
+                            <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
+                            hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
+                                <p class="text-green-400 font-bold text-xl  ">
+                            Compare</p>
+                            </button>
+                        
+                            <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900  justify-between  pl-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex w-48" id="news-dropdown">
+                                <div class="mr-4">
+                                    <div class="bg-gray-700 mt-2 py-1 ">
+                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 text-white ">Komponente</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-900 bg-opacity-80 p-2 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
+                                        <a href="{{ route('compareCpu', []) }}"><p class="text-center">Procesori</p></a>
+                                    </div>
+                                    <div class="bg-gray-900 bg-opacity-80 p-2 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
+                                        <a href="{{ route('compareGpu', []) }}"><p class="text-center">Grafičke kartice</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <a href="{{ route('build', []) }}">
                         <p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
                         hover:text-green-50 transition duration-500 ease-in hover:border-green-400">

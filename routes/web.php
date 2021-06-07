@@ -40,7 +40,8 @@ Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');
 Route::get('/category/{category}',[NewsController::class,'category'])->name('category');
 Route::get('/manufacturer/{manufacturer}',[NewsController::class,'manufacturer'])->name('manufacturer');
 
-Route::get('/compare',[CompareController::class,'compare'])->name('compare');
+Route::get('/compareCpu',[CompareController::class,'compareCpu'])->name('compareCpu');
+Route::get('/compareGpu',[CompareController::class,'compareGpu'])->name('compareGpu');
 
 Route::get('/build',[BuildController::class,'index'])->name('build');
 Route::get('/build/rams',[BuildController::class,'select_ram'])->name('build.rams');
