@@ -20,7 +20,7 @@ class CompareController extends Controller
         $appNames = array();
         $cpus = Cpu::all();
         if($request->has('cpu1') && $request->has('cpu2')){
-            if($request->cpu1 != null && $request->cpu2 != null){
+            if($request->cpu1 != null && $request->cpu2 != null && ($request->cpu1 != $request->cpu2)){
                 $cpu1 = Cpu::find($request->cpu1);
                 $cpu2 = Cpu::find($request->cpu2);
                 $cpu1_id = $cpu1->id;
@@ -96,7 +96,7 @@ class CompareController extends Controller
         $appNames = array();
         $gpus = Gpu::all();
         if($request->has('gpu1') && $request->has('gpu1')){
-            if($request->gpu1 != null && $request->gpu2 != null){
+            if($request->gpu1 != null && $request->gpu2 != null  && ($request->gpu1 != $request->gpu2)){
                 $gpu1 = Gpu::find($request->gpu1);
                 $gpu2 = Gpu::find($request->gpu2);
                 $gpu1_id = $gpu1->id;
@@ -176,7 +176,10 @@ class CompareController extends Controller
             $percent = ($calc / $score2) * 100;
             if($percent > 15){
                 $graph1['perDiff'] = 'bigDiff';
-           }
+            }
+            else{
+                $graph1['perDiff'] = 'smallDiff';
+            }
         }
         else{
             $cpu_win = $component . '2_win';
@@ -184,6 +187,9 @@ class CompareController extends Controller
             $percent = ($calc / $score1) * 100;
             if($percent > 15){
                  $graph1['perDiff'] = 'bigDiff';
+            }
+            else{
+                $graph1['perDiff'] = 'smallDiff';
             }
         }
         array_push($array,$cpu_win,$graph1);

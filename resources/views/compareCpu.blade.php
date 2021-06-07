@@ -10,7 +10,7 @@
     @endif
 
 
-<div class="flex justify-between  w-3/5 mx-auto my-10 ">
+<div class="lg:flex justify-between  lg:w-3/5 mx-auto my-10 bg-gray-900 bg-opacity-50 py-2 pr-6 ">
     
    
         <div class="container ">
@@ -27,7 +27,7 @@
                     @endforeach
                 </div>
 
-                <div class="selected">
+                <div class="selected border border-green-400">
                     @if (isset($names))
                         {{ $names[0] }}
                     @else
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="container ml-5 ">
+        <div class="container lg:ml-5 ">
             <p class="font-bold text-2xl text-gray-200  mb-3 text-center">CPU 2</p>
 
             <div class="select-box mx-auto  ">
@@ -68,15 +68,84 @@
                 </div>
             </div>
         </div>
-        <div class="mt-7 ml-12">
+        <div class="lg:mt-7 ml-12">
             <form action="{{ route('compareCpu', []) }}" method="GET">
                 <input type="hidden" name="cpu1" id="cpu1_id">
                 <input type="hidden" name="cpu2" id="cpu2_id">
                 <button class="hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-900 bg-opacity-90 border border-green-400 text-green-400 transition ease-in duration-300" type="submit">
                     COMPARE
                 </button>
-        </form>
-        </div>
+            </form>
+            @if (isset($names))
+                <div x-data="{show: false}">
+                    <button @click="show = true" class="hover:bg-green-400 py-2 px-4 my-4 font-medium hover:text-gray-800  text-lg shadow-2xl rounded-md bg-gray-900 bg-opacity-90 border border-green-400 text-green-400 transition ease-in duration-300 lg:hidden block" >
+                        FILTERS
+                    </button>
+                
+                    <div  x-show.transition.origin.top.left="show" @click.away="show = false" class="  top-10 z-20 bg-gray-900  justify-between  pl-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex w-80" id="news-dropdown">
+                        <div class=" bg-gray-900 bg-opacity-90 mr-4 text-green-400  ">
+                            <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
+                            <div class="ml-4 flex flex-col">
+                                <p class="text-lg font-bold">Resolutions</p>
+                                <label class="inline-flex items-center">
+                                <span class="ml-2 text-lg mr-2">1080p</span>
+                                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1080p" checked onchange="filter(this)">
+                                </label>
+                                <label class="inline-flex items-center">
+                                <span class="ml-2 text-lg mr-2">1440p</span>
+                                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1440p" checked onchange="filter(this)">
+                                </label>
+                                <label class="inline-flex items-center">
+                                <span class="ml-2 text-lg mr-2">4K</span>
+                                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked>
+                                </label>
+                                <p class="text-lg mt-4 font-bold">Apps</p>
+                                @foreach ($apps as $app)
+                                    <label class="inline-flex items-center">
+                                        <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
+                                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
+                                    </label>
+                                @endforeach
+                                <p class="text-lg mt-4 font-bold">CPU Wins</p>
+                                <label class="inline-flex items-center">
+                                    <span class="ml-2 text-lg mr-2">CPU 1 Wins</span>
+                                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu1_win" checked onchange="filter(this)">
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <span class="ml-2 text-lg mr-2">CPU 2 Wins</span>
+                                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu2_win" checked onchange="filter(this)" >
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <span class="ml-2 text-lg mr-2"> {{ '<15% Win' }} </span>
+                                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="smallDiff" checked onchange="filter(this)" >
+                                  </label>
+                                  <label class="inline-flex items-center">
+                                    <span class="ml-2 text-lg mr-2"> {{ '>15% Win' }} </span>
+                                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="bigDiff" checked onchange="filter(this)" >
+                                  </label>
+                    
+                                <p class="text-lg mt-4 font-bold">Type</p>
+                                <label class="inline-flex items-center">
+                                <span class="ml-2 text-lg mr-2">Benchmark</span>
+                                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="benchmark" checked onchange="filter(this)">
+                                </label>
+                                <label class="inline-flex items-center">
+                                <span class="ml-2 text-lg mr-2">Game</span>
+                                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="game" checked onchange="filter(this)" >
+                                </label>
+                                <label class="inline-flex items-center">
+                                <span class="ml-2 text-lg mr-2">Productivity</span>
+                                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="productivity" checked onchange="filter(this)" >
+                                </label>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
+        
+            </div>
 
 </div>
 
@@ -87,9 +156,9 @@
 @endif
 
 
-<div class="flex justify-center">
+<div class="lg:flex justify-center ">
     @if (isset($names))
-    <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400">
+    <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400 lg:block hidden">
         <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
         <div class="ml-4 flex flex-col">
             <p class="text-lg font-bold">Resolutions</p>
@@ -123,9 +192,13 @@
               </label>
               <label class="inline-flex items-center">
                 <span class="ml-2 text-lg mr-2"> {{ '<15% Win' }} </span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="smallDiff" checked onchange="filter(this)" >
+              </label>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2"> {{ '>15% Win' }} </span>
                 <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="bigDiff" checked onchange="filter(this)" >
               </label>
-
+             
               <p class="text-lg mt-4 font-bold">Type</p>
               <label class="inline-flex items-center">
                 <span class="ml-2 text-lg mr-2">Benchmark</span>
@@ -148,22 +221,22 @@
      
         
     </div>
-    <div class="w-2/5">
+    <div class="lg:w-2/5 w-full mb-2">
 
         @php
             $count = 0;
         @endphp
             @foreach ($apps as $app)
-            @php
-                $cpu1_res = $results[$count][0]['score'];
-                $cpu2_res = $results[$count][1]['score'];
-            @endphp
-            <div class=" mx-auto bg-gray-900 bg-opacity-90  {{ $app->tag }} {{ $app->resolution  }} px-24 py-4 border-t-2 border-green-400 {{ $results[$count][5] }} {{ $results[$count][3] }} {{ $results[$count]['perDiff'] }}" >
-                <canvas id="myChart{{ $app->id }}" ></canvas>
-            </div>
-            @php
-                $count++;
-            @endphp
+                @php
+                    $cpu1_res = $results[$count][0]['score'];
+                    $cpu2_res = $results[$count][1]['score'];
+                @endphp
+                <div class=" mx-auto  bg-gray-900 bg-opacity-90  {{ $app->tag }} {{ $app->resolution  }} lg:px-24 px-10 py-4 border-t-2 border-green-400 {{ $results[$count][5] }} {{ $results[$count][3] }} {{ $results[$count]['perDiff'] }}" >
+                    <canvas id="myChart{{ $app->id }}" ></canvas>
+                </div>
+                @php
+                    $count++;
+                @endphp
             @endforeach
 
             @php
@@ -172,7 +245,7 @@
         
         
     </div>
-    <div class="w-1/5 bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400">
+    <div class="lg:w-1/5 w-full bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400 mb-4">
         <div class="p-4">
             <p class="font-semibold text-lg text-gray-200">Config 1</p>
             <p>CPU: {{ $names[0] }}</p>
@@ -187,9 +260,9 @@
         </div>
     </div>
     @endif
-
+    
 </div>
-
+ 
 
 
 <?php  if(isset($names)){ ?>
