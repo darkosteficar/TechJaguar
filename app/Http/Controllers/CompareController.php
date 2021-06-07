@@ -15,7 +15,7 @@ class CompareController extends Controller
 {
     public function compare(Request $request)
     {
-        
+        $cpu_win =array();
         $gpus = $graph1 = array();
         $appNames = array();
         $cpus = Cpu::all();
@@ -53,14 +53,19 @@ class CompareController extends Controller
                         $gpuName = Gpu::find($graphy['gpu_id']);
                         $moboName = Mobo::find($graphy['mobo_id']);
                         $ramName = Ram::find($graphy['ram_id']);
-                        array_push($graph1,$app->name,$app->type,$gpuName->name);
+
+                        $cpu_win = $this->calcPercent($graph[0]['score'],$graph[1]['score'],$graph1);
+                        $graph1 = $cpu_win[1];
+                        $cpuWin = $cpu_win[0];
+
+                        array_push($graph1,$app->name,$app->type,$gpuName->name,$cpuWin);
                         array_push($overall,$graph1);
                         $graph1 = array();
                     }
                 }
 
-                array_push($names,$moboName->name,$ramName->name);
-                //dd($overall);
+               array_push($names,$moboName->name,$ramName->name);
+               //dd($overall);
                 if(count($overall) == 0){
                     session()->flash('status','No matching comparisons found');
                     return redirect()->route('compare');
@@ -83,5 +88,28 @@ class CompareController extends Controller
         
         
       
+    }
+
+    public function calcPercent($score1,$score2,$graph1)
+    {
+        $array = array();
+        if($score1 > $score2){
+            $cpu_win = 'cpu1_win';
+            $calc = $score1 - $score2;
+            $percent = ($calc / $score2) * 100;
+            if($percent > 15){
+                $graph1['perDiff'] = 'bigDiff';
+           }
+        }
+        else{
+            $cpu_win = 'cpu2_win';
+            $calc = $score2 - $score1;
+            $percent = ($calc / $score1) * 100;
+            if($percent > 15){
+                 $graph1['perDiff'] = 'bigDiff';
+            }
+        }
+        array_push($array,$cpu_win,$graph1);
+        return $array;
     }
 }

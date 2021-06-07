@@ -112,6 +112,34 @@
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
                 </label>
               @endforeach
+              <p class="text-lg mt-4 font-bold">CPU Wins</p>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">CPU 1 Wins</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu1_win" checked onchange="filter(this)">
+              </label>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">CPU 2 Wins</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu2_win" checked onchange="filter(this)" >
+              </label>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2"> {{ '<15% Win' }} </span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="bigDiff" checked onchange="filter(this)" >
+              </label>
+
+              <p class="text-lg mt-4 font-bold">Type</p>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">Benchmark</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="benchmark" checked onchange="filter(this)">
+              </label>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">Game</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="game" checked onchange="filter(this)" >
+              </label>
+              <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">Productivity</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="productivity" checked onchange="filter(this)" >
+              </label>
+              
         </div>
 
       
@@ -129,15 +157,13 @@
             @php
                 $cpu1_res = $results[$count][0]['score'];
                 $cpu2_res = $results[$count][1]['score'];
-                $count++;
             @endphp
-            <div class=" mx-auto bg-gray-900 bg-opacity-90  {{ $app->tag }} {{ $app->resolution  }} px-24 py-4 border-t-2 border-green-400 @if ($cpu1_res < $cpu2_res)
-               {{ "cpu2_win" }} 
-            @else
-            {{ "cpu1_win" }} 
-            @endif">
+            <div class=" mx-auto bg-gray-900 bg-opacity-90  {{ $app->tag }} {{ $app->resolution  }} px-24 py-4 border-t-2 border-green-400 {{ $results[$count][5] }} {{ $results[$count][3] }} {{ $results[$count]['perDiff'] }}" >
                 <canvas id="myChart{{ $app->id }}" ></canvas>
             </div>
+            @php
+                $count++;
+            @endphp
             @endforeach
 
             @php
