@@ -22,4 +22,9 @@ class Cooler extends Model
     {
         return $this->belongsTo(Manufacturer::class);
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('noise_level','like','%' . $val . '%')->orWhere('max_power','like','%' . $val . '%')->orWhere('height','like','%' . $val . '%');
+    }
 }

@@ -24,14 +24,14 @@
 
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="text-md text-green-400 p-2 bg-gray-900 bg-opacity-90 leading-5">
-                    {!! __('Showing') !!}
-                    <span class="font-medium">{{ $paginator->firstItem() }}</span>
-                    {!! __('to') !!}
-                    <span class="font-medium">{{ $paginator->lastItem() }}</span>
-                    {!! __('of') !!}
-                    <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('results') !!}
+                <p class="text-md text-green-400 p-2 bg-gray-900 bg-opacity-50 leading-5">
+                    {!! __('Prikazuje se') !!}
+                    <span class="font-semibold text-gray-300">{{ $paginator->firstItem() }}</span>
+                    {!! __('do') !!}
+                    <span class="font-semibold text-gray-300">{{ $paginator->lastItem() }}</span>
+                    {!! __('od') !!}
+                    <span class="font-semibold text-gray-300">{{ $paginator->total() }}</span>
+                    {!! __('rezultata') !!}
                 </p>
             </div>
 
