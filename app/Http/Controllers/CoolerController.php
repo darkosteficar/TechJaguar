@@ -11,8 +11,7 @@ class CoolerController extends Controller
     
     public function index()
     {
-        $coolers = Cooler::all();
-        return view('builds.coolers',['coolers'=>$coolers]);
+        return view('components',['component'=>'coolers']);
     }
 
     public function add(Request $r)

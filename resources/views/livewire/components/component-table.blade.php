@@ -147,6 +147,7 @@
                 @endforeach
 
             </div>
+            
             {{ $coolers->links('pagination::tailwind-jag') }}
 
         </div>

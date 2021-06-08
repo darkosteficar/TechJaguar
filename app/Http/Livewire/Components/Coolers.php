@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Livewire;
-use App\Models\Cooler;
+namespace App\Http\Livewire\Components;
 
+use App\Models\Cooler;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ComponentTable extends Component
+class Coolers extends Component
 {
     use WithPagination;
     public $sortBy = 'name';
     public $sortDirection = 'asc';
     public $perPage = 10;
     public $search = '';
-
 
     public function updatingSearch()
     {
@@ -36,6 +35,6 @@ class ComponentTable extends Component
     {
         $coolers = Cooler::query()->search($this->search)->orderBy($this->sortBy,$this->sortDirection)->paginate($this->perPage);
         
-        return view('livewire.component-table',['coolers'=>$coolers]);
+        return view('livewire.components.coolers',['coolers'=>$coolers]);
     }
 }
