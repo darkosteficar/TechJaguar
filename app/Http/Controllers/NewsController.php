@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use App\Models\Post;
+use App\Models\Image;
 use App\Models\Category;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;

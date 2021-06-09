@@ -182,6 +182,10 @@
             */
         
     </script>
+    
+    
+    @livewire('livewire-ui-modal')
+    @livewireUIScripts
     @livewireScripts
 
 </body>

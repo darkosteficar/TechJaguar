@@ -20,4 +20,9 @@ class PcCase extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('type','like','%' . $val . '%')->orWhere('max_gpu_length','like','%' . $val . '%')->orWhere('height','like','%' . $val . '%');
+    }
 }

@@ -838,7 +838,7 @@ class ComponentController extends Controller
                     File::delete(public_path('images/'.$image->path));
                 }
                 $imagesModel->delete();
-                foreach($request->ram_images as $image){
+                foreach($request->images as $image){
                     $imageName = time().rand().'.'.$image->extension();  
                     $image->move(public_path('images'), $imageName);
                     Image::create([

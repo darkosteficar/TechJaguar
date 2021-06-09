@@ -10,8 +10,7 @@ class PcCaseController extends Controller
 {
     public function index()
     {
-        $pc_cases = PcCase::all();
-        return view('builds.pc_cases',['pc_cases'=>$pc_cases]);
+        return view('components',['component'=>'pc-cases']);
     }
 
     public function add(Request $r)
