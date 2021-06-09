@@ -11,8 +11,7 @@ class FanController extends Controller
 {
     public function index()
     {
-        $fans = Fan::all();
-        return view('builds.fans',['fans'=>$fans]);
+        return view('components',['component'=>'fans']);
     }
 
     public function add(Request $r)

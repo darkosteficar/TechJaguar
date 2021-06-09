@@ -9,19 +9,19 @@
             <div class="border border-green-400  mr-2 ">
                 <p class="font-semibold text-gray-200 text-xl pl-3 py-1 bg-green-600 bg-opacity-70">Omiljeno</p>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">moboMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">moboMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">moboMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">moboMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
             </div>
@@ -29,7 +29,7 @@
         <div class="lg:w-5/6 w-full mx-auto my-5 font-semibold text-green-400 ">
             <div class="lg:flex items-center justify-between  bg-gray-900 bg-opacity-70 px-3 py-3">
                 <div class="flex justify-between  mb-4">
-                    <p class="mb-1 font-semibold lg:text-3xl text-xl text-gray-200 w-1/3">KUČIŠTA</p>
+                    <p class="mb-1 font-semibold lg:text-3xl text-xl text-gray-200 w-1/3">MATIČNE PLOČE</p>
                     <div x-data="{show: false}" class="w-2/3 ">
                         <button @click="{show = !show}" @click.away="show = false" class="hover:bg-green-400 py-1 px-4 mb-2 font-medium hover:text-gray-800 shadow-2xl rounded-md bg-gray-900 bg-opacity-90 border border-green-400 text-green-400 transition ease-in duration-300 lg:hidden inline-block float-right" >Sorting</button>
                         <div x-show.transition.origin.top.left="show"  class=" justify-left pl-3  items-center  text-gray-200  bg-green-600 py-2 rounded-t-sm  select-none bg-opacity-70 space-y-2 flex-col mb-2">
@@ -46,20 +46,19 @@
                                 </div>
                             </div>
                             <div class="flex pr-2 space-x-2">
-                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('height')">
-                                    @include('partials._sort-icon',['field'=>'height'])
-                                    <p>VISINA</p>
+                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('socket')">
+                                    @include('partials._sort-icon',['field'=>'socket'])
+                                    <p>SOCKET</p>
                                 </div>
-                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('max_power')">
-                                    @include('partials._sort-icon',['field'=>'type'])
-                                    <p>TIP</p>
+                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('form_factor')">
+                                    @include('partials._sort-icon',['field'=>'form_factor'])
+                                    <p>VELIČINA</p>
                                 </div>
                             </div>
-                            <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/2 flex items-center" wire:click="sortBy('noise_level')">
-                                @include('partials._sort-icon',['field'=>'max_gpu_length'])
-                                <p>MAKS. DUŽINA GPU-a</p>
+                            <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/2 flex items-center" wire:click="sortBy('max_memory')">
+                                @include('partials._sort-icon',['field'=>'max_memory'])
+                                <p>KAPACITET MEMORIJE</p>
                             </div>
-                        
                             <p class="w-2/12" "></p>
                         </div>
                     </div>
@@ -79,7 +78,7 @@
                         <i class="fas fa-search mr-2 fa-lg text-green-400" ></i>
                         <input type="text"
                             class=" bg-gray-800 border-green-400 border w-full h-10 rounded-sm focus:border-gray-900 focus:bg-green-500 pl-4 text-white lg:text-md text-sm  focus:outline-none focus:ring-0 placeholder-gray-400 focus:placeholder-white"
-                             wire:model.debounce.300ms="search" placeholder="Kučišta">
+                             wire:model.debounce.300ms="search" placeholder="Matične ploče">
                     </div>
                 </div>
                 
@@ -97,52 +96,51 @@
                         @include('partials._sort-icon',['field'=>'manufacturer_id'])
                         <p>PROIZVOĐAČ</p>
                     </div>
-                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-2/12 flex items-center" wire:click="sortBy('type')">
-                        @include('partials._sort-icon',['field'=>'type'])
-                        <p>TIP</p>
+                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-2/12 flex items-center" wire:click="sortBy('socket')">
+                        @include('partials._sort-icon',['field'=>'socket'])
+                        <p>SOCKET</p>
                     </div>
-                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('height')">
-                        @include('partials._sort-icon',['field'=>'height'])
-                        <p>VISINA</p>
+                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('form_factor')">
+                        @include('partials._sort-icon',['field'=>'form_factor'])
+                        <p>VELIČINA</p>
                     </div>
-                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('max_gpu_length')">
-                        @include('partials._sort-icon',['field'=>'max_gpu_length'])
-                        <p>MAX GPU</p>
+                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('max_memory')">
+                        @include('partials._sort-icon',['field'=>'max_memory'])
+                        <p>KAPACITET MEMORIJE</p>
                     </div>
                     <p class="w-2/12" "></p>
                 </div>
 
-                @foreach ($pcCases as $pcCase)
+                @foreach ($mobos as $mobo)
                     <div class="flex items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400 text-lg ">
 
                         <div class="w-1/12">
                             <div class="flex items-center py-2 ">
-                                <img src="../images/{{ $pcCase->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
+                                <img src="../images/{{ $mobo->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
                             </div>
                         </div>
                         <div class="flex w-3/12" >
-                            <p class="">{{ $pcCase->name }}</p>
-                            
+                            <p class="">{{ $mobo->name }}</p>
                         </div>
                         <div class="flex w-2/12">
-                            <p>{{ $pcCase->manufacturer->name }}</p>
+                            <p>{{ $mobo->manufacturer->name }}</p>
                         </div>
                         <div class="w-2/12 ">
-                            <p>{{ $pcCase->type }} </p>
+                            <p>{{ $mobo->socket }} </p>
                         </div>
                         <div class="w-1/12">
-                            <p>{{ $pcCase->height }}  mm</p>
+                            <p>{{ $mobo->form_factor }}  </p>
                         </div>
                         <div class="w-1/12">
-                            <p>{{ $pcCase->max_gpu_length }} mm</p>
+                            <p>{{ $mobo->max_memory }} GB</p>
                         </div>
                         
                         <div class="w-1/12 flex justify-center">
                             
                             
-                            <form action="{{ route('build.pc_case.add', []) }}" method="POST">
+                            <form action="{{ route('build.mobo.add', []) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $pcCase->id }}">
+                                <input type="hidden" name="id" value="{{ $mobo->id }}">
                                 
                                 <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white">
                                     DODAJ
@@ -151,66 +149,59 @@
     
                         </div>
                         <div class="w-1/12 flex justify-center">
-                                <button
-                                    class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.pc-cases", @json(["pcCase" => "$pcCase->id"]))'">
-                                    DETALJI
-                                </button>
+                            <button
+                                class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.mobos", @json(["mobo" => "$mobo->id"]))'>
+                                DETALJI
+                            </button>
                         </div>
-
-
                     </div>
                 @endforeach
-
-
-                
-
             </div>
-
+            
             <div class="mb-2 lg:hidden"  >
-                
-                @foreach ($pcCases as $pcCase)
+                @foreach ($mobos as $mobo)
                     <div class=" items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400  ">
                         <div class="flex items-center space-x-3">
                             <div class="w-2/12">
                                 <div class="flex items-center py-2 ">
-                                    <img src="../images/{{ $pcCase->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
+                                    <img src="../images/{{ $mobo->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
                                 </div>
                             </div>
                             <div class=" w-3/12" >
-                                <p class="">{{ $pcCase->name }}</p>
+                                <p class="">{{ $mobo->name }}</p>
                                 
                             </div>
-                            <form action="{{ route('build.pc_case.add', []) }}" method="POST">
+                            <form action="{{ route('build.mobo.add', []) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $pcCase->id }}">
+                                <input type="hidden" name="id" value="{{ $mobo->id }}">
                                 
                                 <button class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white">
                                     DODAJ
                                 </button>
                             </form>
                             <button
-                                class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.pc-cases", @json(["pcCase" => "$pcCase->id"]))'>
+                                class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.mobos", @json(["mobo" => "$mobo->id"]))'>
                                 DETALJI
                             </button>
                         </div>
                         <div class="flex">
                             <div class=" w-4/12">
                                 <p class="font-light text-sm">PROIZVOĐAČ</p>
-                                <p>{{ $pcCase->manufacturer->name }}</p>
+                                <p>{{ $mobo->manufacturer->name }}</p>
                             </div>
                             <div class="w-4/12 ">
-                                <p class="font-light text-sm">TIP</p>
-                                <p>{{ $pcCase->type }} db</p>
+                                <p class="font-light text-sm">SOCKET</p>
+                                <p>{{ $mobo->socket }} </p>
                             </div>
                             <div class="w-4/12">
-                                <p class="font-light text-sm">VISINA</p>
-                                <p>{{ $pcCase->height }}  mm</p>
+                                <p class="font-light text-sm">VELIČINA</p>
+                                <p>{{ $mobo->form_factor }}  </p>
                             </div>
                         </div>
                         <div class="flex my-2">
                             <div class="w-4/12">
-                                <p class="font-light text-sm">MAKS. DUŽINA GPU-a</p>
-                                <p>{{ $pcCase->max_gpu_length }} W</p>
+                                <p class="font-light text-sm">KAPACITET MEMORIJE</p>
+                                <p>{{ $mobo->max_memory }} GB</p>
                             </div>
                         </div>
                     </div>
@@ -221,7 +212,7 @@
 
             </div>
             
-            {{ $pcCases->links('pagination::tailwind-jag') }}
+            {{ $mobos->links('pagination::tailwind-jag') }}
 
         </div>
 

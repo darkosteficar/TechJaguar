@@ -28,4 +28,9 @@ class Mobo extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('socket','like','%' . $val . '%')->orWhere('max_memory','like','%' . $val . '%')->orWhere('memory_type','like','%' . $val . '%');
+    }
 }

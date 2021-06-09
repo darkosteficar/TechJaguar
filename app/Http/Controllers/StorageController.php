@@ -11,8 +11,7 @@ class StorageController extends Controller
 {
     public function index()
     {
-        $storages = Storage::all();
-        return view('builds.storages',['storages'=>$storages]);
+        return view('components',['component'=>'storages']);
     }
 
     public function add(Request $r)

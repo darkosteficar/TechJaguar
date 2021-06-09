@@ -23,4 +23,9 @@ class Fan extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('speed','like','%' . $val . '%')->orWhere('noise','like','%' . $val . '%')->orWhere('air_flow','like','%' . $val . '%');
+    }
 }

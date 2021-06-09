@@ -10,8 +10,7 @@ class CpuController extends Controller
 {
     public function index()
     {
-        $cpus = Cpu::all();
-        return view('builds.cpus',['cpus'=>$cpus]);
+        return view('components',['component'=>'cpus']);
     }
 
     public function add(Request $r)

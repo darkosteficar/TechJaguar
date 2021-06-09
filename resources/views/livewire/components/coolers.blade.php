@@ -188,12 +188,10 @@
                                     DODAJ
                                 </button>
                             </form>
-                            <a href="">
-                                <button
-                                    class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white">
-                                    DETALJI
-                                </button>
-                            </a>
+                            <button
+                                class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.coolers", @json(["cooler" => "$cooler->id"]))'>
+                                DETALJI
+                            </button>
                         </div>
                         <div class="flex">
                             <div class=" w-4/12">

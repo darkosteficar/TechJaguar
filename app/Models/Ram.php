@@ -28,4 +28,9 @@ class Ram extends Model
     {
         return $this->morphToMany(Build::class,'buildable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('speed','like','%' . $val . '%')->orWhere('type','like','%' . $val . '%')->orWhere('size','like','%' . $val . '%');
+    }
 }

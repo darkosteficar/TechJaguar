@@ -11,8 +11,7 @@ class GpuController extends Controller
 {
     public function index()
     {
-        $gpus = Gpu::all();
-        return view('builds.gpus',['gpus'=>$gpus]);
+        return view('components',['component'=>'gpus']);
     }
 
     public function add(Request $r)

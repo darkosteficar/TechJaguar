@@ -54,7 +54,7 @@ Route::post('/build/mobo/add',[MoboController::class,'add'])->name('build.mobo.a
 Route::delete('/build/mobo/remove',[MoboController::class,'remove'])->name('build.mobo.remove');
 
 Route::get('/build/cpus',[CpuController::class,'index'])->name('build.cpu');
-Route::post('/build/cpu/add',[CpuController::class,'add'])->name('build.cpu.add');
+Route::get('/build/cpu/add',[CpuController::class,'add'])->name('build.cpu.add');
 Route::delete('/build/cpu/remove',[CpuController::class,'remove'])->name('build.cpu.remove');
 
 Route::get('/build/gpus',[GpuController::class,'index'])->name('build.gpu');

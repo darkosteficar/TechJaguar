@@ -21,4 +21,9 @@ class Storage extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('type','like','%' . $val . '%')->orWhere('cache','like','%' . $val . '%')->orWhere('interface','like','%' . $val . '%');
+    }
 }

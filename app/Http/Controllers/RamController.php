@@ -11,8 +11,7 @@ class RamController extends Controller
 {
     public function index()
     {
-        $rams = Ram::all();
-        return view('builds.rams',['rams'=>$rams]);
+        return view('components',['component'=>'rams']);
     }
 
     public function add(Request $r)

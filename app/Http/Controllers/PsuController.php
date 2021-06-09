@@ -10,8 +10,7 @@ class PsuController extends Controller
 {
     public function index()
     {
-        $psus = Psu::all();
-        return view('builds.psus',['psus'=>$psus]);
+        return view('components',['component'=>'psus']);
     }
 
     public function add(Request $r)

@@ -23,4 +23,9 @@ class Cpu extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('microarchitecture','like','%' . $val . '%')->orWhere('series','like','%' . $val . '%')->orWhere('socket','like','%' . $val . '%');
+    }
 }

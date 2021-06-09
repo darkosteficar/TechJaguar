@@ -20,4 +20,9 @@ class Psu extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+
+    public function scopeSearch($query,$val)
+    {
+        return $query->where('name','like','%' . $val . '%')->orWhere('wattage','like','%' . $val . '%')->orWhere('length','like','%' . $val . '%')->orWhere('type','like','%' . $val . '%');
+    }
 }

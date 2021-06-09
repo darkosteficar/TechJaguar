@@ -10,8 +10,7 @@ class MoboController extends Controller
 {
     public function index()
     {
-        $mobos = Mobo::all();
-        return view('builds.mobos',['mobos'=>$mobos]);
+        return view('components',['component'=>'mobos']);
     }
 
     public function add(Request $r)

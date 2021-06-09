@@ -20,6 +20,7 @@ class CreateStoragesTable extends Migration
             $table->foreignId('manufacturer_id')->constrained()->onDelete('cascade');
             $table->integer('capacity');
             $table->string('type',10);
+            $table->integer('speed');
             $table->integer('cache');
             $table->string('interface',15);
             $table->boolean('nvme');

@@ -9,19 +9,19 @@
             <div class="border border-green-400  mr-2 ">
                 <p class="font-semibold text-gray-200 text-xl pl-3 py-1 bg-green-600 bg-opacity-70">Omiljeno</p>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">psuMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">psuMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">psuMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
                 <div class="flex items-center justify-between px-5 bg-gray-900 bg-opacity-70 py-2 border-b border-green-400">
-                        <p class="text-green-400 font-semibold">pcCaseMaster 212 EVO </p>
+                        <p class="text-green-400 font-semibold">psuMaster 212 EVO </p>
                         <img src="../images/212.jpg" alt="" width="60" class="border border-green-400">
                 </div>
             </div>
@@ -46,20 +46,19 @@
                                 </div>
                             </div>
                             <div class="flex pr-2 space-x-2">
-                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('height')">
-                                    @include('partials._sort-icon',['field'=>'height'])
-                                    <p>VISINA</p>
-                                </div>
-                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('max_power')">
+                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('type')">
                                     @include('partials._sort-icon',['field'=>'type'])
                                     <p>TIP</p>
                                 </div>
+                                <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-full flex items-center" wire:click="sortBy('length')">
+                                    @include('partials._sort-icon',['field'=>'length'])
+                                    <p>DUŽINA</p>
+                                </div>
                             </div>
-                            <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/2 flex items-center" wire:click="sortBy('noise_level')">
-                                @include('partials._sort-icon',['field'=>'max_gpu_length'])
-                                <p>MAKS. DUŽINA GPU-a</p>
+                            <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/2 flex items-center" wire:click="sortBy('efficiency_rating')">
+                                @include('partials._sort-icon',['field'=>'efficiency_rating'])
+                                <p>OCJENA EFIKASNOSTI</p>
                             </div>
-                        
                             <p class="w-2/12" "></p>
                         </div>
                     </div>
@@ -101,40 +100,39 @@
                         @include('partials._sort-icon',['field'=>'type'])
                         <p>TIP</p>
                     </div>
-                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('height')">
-                        @include('partials._sort-icon',['field'=>'height'])
-                        <p>VISINA</p>
+                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('length')">
+                        @include('partials._sort-icon',['field'=>'length'])
+                        <p>DUŽINA</p>
                     </div>
-                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('max_gpu_length')">
-                        @include('partials._sort-icon',['field'=>'max_gpu_length'])
-                        <p>MAX GPU</p>
+                    <div class="cursor-pointer border-b-2 border-transparent hover:border-gray-800 hover:text-gray-800 w-1/12 flex items-center" wire:click="sortBy('efficiency_rating')">
+                        @include('partials._sort-icon',['field'=>'efficiency_rating'])
+                        <p>OCJENA EFIKASNOSTI</p>
                     </div>
                     <p class="w-2/12" "></p>
                 </div>
 
-                @foreach ($pcCases as $pcCase)
+                @foreach ($psus as $psu)
                     <div class="flex items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400 text-lg ">
 
                         <div class="w-1/12">
                             <div class="flex items-center py-2 ">
-                                <img src="../images/{{ $pcCase->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
+                                <img src="../images/{{ $psu->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
                             </div>
                         </div>
                         <div class="flex w-3/12" >
-                            <p class="">{{ $pcCase->name }}</p>
-                            
+                            <p class="">{{ $psu->name }}</p>
                         </div>
                         <div class="flex w-2/12">
-                            <p>{{ $pcCase->manufacturer->name }}</p>
+                            <p>{{ $psu->manufacturer->name }}</p>
                         </div>
                         <div class="w-2/12 ">
-                            <p>{{ $pcCase->type }} </p>
+                            <p>{{ $psu->type }} </p>
                         </div>
                         <div class="w-1/12">
-                            <p>{{ $pcCase->height }}  mm</p>
+                            <p>{{ $psu->length }}  mm</p>
                         </div>
                         <div class="w-1/12">
-                            <p>{{ $pcCase->max_gpu_length }} mm</p>
+                            <p>{{ $psu->efficiency_rating }} </p>
                         </div>
                         
                         <div class="w-1/12 flex justify-center">
@@ -142,7 +140,7 @@
                             
                             <form action="{{ route('build.pc_case.add', []) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $pcCase->id }}">
+                                <input type="hidden" name="id" value="{{ $psu->id }}">
                                 
                                 <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white">
                                     DODAJ
@@ -151,66 +149,59 @@
     
                         </div>
                         <div class="w-1/12 flex justify-center">
-                                <button
-                                    class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.pc-cases", @json(["pcCase" => "$pcCase->id"]))'">
-                                    DETALJI
-                                </button>
+                            <button
+                                class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.psus", @json(["psu" => "$psu->id"]))'>
+                                DETALJI
+                            </button>
                         </div>
-
-
                     </div>
                 @endforeach
-
-
-                
-
             </div>
 
             <div class="mb-2 lg:hidden"  >
-                
-                @foreach ($pcCases as $pcCase)
+                @foreach ($psus as $psu)
                     <div class=" items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400  ">
                         <div class="flex items-center space-x-3">
                             <div class="w-2/12">
                                 <div class="flex items-center py-2 ">
-                                    <img src="../images/{{ $pcCase->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
+                                    <img src="../images/{{ $psu->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
                                 </div>
                             </div>
                             <div class=" w-3/12" >
-                                <p class="">{{ $pcCase->name }}</p>
+                                <p class="">{{ $psu->name }}</p>
                                 
                             </div>
                             <form action="{{ route('build.pc_case.add', []) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $pcCase->id }}">
+                                <input type="hidden" name="id" value="{{ $psu->id }}">
                                 
                                 <button class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white">
                                     DODAJ
                                 </button>
                             </form>
                             <button
-                                class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.pc-cases", @json(["pcCase" => "$pcCase->id"]))'>
+                                class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.psus", @json(["psu" => "$psu->id"]))'>
                                 DETALJI
                             </button>
                         </div>
                         <div class="flex">
                             <div class=" w-4/12">
                                 <p class="font-light text-sm">PROIZVOĐAČ</p>
-                                <p>{{ $pcCase->manufacturer->name }}</p>
+                                <p>{{ $psu->manufacturer->name }}</p>
                             </div>
                             <div class="w-4/12 ">
                                 <p class="font-light text-sm">TIP</p>
-                                <p>{{ $pcCase->type }} db</p>
+                                <p>{{ $psu->type }} </p>
                             </div>
                             <div class="w-4/12">
-                                <p class="font-light text-sm">VISINA</p>
-                                <p>{{ $pcCase->height }}  mm</p>
+                                <p class="font-light text-sm">DUŽINA</p>
+                                <p>{{ $psu->length }}  mm</p>
                             </div>
                         </div>
                         <div class="flex my-2">
                             <div class="w-4/12">
-                                <p class="font-light text-sm">MAKS. DUŽINA GPU-a</p>
-                                <p>{{ $pcCase->max_gpu_length }} W</p>
+                                <p class="font-light text-sm">OCJENA EFIKASNOSTI</p>
+                                <p>{{ $psu->efficiency_rating }} </p>
                             </div>
                         </div>
                     </div>
@@ -221,7 +212,7 @@
 
             </div>
             
-            {{ $pcCases->links('pagination::tailwind-jag') }}
+            {{ $psus->links('pagination::tailwind-jag') }}
 
         </div>
 
