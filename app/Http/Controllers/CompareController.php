@@ -64,7 +64,6 @@ class CompareController extends Controller
                        
                     }
                 }
-
                array_push($names,$moboName->name,$ramName->name);
                //dd($overall);
                 if(count($overall) == 0){

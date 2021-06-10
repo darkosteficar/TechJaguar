@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="bg-gray-800 font-source bg-vanishing-stripes ">
+<body class="bg-gray-800 font-poppins bg-vanishing-stripes ">
     
     <div class="bg-gray-900 pb-3 bg-opacity-70">
         <div class="w-3/4 mx-auto "> 

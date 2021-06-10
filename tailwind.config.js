@@ -10,7 +10,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                source: ['Source Sans Pro']
+                source: ['Source Sans Pro'],
+                poppins: ['Poppins']
             },
             backgroundImage: theme => ({
                 'vanishing-stripes': "url('/images/Vanishing-Stripes.svg')",
