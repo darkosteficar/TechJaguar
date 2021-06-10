@@ -136,17 +136,9 @@
                         </div>
                         
                         <div class="w-1/12 flex justify-center">
-                            
-                            
-                            <form action="{{ route('build.mobo.add', []) }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $mobo->id }}">
-                                
-                                <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white">
-                                    DODAJ
-                                </button>
-                            </form>
-    
+                            <button class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.test", @json(["component_id" => "$mobo->id", "component" => "Mobo"]))'>
+                                DODAJ
+                            </button>
                         </div>
                         <div class="w-1/12 flex justify-center">
                             <button
@@ -171,14 +163,9 @@
                                 <p class="">{{ $mobo->name }}</p>
                                 
                             </div>
-                            <form action="{{ route('build.mobo.add', []) }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $mobo->id }}">
-                                
-                                <button class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white">
-                                    DODAJ
-                                </button>
-                            </form>
+                            <button class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.test", @json(["component_id" => "$mobo->id", "component" => "Mobo"]))'>
+                                DODAJ
+                            </button>
                             <button
                                 class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.mobos", @json(["mobo" => "$mobo->id"]))'>
                                 DETALJI
