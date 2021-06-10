@@ -27,6 +27,7 @@ class CreateMobosTable extends Migration
             $table->integer('pci_e_x8_slots');
             $table->integer('pci_e_x4_slots');
             $table->integer('pci_e_x1_slots');
+            $table->integer('fan_headers');
             $table->string('memory_type',6);
             $table->integer('m_2_slots');
             $table->integer('sata_ports');

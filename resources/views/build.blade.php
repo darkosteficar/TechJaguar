@@ -12,19 +12,19 @@
 <div class="flex mt-10 justify-between mx-24">
     <div class="w-3/12">
         <div class=" bg-gray-900 bg-opacity-70 border border-green-400 p-2">
-            <div class="flex mb-2 font-medium">
-                <img src="images/wattage.png" alt="" width="30">
+            <div class="ml-2 flex mb-2 font-medium items-center">
+                <i class="fas fa-bolt fa-lg text-green-400 mr-2"></i>
                 <p class=" text-gray-300 text-lg">Estimated Wattage: </p>
-                <p class=" text-green-400 text-xl ml-1"> 422 W</p>
+                <p class=" text-green-400 text-xl ml-1"> {{ $power_req }} W</p>
             </div>
 
-            <div class="flex mb-2">
-                <img src="images/wattage.png" alt="" width="30">
+            <div class="flex mb-2 items-center">
+                <i class="fab fa-artstation fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Manufacturer: </p>
                 <p class="font-semibold text-green-400 text-xl ml-1"> AMD</p>
             </div>
-            <div class="flex mb-2">
-                <img src="images/wattage.png" alt="" width="30">
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-microchip fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Socket: </p>
                 <p class="font-semibold text-green-400 text-xl ml-1"> AM4</p>
             </div>
@@ -33,29 +33,84 @@
         </div>
        
         <div class="border border-red-500 font-semibold text-lg mt-2 text-gray-300 p-2 bg-gray-900 bg-opacity-70">
-            <p>GREŠKE KOMPATIBILNOSTI:</p>
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-circle mr-2 text-red-500"></i>
+                <p>GREŠKE KOMPATIBILNOSTI:</p>
+            </div>
+            
             <div class="bg-gray-900 text-red-500 ">
-                <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/KUČIŠTE</p>
-                @if (count($errors) > 0)
-                    @foreach ($errors as $key => $error)
-                        <p class="text-red-500 text-sm p-1">{{ $key+1 .'.'. $error }}</p>
-                    @endforeach
-                @else
-                    <p></p>
-                @endif
+                <div>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/KUČIŠTE</p>
+                    @if (count($errors['mobo_case']) > 0)
+                        @foreach ($errors['mobo_case'] as $key => $error)
+                        @php
+                            $counter = (int)$key;
+                        @endphp
+                            <p class=" text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                        @endforeach
+                    @else
+                        <p></p>
+                    @endif
+                </div>
+                <div>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
+                    @if (count($errors) > 0)
+                   
+                        @foreach ($errors['mobo_cpu'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @else
+                        <p></p>
+                    @endif
+                </div>
+                <div>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">NAPAJANJE</p>
+                    @if (count($errors) > 0)
+                   
+                        @foreach ($errors['psu'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @else
+                        <p></p>
+                    @endif
+                </div>
+                
             </div>
         </div>
         <div class="border border-yellow-500 font-semibold text-lg mt-2 text-gray-300 p-2 bg-gray-900 bg-opacity-70">
-            <p>UPOZORENJA:</p>
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-triangle mr-2 text-yellow-500"></i>
+                <p>UPOZORENJA:</p>
+            </div>
+           
             <div class="bg-gray-900 text-yellow-500 ">
-               
-                @if (count($warnings) > 0)
-                    @foreach ($warnings as $key => $warning)
-                        <p class=" text-sm p-1">{{ $key+1 .'.'. $warning }}</p>
-                    @endforeach
-                @else
-                    <p></p>
-                @endif
+                
+                <div>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
+                    @if (count($warnings['mobo_cpu']) > 0)
+                        @foreach ($warnings['mobo_cpu'] as $key => $warning)
+                        @php
+                            $counter = (int)$key;
+                        @endphp
+                            <p class=" text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                        @endforeach
+                    @else
+                        <p></p>
+                    @endif
+                </div>
+                
             </div>
         </div>
     </div>
@@ -354,7 +409,7 @@
 
             @if(isset($components['mobo']))
                 <div class="flex items-center border  @if (in_array('mobo',$errors_components))
-                    border-red-400 my-1
+                    border-red-400 my-1 bg-red-500 bg-opacity-10
                 @else
                     border-green-400
                 @endif font-medium">
