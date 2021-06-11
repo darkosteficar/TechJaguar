@@ -22,6 +22,8 @@ class CreatePcCasesTable extends Migration
             $table->integer('height');
             $table->integer('width');
             $table->string('type');
+            $table->integer('fans');
+            $table->integer('water_cooling');
             $table->integer('num_2_5_bays');
             $table->integer('num_3_5_bays');
             $table->integer('max_gpu_length');

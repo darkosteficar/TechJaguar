@@ -21,12 +21,43 @@
             <div class="flex mb-2 items-center">
                 <i class="fab fa-artstation fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Manufacturer: </p>
-                <p class="font-semibold text-green-400 text-xl ml-1"> AMD</p>
+                <p class=" text-green-400 text-xl ml-1"> AMD</p>
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-microchip fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Socket: </p>
-                <p class="font-semibold text-green-400 text-xl ml-1"> AM4</p>
+                <p class=" text-green-400 text-xl ml-1"> AM4</p>
+            </div>
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-tachometer-alt fa-lg text-green-400 mr-2"></i>
+                <p class="font-medium text-gray-300 text-lg">CPU Boost Clock: </p>
+                <p class=" text-green-400 text-xl ml-1"> AM4</p>
+            </div>
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-memory fa-lg text-green-400 mr-2"></i>
+                <p class="font-medium text-gray-300 text-lg">Total RAM: </p>
+                <p class=" text-green-400 text-xl ml-1"> -</p>
+            </div>
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-tachometer-alt fa-lg text-green-400 mr-2"></i>
+                <p class="font-medium text-gray-300 text-lg">RAM Speed: </p>
+                <p class=" text-green-400 text-xl ml-1"> -</p>
+            </div>
+            
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-hdd fa-lg text-green-400 mr-2"></i>
+                <p class="font-medium text-gray-300 text-lg">HDD+SSD Capacity: </p>
+                <p class="font-semibold text-green-400 text-xl ml-1"> -</p>
+            </div>
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-server fa-lg text-green-400 mr-2"></i>
+                <p class="font-medium text-gray-300 text-lg">Case type: </p>
+                <p class="font-semibold text-green-400 text-xl ml-1"> -</p>
+            </div>
+            <div class="flex mb-2 items-center">
+                <i class="fas fa-fan fa-lg text-green-400 mr-2"></i>
+                <p class="font-medium text-gray-300 text-lg">Cooling: </p>
+                <p class="font-semibold text-green-400 text-xl ml-1"> -</p>
             </div>
 
 
@@ -40,22 +71,19 @@
             
             <div class="bg-gray-900 text-red-500 ">
                 <div>
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/KUČIŠTE</p>
                     @if (count($errors['mobo_case']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/KUČIŠTE</p>
                         @foreach ($errors['mobo_case'] as $key => $error)
                         @php
                             $counter = (int)$key;
                         @endphp
                             <p class=" text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
                         @endforeach
-                    @else
-                        <p></p>
                     @endif
                 </div>
                 <div>
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
-                    @if (count($errors) > 0)
-                   
+                    @if (count($errors['mobo_cpu']) > 0)
+                        <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
                         @foreach ($errors['mobo_cpu'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -65,14 +93,11 @@
                                 $counter++;
                             @endphp
                         @endforeach
-                    @else
-                        <p></p>
                     @endif
                 </div>
                 <div>
+                    @if (count($errors['psu']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">NAPAJANJE</p>
-                    @if (count($errors) > 0)
-                   
                         @foreach ($errors['psu'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -82,11 +107,79 @@
                                 $counter++;
                             @endphp
                         @endforeach
-                    @else
-                        <p></p>
                     @endif
                 </div>
-                
+                <div>
+                    @if (count($errors['gpu']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">GRAFIČKA KARTICA</p>
+                        @foreach ($errors['gpu'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($errors['ram']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">RADNA MEMORIJA</p>
+                        @foreach ($errors['ram'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($errors['storage']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">POHRANA PODATAKA</p>
+                        @foreach ($errors['storage'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($errors['fans']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">VENTILATORI</p>
+                        @foreach ($errors['fans'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($errors['cooler']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">HLADNJAK</p>
+                        @foreach ($errors['cooler'] as $key => $error)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $error }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+
             </div>
         </div>
         <div class="border border-yellow-500 font-semibold text-lg mt-2 text-gray-300 p-2 bg-gray-900 bg-opacity-70">
@@ -94,24 +187,106 @@
                 <i class="fas fa-exclamation-triangle mr-2 text-yellow-500"></i>
                 <p>UPOZORENJA:</p>
             </div>
-           
+            
             <div class="bg-gray-900 text-yellow-500 ">
-                
                 <div>
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
                     @if (count($warnings['mobo_cpu']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
+                    
                         @foreach ($warnings['mobo_cpu'] as $key => $warning)
                         @php
                             $counter = (int)$key;
                         @endphp
                             <p class=" text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                         @endforeach
-                    @else
-                        <p></p>
                     @endif
                 </div>
-                
+                <div>
+                    @if (count($warnings['psu']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">NAPAJANJE</p>
+                        @foreach ($warnings['psu'] as $key => $warning)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($warnings['gpu']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">GRAFIČKA KARTICA</p>
+                        @foreach ($warnings['gpu'] as $key => $warning)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($warnings['ram']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">RADNA MEMORIJA</p>
+                        @foreach ($warnings['ram'] as $key => $warning)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($warnings['storage']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">POHRANA PODATAKA</p>
+                        @foreach ($warnings['storage'] as $key => $warning)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($warnings['fans']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">VENTILATORI</p>
+                        @foreach ($warnings['fans'] as $key => $warning)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
+                <div>
+                    @if (count($warnings['cooler']) > 0)
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">HLADNJAK</p>
+                        @foreach ($warnings['cooler'] as $key => $warning)
+                            @php
+                                $counter = (int)$key;
+                            @endphp
+                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            @php
+                                $counter++;
+                            @endphp
+                        @endforeach
+                    @endif
+                </div>
             </div>
+          
         </div>
     </div>
     <div class="w-9/12 bg-gray-900 bg-opacity-70  mb-5 font-semibold text-green-400  ml-6">
