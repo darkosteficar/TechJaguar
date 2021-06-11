@@ -17,6 +17,10 @@
         @apply inline-block px-6 py-2 leading-6 text-center text-gray-900 hover:text-green-400 uppercase transition bg-green-400 rounded shadow hover:bg-gray-900 focus:outline-none my-2 self-center border border-gray-900 hover:border-green-400
     }
 
+    .btn-invisible{
+        @apply inline-block px-6 py-2 leading-6 text-center hover:text-gray-900 text-green-400 uppercase transition hover:bg-green-400 rounded shadow  focus:outline-none my-2 self-center border border-gray-900
+    }
+
     .btn-green-remove{
         @apply inline-block px-6 py-2 leading-6 font-semibold text-center text-gray-900 hover:text-green-400 uppercase transition bg-green-400 rounded shadow hover:bg-gray-900 focus:outline-none my-2 self-center border border-gray-900 hover:border-green-400
     }

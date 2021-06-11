@@ -21,43 +21,77 @@
             <div class="flex mb-2 items-center">
                 <i class="fab fa-artstation fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Manufacturer: </p>
-                <p class=" text-green-400 text-xl ml-1"> AMD</p>
+                @if (isset($components['cpu']))
+                    <p class=" text-green-400 text-xl ml-1"> {{ $components['cpu']->manufacturer->name }}</p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-microchip fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Socket: </p>
-                <p class=" text-green-400 text-xl ml-1"> AM4</p>
+                @if (isset($components['cpu']))
+                    <p class=" text-green-400 text-xl ml-1"> {{ $components['cpu']->socket }}</p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-tachometer-alt fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">CPU Boost Clock: </p>
-                <p class=" text-green-400 text-xl ml-1"> AM4</p>
+                @if (isset($components['cpu']))
+                    <p class=" text-green-400 text-xl ml-1"> {{ number_format($components['cpu']->boost_clock,2)  }} Ghz</p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-memory fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">Total RAM: </p>
-                <p class=" text-green-400 text-xl ml-1"> -</p>
+                @if (isset($others['ram_capacity']))
+                    <p class=" text-green-400 text-xl ml-1"> {{ $others['ram_capacity'] .' GB'}} </p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
+                
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-tachometer-alt fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">RAM Speed: </p>
-                <p class=" text-green-400 text-xl ml-1"> -</p>
+                @if (isset($others['ram_speed']))
+                    <p class=" text-green-400 text-xl ml-1"> {{ $others['ram_speed'] .' Mhz'}} </p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
             </div>
             
             <div class="flex mb-2 items-center">
                 <i class="fas fa-hdd fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">HDD+SSD Capacity: </p>
-                <p class="font-semibold text-green-400 text-xl ml-1"> -</p>
+                @if (isset($others['capacity']))
+                    <p class=" text-green-400 text-xl ml-1"> {{ $others['capacity'] .' GB'}} </p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
+                
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-server fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">Case type: </p>
-                <p class="font-semibold text-green-400 text-xl ml-1"> -</p>
+                @if (isset($others['case']))
+                <p class=" text-green-400 text-xl ml-1"> {{ $others['case'] }} </p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
             </div>
             <div class="flex mb-2 items-center">
                 <i class="fas fa-fan fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">Cooling: </p>
-                <p class="font-semibold text-green-400 text-xl ml-1"> -</p>
+                @if (isset($others['cooler']))
+                <p class=" text-green-400 text-xl ml-1"> {{ $others['cooler'] }} </p>
+                @else
+                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                @endif
             </div>
 
 
@@ -110,9 +144,9 @@
                     @endif
                 </div>
                 <div>
-                    @if (count($errors['gpu']) > 0)
+                    @if (count($errors['gpus']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">GRAFIČKA KARTICA</p>
-                        @foreach ($errors['gpu'] as $key => $error)
+                        @foreach ($errors['gpus'] as $key => $error)
                             @php
                                 $counter = (int)$key;
                             @endphp
@@ -124,9 +158,9 @@
                     @endif
                 </div>
                 <div>
-                    @if (count($errors['ram']) > 0)
+                    @if (count($errors['rams']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">RADNA MEMORIJA</p>
-                        @foreach ($errors['ram'] as $key => $error)
+                        @foreach ($errors['rams'] as $key => $error)
                             @php
                                 $counter = (int)$key;
                             @endphp
@@ -138,9 +172,9 @@
                     @endif
                 </div>
                 <div>
-                    @if (count($errors['storage']) > 0)
+                    @if (count($errors['storages']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">POHRANA PODATAKA</p>
-                        @foreach ($errors['storage'] as $key => $error)
+                        @foreach ($errors['storages'] as $key => $error)
                             @php
                                 $counter = (int)$key;
                             @endphp
@@ -208,7 +242,7 @@
                             @php
                                 $counter = (int)$key;
                             @endphp
-                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            <p class="text-yellow-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                             @php
                                 $counter++;
                             @endphp
@@ -216,13 +250,13 @@
                     @endif
                 </div>
                 <div>
-                    @if (count($warnings['gpu']) > 0)
+                    @if (count($warnings['gpus']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">GRAFIČKA KARTICA</p>
                         @foreach ($warnings['gpu'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
                             @endphp
-                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            <p class="text-yellow-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                             @php
                                 $counter++;
                             @endphp
@@ -230,13 +264,13 @@
                     @endif
                 </div>
                 <div>
-                    @if (count($warnings['ram']) > 0)
+                    @if (count($warnings['rams']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">RADNA MEMORIJA</p>
-                        @foreach ($warnings['ram'] as $key => $warning)
+                        @foreach ($warnings['rams'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
                             @endphp
-                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            <p class="text-yellow-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                             @php
                                 $counter++;
                             @endphp
@@ -244,13 +278,13 @@
                     @endif
                 </div>
                 <div>
-                    @if (count($warnings['storage']) > 0)
+                    @if (count($warnings['storages']) > 0)
                     <p class="text-md text-gray-200 font-normal pt-1 pl-1">POHRANA PODATAKA</p>
                         @foreach ($warnings['storage'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
                             @endphp
-                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            <p class="text-yellow-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                             @php
                                 $counter++;
                             @endphp
@@ -264,7 +298,7 @@
                             @php
                                 $counter = (int)$key;
                             @endphp
-                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            <p class="text-yellow-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                             @php
                                 $counter++;
                             @endphp
@@ -278,7 +312,7 @@
                             @php
                                 $counter = (int)$key;
                             @endphp
-                            <p class="text-red-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
+                            <p class="text-yellow-500 text-sm p-1">{{ $counter+1 .'.'. $warning }}</p>
                             @php
                                 $counter++;
                             @endphp
@@ -309,7 +343,11 @@
 
             @if(isset($components['cpu']))
                 
-                <div class="flex items-center border border-green-400 font-medium">
+                <div class="flex items-center border @if (in_array('cpu',$errors_components))
+                border-red-400 my-1 bg-red-500 bg-opacity-10
+                @else
+                    border-green-400
+                @endif font-medium">
                     <div class="w-2/12 ml-3 text-lg ">
                         <p class=" border p-2 inline border-gray-800 ">CPU</p>
                     </div>
@@ -350,47 +388,8 @@
             @endif
 
             @if(count($components['gpus']) > 0)
-                
-                <div class="pl- border border-green-400 font-medium">
-                    <div class="flex items-center">
-                        <div class="w-2/12  text-lg ">
-                            <p class=" border p-2 ml-3 inline border-gray-800 ">GPUS</p>
-                        </div>
-                        <div class="w-11/12 ">
-                            @foreach ($components['gpus'] as $gpu)
-                            
-                            <div class="flex items-center  ">
-                                <div class="w-6/12">
-                                    <div class="flex items-center py-3 px-2 space-x-3">
-                                        <img src="images/{{ $gpu->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                                        <p>{{ $gpu->name  }}</p>
-                                    </div>
-                                </div>
-                                <div class="w-3/12">
-                                    <p class=" border p-2 inline border-gray-800 ">{{ $gpu->manufacturer->name }}</p>
-                                </div>
-                                <p class="w-2/12">{{ number_format($gpu->price,2) }} kn</p>
-                                <div class="w-1/12 ">
-                                    <form action="{{ route('build.gpu.remove', ['id'=>$gpu->id]) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn-green-remove"  type="submit">
-                                            X
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <form action="{{ route('build.gpu.add', ['id'=>$gpu_id]) }}" method="POST">
-                        @csrf
-                        <button class="btn-green-select mb-4 text-sm ml-64">
-                            Add another GPU
-                        </button>  
-                    </form>
-                           
-                </div>
+            <livewire:build.gpus :gpus="$components['gpus']" :errors="$errors_components"/>
+               
                     
                 
             @else
@@ -411,7 +410,11 @@
            
             @if(count($components['rams']) > 0)
                 
-                <div class="font-medium border border-green-400">
+                <div class="font-medium border @if (in_array('rams',$errors_components))
+                border-red-400 my-1 bg-red-500 bg-opacity-10
+                @else
+                    border-green-400
+                @endif">
                     <div class="flex items-center">
                         <div class="w-2/12  text-lg ">
                             <p class=" border p-2 ml-3 inline border-gray-800 ">RAM</p>
@@ -469,7 +472,11 @@
 
             @if(count($components['storages']) > 0)
                 
-                <div class="font-medium border border-green-400">
+                <div class="font-medium border @if (in_array('storages',$errors_components))
+                border-red-400 my-1 bg-red-500 bg-opacity-10
+                @else
+                    border-green-400
+                @endif">
                     <div class="flex items-center">
                         <div class="w-2/12  text-lg ">
                             <p class=" border p-2 ml-3 inline border-gray-800 ">HDD/SSD</p>
@@ -527,7 +534,11 @@
 
             @if(count($components['fans']) > 0)
                 
-                <div class="font-medium border border-green-400">
+                <div class="font-medium border @if (in_array('fans',$errors_components))
+                border-red-400 my-1 bg-red-500 bg-opacity-10
+                @else
+                    border-green-400
+                @endif">
                     <div class="flex items-center">
                         <div class="w-2/12  text-lg ">
                             <p class=" border p-2 ml-3 inline border-gray-800 ">FAN</p>
@@ -628,7 +639,11 @@
             @endif
 
             @if(isset($components['psu']))
-                <div class="flex items-center border border-green-400 font-medium">
+                <div class="flex items-center border @if (in_array('psu',$errors_components))
+                border-red-400 my-1 bg-red-500 bg-opacity-10
+                @else
+                    border-green-400
+                @endif font-medium">
                     <div class="w-2/12 ml-3 text-lg ">
                         <p class=" border p-2 inline border-gray-800 ">PSU</p>
                     </div>
@@ -671,7 +686,11 @@
 
             @if(isset($components['cooler']))
               
-                <div class="flex items-center border border-green-400 font-medium">
+                <div class="flex items-center border @if (in_array('cooler',$errors_components))
+                border-red-400 my-1 bg-red-500 bg-opacity-10
+                @else
+                    border-green-400
+                @endif font-medium">
                     <div class="w-2/12 ml-3 text-lg ">
                         <p class=" border p-2 inline border-gray-800 ">COOLER</p>
                     </div>
@@ -714,7 +733,7 @@
             @if(isset($components['pc_case']))
                
                 <div class="flex items-center border @if (in_array('case',$errors_components))
-                border-red-400 my-1
+                border-red-400 my-1 bg-red-500 bg-opacity-10
                 @else
                     border-green-400
                 @endif font-medium">

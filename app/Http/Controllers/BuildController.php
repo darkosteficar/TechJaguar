@@ -26,6 +26,7 @@ class BuildController extends Controller
 
     public function index(Request $request)
     {
+        $others = array();
         $total = $power_req = 0;
         $cpu = $case = $psu = $mobo = $cooler = $pc_case = '';
         $errors = $errors_components = $warnings = array();
@@ -68,6 +69,8 @@ class BuildController extends Controller
                         $power_req += 3;
                     }
                     $this->cooler = $cooler;
+                    $others['cooler'] = ($cooler->water_cooled == 1) ? 'Vodeno' : 'Zračno';
+                    
                 }
         
                 if($build->pc_case_id != null){
@@ -75,6 +78,7 @@ class BuildController extends Controller
                     $components['pc_case'] = $pc_case;
                     $total += $pc_case->price;
                     $this->case = $pc_case;
+                    $others['case'] = $pc_case->type;
                 }
                 $gpus = $build->gpus;
                 $this->gpus = $gpus;
@@ -89,20 +93,28 @@ class BuildController extends Controller
         
                 $rams = $build->rams;
                 $this->rams = $rams;
+                $ram_speed = 7000;
+                $ram_capacity = 0;
                 if(!$rams->isEmpty()){
                     $components['rams'] = $rams;
                     foreach($components['rams'] as $ram){
                         $total += $ram->price;
                         $power_req += 10;
+                        $ram_capacity += $ram->size;
+                        $ram_speed = ($ram->speed < $ram_speed) ? $ram->speed : $ram_speed;
                     }
+                    $others['ram_capacity'] = $ram_capacity;
+                    $others['ram_speed'] = $ram_speed;
                 }
         
                 $storages = $build->storages;
                 $this->storages = $storages;
                 if(!$storages->isEmpty()){
                     $components['storages'] = $storages;
+                    $storage_cap = 0;
                     foreach($components['storages'] as $storage){
                         $total += $storage->price;
+                        $storage_cap += $storage->capacity;
                         if($storage->type == 'hdd'){
                             $power_req += 15;
                         }
@@ -113,6 +125,7 @@ class BuildController extends Controller
                             $power_req += 7;
                         }
                     }
+                    $others['capacity'] = $storage_cap;
                 }
                 
                 $fans = $build->fans;
@@ -128,10 +141,12 @@ class BuildController extends Controller
                 $allErrors = array();
                 $allErrors = $this->checkErrors($errors,$errors_components,$warnings);
                 $errors = $allErrors[0];
+               
                 $errors_components = $allErrors[1];
+                //dd($errors,$errors_components);
                 $warnings = $allErrors[2];
                 
-                return view('build',['components'=>$components,'total'=>$total,'errors'=>$errors,'errors_components'=>$errors_components,'warnings'=>$warnings,'power_req'=>$power_req]);
+                return view('build',['components'=>$components,'total'=>$total,'errors'=>$errors,'errors_components'=>$errors_components,'warnings'=>$warnings,'power_req'=>$power_req,'others'=>$others]);
             }
             else{
                 $build = Build::create();
@@ -219,7 +234,7 @@ class BuildController extends Controller
         $mobo_cpu = $warningsM = $allErrors =  array();
         if($cpu != '' && $mobo != ''){
             if($cpu->socket != $mobo->socket){
-                array_push($mobo_cpu,'Ova matična ploča i procesor nisu kompatibilni, Matična Ploča: '.$mobo->socket.',Procesor:'.$cpu->socket);
+                array_push($mobo_cpu,'Ova matična ploča i procesor nisu kompatibilni. Socket matične ploče: '.$mobo->socket.'. Socket procesora: '.$cpu->socket);
                 array_push($errors_components,'cpu','mobo');
             }
             if($cpu->tdp > 90){
@@ -244,27 +259,27 @@ class BuildController extends Controller
         if($num_gpus > 0){
             if($psu != ''){
                 if($psu->pcie_6_2_pin_connectors < $num_gpus){
-                    array_push($errors,'Nedovoljno PCI-E 6+2 priključaka, broj PCIE-E 6+2 priključaka: ' . $psu->pcie_6_2_pin_connectors);
-                    array_push($errors_components,'psu','gpu');
+                    array_push($gpu_1,'Nedovoljno PCI-E 6+2 priključaka, broj PCIE-E 6+2 priključaka: ' . $psu->pcie_6_2_pin_connectors);
+                    array_push($errors_components,'psu','gpus');
                 }
             }
             if($case != ''){
                 if($case->max_gpu_length < $gpus[0]->length){
-                    array_push($errors,'Grafička kartica prevelikih dimenzija za ovo kućište, maksimalna dužina:' . $case->max_gpu_length);
-                    array_push($errors_components,'case','gpu');
+                    array_push($gpu_1,'Grafička kartica prevelikih dimenzija za ovo kućište, maksimalna dužina: ' . $case->max_gpu_length . ' mm');
+                    array_push($errors_components,'case','gpus');
                 }
             }
             if($mobo != ''){
                 if($mobo->pci_e_x16_slots < $num_gpus){
-                    array_push($errors,'Prevelik broj grafičkih kartica, broj PCI-E x16 slotova' . $mobo->pci_e_x16_slots);
-                    array_push($errors_components,'mobo','gpu');
+                    array_push($gpu_1,'Prevelik broj grafičkih kartica, broj PCI-E x16 slotova' . $mobo->pci_e_x16_slots);
+                    array_push($errors_components,'mobo','gpus');
                 }
             }
             
         }
        
-        $errors['gpu'] = $gpu_1;
-        $warnings['gpu'] = $warningsM;
+        $errors['gpus'] = $gpu_1;
+        $warnings['gpus'] = $warningsM;
         array_push($allErrors,$errors_components,$errors,$warnings);
         return $allErrors;
     }
@@ -361,28 +376,29 @@ class BuildController extends Controller
                 }
             }
             if($case != ''){
-                if($num_hdd + $num_ssd > $case->sata_ports){
-                    array_push($storages_1,'Broj uređaja je veći od broja SATA portova na matičnoj ploči. Broj SATA portova na ovoj matičnoj ploči je: ' . $case->sata_ports);
-                    array_push($errors_components,'storage','case');
-                }
                 if($num_hdd > $case->num_3_5_bays){
                     array_push($storages_1,'Nedovoljno mjesta za tvrde diskove, broj mjesta za hard diskove na ovom kućištu je: ' . $case->num_3_5_bays);
-                    array_push($errors_components,'storage','case');
+                    array_push($errors_components,'storages','case');
                 }
                 if($num_hdd > $case->num_2_5_bays){
                     array_push($storages_1,'Nedovoljno mjesta za SSD diskove, broj mjesta za SSD diskove na ovom kućištu je: ' . $case->num_2_5_bays);
-                    array_push($errors_components,'storage','case');
+                    array_push($errors_components,'storages','case');
                 }
             }
             if($mobo != ''){
+                if($num_hdd + $num_ssd > $mobo->sata_ports){
+                    
+                    array_push($storages_1,'Broj uređaja je veći od broja SATA portova na matičnoj ploči. Broj SATA portova na ovoj matičnoj ploči je: ' . $mobo->sata_ports);
+                    array_push($errors_components,'storages','mobo');
+                }
                 if($num_m2 > $mobo->m_2_slots){
                     array_push($storages_1,'Nedovoljno slotova za M.2 uređaje, broj mjesta za M.2 uređaje na ovoj matičnoj ploči je: ' . $mobo->m_2_slots);
-                    array_push($errors_components,'storage','mobo');
+                    array_push($errors_components,'storages','mobo');
                 }
             }
         }
-        $errors['storage'] = $storages_1;
-        $warnings['storage'] = $warningsM;
+        $errors['storages'] = $storages_1;
+        $warnings['storages'] = $warningsM;
         array_push($allErrors,$errors_components,$errors,$warnings);
         return $allErrors;
        
@@ -390,42 +406,44 @@ class BuildController extends Controller
 
     public function validateRam($rams,$mobo,$errors,$errors_components,$warnings)
     {
+       
         $rams_1 = $warningsM = $allErrors =  array();
         $num_rams = count($rams);
+        
         $capacity = 0;
         if($num_rams > 0){
-            if($num_rams != 4 || $num_rams != 2){
+            if($num_rams != 4 && $num_rams != 2){
                 array_push($warningsM,'Dual Channel ili Quad Channel će biti isključen ako se ne nalazi 2 ili 4 memorijska modula u konfiguraciji.');
-                array_push($errors_components,'ram');
+                array_push($errors_components,'rams');
             }
             foreach($rams as $ram){
                 if($ram->id == $rams[0]->id){
                     array_push($warningsM,'Mogući problemi sa stabilnošću sustava ako se koriste različiti memorijski moduli, a ako se koriste moduli sa različitim brzinama, svi memorijski moduli će raditi na brzini najsporijeg.');
-                    array_push($errors_components,'ram');
+                    array_push($errors_components,'rams');
                 }
                 $capacity += $ram->size;
             }
             if($mobo != ''){
                 if($mobo->memory_slots < $num_rams){
-                    array_push($storages_1,'Nedovoljan broj DIMM slotova na matičnoj ploči, podržava do ' . $case->memory_slots . ' modula');
-                    array_push($errors_components,'mobo','ram');
+                    array_push($rams_1,'Nedovoljan broj DIMM slotova na matičnoj ploči, podržava do ' . $case->memory_slots . ' modula');
+                    array_push($errors_components,'mobo','rams');
                 }
                 foreach($rams as $ram){
                     if($mobo->memory_type == $ram->type){
-                        array_push($storages_1,'Ova vrsta memorijskog modula nije kompatibilna sa matičnom pločom, vrsta memorije: '. $ram->type .'podržana vrsta: '. $mobo->memory_type );
-                        array_push($errors_components,'mobo','ram');
+                        array_push($rams_1,'Ova vrsta memorijskog modula nije kompatibilna sa matičnom pločom, vrsta memorije: '. $ram->type .'podržana vrsta: '. $mobo->memory_type );
+                        array_push($errors_components,'mobo','rams');
                     }
                 }
                 if($mobo->max_memory < $capacity){
-                    array_push($storages_1,'Matična ploča podržava do ' . $mobo->max_memory);
-                    array_push($errors_components,'mobo','ram');
+                    array_push($rams_1,'Matična ploča podržava do ' . $mobo->max_memory . ' GB');
+                    array_push($errors_components,'mobo','rams');
                 }
                 
             }
             
         }
-        $errors['ram'] = $rams_1;
-        $warnings['ram'] = $warningsM;
+        $errors['rams'] = $rams_1;
+        $warnings['rams'] = $warningsM;
         array_push($allErrors,$errors_components,$errors,$warnings);
         return $allErrors;
        
