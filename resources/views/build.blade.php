@@ -342,36 +342,8 @@
 
 
             @if(isset($components['cpu']))
-                
-                <div class="flex items-center border @if (in_array('cpu',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif font-medium">
-                    <div class="w-2/12 ml-3 text-lg ">
-                        <p class=" border p-2 inline border-gray-800 ">CPU</p>
-                    </div>
-                    
-                    <div class="w-6/12">
-                        <div class="flex items-center p-3 space-x-3">
-                            <img src="images/{{ $components['cpu']->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                            <p>{{ $components['cpu']->name }}</p>
-                        </div>
-                    </div>
-                    <div class="w-3/12">
-                        <p class=" border p-2 inline border-gray-800 ">{{ $components['cpu']->manufacturer->name }}</p>
-                    </div>
-                    <p class="w-2/12">{{ number_format($components['cpu']->price,2) }} kn</p>
-                    <div class="w-1/12 ">
-                        <form action="{{ route('build.cpu.remove', ['id'=>$components['cpu']->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-green-remove"  type="submit">
-                                X
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <livewire:build.cpus :cpu="$components['cpu']" :errors="$errors_components"/>
+             
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">CPU</p>
@@ -389,9 +361,6 @@
 
             @if(count($components['gpus']) > 0)
             <livewire:build.gpus :gpus="$components['gpus']" :errors="$errors_components"/>
-               
-                    
-                
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">GPU</p>
@@ -409,50 +378,8 @@
 
            
             @if(count($components['rams']) > 0)
-                
-                <div class="font-medium border @if (in_array('rams',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif">
-                    <div class="flex items-center">
-                        <div class="w-2/12  text-lg ">
-                            <p class=" border p-2 ml-3 inline border-gray-800 ">RAM</p>
-                        </div>
-                        <div class="w-11/12 ">
-                            @foreach ($components['rams'] as $ram)
-                            
-                            <div class="flex items-center  ">
-                                <div class="w-6/12">
-                                    <div class="flex items-center p-3 space-x-3">
-                                        <img src="images/{{ $ram->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                                        <p>{{ $ram->name  }}</p>
-                                    </div>
-                                </div>
-                                <div class="w-3/12">
-                                    <p class=" border p-2 inline border-gray-800 ">{{ $ram->manufacturer->name }}</p>
-                                </div>
-                                <p class="w-2/12">{{ number_format($ram->price,2) }} kn</p>
-                                <div class="w-1/12 ">
-                                    <form action="{{ route('build.ram.remove', ['id'=>$ram->id]) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn-green-remove"  type="submit">
-                                            X
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <a href="{{ route('build.ram', []) }}">
-                        <button class="btn-green-select ml-64">
-                            Select RAM
-                        </button>
-                    </a>
-                           
-                </div>
+            <livewire:build.rams :rams="$components['rams']" :errors="$errors_components"/>
+               
                     
                 
             @else
@@ -471,52 +398,7 @@
             @endif
 
             @if(count($components['storages']) > 0)
-                
-                <div class="font-medium border @if (in_array('storages',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif">
-                    <div class="flex items-center">
-                        <div class="w-2/12  text-lg ">
-                            <p class=" border p-2 ml-3 inline border-gray-800 ">HDD/SSD</p>
-                        </div>
-                        <div class="w-11/12 ">
-                            @foreach ($components['storages'] as $storage)
-                           
-                            <div class="flex items-center  ">
-                                <div class="w-6/12">
-                                    <div class="flex items-center p-3 space-x-3">
-                                        <img src="images/{{ $storage->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                                        <p>{{ $storage->name  }}</p>
-                                    </div>
-                                </div>
-                                <div class="w-3/12">
-                                    <p class=" border p-2 inline border-gray-800 ">{{ $storage->manufacturer->name }}</p>
-                                </div>
-                                <p class="w-2/12">{{ number_format($storage->price,2) }} kn</p>
-                                <div class="w-1/12 ">
-                                    <form action="{{ route('build.storage.remove', ['id'=>$storage->id]) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn-green-remove"  type="submit">
-                                            X
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <a href="{{ route('build.storage', []) }}">
-                        <button class="btn-green-select ml-64">
-                            Select HDD/SSD
-                        </button>
-                    </a>
-                           
-                </div>
-                    
-                
+            <livewire:build.storages :storages="$components['storages']" :errors="$errors_components"/>
             @else
                 <div class="flex items-center pl- border border-gray-900">
                     <p class="w-1/5 ml-3">HDD/SSD</p>
@@ -533,51 +415,7 @@
             @endif
 
             @if(count($components['fans']) > 0)
-                
-                <div class="font-medium border @if (in_array('fans',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif">
-                    <div class="flex items-center">
-                        <div class="w-2/12  text-lg ">
-                            <p class=" border p-2 ml-3 inline border-gray-800 ">FAN</p>
-                        </div>
-                        <div class="w-11/12 ">
-                            @foreach ($components['fans'] as $fan)
-                            <div class="flex items-center  ">
-                                <div class="w-6/12">
-                                    <div class="flex items-center p-3 space-x-3">
-                                        <img src="images/{{ $fan->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                                        <p>{{ $fan->name  }}</p>
-                                    </div>
-                                </div>
-                                <div class="w-3/12">
-                                    <p class=" border p-2 inline border-gray-800 ">{{ $fan->manufacturer->name }}</p>
-                                </div>
-                                <p class="w-2/12">{{ number_format($fan->price,2) }} kn</p>
-                                <div class="w-1/12 ">
-                                    <form action="{{ route('build.fan.remove', ['id'=>$fan->id]) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn-green-remove"  type="submit">
-                                            X
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <a href="{{ route('build.fan', []) }}">
-                        <button class="btn-green-select ml-64">
-                            Select FAN
-                        </button>
-                    </a>
-                           
-                </div>
-                    
-                
+            <livewire:build.fans :fans="$components['fans']" :errors="$errors_components"/>
             @else
                 <div class="flex items-center pl- border border-gray-900">
                     <p class="w-1/5 ml-3">FAN</p>
@@ -594,35 +432,7 @@
             @endif
 
             @if(isset($components['mobo']))
-                <div class="flex items-center border  @if (in_array('mobo',$errors_components))
-                    border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif font-medium">
-                    <div class="w-2/12 ml-3 text-lg ">
-                        <p class=" border p-2 inline border-gray-800 ">MOBO</p>
-                    </div>
-                    
-                    <div class="w-6/12">
-                        <div class="flex items-center p-3 space-x-3">
-                            <img src="images/{{ $components['mobo']->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                            <p>{{ $components['mobo']->name }}</p>
-                        </div>
-                    </div>
-                    <div class="w-3/12">
-                        <p class=" border p-2 inline border-gray-800 ">{{ $components['mobo']->manufacturer->name }}</p>
-                    </div>
-                    <p class="w-2/12">{{ number_format($components['mobo']->price,2) }} kn</p>
-                    <div class="w-1/12 ">
-                        <form action="{{ route('build.mobo.remove', ['id'=>$components['mobo']->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-green-remove"  type="submit">
-                                X
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <livewire:build.mobo :mobo="$components['mobo']" :errors="$errors_components"/>
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">MOBO</p>
@@ -639,35 +449,7 @@
             @endif
 
             @if(isset($components['psu']))
-                <div class="flex items-center border @if (in_array('psu',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif font-medium">
-                    <div class="w-2/12 ml-3 text-lg ">
-                        <p class=" border p-2 inline border-gray-800 ">PSU</p>
-                    </div>
-                    
-                    <div class="w-6/12">
-                        <div class="flex items-center p-3 space-x-3">
-                            <img src="images/{{ $components['psu']->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                            <p>{{ $components['psu']->name }}</p>
-                        </div>
-                    </div>
-                    <div class="w-3/12">
-                        <p class=" border p-2 inline border-gray-800 ">{{ $components['psu']->manufacturer->name }}</p>
-                    </div>
-                    <p class="w-2/12">{{ number_format($components['psu']->price,2) }} kn</p>
-                    <div class="w-1/12 ">
-                        <form action="{{ route('build.psu.remove', ['id'=>$components['psu']->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-green-remove"  type="submit">
-                                X
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <livewire:build.psu :psu="$components['psu']" :errors="$errors_components"/>
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">PSU</p>
@@ -685,36 +467,7 @@
 
 
             @if(isset($components['cooler']))
-              
-                <div class="flex items-center border @if (in_array('cooler',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif font-medium">
-                    <div class="w-2/12 ml-3 text-lg ">
-                        <p class=" border p-2 inline border-gray-800 ">COOLER</p>
-                    </div>
-                    
-                    <div class="w-6/12">
-                        <div class="flex items-center p-3 space-x-3">
-                            <img src="images/{{ $components['cooler']->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                            <p>{{ $components['cooler']->name }}</p>
-                        </div>
-                    </div>
-                    <div class="w-3/12">
-                        <p class=" border p-2 inline border-gray-800 ">{{ $components['cooler']->manufacturer->name }}</p>
-                    </div>
-                    <p class="w-2/12">{{ number_format($components['cooler']->price,2) }} kn</p>
-                    <div class="w-1/12 ">
-                        <form action="{{ route('build.cooler.remove', ['id'=>$components['cooler']->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-green-remove"  type="submit">
-                                X
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <livewire:build.cooler :cooler="$components['cooler']" :errors="$errors_components"/>
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">COOLER</p>
@@ -731,36 +484,7 @@
             @endif
 
             @if(isset($components['pc_case']))
-               
-                <div class="flex items-center border @if (in_array('case',$errors_components))
-                border-red-400 my-1 bg-red-500 bg-opacity-10
-                @else
-                    border-green-400
-                @endif font-medium">
-                    <div class="w-2/12 ml-3 text-lg ">
-                        <p class=" border p-2 inline border-gray-800 ">CASE</p>
-                    </div>
-                    
-                    <div class="w-6/12">
-                        <div class="flex items-center p-3 space-x-3">
-                            <img src="images/{{ $components['pc_case']->images()->first()->path }}" alt="" width="100" class="border border-green-400">
-                            <p>{{ $components['pc_case']->name }}</p>
-                        </div>
-                    </div>
-                    <div class="w-3/12">
-                        <p class=" border p-2 inline border-gray-800 ">{{ $components['pc_case']->manufacturer->name }}</p>
-                    </div>
-                    <p class="w-2/12">{{ number_format($components['pc_case']->price,2) }} kn</p>
-                    <div class="w-1/12 ">
-                        <form action="{{ route('build.pc_case.remove', ['id'=>$components['pc_case']->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn-green-remove"  type="submit">
-                                X
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <livewire:build.pc-case :pc_case="$components['pc_case']" :errors="$errors_components"/>
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">CASE</p>
