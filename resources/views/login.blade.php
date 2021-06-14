@@ -5,7 +5,7 @@
 @csrf
 <div class="w-1/2 mx-auto my-20 shadow-2xl">
     <div class="bg-gray-900 p-5 flex flex-col content-center ">
-        <p class="text-gray-300 font-bold text-3xl pb-10 text-center">Sign in to BCompare</p>
+        <p class="text-gray-300 font-bold text-3xl pb-10 text-center">Sign in to Techuar</p>
         @if (session('status'))
             <div class="bg-red-500 text-gray-200 border-gray-200 border w-2/3 self-center text-center rounded p-2 text-lg font-semibold">
                 {{ session('status') }}

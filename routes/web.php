@@ -39,6 +39,8 @@ Route::get('/',[NewsController::class,'index'])->name('index');
 Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');
 Route::get('/category/{category}',[NewsController::class,'category'])->name('category');
 Route::get('/manufacturer/{manufacturer}',[NewsController::class,'manufacturer'])->name('manufacturer');
+Route::get('/profile',[UserController::class,'profile'])->name('profile.index');
+Route::post('/profile/update',[UserController::class,'update'])->name('profile.update');
 
 Route::get('/compareCpu',[CompareController::class,'compareCpu'])->name('compareCpu');
 Route::get('/compareGpu',[CompareController::class,'compareGpu'])->name('compareGpu');

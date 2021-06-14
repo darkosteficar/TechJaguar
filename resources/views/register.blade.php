@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('register', []) }}" method="post">
+<form action="{{ route('register', []) }}" method="post" enctype="multipart/form-data">
 <div class="w-1/2 mx-auto my-20 shadow-2xl">
     <div class="bg-gray-900 p-5 flex flex-col content-center ">
-        <p class="text-gray-300 font-bold text-3xl pb-10 text-center">Sign up to BCompare</p>
+        <p class="text-gray-300 font-bold text-3xl pb-10 text-center">Sign up to Techuar</p>
             @csrf
             <label for="" class="self-center font-bold text-gray-600 w-9/12 text-lg">Name</label>
             <input type="text" class="input-registration form-input @error('name')
@@ -58,7 +58,12 @@
 
             <label for="" class="self-center font-bold text-gray-600 w-9/12 text-lg">Confirm Password</label>
             <input type="password" class="input-registration" placeholder="Confirm Password" name="password_confirmation">
-            
+            <div class="w-1/3 ml-28 mb-12">
+                <label for="name" class="self-center font-bold text-gray-600 w-9/12 text-lg">Slika profila:</label>
+                <input type="file" class="text-white bg-green-500" name="image">
+            </div>
+           
+
             <div class="flex w-9/12 items-center justify-center mb-2 mx-auto">
                 <p class="text-gray-300 font-semibold">Already a member? Sign in </p>
                 <a href="{{ route('login', []) }}"><p class="text-green-500 font-bold text-lg ml-1"> here </p>

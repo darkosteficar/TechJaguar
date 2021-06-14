@@ -8,6 +8,11 @@
         <section>
             <!-- top section -->
             
+            @if (session()->has('message'))
+            <div class="bg-gray-900 bg-opacity-70 text-white font-semibold mt-2 p-2 border-green-400 border">
+                {{ session('message') }}
+            </div>
+            @endif
             <div class="mt-20 w-3/4 lg:relative mx-auto ">
             
                 <div class="  -top-2 lg:absolute z-10 lg:w-full lg:right-12">

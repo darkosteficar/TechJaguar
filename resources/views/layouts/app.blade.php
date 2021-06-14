@@ -104,7 +104,7 @@
                     </div>
                     <div class="lg:flex lg:items-center">
                         @auth
-                        <a href="{{ route('login', []) }}"><p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
+                        <a href="{{ route('profile.index', []) }}"><p class="text-green-400 font-bold text-xl mr-12 border-t-4  border-transparent rounded-sm
                             hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
                         {{ auth()->user()->username }}</p>
                         </a>
