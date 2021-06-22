@@ -30,10 +30,14 @@ class BuildController extends Controller
         $total = $power_req = 0;
         $cpu = $case = $psu = $mobo = $cooler = $pc_case = '';
         $errors = $errors_components = $warnings = array();
-      
+        
+        
         if($request->hasCookie('build_id') != false){
+            
             $build = Build::find(request()->cookie('build_id'));
             if($build != null){
+                
+                $saved = ($build->user_id == null) ? false : true;
                 $components = array();
                 $components['rams'] = $components['gpus'] = $components['storages'] = $components['fans'] = array();
                 if($build->psu_id != null){
@@ -146,7 +150,7 @@ class BuildController extends Controller
                 //dd($errors,$errors_components);
                 $warnings = $allErrors[2];
                 
-                return view('build',['components'=>$components,'total'=>$total,'errors'=>$errors,'errors_components'=>$errors_components,'warnings'=>$warnings,'power_req'=>$power_req,'others'=>$others]);
+                return view('build',['components'=>$components,'total'=>$total,'errors'=>$errors,'errors_components'=>$errors_components,'warnings'=>$warnings,'power_req'=>$power_req,'others'=>$others,'saved'=>$saved]);
             }
             else{
                 $build = Build::create();
@@ -164,6 +168,44 @@ class BuildController extends Controller
             return view('build',[]);
         }
        
+    }
+
+    public function add(Request $request)
+    {
+        $user = auth()->user();
+        $build = auth()->user()->builds()->create([
+            'name'=>$request->name,
+            'user_id'=>$user->id
+        ]);
+        Cookie::forget('build_id');
+        $duration = 60 * 24 * 365;
+        Cookie::queue('build_id', $build->id, $duration);
+        return redirect()->route('build');
+    }
+
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $build = Build::find(request()->cookie('build_id'));
+        $build->name = $request->name;
+        $build->user_id = $user->id;
+        return redirect()->route('build');
+    }
+
+    public function select(Request $request)
+    {
+        Cookie::forget('build_id');
+        $duration = 60 * 24 * 365;
+        Cookie::queue('build_id', $request->build_id, $duration);
+        return redirect()->route('build');
+    }
+
+    public function delete(Request $request)
+    {
+        $build = Build::find($request->build_id);
+        $build->delete();
+        $buildables = Buildables::where($build_id,$request->build_id)->delete();
+        return redirect()->route('build');
     }
 
     public function checkErrors($errors,$errors_components,$warnings)

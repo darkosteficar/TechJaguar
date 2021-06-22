@@ -47,6 +47,10 @@ Route::get('/compareCpu',[CompareController::class,'compareCpu'])->name('compare
 Route::get('/compareGpu',[CompareController::class,'compareGpu'])->name('compareGpu');
 
 Route::get('/build',[BuildController::class,'index'])->name('build');
+Route::post('/build/new',[BuildController::class,'add'])->name('build.add');
+Route::post('/build/select',[BuildController::class,'select'])->name('build.select');
+Route::post('/build/save',[BuildController::class,'save'])->name('build.save');
+Route::delete('/build/save',[BuildController::class,'delete'])->name('build.delete');
 Route::get('/build/rams',[BuildController::class,'select_ram'])->name('build.rams');
 Route::get('/build/psus',[PsuController::class,'index'])->name('build.psu');
 Route::post('/build/psus',[PsuController::class,'add'])->name('build.psu.add');

@@ -10,8 +10,119 @@
     
 @endphp
 <div class="flex mt-10 justify-between mx-24">
+   
+    
     <div class="w-3/12">
+        @auth
+            @if (!$saved)
+                <form action="" method="POST">
+                    @csrf
+                    <div class="bg-gray-900 bg-opacity-70">
+                        <div class="flex text-green-400 items-center pl-2 mb-2 pt-2">
+                            <i class="fas fa-save fa-lg mr-2"></i>
+                            <p class="text-lg text-gray-300 font-semibold">SPREMI KONFIGURACIJU:</p>
+                        </div>
+                        
+                        <label for="name" class="mx-2 text-gray-300">Ime konfiguracije:</label>
+                        <input type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
+                        <button class="btn-green-select ml-4">Spremi</button>
+                    </div>
+                </form>
+            @else
+                <form action="{{ route('build.add', []) }}" method="POST">
+                    @csrf
+                    <div class="bg-gray-900 bg-opacity-70">
+                        <div class="flex text-green-400 items-center pl-2 mb-2 pt-2">
+                            <i class="fas fa-plus fa-lg mr-2"></i>
+                            <p class="text-lg text-gray-300 font-semibold">NOVA KONFIGURACIJA:</p>
+                        </div>
+                        
+                        <label for="name" class="mx-2 text-gray-300">Ime konfiguracije:</label>
+                        <input name="name" type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
+                        <button class="btn-green-select ml-4">kreiraj</button>
+                    </div>
+                </form>
+            @endif
+            <div>
+                <div class="bg-gray-900 bg-opacity-70 mb-2" x-data="{show: false}">
+                    <div class="flex text-green-400 items-center pl-2 mb-1 pt-2">
+                        <i class="fas fa-list fa-lg mr-2"></i>
+                        <p class="text-lg text-gray-300 font-semibold">SPREMLJENE KONFIGURACIJE</p>
+                    </div>
+                    <button x-show='!show'  class="btn-green-select ml-4 py-1 px-2" @click="show = true">PRIKAŽI</button>
+                    <button x-show='show' class="btn-green-select ml-4 py-1 px-2" @click="show = false">SAKRIJ</button>
+                    <div x-show='show' x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-90"
+                        x-transition:enter-end="opacity-100 transform scale-100"
+                        x-transition:leave="transition ease-in duration-300"
+                        x-transition:leave-start="opacity-100 transform scale-100"
+                        x-transition:leave-end="opacity-0 transform scale-90">
+                        @foreach (auth()->user()->builds as $build)
+                        
+                            <div class="flex justify-between items-center ml-4 pb-2">
+                                
+                                <form action="{{ route('build.select', []) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="build_id" value="{{ $build->id }}">
+                                    <p class="text-gray-300 ml-2">{{ $build->name }}</p>
+                                    <button class="btn-green-select mr-4 py-1 px-2">Odaberi</button>
+                                </form>
+                                @if ($build->id != request()->cookie('build_id'))
+                                    
+                                        
+                                        <!-- modal div -->
+                                        <div class="mt-6" x-data="{ open: false }">
+
+                                            <button class="btn-green-select mr-4 py-1 px-2" @click="open = true">X</button>
+                                    
+                                            <!-- Dialog (full screen) -->
+                                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full" style="background-color: rgba(0,0,0,.5);" x-show="open"  >
+                                                
+                                            <div class="h-auto p-4 mx-2 text-left bg-gray-900 rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0 " @click.away="open = false">
+                                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                <h3 class="text-lg font-medium leading-6 text-gray-200">
+                                                    Jeste li sigurni da želite izbrisati ovu konfiguraciju?
+                                                </h3>
+                                    
+                                                <div class="mt-2">
+                                                    <p class="text-sm leading-5 text-gray-500">
+                                                    {{ $build->name }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                    
+                                                <div class="mt-5 sm:mt-6">
+                                                <span class="flex w-full justify-between rounded-md shadow-sm">
+                                                    <form action="{{ route('build.delete', []) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="build_id" value="{{ $build->id }}">
+                                                        <button  class="btn-green-select">
+                                                            IZBRIŠI
+                                                        </button>
+                                                    </form>
+                                                    <button @click="open = false" class="btn-green-select">
+                                                        ODUSTANI
+                                                    </button>
+                                                </span>
+                                                </div>
+                                    
+                                            </div>
+                                            </div>
+                                        </div>
+                                  
+                                @endif
+                                
+                               
+                            </div>
+                        
+                        @endforeach
+                    </div>
+                    
+                </div>
+            </div>
+        @endauth
         <div class=" bg-gray-900 bg-opacity-70 border border-green-400 p-2">
+            
             <div class="ml-2 flex mb-2 font-medium items-center">
                 <i class="fas fa-bolt fa-lg text-green-400 mr-2"></i>
                 <p class=" text-gray-300 text-lg">Estimated Wattage: </p>
