@@ -76,7 +76,7 @@ class CompareController extends Controller
                 }
                 $apps = App::whereIn('name',$appNames)->get();
                 //dd($usedApps[2][0]->id);
-                //dd($apps);
+               
                 return view('compareCpu',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids,'picked'=>$picked]);
             }
 

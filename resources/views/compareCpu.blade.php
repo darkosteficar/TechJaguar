@@ -156,76 +156,142 @@
 @endif
 
 
-<div class="lg:flex justify-center ">
+<div class=" ">
     @if (isset($names))
-    <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400 lg:block hidden">
-        <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
-        <div class="ml-4 flex flex-col">
-            <p class="text-lg font-bold">Resolutions</p>
-            <label class="inline-flex items-center">
-              <span class="ml-2 text-lg mr-2">1080p</span>
-              <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1080p" checked onchange="filter(this)">
-            </label>
-            <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">1440p</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1440p" checked onchange="filter(this)">
-              </label>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">4K</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked>
-              </label>
-              <p class="text-lg mt-4 font-bold">Apps</p>
-              @foreach ($apps as $app)
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
-                </label>
-              @endforeach
-              <p class="text-lg mt-4 font-bold">CPU Wins</p>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">CPU 1 Wins</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu1_win" checked onchange="filter(this)">
-              </label>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">CPU 2 Wins</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu2_win" checked onchange="filter(this)" >
-              </label>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2"> {{ '<15% Win' }} </span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="smallDiff" checked onchange="filter(this)" >
-              </label>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2"> {{ '>15% Win' }} </span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="bigDiff" checked onchange="filter(this)" >
-              </label>
-             
-              <p class="text-lg mt-4 font-bold">Type</p>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">Benchmark</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="benchmark" checked onchange="filter(this)">
-              </label>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">Game</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="game" checked onchange="filter(this)" >
-              </label>
-              <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">Productivity</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="productivity" checked onchange="filter(this)" >
-              </label>
-              
+    <div class="flex justify-center w-10/12 lg:w-2/3 mx-auto">
+        <div class="lg:w-1/3">
+
         </div>
-
-      
-       
-
-     
-        
+        <div class=" lg:w-1/3 w-1/2 justify-center">
+            <img src="images/{{ $picked[0]->images()->first()->path }}" alt="" class="h-44 mx-auto">
+            <p class="text-green-400 lg:text-xl my-2 bg-gray-900 bg-opacity-70 text-center ml-2 p-2 border border-green-400">{{ $picked[0]->name }}</p>
+        </div>
+        <div class=" lg:w-1/3 w-1/2 justify-center">
+            <img src="images/{{ $picked[1]->images()->first()->path }}" alt="" class="h-44 mx-auto">
+            <p class="text-green-400 lg:text-xl my-2 bg-gray-900 bg-opacity-70 text-center ml-2 p-2 border border-green-400">{{ $picked[1]->name }}</p>
+        </div>
     </div>
-    <div class="lg:w-2/5 w-full mb-2">
+    <div class=" text-green-400 flex justify-center lg:w-2/3 mx-auto border-b-4 border-green-400 bg-gray-900 bg-opacity-80 mb-4">
+        <div class=" w-1/3 bg-gray-900 bg-opacity-70 lg:text-lg ">
+            
+            <p class="text-center text-green-400 my-2 ">Socket:</p>
+            <p class="text-center text-green-400 mb-2 ">Proizvođač:</p>
+            <p class="text-center text-green-400 mb-2 ">Radni takt:</p>
+            <p class="text-center text-green-400 mb-2 ">Maks. radni takt:</p>
+            <p class="text-center text-green-400 mb-2 ">Broj jezgri:</p>
+            <p class="text-center text-green-400 mb-2 ">TDP:</p>
+            <p class="text-center text-green-400 mb-2 ">Integirana grafika:</p>
+            <p class="text-center text-green-400 mb-2 ">SMT:</p>
+            
+        </div>
+        <div class="text-center w-1/3 justify-center lg:text-lg">
+           
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->socket }}</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->manufacturer->name }}</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->base_clock }} Ghz</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->boost_clock }} Ghz</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->core_count }}</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->tdp }} W</p>
+            <p class=" my-2 hover:bg-gray-800">@if ($picked[0]->integrated_graphics)
+                Da
+            @else
+                Ne
+            @endif</p>
+            <p class="text-lg my-2 hover:bg-gray-800">@if ($picked[0]->smt)
+                Da
+            @else
+                Ne
+            @endif</p>
+        </div>
+        <div class=" w-1/3 justify-center text-center lg:text-lg">
+            
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->socket }}</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->manufacturer->name }}</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->base_clock }} Ghz</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->boost_clock }} Ghz</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->core_count }}</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->tdp }} W</p>
+            <p class=" my-2 hover:bg-gray-800">@if ($picked[1]->integrated_graphics)
+                Da
+            @else
+                Ne
+            @endif</p>
+            <p class="text-lg my-2 hover:bg-gray-800">@if ($picked[1]->smt)
+                Da
+            @else
+                Ne
+            @endif</p>
+        </div>
+       
+    </div>
+    <div class="lg:flex justify-center">
+        <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400 lg:block hidden">
+            <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
+            <div class="ml-4 flex flex-col">
+                <p class="text-lg font-bold">Resolutions</p>
+                <label class="inline-flex items-center">
+                <span class="ml-2 text-lg mr-2">1080p</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1080p" checked onchange="filter(this)">
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">1440p</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1440p" checked onchange="filter(this)">
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">4K</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked>
+                </label>
+                <p class="text-lg mt-4 font-bold">Apps</p>
+                @foreach ($apps as $app)
+                    <label class="inline-flex items-center">
+                        <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
+                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
+                    </label>
+                @endforeach
+                <p class="text-lg mt-4 font-bold">CPU Wins</p>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">CPU 1 Wins</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu1_win" checked onchange="filter(this)">
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">CPU 2 Wins</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu2_win" checked onchange="filter(this)" >
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2"> {{ '<15% Win' }} </span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="smallDiff" checked onchange="filter(this)" >
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2"> {{ '>15% Win' }} </span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="bigDiff" checked onchange="filter(this)" >
+                </label>
+                
+                <p class="text-lg mt-4 font-bold">Type</p>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">Benchmark</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="benchmark" checked onchange="filter(this)">
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">Game</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="game" checked onchange="filter(this)" >
+                </label>
+                <label class="inline-flex items-center">
+                    <span class="ml-2 text-lg mr-2">Productivity</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="productivity" checked onchange="filter(this)" >
+                </label>
+                
+            </div>
 
-        @php
-            $count = 0;
-        @endphp
+        
+        
+
+        
+            
+        </div>
+        <div class="lg:w-2/5 w-full mb-2">
+            @php
+                $count = 0;
+            @endphp
             @foreach ($apps as $app)
                 @php
                     $cpu1_res = $results[$count][0]['score'];
@@ -240,27 +306,26 @@
             @endforeach
 
             @php
-            $count = 0;
-        @endphp
-        
-        
-    </div>
-    <div class="lg:w-1/5 w-full bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400 mb-4">
-        <div class="p-4">
-            <p class="font-semibold text-lg text-gray-200">Config 1</p>
-            <p>CPU: {{ $names[0] }}</p>
-            <p>RAM: {{ $names[2] }}</p>
-            <p>MOBO: {{ $names[3] }}</p>
+                $count = 0;
+            @endphp
+            
         </div>
-        <div class="p-4">
-            <p class="font-semibold text-lg text-gray-200">Config 2</p>
-            <p>CPU: {{ $names[1] }}</p>
-            <p>RAM: {{ $names[2] }}</p>
-            <p>MOBO: {{ $names[3] }}</p>
+        <div class="lg:w-1/5 w-full bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400 mb-4">
+            <div class="p-4">
+                <p class="font-semibold text-lg text-gray-200">Config 1</p>
+                <p>CPU: {{ $names[0] }}</p>
+                <p>RAM: {{ $names[2] }}</p>
+                <p>MOBO: {{ $names[3] }}</p>
+            </div>
+            <div class="p-4">
+                <p class="font-semibold text-lg text-gray-200">Config 2</p>
+                <p>CPU: {{ $names[1] }}</p>
+                <p>RAM: {{ $names[2] }}</p>
+                <p>MOBO: {{ $names[3] }}</p>
+            </div>
         </div>
     </div>
     @endif
-    
 </div>
  
 
