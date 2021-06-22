@@ -14,6 +14,10 @@ class Mobo extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'wireless_support'=>'boolean'
+    ];
+
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class);

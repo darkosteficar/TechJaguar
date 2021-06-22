@@ -87,6 +87,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="interface">TDP</label>
+                                <input class="form-control" type="text" name="tdp" data="green" >
+                            </div>
+                            <div class="col-3">
+                                <label for="power_req">Veličina procesa</label>
+                                <input class="form-control" type="text" name="process_size" data="green" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="interface">Takt memorije</label>
+                                <input class="form-control" type="text" name="memory_clock" data="green" >
+                            </div>
+                            <div class="col-3">
+                                <label for="power_req">Standarni takt</label>
+                                <input class="form-control" type="text" name="base_clock" data="green" >
+                            </div>
+                            <div class="col-3">
+                                <label for="power_connector">Maksimalni takt</label>
+                                <input class="form-control" type="text" name="boost_clock" data="green" >
+                            </div>
+                        </div>
+                    </div>
                   
                     <div class="form-group mt-3">
                         <div class="row">

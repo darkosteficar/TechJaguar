@@ -9,6 +9,11 @@ class Cpu extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    protected $casts = [
+        'smt'=>'boolean',
+        'integrated_graphics'=>'boolean'
+    ];
     
     public function chipsets()
     {

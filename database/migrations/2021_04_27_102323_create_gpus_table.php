@@ -25,6 +25,11 @@ class CreateGpusTable extends Migration
             $table->string('vram_type');
             $table->integer('vram');
             $table->integer('length');
+            $table->integer('tdp');
+            $table->integer('process_size');
+            $table->integer('memory_clock');
+            $table->integer('base_clock');
+            $table->integer('boost_clock');
             $table->string('interface');
             $table->string('power_connector');
             $table->integer('power_req');

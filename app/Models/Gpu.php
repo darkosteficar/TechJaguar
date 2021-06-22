@@ -11,6 +11,10 @@ class Gpu extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'crossfire' => 'boolean',
+    ];
+
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class);

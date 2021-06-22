@@ -36,10 +36,17 @@
                                 <input class="form-control" type="text" name="name" data="green" value="{{ $gpu->name }}">
                             </div>
                         </div>
-                       
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            <div class="col-3">
+                                <label for="series">Serija</label>
+                                <input class="form-control" type="text" name="series" data="green" value="{{ $gpu->series }}">
+                            </div>
+                            <div class="col-3">
+                                <label for="gpu_bus">GPU bus </label>
+                                <input class="form-control" type="text" name="gpu_bus" data="green" value="{{ $gpu->gpu_bus }}">
+                            </div>
                             <div class="col-3">
                                 <label for="price">Cijena</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{ $gpu->price }}">
@@ -49,45 +56,31 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="series">Serija</label>
-                                <input class="form-control" type="text" name="series" data="green" value="{{ $gpu->series }}">
+                                <label for="length">Duljina grafičke kartice</label>
+                                <input class="form-control" type="text" name="length" data="green" value="{{ $gpu->length }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
-                                <label for="gpu_bus">GPU bus </label>
-                                <input class="form-control" type="text" name="gpu_bus" data="green" value="{{ $gpu->gpu_bus }}">
+                                <label for="vram">Količina VRAM-a</label>
+                                <input class="form-control" type="text" name="vram" data="green" value="{{ $gpu->vram }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="vram_type">Vrsta VRAM-a</label>
                                 <input class="form-control" type="text" name="vram_type" data="green" value="{{ $gpu->vram_type }}">
                             </div>
                         </div>
                     </div>
+                    
+                    
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="vram">Količina VRAM-a</label>
-                                <input class="form-control" type="text" name="vram" data="green" value="{{ $gpu->vram }}">
+                                <label for="power_req">Minimalna snaga napajanja</label>
+                                <input class="form-control" type="text" name="power_req" data="green" value="{{ $gpu->power_req }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
-                                <label for="length">Duljina grafičke kartice</label>
-                                <input class="form-control" type="text" name="length" data="green" value="{{ $gpu->length }}">
+                                <label for="power_connector">Priključak napajanja</label>
+                                <input class="form-control" type="text" name="power_connector" data="green" value="{{ $gpu->power_connector }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="interface">Sučelje</label>
                                 <input class="form-control" type="text" name="interface" data="green" value="{{ $gpu->interface }}">
@@ -97,16 +90,29 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="power_connector">Priključak napajanja</label>
-                                <input class="form-control" type="text" name="power_connector" data="green" value="{{ $gpu->power_connector }}">
+                                <label for="interface">TDP</label>
+                                <input class="form-control" type="text" name="tdp" data="green" value="{{ $gpu->tdp }}">
+                            </div>
+                            <div class="col-3">
+                                <label for="power_req">Veličina procesa</label>
+                                <input class="form-control" type="text" name="process_size" data="green" value="{{ $gpu->process_size }}">
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="power_req">Minimalna snaga napajanja</label>
-                                <input class="form-control" type="text" name="power_req" data="green" value="{{ $gpu->power_req }}">
+                                <label for="interface">Takt memorije</label>
+                                <input class="form-control" type="text" name="memory_clock" data="green" value="{{ $gpu->memory_clock }}">
+                            </div>
+                            <div class="col-3">
+                                <label for="power_req">Standarni takt</label>
+                                <input class="form-control" type="text" name="base_clock" data="green" value="{{ $gpu->base_clock }}">
+                            </div>
+                            <div class="col-3">
+                                <label for="power_connector">Maksimalni takt</label>
+                                <input class="form-control" type="text" name="boost_clock" data="green" value="{{ $gpu->boost_clock }}">
                             </div>
                         </div>
                     </div>

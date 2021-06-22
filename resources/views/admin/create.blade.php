@@ -32,25 +32,32 @@
                         <div class="row">
                             <div class="col-3">
                                 <label for="">GPU</label>
-                                <select name="" id="select-gpu">
-                                    <option value=""></option>
-                                    <option value="22">Basdasd</option>
+                                <select name="gpu" id="select-gpu">
+                                    <option value="0">-</option>
+                                    @foreach ($gpus as $gpu)
+                                    <option value="{{ $gpu->id }}">{{ $gpu->name }}</option> 
+                                    @endforeach
+                                    
+                                    
                                    
                                 </select>
                             </div>
                             <div class="col-3">
                                 <label for="">CPU</label>
-                                <select name="" id="select-cpu">
-                                    <option value=""></option>
-                                    <option value="22">Basdasd</option>
-                                   
+                                <select name="cpu" id="select-cpu">
+                                    <option value="0">-</option>
+                                    @foreach ($cpus as $cpu)
+                                    <option value="{{ $cpu->id }}">{{ $cpu->name }}</option> 
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-3">
                                 <label for="">Matična ploča</label>
-                                <select name="" id="select-mobo">
-                                    <option value=""></option>
-                                    <option value="22">Basdadfgdfgdfgdfgdfgdfgdfgdfgdfgdfgsd dfgdfgdfgdfg sdfsdf sdf sdfsdf</option>
+                                <select name="mobo" id="select-mobo">
+                                    <option value="0">-</option>
+                                    @foreach ($mobos as $mobo)
+                                    <option value="{{ $mobo->id }}">{{ $mobo->name }}</option> 
+                                    @endforeach
                                    
                                 </select>
                             </div>

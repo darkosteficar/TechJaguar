@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->integer('manufacturer_id')->constrained()->onDelete('cascade');
             $table->integer('gpu_id')->default('0');
             $table->integer('cpu_id')->default('0');
+            $table->integer('mobo_id')->default('0');
             $table->timestamps();
         });
     }

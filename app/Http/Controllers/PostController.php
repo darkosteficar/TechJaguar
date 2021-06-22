@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cpu;
+use App\Models\Gpu;
+use App\Models\Mobo;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Manufacturer;
@@ -14,7 +17,7 @@ class PostController extends Controller
     {
      
         $this->validate($request,[
-            'post_title'=>'required|max:40',
+            'post_title'=>'required|max:50',
             'post_content'=>'required',
             'post_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id'=> 'required',
@@ -44,6 +47,9 @@ class PostController extends Controller
             'post_title'=>request()->post_title,
             'body'=>request()->post_content,
             'category_id'=>request()->category_id,
+            'gpu_id' =>$request->gpu,
+            'cpu_id' => $request->cpu,
+            'mobo_id' => $request->mobo,
             'manufacturer_id'=>request()->manufacturer_id,
             'post_image'=>$input['imagename'],
             'views' => 0
@@ -63,8 +69,11 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $manufacturers = Manufacturer::all();
+        $gpus = Gpu::all();
+        $mobos = Mobo::all();
+        $cpus = Cpu::all();
 
-        return view('admin.create',['categories'=>$categories,'manufacturers'=>$manufacturers]);
+        return view('admin.create',['categories'=>$categories,'manufacturers'=>$manufacturers,'gpus'=>$gpus,'cpus'=>$cpus,'mobos'=>$mobos]);
     }
 
     public function read()

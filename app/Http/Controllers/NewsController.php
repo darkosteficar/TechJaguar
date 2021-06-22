@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use DateTime;
+use App\Models\Cpu;
+use App\Models\Gpu;
+use App\Models\Mobo;
 use App\Models\Post;
 use App\Models\Image;
 use App\Models\Category;
@@ -54,12 +57,26 @@ class NewsController extends Controller
     public function post(Post $post)
     {
         $posts = Post::take(5)->orderByDesc('created_at')->get();
-        
         $post->loadCount('comments');
         
+        $components = array();
+        if($post->gpu_id != 0){
+            $gpu = Gpu::find($post->gpu_id);
+            $components['gpu'] = $gpu;
+        }
+        
+        if($post->cpu_id != 0){
+            $cpu = Cpu::find($post->cpu_id);
+            $components['cpu'] = $cpu;
+        }
+        if($post->mobo_id != 0){
+            $mobo = Mobo::find($post->mobo_id);
+            $components['mobo'] = $mobo;
+        }
+
         $post->views = $post->views + 1;
         $post->save();
-        return view('post',['post'=>$post,'posts'=>$posts]);
+        return view('post',['post'=>$post,'posts'=>$posts,'components'=>$components]);
     }
 
     public function category(Category $category)
@@ -77,6 +94,13 @@ class NewsController extends Controller
         $posts = $manufacturer->posts()->paginate(10);
         $postsPopular = Post::whereDate('created_at','>=',$jj)->orderBy('views','DESC')->take(5)->get();
         return view('manufacturer',['manufacturer'=>$manufacturer,'posts'=>$posts,'postsPopular'=>$postsPopular]);
+    }
+
+    public function search(Request $request)
+    {
+        $posts = Post::where('post_title','like', '%' . $request->key .'%')->orderByDesc('created_at')->paginate(10);
+        $posts->loadCount('comments');
+        return view('search',['posts'=>$posts]);
     }
 
     public function filter_body($categories_news)

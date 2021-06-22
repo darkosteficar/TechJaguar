@@ -40,6 +40,7 @@ Route::get('/post/{post}',[NewsController::class,'post'])->name('post.view');
 Route::get('/category/{category}',[NewsController::class,'category'])->name('category');
 Route::get('/manufacturer/{manufacturer}',[NewsController::class,'manufacturer'])->name('manufacturer');
 Route::get('/profile',[UserController::class,'profile'])->name('profile.index');
+Route::get('/search',[NewsController::class,'search'])->name('search');
 Route::post('/profile/update',[UserController::class,'update'])->name('profile.update');
 
 Route::get('/compareCpu',[CompareController::class,'compareCpu'])->name('compareCpu');

@@ -303,6 +303,11 @@ class ComponentController extends Controller
             'chipset_id'=>'required|integer',
             'series'=>'required',
             'gpu_bus'=>'required',
+            'process_size'=>'required',
+            'tdp'=>'required',
+            'memory_clock'=>'required',
+            'base_clock'=>'required',
+            'boost_clock'=>'required',
             'vram_type'=>'required',
             'vram'=>'required|integer',
             'length'=>'required',
@@ -321,6 +326,11 @@ class ComponentController extends Controller
             'chipset_id'=>$r->chipset_id,
             'series'=>$r->series,
             'gpu_bus'=>$r->gpu_bus,
+            'process_size'=>$r->process_size,
+            'tdp'=>$r->tdp,
+            'memory_clock'=>$r->memory_clock,
+            'boost_clock'=>$r->boost_clock,
+            'base_clock'=>$r->base_clock,
             'vram_type'=>$r->vram_type,
             'vram'=>$r->vram,
             'length'=>$r->length,
@@ -382,6 +392,11 @@ class ComponentController extends Controller
                 'chipset_id'=>'required|integer',
                 'series'=>'required',
                 'gpu_bus'=>'required',
+                'process_size'=>'required',
+                'tdp'=>'required',
+                'memory_clock'=>'required',
+                'base_clock'=>'required',
+                'boost_clock'=>'required',
                 'vram_type'=>'required',
                 'vram'=>'required|integer',
                 'length'=>'required',
@@ -397,6 +412,11 @@ class ComponentController extends Controller
             $gpu->chipset_id = $request->chipset_id;
             $gpu->series = $request->series;
             $gpu->gpu_bus = $request->gpu_bus;
+            $gpu->tdp = $request->tdp;
+            $gpu->process_size = $request->process_size;
+            $gpu->base_clock = $request->base_clock;
+            $gpu->boost_clock = $request->boost_clock;
+            $gpu->memory_clock = $request->memory_clock;
             $gpu->vram_type = $request->vram_type;
             $gpu->vram = $request->vram;
             $gpu->length = $request->length;
