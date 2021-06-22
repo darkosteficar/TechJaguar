@@ -11,11 +11,11 @@
     }
 @endphp
 
-<div class="mt-5  bg-gray-900 ml-2 md:ml-32">
+<div class="mt-5  bg-gray-900 ml-2 md:ml-32 pb-8">
     <div class="bg-green-400 inline-block">
         <p class="text-2xl font-semibold text-white inline-block px-3 py-1">{{ $post->category->name }}</p>
     </div>
-    <div class="mt-2 ml-3">
+    <div class="mt-4 ml-3">
         <p class="text-white font-bold text-2xl">{{ $post->post_title }}</p>
     </div>
     <div class="flex items-center mt-2">
@@ -23,12 +23,7 @@
         <i class="fas fa-comments text-green-400 ml-2"></i>
         <p class="text-gray-500 text-lg ml-2">{{ $post->comments_count }} {{ $pad }}</p>
     </div>
-    <div class=" flex">
-        <div class="m-3 border border-gray-700 text-gray-500 px-2 py-1 font-semibold">
-            RTX 3000
-        </div>
-
-    </div>
+    
 
 </div>
 
@@ -111,7 +106,7 @@
                         <div class="w-1/4 text-center  ">
                             <div class="font-bold text-lg text-gray-200 h-1/2 flex items-center justify-center ">
                                 <p>
-                                    {{ $post->created_at->isoFormat('HH') }}:{{ $post2->created_at->isoFormat('m') }}
+                                    {{ $post2->created_at->isoFormat('HH') }}:{{ $post2->created_at->isoFormat('mm') }}
                                 </p>
                             </div>
                             <div

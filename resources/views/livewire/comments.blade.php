@@ -8,7 +8,7 @@
         @endif
       <!-- comment form -->
       <div class="flex mx-auto items-center justify-center shadow-lg   mb-4 ">
-        <form class="w-full  bg-gray-800 border border-green-400 rounded-lg px-4 pt-2 " wire:submit.prevent="addComment">
+        <form class="w-full  bg-gray-800 border border-green-400 rounded-sm px-4 pt-2 " wire:submit.prevent="addComment">
         <div class="flex flex-wrap -mx-3 mb-6 ">
             <h2 class="px-4 pt-3 pb-2 text-gray-300 text-lg">Dodaj komentar</h2>
             <div class="w-full md:w-full px-3 mb-2 mt-2">
@@ -34,7 +34,7 @@
         <div class="flex ">
            
             <div class="flex-shrink-0 mr-3">
-            <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+            <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="{{ asset('images/'. $comment->user->image) }}" alt="">
             </div>
             
                 <div class="flex-1 relative border border-green-400 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed bg-gray-800">
@@ -42,6 +42,7 @@
                     <p class="text-md text-white">
                         {{ $comment->comment }}
                     </p>
+                    <!--
                     <div class="mt-4 flex items-center">
                         <div class="flex -space-x-2 mr-2">
                         <img class="rounded-full w-6 h-6 border border-green-400" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
@@ -51,6 +52,7 @@
                         5 Replies
                         </div>
                     </div>
+                    -->
                     <div class="absolute bg-green-400 top-0 right-0 w-full h-full rounded-md bg-opacity-20 " 
                     x-data='{show: false,id: {{ $comment->id }}}' x-show="show" x-init="@this.on('posted',(commentId) => { 
                        

@@ -15,7 +15,7 @@ class NewsController extends Controller
     {
         $popular = Post::take(1)->orderByDesc('views')->get();
         $body = preg_replace('/<img[\s\S]+?>/', '', $popular[0]->body);
-        $body = substr($body,0,400) . '...';
+        $body = substr($body,0,310) . '...';
         $popular[0]->body = $body;
         $news = Post::take(5)->orderByDesc('created_at')->get();
         $categories = $manu_hard = $manu_soft = array();
@@ -53,7 +53,8 @@ class NewsController extends Controller
 
     public function post(Post $post)
     {
-        $posts = Post::take(3)->orderByDesc('created_at')->get();
+        $posts = Post::take(5)->orderByDesc('created_at')->get();
+        
         $post->loadCount('comments');
         
         $post->views = $post->views + 1;
