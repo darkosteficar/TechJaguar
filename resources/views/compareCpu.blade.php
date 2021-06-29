@@ -10,7 +10,7 @@
     @endif
 
 
-<div class="lg:flex justify-between  lg:w-3/5 mx-auto my-10 bg-gray-900 bg-opacity-50 py-2 pr-6 ">
+<div class="xl:flex justify-between  lg:w-4/5 mx-auto my-10 bg-gray-900 bg-opacity-50 py-2 px-6 ">
     
    
         <div class="container ">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="container lg:ml-5 ">
+        <div class="container xl:ml-5 ">
             <p class="font-bold text-2xl text-gray-200  mb-3 text-center">CPU 2</p>
 
             <div class="select-box mx-auto  ">
@@ -243,9 +243,9 @@
                 </label>
                 <p class="text-lg mt-4 font-bold">Apps</p>
                 @foreach ($apps as $app)
-                    <label class="inline-flex items-center">
+                    <label class="flex items-center border-b border-green-400 py-1 mr-4">
                         <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
-                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
+                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm mr-2" id="{{ $app->tag }}" checked onchange="filter(this)">
                     </label>
                 @endforeach
                 <p class="text-lg mt-4 font-bold">CPU Wins</p>
@@ -288,7 +288,7 @@
         
             
         </div>
-        <div class="lg:w-2/5 w-full mb-2">
+        <div class="lg:w-3/6 w-full mb-2">
             @php
                 $count = 0;
             @endphp
@@ -310,7 +310,7 @@
             @endphp
             
         </div>
-        <div class="lg:w-1/5 w-full bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400 mb-4">
+        <div class="lg:w-1/6 w-full bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400 mb-4">
             <div class="p-4">
                 <p class="font-semibold text-lg text-gray-200">Config 1</p>
                 <p>CPU: {{ $names[0] }}</p>

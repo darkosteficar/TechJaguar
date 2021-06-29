@@ -10,7 +10,7 @@
     @endif
 
 
-<div class="lg:flex justify-between  lg:w-3/5 w-full mx-auto my-10 bg-gray-900 bg-opacity-50 pt-2 pr-6 pb-2">
+<div class="xl:flex justify-between  lg:w-4/5 w-full mx-auto my-10 bg-gray-900 bg-opacity-50 pt-2 pr-6 pb-2">
     
    
         <div class="container ">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="container lg:ml-5 ">
+        <div class="container xl:ml-5 ">
             <p class="font-bold text-2xl text-gray-200  mb-3 text-center">GPU 2</p>
 
             <div class="select-box mx-auto  ">
@@ -230,7 +230,7 @@
         </div>
        
     </div>
-    <div  class="lg:flex justify-center">
+    <div  class="lg:flex justify-center mb-12">
         <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400 lg:block hidden">
             <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
             <div class="ml-4 flex flex-col">
@@ -249,9 +249,9 @@
                 </label>
                 <p class="text-lg mt-4 font-bold">Apps</p>
                 @foreach ($apps as $app)
-                    <label class="inline-flex items-center">
-                        <span class="ml-2 text-lg mr-2">{{ $app->name }}</span>
-                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
+                    <label class="inline-flex items-center mr-4">
+                        <span class="ml-2 text-lg mr-2 my-1">{{ $app->name }}</span>
+                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm  " id="{{ $app->tag }}" checked onchange="filter(this)">
                     </label>
                 @endforeach
                 <p class="text-lg mt-4 font-bold">GPU Wins</p>
@@ -294,7 +294,7 @@
         
             
         </div>
-        <div class="lg:w-3/6 w-full">
+        <div class="lg:w-4/6 w-full">
                 @php
                     $count = 0;
                 @endphp

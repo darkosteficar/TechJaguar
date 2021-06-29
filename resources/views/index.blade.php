@@ -52,7 +52,7 @@
             <div class=" relative w-full ">
                 <p class="font-semibold text-2xl text-green-400 pl-10  w-full py-14  bg-gray-900 bg-opacity-70 border-t border-green-400">
                     Najnovije</p>
-                <div class="lg:flex lg:absolute lg:w-10/12 left-64 top-12 md:w-7/12 md:mx-auto ">
+                <div class="lg:flex lg:absolute lg:w-10/12 left-60 top-12 md:w-7/12 md:mx-auto ">
                     @foreach ($news as $post)
                         <div class=" lg:mr-6 lg:ml-0 mx-24 my-2">
                             <a href="{{ route('post.view', ['post'=>$post->id]) }}">
@@ -61,7 +61,7 @@
                                     <div class="image__overlay "></div>
                                 </div>
                             </a>
-                            <p class="font-semibold border-b border-white text-white text-lg bg-gray-900 bg-opacity-70 py-2 pl-2 h-20">{{ $post->post_title }}</p>
+                            <p class="font-semibold border-b border-white text-white  bg-gray-900 bg-opacity-70 py-2 pl-2 h-24">{{ $post->post_title }}</p>
                         </div>    
                     @endforeach
                 </div>
@@ -262,15 +262,15 @@
             
             <div class="w-5/6 mx-auto ">
             
-                <div class=" lg:mb-52 mb-12 flex items-center">
+                <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             HARDVER</p>
-                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-48 top-12 lg:w-[1300px]">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_hard['amd'] as $post)
-                                <div class="mr-6 lg:mt-0 mt-2 lg:w-1/6">
+                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400  ">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
@@ -279,18 +279,17 @@
                                 </div>    
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
-                <div class=" lg:mb-48 mb-12 flex items-center">
+                <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             SOFTVER</p>
-                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-48 top-12 lg:w-[1300px]">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_soft['amd'] as $post)
-                                <div class="mr-6 lg:mt-0 mt-2 lg:w-1/6">
+                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400  ">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
@@ -299,7 +298,6 @@
                                 </div>    
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -311,22 +309,22 @@
 
     <div class="lg:mx-32 mb-16 border-t border-green-400">
         <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
-            <a href="{{ route('manufacturer', ['manufacturer'=>3]) }}">
+            <a href="{{ route('manufacturer', ['manufacturer'=>2]) }}">
                 <p class="font-semibold md:text-4xl text-2xl pl ml-10 pb-4 text-green-400 w-1/4 hover:text-gray-200 inline-block">Nvidia</p>
             </a>
            
             
             <div class="w-5/6 mx-auto ">
             
-                <div class=" lg:mb-52 mb-12 flex items-center">
+                <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             HARDVER</p>
-                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-48 top-12 lg:w-[1300px]">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_hard['nvidia'] as $post)
-                                <div class="mr-6 lg:mt-0 mt-2 lg:w-1/6">
+                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400  ">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
@@ -335,18 +333,17 @@
                                 </div>    
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
-                <div class=" lg:mb-48 mb-12 flex items-center">
+                <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             SOFTVER</p>
-                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-48 top-12 lg:w-[1300px]">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_soft['nvidia'] as $post)
-                                <div class="mr-6 lg:mt-0 mt-2 lg:w-1/6">
+                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400  ">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
@@ -355,7 +352,6 @@
                                 </div>    
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -367,22 +363,22 @@
 
     <div class="lg:mx-32 mb-16 border-t border-green-400">
         <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
-            <a href="{{ route('manufacturer', ['manufacturer'=>1]) }}">
+            <a href="{{ route('manufacturer', ['manufacturer'=>2]) }}">
                 <p class="font-semibold md:text-4xl text-2xl pl ml-10 pb-4 text-green-400 w-1/4 hover:text-gray-200 inline-block">Intel</p>
             </a>
            
             
             <div class="w-5/6 mx-auto ">
             
-                <div class=" lg:mb-52 mb-12 flex items-center">
+                <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             HARDVER</p>
-                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-48 top-12 lg:w-[1300px]">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_hard['intel'] as $post)
-                                <div class="mr-6 lg:mt-0 mt-2 lg:w-1/6">
+                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400  ">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
@@ -391,18 +387,17 @@
                                 </div>    
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
-                <div class=" lg:mb-48 mb-12 flex items-center">
+                <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             SOFTVER</p>
-                        <div class="lg:flex lg:absolute grid md:grid-cols-3 grid-cols-2 left-48 top-12 lg:w-[1300px]">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_soft['intel'] as $post)
-                                <div class="mr-6 lg:mt-0 mt-2 lg:w-1/6">
+                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400  ">
+                                        <div class="image image__overlay_border border border-green-400 ">
                                             <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
                                             <div class="image__overlay "></div>
                                         </div>
@@ -411,7 +406,6 @@
                                 </div>    
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
             </div>
