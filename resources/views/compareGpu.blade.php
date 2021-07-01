@@ -13,7 +13,7 @@
 <div class="xl:flex justify-between  lg:w-4/5 w-full mx-auto my-10 bg-gray-900 bg-opacity-50 pt-2 pr-6 pb-2">
     
    
-        <div class="container ">
+        <div class="container mx-auto xl:mb-0 mb-2">
             <p class="font-bold text-2xl text-gray-200 mb-3 text-center">GPU 1</p>
 
             <div class="select-box mx-auto">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="container xl:ml-5 ">
+        <div class="container xl:ml-5 mx-auto">
             <p class="font-bold text-2xl text-gray-200  mb-3 text-center">GPU 2</p>
 
             <div class="select-box mx-auto  ">
@@ -163,16 +163,16 @@
 
         </div>
         <div class=" lg:w-1/3 w-1/2 justify-center">
-            <img src="images/{{ $picked[0]->images()->first()->path }}" alt="" class="lg:h-44 h-32 mx-auto">
-            <p class="text-green-400 lg:text-xl my-2 bg-gray-900 bg-opacity-70 text-center ml-2 p-2 border border-green-400">{{ $picked[0]->name }}</p>
+            <img src="images/{{ $picked[0]->images()->first()->path }}" alt="" class="h-32 mx-auto">
+            <p class="text-green-400 2xl:text-xl my-2 bg-gray-900 bg-opacity-70 text-center ml-2 p-2 border border-green-400">{{ $picked[0]->name }}</p>
         </div>
         <div class=" lg:w-1/3 w-1/2 justify-center">
-            <img src="images/{{ $picked[1]->images()->first()->path }}" alt="" class="lg:h-44 h-32 mx-auto">
-            <p class="text-green-400 lg:text-xl my-2 bg-gray-900 bg-opacity-70 text-center ml-2 p-2 border border-green-400">{{ $picked[1]->name }}</p>
+            <img src="images/{{ $picked[1]->images()->first()->path }}" alt="" class="h-32 mx-auto">
+            <p class="text-green-400 2xl:text-xl my-2 bg-gray-900 bg-opacity-70 text-center ml-2 p-2 border border-green-400">{{ $picked[1]->name }}</p>
         </div>
     </div>
     <div class=" text-green-400 flex justify-center lg:w-2/3 mx-auto border-b-4 border-green-400 bg-gray-900 bg-opacity-80 mb-4">
-        <div class=" w-1/3 bg-gray-900 bg-opacity-70 lg:text-lg ">
+        <div class=" w-1/3 bg-gray-900 bg-opacity-70 2xl:text-lg ">
             
             <p class="text-center text-green-400 my-2 ">Serija:</p>
             <p class="text-center text-green-400 mb-2 ">Proizvođač:</p>
@@ -189,7 +189,7 @@
             <p class="text-center text-green-400 mb-2 ">Veličina procesa:</p>
             
         </div>
-        <div class="text-center w-1/3 justify-center lg:text-lg">
+        <div class="text-center w-1/3 justify-center 2xl:text-lg">
            
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->series }}</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->manufacturer->name }}</p>
@@ -209,7 +209,7 @@
             @endif</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->process_size }} nm</p>
         </div>
-        <div class=" w-1/3 justify-center text-center lg:text-lg">
+        <div class=" w-1/3 justify-center text-center 2xl:text-lg">
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->series }}</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->manufacturer->name }}</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->gpu_bus }}</p>
@@ -231,58 +231,58 @@
        
     </div>
     <div  class="lg:flex justify-center mb-12">
-        <div class="w-1/6 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400 lg:block hidden">
+        <div class=" 2xl:w-2/12 w-3/12 bg-gray-900 bg-opacity-90 mr-4 text-green-400 border-r-2 border-green-400 lg:block hidden">
             <p class="text-xl font-semibold text-gray-200 ml-3 mt-1 mb-2">Filters</p>
             <div class="ml-4 flex flex-col">
-                <p class="text-lg font-bold">Resolutions</p>
-                <label class="inline-flex items-center">
-                <span class="ml-2 text-lg mr-2">1080p</span>
-                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1080p" checked onchange="filter(this)">
+                <p class="text-lg font-semibold mb-2">Resolutions</p>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                <span class="ml-2 mr-2">1080p</span>
+                <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm mb-1" id="1080p" checked onchange="filter(this)">
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">1440p</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="1440p" checked onchange="filter(this)">
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">1440p</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm mb-1" id="1440p" checked onchange="filter(this)">
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">4K</span>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">4K</span>
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked>
                 </label>
-                <p class="text-lg mt-4 font-bold">Apps</p>
+                <p class="text-lg mt-4 font-semibold">Apps</p>
                 @foreach ($apps as $app)
-                    <label class="inline-flex items-center mr-4">
-                        <span class="ml-2 text-lg mr-2 my-1">{{ $app->name }}</span>
-                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm  " id="{{ $app->tag }}" checked onchange="filter(this)">
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                        <span class="ml-2 mr-2">{{ $app->name }}</span>
+                        <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
                     </label>
                 @endforeach
-                <p class="text-lg mt-4 font-bold">GPU Wins</p>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">GPU 1 Wins</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="gpu1_win" checked onchange="filter(this)">
+                <p class="text-lg mt-4 font-semibold">CPU Wins</p>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">CPU 1 Wins</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="cpu1_win" checked onchange="filter(this)">
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">GPU 2 Wins</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="gpu2_win" checked onchange="filter(this)" >
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">CPU 2 Wins</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu2_win" checked onchange="filter(this)" >
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2"> {{ '<15% Win' }} </span>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2"> {{ '<15% Win' }} </span>
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="smallDiff" checked onchange="filter(this)" >
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2"> {{ '>15% Win' }} </span>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2"> {{ '>15% Win' }} </span>
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="bigDiff" checked onchange="filter(this)" >
                 </label>
-
-                <p class="text-lg mt-4 font-bold">Type</p>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">Benchmark</span>
+                
+                <p class="text-lg mt-4 font-semibold">Type</p>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">Benchmark</span>
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="benchmark" checked onchange="filter(this)">
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">Game</span>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">Game</span>
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="game" checked onchange="filter(this)" >
                 </label>
-                <label class="inline-flex items-center">
-                    <span class="ml-2 text-lg mr-2">Productivity</span>
+                <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
+                    <span class="ml-2 mr-2">Productivity</span>
                     <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="productivity" checked onchange="filter(this)" >
                 </label>
                 
@@ -294,7 +294,7 @@
         
             
         </div>
-        <div class="lg:w-4/6 w-full">
+        <div class="2xl:w-6/12 xl:w-8/12 w-full">
                 @php
                     $count = 0;
                 @endphp
@@ -314,14 +314,14 @@
                             <div>
                                 @if ($app->type == 'benchmark')
                                 <p class= "text-green-400 font-semibold mb-2 ">Performance numbers</p>
-                                <p class="text-white text-lg">GPU 1 Score: <span class="text-green-400">  {{ $results[$count][0]['score'] }}</span> </p>
-                                <p class="text-white text-lg ">GPU 2 Score: <span class="text-green-400"> {{ $results[$count][1]['score'] }} </span></p>
+                                <p class="text-white ">GPU 1 Score: <span class="text-green-400">  {{ $results[$count][0]['score'] }}</span> </p>
+                                <p class="text-white  ">GPU 2 Score: <span class="text-green-400"> {{ $results[$count][1]['score'] }} </span></p>
                                 @else
                                 <p class= "text-green-400 font-semibold mb-2 ">Performance numbers</p>
-                                <p class="text-white text-lg">GPU 1 Avg Score: <span class="text-green-400">  {{ $results[$count][0]['score'] }}</span> </p>
-                                <p class="text-white text-lg">GPU 2 Avg Score: <span class="text-green-400"> {{ $results[$count][1]['score'] }} </span></p>
-                                <p class="text-white text-lg">GPU 1 Min Score: <span class="text-gray-200">  {{ $results[$count][0]['min_score'] }}</span> </p>
-                                <p class="text-white text-lg">GPU 2 Min Score: <span class="text-gray-200"> {{ $results[$count][1]['min_score'] }} </span></p>
+                                <p class="text-white ">GPU 1 Avg Score: <span class="text-green-400">  {{ $results[$count][0]['score'] }}</span> </p>
+                                <p class="text-white ">GPU 2 Avg Score: <span class="text-green-400"> {{ $results[$count][1]['score'] }} </span></p>
+                                <p class="text-white ">GPU 1 Min Score: <span class="text-gray-200">  {{ $results[$count][0]['min_score'] }}</span> </p>
+                                <p class="text-white ">GPU 2 Min Score: <span class="text-gray-200"> {{ $results[$count][1]['min_score'] }} </span></p>
                                 @endif
                             
                             </div>

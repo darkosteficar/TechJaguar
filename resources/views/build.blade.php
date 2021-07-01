@@ -9,11 +9,12 @@
     
     
 @endphp
-<div class="flex mt-10 justify-between mx-24">
+<div class="xl:flex mt-10 justify-between mx-6">
    
     
-    <div class="w-3/12">
-        @auth
+    <div class="xl:w-3/12 xl:mb-0 mb-3 w-full">
+        <div>
+            @auth
             @if (!$saved)
                 <form action="" method="POST">
                     @csrf
@@ -24,7 +25,7 @@
                         </div>
                         
                         <label for="name" class="mx-2 text-gray-300">Ime konfiguracije:</label>
-                        <input type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
+                        <input type="text" class=" bg-gray-800 border-green-400 border h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
                         <button class="btn-green-select ml-4">Spremi</button>
                     </div>
                 </form>
@@ -38,8 +39,8 @@
                         </div>
                         
                         <label for="name" class="mx-2 text-gray-300">Ime konfiguracije:</label>
-                        <input name="name" type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
-                        <button class="btn-green-select ml-4">kreiraj</button>
+                        <input name="name" type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 2xl:ml-0 2xl:mt-0 mt-2 ml-2 text-white  font-semibold focus:outline-none focus:ring-0" placeholder=" npr. AMD konfiguracija">
+                        <button class="btn-green-select ml-2">kreiraj</button>
                     </div>
                 </form>
             @endif
@@ -120,7 +121,8 @@
                     
                 </div>
             </div>
-        @endauth
+            @endauth
+        </div>
         <div class=" bg-gray-900 bg-opacity-70 border border-green-400 p-2">
             
             <div class="ml-2 flex mb-2 font-medium items-center">
@@ -434,7 +436,7 @@
           
         </div>
     </div>
-    <div class="w-9/12 bg-gray-900 bg-opacity-70  mb-5 font-semibold text-green-400  ml-6">
+    <div class="xl:w-9/12 w-full bg-gray-900 bg-opacity-70  mb-5 font-semibold text-green-400  xl:ml-6">
         
         @if (session()->has('success'))
         <div class="bg-gray-900 bg-opacity-70 text-white font-semibold rounded-sm py-2 mb-2 border border-gray-400 flex">
@@ -448,13 +450,12 @@
                 <p class="w-6/12 border-r border-gray-900 mr-4 ">ODABIR</p>
                 <p class="w-3/12 border-r border-gray-900 mr-4">PROIZVOĐAČ</p>
                 <p class="w-2/12 border-r border-gray-900 mr-4">MSRP</p>
-                <p class="w-1/12 ">BRISANJE</p>
+                <p class="w-1/12 mr-2 ">BRISANJE</p>
             </div>
 
 
             @if(isset($components['cpu']))
             <livewire:build.cpus :cpu="$components['cpu']" :errors="$errors_components"/>
-             
             @else
                 <div class="flex items-center pl- border-2 border-gray-900">
                     <p class="w-1/5 ml-3">CPU</p>

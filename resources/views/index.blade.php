@@ -52,7 +52,7 @@
             <div class=" relative w-full ">
                 <p class="font-semibold text-2xl text-green-400 pl-10  w-full py-14  bg-gray-900 bg-opacity-70 border-t border-green-400">
                     Najnovije</p>
-                <div class="lg:flex lg:absolute lg:w-10/12 left-60 top-12 md:w-7/12 md:mx-auto ">
+                <div class="lg:flex lg:absolute lg:w-10/12 left-52 top-12 md:w-7/12 md:mx-auto ">
                     @foreach ($news as $post)
                         <div class=" lg:mr-6 lg:ml-0 mx-24 my-2">
                             <a href="{{ route('post.view', ['post'=>$post->id]) }}">
@@ -71,11 +71,10 @@
 
     <div class="lg:flex mx-10 -mt-16">
         <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
-            
             <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                 <div class="md:w-1/2 w-full px-5">
                     <a href="{{ route('category', ['category'=>3]) }}">
-                      <p class="text-green-400 text-2xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">GRAFIČKE KARTICE</p>
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">GRAFIČKE KARTICE</p>
                     </a>
                     <a href="{{ route('post.view', ['post'=>$categories['gpus'][0]->id]) }}">
                     <div class="image image__overlay_border">
@@ -84,11 +83,11 @@
                     </div>
                     </a>
             
-                    <p class="text-white text-2xl  my-2">{{ $categories['gpus'][0]->post_title }}</p>
-                    <p class="text-gray-300 font-light my-5"> {{ $categories['gpus'][0]->body }}</p>
+                    <p class="text-white 2xl:text-2xl text-xl  my-2">{{ $categories['gpus'][0]->post_title }}</p>
+                    <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['gpus'][0]->body }}</p>
                     <a href="{{ route('post.view', ['post'=>$categories['gpus'][0]->id]) }}">
                         <button
-                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
                         </button>
                     </a>
                 </div>
@@ -103,36 +102,33 @@
                                         <div class="image__overlay "></div>
                                     </div>
                                 </a>
-                                <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 text-lg font-normal my-2">{{ $post->post_title }}</p>
+                                <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 2xl:text-lg  font-normal my-2">{{ $post->post_title }}</p>
                             </div> 
                         @endif
                     @endforeach
                     </div>
                 </div>
             </div>
-      
-        
         </div>
 
         <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
-            
             <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                 <div class="md:w-1/2 w-full px-5">
-                    <a href="{{ route('category', ['category'=>5]) }}">
-                        <p class="text-green-400 text-2xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">PROCESORI</p>
+                    <a href="{{ route('category', ['category'=>3]) }}">
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">PROCESORI</p>
                     </a>
-                    <a href="{{ route('post.view', ['post'=>$categories['cpus'][0]->id]) }}">
+                    <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
                     <div class="image image__overlay_border">
                         <img src="images/{{ $categories['cpus'][0]->post_image }}" alt="" class="w-full ">
                         <div class="image__overlay "></div>
                     </div>
                     </a>
             
-                    <p class="text-white text-2xl  my-2">{{ $categories['cpus'][0]->post_title }}</p>
-                    <p class="text-gray-300 font-light my-5"> {{ $categories['cpus'][0]->body }}</p>
+                    <p class="text-white 2xl:text-2xl text-xl  my-2">{{ $categories['cpus'][0]->post_title }}</p>
+                    <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['cpus'][0]->body }}</p>
                     <a href="{{ route('post.view', ['post'=>$categories['cpus'][0]->id]) }}">
                         <button
-                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
                         </button>
                     </a>
                 </div>
@@ -147,15 +143,13 @@
                                         <div class="image__overlay "></div>
                                     </div>
                                 </a>
-                                <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 text-lg font-normal my-2">{{ $post->post_title }}</p>
+                                <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 2xl:text-lg  font-normal my-2">{{ $post->post_title }}</p>
                             </div> 
                         @endif
                     @endforeach
                     </div>
                 </div>
             </div>
-      
-        
         </div>
     
     </div>
@@ -163,90 +157,85 @@
 
     <div class="lg:flex mx-10 mb-12 ">
         <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
-                <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
-                    <div class="md:w-1/2 w-full px-5">
-                        <a href="{{ route('category', ['category'=>4]) }}">
-                            <p class="text-green-400 text-2xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">RADNE MEMORIJE</p>
-                        </a>
-                        <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
-                        <div class="image image__overlay_border">
-                            <img src="images/{{ $categories['rams'][0]->post_image }}" alt="" class="w-full ">
-                            <div class="image__overlay "></div>
-                        </div>
-                        </a>
-                
-                        <p class="text-white text-2xl  my-2">{{ $categories['rams'][0]->post_title }}</p>
-                        <p class="text-gray-300 font-light my-5"> {{ $categories['rams'][0]->body }}</p>
-                        <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
-                            <button
-                            class="bg-gradient-to-r from-green-700 to-green-800 py-1 px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
-                            </button>
-                        </a>
+            <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
+                <div class="md:w-1/2 w-full px-5">
+                    <a href="{{ route('category', ['category'=>3]) }}">
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">RADNE MEMORIJE</p>
+                    </a>
+                    <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
+                    <div class="image image__overlay_border">
+                        <img src="images/{{ $categories['rams'][0]->post_image }}" alt="" class="w-full ">
+                        <div class="image__overlay "></div>
                     </div>
-                    <div class="md:w-1/2 w-full"> 
-                        <div class="flex flex-wrap mt-12">
-                        @foreach ($categories['rams'] as $key => $post)
-                            @if ($key !== 0)
-                                <div class="mb-8 w-1/2 pl-6">
-                                    <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border">
-                                            <img src="images/{{ $post->post_image }}" alt="" class="">
-                                            <div class="image__overlay "></div>
-                                        </div>
-                                    </a>
-                                    <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 text-lg font-normal my-2">{{ $post->post_title }}</p>
-                                </div> 
-                            @endif
-                        @endforeach
-                        </div>
+                    </a>
+            
+                    <p class="text-white 2xl:text-2xl text-xl  my-2">{{ $categories['rams'][0]->post_title }}</p>
+                    <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['rams'][0]->body }}</p>
+                    <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
+                        <button
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        </button>
+                    </a>
+                </div>
+                <div class="md:w-1/2 w-full"> 
+                    <div class="flex flex-wrap mt-12">
+                    @foreach ($categories['rams'] as $key => $post)
+                        @if ($key !== 0)
+                            <div class="mb-8 w-1/2 pl-6">
+                                <a href="{{ route('post.view', ['post'=>$post->id]) }}">
+                                    <div class="image image__overlay_border">
+                                        <img src="images/{{ $post->post_image }}" alt="" class="">
+                                        <div class="image__overlay "></div>
+                                    </div>
+                                </a>
+                                <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 2xl:text-lg  font-normal my-2">{{ $post->post_title }}</p>
+                            </div> 
+                        @endif
+                    @endforeach
                     </div>
                 </div>
-          
-            
+            </div>
         </div>
 
         <div class="lg:w-2/3 w-full mx-auto mb-6 border border-green-400  flex justify-between">
-                <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
-                    <div class="md:w-1/2 w-full px-5">
-                        <a href="{{ route('category', ['category'=>2]) }}">
-                            <p class="text-green-400 text-2xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">SOFTVER</p>
-                        </a>
-                        <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
-                        <div class="image image__overlay_border">
-                            <img src="images/{{ $categories['soft'][0]->post_image }}" alt="" class="w-full ">
-                            <div class="image__overlay "></div>
-                        </div>
-                        </a>
-                
-                        <p class="text-white text-2xl  my-2">{{ $categories['soft'][0]->post_title }}</p>
-                        <p class="text-gray-300 font-light my-5"> {{ $categories['soft'][0]->body }}</p>
-                        <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
-                            <button
-                            class="bg-gradient-to-r from-green-700 to-green-800 py-1 px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
-                            </button>
-                        </a>
+            <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
+                <div class="md:w-1/2 w-full px-5">
+                    <a href="{{ route('category', ['category'=>3]) }}">
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">SOFTVER</p>
+                    </a>
+                    <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
+                    <div class="image image__overlay_border">
+                        <img src="images/{{ $categories['soft'][0]->post_image }}" alt="" class="w-full ">
+                        <div class="image__overlay "></div>
                     </div>
-                    <div class="md:w-1/2 w-full"> 
-                        <div class="flex flex-wrap mt-12">
-                        @foreach ($categories['soft'] as $key => $post)
-                            @if ($key !== 0)
-                                <div class="mb-8 w-1/2 pl-6">
-                                    <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border">
-                                            <img src="images/{{ $post->post_image }}" alt="" class="">
-                                            <div class="image__overlay "></div>
-                                        </div>
-                                    </a>
-                                    <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 text-lg font-normal my-2">{{ $post->post_title }}</p>
-                                </div> 
-                            @endif
-                        @endforeach
-                        </div>
-                    </div>
-                
+                    </a>
+            
+                    <p class="text-white 2xl:text-2xl text-xl  my-2">{{ $categories['soft'][0]->post_title }}</p>
+                    <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['soft'][0]->body }}</p>
+                    <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
+                        <button
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        </button>
+                    </a>
                 </div>
-            
-            
+                <div class="md:w-1/2 w-full"> 
+                    <div class="flex flex-wrap mt-12">
+                    @foreach ($categories['soft'] as $key => $post)
+                        @if ($key !== 0)
+                            <div class="mb-8 w-1/2 pl-6">
+                                <a href="{{ route('post.view', ['post'=>$post->id]) }}">
+                                    <div class="image image__overlay_border">
+                                        <img src="images/{{ $post->post_image }}" alt="" class="">
+                                        <div class="image__overlay "></div>
+                                    </div>
+                                </a>
+                                <p class="text-white bg-gray-900 bg-opacity-70 border-t border-white pt-1 2xl:text-lg  font-normal my-2">{{ $post->post_title }}</p>
+                            </div> 
+                        @endif
+                    @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     
     </div>

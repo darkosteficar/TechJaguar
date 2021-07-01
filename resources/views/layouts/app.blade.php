@@ -101,7 +101,7 @@
                         </a>
                     </div>
                     <div class="lg:flex lg:items-center justify-center">
-                        <div class="flex items-center text-lg">
+                        <div class="2xl:flex items-center text-lg">
                             @auth
                             <a href="{{ route('profile.index', []) }}"><p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
                                 hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
