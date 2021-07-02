@@ -125,85 +125,85 @@
         </div>
         <div class=" bg-gray-900 bg-opacity-70 border border-green-400 p-2">
             
-            <div class="ml-2 flex mb-2 font-medium items-center">
+            <div class="ml-2 flex mb-2 font-medium items-center 2xl:text-lg">
                 <i class="fas fa-bolt fa-lg text-green-400 mr-2"></i>
-                <p class=" text-gray-300 text-lg">Estimated Wattage: </p>
-                <p class=" text-green-400 text-xl ml-1"> {{ $power_req }} W</p>
+                <p class=" text-gray-300 ">Estimated Wattage: </p>
+                <p class=" text-green-400  ml-1"> {{ $power_req }} W</p>
             </div>
 
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fab fa-artstation fa-lg text-green-400 mr-2"></i>
-                <p class="font-medium text-gray-300 text-lg">CPU Manufacturer: </p>
+                <p class="font-medium text-gray-300 ">CPU Manufacturer: </p>
                 @if (isset($components['cpu']))
-                    <p class=" text-green-400 text-xl ml-1"> {{ $components['cpu']->manufacturer->name }}</p>
+                    <p class=" text-green-400 ml-1  "> {{ $components['cpu']->manufacturer->name }}</p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
             </div>
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-microchip fa-lg text-green-400 mr-2"></i>
-                <p class="font-medium text-gray-300 text-lg">CPU Socket: </p>
+                <p class="font-medium text-gray-300 ">CPU Socket: </p>
                 @if (isset($components['cpu']))
-                    <p class=" text-green-400 text-xl ml-1"> {{ $components['cpu']->socket }}</p>
+                    <p class=" text-green-400 ml-1"> {{ $components['cpu']->socket }}</p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
             </div>
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-tachometer-alt fa-lg text-green-400 mr-2"></i>
-                <p class="font-medium text-gray-300 text-lg">CPU Boost Clock: </p>
+                <p class="font-medium text-gray-300 ">CPU Boost Clock: </p>
                 @if (isset($components['cpu']))
-                    <p class=" text-green-400 text-xl ml-1"> {{ number_format($components['cpu']->boost_clock,2)  }} Ghz</p>
+                    <p class=" text-green-400  ml-1"> {{ number_format($components['cpu']->boost_clock,2)  }} Ghz</p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400  ml-1"> -</p>
                 @endif
             </div>
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-memory fa-lg text-green-400 mr-2"></i>
-                <p class="font-medium text-gray-300 text-lg">Total RAM: </p>
+                <p class="font-medium text-gray-300 ">Total RAM: </p>
                 @if (isset($others['ram_capacity']))
-                    <p class=" text-green-400 text-xl ml-1"> {{ $others['ram_capacity'] .' GB'}} </p>
+                    <p class=" text-green-400 ml-1"> {{ $others['ram_capacity'] .' GB'}} </p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
                 
             </div>
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-tachometer-alt fa-lg text-green-400 mr-2"></i>
-                <p class="font-medium text-gray-300 text-lg">RAM Speed: </p>
+                <p class="font-medium text-gray-300 ">RAM Speed: </p>
                 @if (isset($others['ram_speed']))
-                    <p class=" text-green-400 text-xl ml-1"> {{ $others['ram_speed'] .' Mhz'}} </p>
+                    <p class=" text-green-400 ml-1"> {{ $others['ram_speed'] .' Mhz'}} </p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
             </div>
             
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-hdd fa-lg text-green-400 mr-2"></i>
-                <p class="font-medium text-gray-300 text-lg">HDD+SSD Capacity: </p>
+                <p class="font-medium text-gray-300 ">HDD+SSD Capacity: </p>
                 @if (isset($others['capacity']))
-                    <p class=" text-green-400 text-xl ml-1"> {{ $others['capacity'] .' GB'}} </p>
+                    <p class=" text-green-400 ml-1"> {{ $others['capacity'] .' GB'}} </p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
                 
             </div>
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-server fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">Case type: </p>
                 @if (isset($others['case']))
-                <p class=" text-green-400 text-xl ml-1"> {{ $others['case'] }} </p>
+                <p class=" text-green-400 ml-1"> {{ $others['case'] }} </p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
             </div>
-            <div class="flex mb-2 items-center">
+            <div class="flex mb-2 items-center 2xl:text-lg">
                 <i class="fas fa-fan fa-lg text-green-400 mr-2"></i>
                 <p class="font-medium text-gray-300 text-lg">Cooling: </p>
                 @if (isset($others['cooler']))
-                <p class=" text-green-400 text-xl ml-1"> {{ $others['cooler'] }} </p>
+                <p class=" text-green-400 ml-1"> {{ $others['cooler'] }} </p>
                 @else
-                    <p class=" text-green-400 text-xl ml-1"> -</p>
+                    <p class=" text-green-400 ml-1"> -</p>
                 @endif
             </div>
 
@@ -445,7 +445,7 @@
         </div>
         @endif
         <div class="">
-            <div class="flex pb-2 pl-3 bg-green-400 bg-opacity-70 shadow-2xl font-light text-gray-900 pt-2">
+            <div class="lg:flex hidden  pb-2 pl-3 bg-green-400 bg-opacity-70 shadow-2xl font-light text-gray-900 pt-2">
                 <p class="w-2/12 border-r border-gray-900 mr-4">KOMPONENTA</p>
                 <p class="w-6/12 border-r border-gray-900 mr-4 ">ODABIR</p>
                 <p class="w-3/12 border-r border-gray-900 mr-4">PROIZVOĐAČ</p>
