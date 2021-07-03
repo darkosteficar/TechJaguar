@@ -24,5 +24,22 @@
     .btn-green-remove{
         @apply inline-block px-6 py-2 leading-6 font-semibold text-center text-gray-900 hover:text-green-400 uppercase transition bg-green-400 rounded shadow hover:bg-gray-900 focus:outline-none my-2 self-center border border-gray-900 hover:border-green-400
     }
+
+
+    .sorting-components{
+        @apply cursor-pointer border-2 border-transparent hover:bg-gray-800 px-2 hover:border-gray-900 hover:text-green-400  flex space-x-1 items-center transition ease-in duration-200 2xl:text-lg text-base rounded 
+    }
+
+    .text-shadow {
+        text-shadow: 2px 5px 12px rgba(0, 0, 0, 0.86), 0 5px 15px rgba(0,0,0,0.08);
+      }
+    
+      .text-shadow-green {
+         text-shadow: 0 4px 3px rgb(52,211,153,0.3), 0 2px 4px rgba(0,0,0,0.08);
+      }
+    
+      .text-shadow-lg {
+        @apply text-shadow: 0 15px 30px rgba(0,0,0,0.11), 0 5px 15px rgba(0,0,0,0.08);
+      }
   }
 

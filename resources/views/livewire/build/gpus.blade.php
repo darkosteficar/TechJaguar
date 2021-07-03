@@ -5,44 +5,51 @@
     @else
         border-green-400
     @endif font-medium">
-        <div class="flex items-center">
-            <div class="w-2/12  text-lg ">
-                <p class=" border p-2 ml-3 inline border-gray-800 ">GPUS</p>
+        <div class="lg:flex items-center">
+            <div class="lg:w-2/12 w-full  lg:text-lg text-sm  mr-2">
+                <p class=" border p-2 lg:ml-3 lg:inline block border-gray-800 text-center">GPUS</p>
             </div>
-            <div class="w-11/12 ">
+            <div class="lg:w-11/12 ">
                 @foreach ($gpus as $gpu)
                 
-                <div class="flex items-center  ">
-                    <div class="w-6/12">
-                        <div class="flex items-center py-3 px-2 space-x-3">
+                <div class="lg:flex items-center  ">
+                    <div class="lg:w-6/12 w-full lg:text-base text-sm mr-2">
+                        <div class="flex lg:justify-start justify-center items-center py-3 px-2 space-x-3">
                             <img src="images/{{ $gpu->images()->first()->path }}" alt="" width="100" class="border border-green-400">
                             
                             <button wire:click='$emit("openModal", "modals.gpus", @json(["gpu" => "$gpu->id"]))' class="btn-invisible"> {{ $gpu->name  }} </button>
                         </div>
                     </div>
-                    <div class="w-3/12">
-                        <p class=" border p-2 inline border-gray-800 ">{{ $gpu->manufacturer->name }}</p>
+                    <div class="lg:w-3/12 mr-2">
+                        <p class=" border p-2 lg:inline border-gray-800 text-center">{{ $gpu->manufacturer->name }}</p>
                     </div>
-                    <p class="w-2/12">{{ number_format($gpu->price,2) }} kn</p>
-                    <div class="w-1/12 ">
+                    <p class="lg:w-2/12 lg:text-left text-center lg:my-0 my-2 mr-2">{{ number_format($gpu->price,2) }} kn</p>
+                    <div class="lg:w-1/12 mr-2">
                         <form action="{{ route('build.gpu.remove', ['id'=>$gpu->id]) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn-green-remove"  type="submit">
-                                X
-                            </button>
+                            <div class="flex justify-center items-center">
+                                <p class="lg:hidden mr-6">BRISANJE</p>
+                                <button class="btn-green-remove"  type="submit">
+                                    X
+                                </button>
+                            </div>
+                           
                         </form>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
-        @if ($gpus[0]->crossfire == 1)
-            <form action="{{ route('build.gpu.add', ['id'=>$gpu_id]) }}" method="POST">
+        @if ($gpus[0]->crossfire == 0)
+            <form action="{{ route('build.gpu.add', ['id'=>$gpus[0]->gpu_id]) }}" method="POST">
                 @csrf
-                <button class="btn-green-select mb-4 text-sm ml-64">
-                    Add another GPU
-                </button>  
+                <div class="flex lg:justify-start justify-center ">
+                    <button class="btn-green-select mb-4 text-sm lg:ml-4">
+                        Add another GPU
+                    </button>  
+                </div>
+                
             </form>
         @endif
        

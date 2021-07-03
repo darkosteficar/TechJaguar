@@ -11,7 +11,6 @@
 @endphp
 <div class="xl:flex mt-10 justify-between mx-6">
    
-    
     <div class="xl:w-3/12 xl:mb-0 mb-3 w-full">
         <div>
             @auth
@@ -436,6 +435,7 @@
           
         </div>
     </div>
+   
     <div class="xl:w-9/12 w-full bg-gray-900 bg-opacity-70  mb-5 font-semibold text-green-400  xl:ml-6">
         
         @if (session()->has('success'))
@@ -453,7 +453,7 @@
                 <p class="w-1/12 mr-2 ">BRISANJE</p>
             </div>
 
-
+         
             @if(isset($components['cpu']))
             <livewire:build.cpus :cpu="$components['cpu']" :errors="$errors_components"/>
             @else
@@ -622,6 +622,7 @@
         </div>
 
     </div>
+    
     
 
 

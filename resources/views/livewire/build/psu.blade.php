@@ -1,30 +1,36 @@
 <div>
-    <div class="flex items-center border @if (in_array('psu',$erors))
+    <div class="lg:flex items-center border @if (in_array('psu',$erors))
     border-red-400 my-1 bg-red-500 bg-opacity-10
     @else
         border-green-400
     @endif font-medium">
-        <div class="w-2/12 ml-3 text-lg ">
-            <p class=" border p-2 inline border-gray-800 ">PSU</p>
+        <div class="lg:w-2/12 mr-2 lg:ml-3 lg:text-lg text-sm">
+            <p class=" border p-2 lg:inline border-gray-800 text-center lg:text-left">PSU</p>
         </div>
         
-        <div class="w-6/12">
-            <div class="flex items-center p-3 space-x-3">
+        <div class="lg:w-6/12 mr-2">
+            <div class="flex lg:justify-start justify-center items-center p-3 space-x-3">
                 <img src="images/{{ $psu->images()->first()->path }}" alt="" width="100" class="border border-green-400">
                 <button wire:click='$emit("openModal", "modals.psus", @json(["psu" => "$psu->id"]))' class="btn-invisible"> {{ $psu->name  }} </button>
             </div>
         </div>
-        <div class="w-3/12">
-            <p class=" border p-2 inline border-gray-800 ">{{ $psu->manufacturer->name }}</p>
+        <div class="lg:w-3/12 mr-2">
+            <p class=" border p-2 lg:inline border-gray-800 lg:text-left text-center ">{{ $psu->manufacturer->name }}</p>
         </div>
-        <p class="w-2/12">{{ number_format($psu->price,2) }} kn</p>
-        <div class="w-1/12 ">
+        <p class="lg:w-2/12  mr-2 text-center lg:text-left lg:my-0 my-2">{{ number_format($psu->price,2) }} kn</p>
+        <div class="lg:w-1/12  mr-2">
             <form action="{{ route('build.psu.remove', ['id'=>$psu->id]) }}" method="post">
                 @csrf
                 @method('DELETE')
-                <button class="btn-green-remove"  type="submit">
-                    X
-                </button>
+                <div class="flex justify-center items-center">
+                    <p class="lg:hidden mr-6">
+                        BRISANJE
+                    </p>
+                    <button class="btn-green-remove"  type="submit">
+                        X
+                    </button>
+                </div>
+               
             </form>
         </div>
     </div>
