@@ -1,6 +1,6 @@
 <div>
     <div class="bg-green-600 shadow-2xl p-2">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between text-shadow">
             <p class="text-2xl text-gray-200 font-semibold ml-2">{{ $ram->name }}</p>
             <p class="text-xl text-gray-300 font-semibold mr-2">{{ $ram->manufacturer->name }}</p>
           
@@ -8,10 +8,10 @@
        
     </div>
     
-    <div class="bg-gray-800 ">
+    <div class="bg-gray-900 text-shadow">
         <p class="ml-2 py-1 font-semibold text-green-400 text-xl">SPECIFIKACIJE:</p>
-        <div class="flex flex-wrap space-x-8 space-y-4  items-center text-green-400 text-lg p-2">
-            <div class="ml-8 mt-4">
+        <div class="grid grid-cols-3 space-x-8 space-y-4  items-center text-green-400 text-lg p-2">
+            <div class="ml-8">
                 <p class="font-normal">MSRP</p>
                 <p class="font-semibold">{{ $ram->price }} kn</p>
             </div>

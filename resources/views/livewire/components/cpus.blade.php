@@ -74,25 +74,25 @@
             <div class="mb-4 hidden lg:block" >
                 <div class="flex justify-left pl-3 text-lg items-center font-semibold text-gray-200  bg-green-600 py-2 rounded-t-sm  select-none bg-opacity-70 space-x-2 text-shadow">
                     <p class="w-1/12 "></p>
-                    <div class="sorting-components w-3/12 " wire:click="sortBy('name') ">
+                    <div class="sorting-components w-3/12 py-3" wire:click="sortBy('name') ">
                         @include('partials._sort-icon',['field'=>'name'])
                          <p>NAME</p>
                     </div>
-                    <div class="sorting-components w-2/12" wire:click="sortBy('manufacturer_id')">
+                    <div class="sorting-components w-2/12 py-3" wire:click="sortBy('manufacturer_id')">
                         @include('partials._sort-icon',['field'=>'manufacturer_id'])
                         <p>MANUFACTURER</p>
                     </div>
-                    <div class="sorting-components w-2/12" wire:click="sortBy('series')">
+                    <div class="sorting-components w-2/12 py-3" wire:click="sortBy('series')">
                         @include('partials._sort-icon',['field'=>'series'])
                         <p>SERIES</p>
                     </div>
-                    <div class="sorting-components w-1/12" wire:click="sortBy('base_clock')">
+                    <div class="sorting-components w-1/12 py-1" wire:click="sortBy('base_clock')">
                         <div class="hover:text-green-400 ">
                             @include('partials._sort-icon',['field'=>'base_clock'])
                         </div>
                         <p class="leading-tight">CORE CLOCK</p>
                     </div>
-                    <div class="sorting-components w-1/12 " wire:click="sortBy('core_count')">
+                    <div class="sorting-components w-1/12 py-1" wire:click="sortBy('core_count')">
                         @include('partials._sort-icon',['field'=>'core_count'])
                         <p class="leading-tight ">CORE COUNT</p>
                     </div>
@@ -100,7 +100,7 @@
                 </div>
 
                 @foreach ($cpus as $cpu)
-                    <div class="flex items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400 text-lg text-shadow">
+                    <div class="flex items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400 2xl:text-lg text-shadow">
 
                         <div class="w-1/12">
                             <div class="flex items-center py-2 ">
@@ -118,7 +118,7 @@
                             <p>{{ $cpu->series }} </p>
                         </div>
                         <div class="w-1/12">
-                            <p>{{ $cpu->base_clock }}  GB</p>
+                            <p>{{ number_format( $cpu->base_clock,2) }}  Ghz</p>
                         </div>
                         <div class="w-1/12">
                             <p class="ml-4">{{ $cpu->core_count }} </p>
@@ -130,7 +130,7 @@
                                 ADD
                             </button>
                         </div>
-                        <div class="w-1/12 flex justify-center">
+                        <div class="w-1/12 flex justify-center mr-2">
                                 <button
                                     class="inline-block px-6 py-2 text-sm font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white " wire:click='$emit("openModal", "modals.cpus", @json(["cpu" => "$cpu->id"]))'">
                                     DETAILS
@@ -163,31 +163,31 @@
                             
                             <input type="hidden" name="id" value="{{ $cpu->id }}">
                             <button class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.test", @json(["component_id" => "$cpu->id", "component" => "Cpu"]))'>
-                                DODAJ
+                                ADD
                             </button>
                             
                             <button
                                 class="inline-block px-6 py-2 text-xs font-semibold leading-6 text-center text-gray-700 uppercase transition bg-white rounded shadow ripple hover:shadow-lg hover:bg-gray-400 focus:outline-none my-2 self-center hover:text-white" wire:click='$emit("openModal", "modals.cpus", @json(["cpu" => "$cpu->id"]))'>
-                                DETALJI
+                                DETAILS
                             </button>
                         </div>
                         <div class="flex">
                             <div class=" w-4/12">
-                                <p class="font-light text-sm">PROIZVOĐAČ</p>
+                                <p class="font-light text-sm">MANUFACTURER</p>
                                 <p>{{ $cpu->manufacturer->name }}</p>
                             </div>
                             <div class="w-4/12 ">
-                                <p class="font-light text-sm">SERIJA</p>
+                                <p class="font-light text-sm">SERIES</p>
                                 <p>{{ $cpu->series }} </p>
                             </div>
                             <div class="w-4/12">
-                                <p class="font-light text-sm">RADNI TAKT</p>
-                                <p>{{ $cpu->base_clock }}  GB</p>
+                                <p class="font-light text-sm">BASE CLOCK</p>
+                                <p>{{ number_format($cpu->base_clock,2)  }}  Ghz</p>
                             </div>
                         </div>
                         <div class="flex my-2">
                             <div class="w-4/12">
-                                <p class="font-light text-sm">VRSTA MEMORIJE</p>
+                                <p class="font-light text-sm">CORE COUNT</p>
                                 <p>{{ $cpu->core_count }} </p>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 <div>
-    <p class="bg-green-400 text-gray-900 p-4 font-semibold  ">ADDING CONFIRMATION</p>
+    <p class="bg-green-400 text-gray-900 p-4 font-semibold">REMOVAL CONFIRMATION</p>
     <div class="flex bg-gray-900 justify-between pr-4">
         <div>
             <p class=" text-green-400 p-4 font-semibold text-2xl text-shadow-green">{{ $foundComponent->name }}</p>
@@ -8,15 +8,16 @@
         <div class="flex flex-col-reverse">
             <div>
                 @if ($name != 'pccase')
-                    <form action="{{ route('build.'.$name.'.add', []) }}" method="POST">
+                    <form action="{{ route('build.'.$name.'.remove', []) }}" method="POST">
                 @else
-                    <form action="{{ route('build.pc_case.add', []) }}" method="POST">
+                    <form action="{{ route('build.pc_case.remove', []) }}" method="POST">
                 @endif
                         @csrf
+                        @method('DELETE')
                         <input type="hidden" name="id" value="{{ $foundComponent->id }}">
                         
                         <button class="inline-block px-6 py-2  font-semibold leading-6 text-center text-gray-700 uppercase transition bg-green-400 rounded shadow ripplehover:shadow-lg hover:bg-green-600 focus:outline-none my-2 self-center hover:text-white" type="submit">
-                            ADD
+                            REMOVE
                         </button>
                     </form>
             </div>

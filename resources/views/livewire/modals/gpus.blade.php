@@ -1,7 +1,7 @@
 <div>
     <div class="bg-green-600 shadow-2xl p-2">
-        <div class="flex items-center justify-between">
-            <p class="text-2xl text-gray-200 font-semibold ml-2">{{ $gpu->name }}</p>
+        <div class="flex items-center justify-between text-shadow">
+            <p class="text-2xl text-gray-200 font-semibold ml-2 ">{{ $gpu->name }}</p>
             @if ($gpu->manufacturer->name == 'AMD')
                 <p class="text-xl text-gray-300 font-semibold mr-2">AMD</p>
             @else
@@ -11,10 +11,10 @@
        
     </div>
     
-    <div class="bg-gray-800 ">
-        <p class="ml-2 py-1 font-semibold text-green-400 text-xl">SPECIFIKACIJE:</p>
-        <div class="flex flex-wrap space-x-8 space-y-4  items-center text-green-400 text-lg p-2">
-            <div class="ml-8 mt-4">
+    <div class="bg-gray-900 ">
+        <p class="ml-2 py-1 font-semibold text-green-400 text-xl text-shadow">SPECIFIKACIJE:</p>
+        <div class="grid grid-cols-3 space-x-8 space-y-4  items-center text-green-400 text-lg p-2">
+            <div class="ml-8 ">
                 <p class="font-normal">MSRP</p>
                 <p class="font-semibold">{{ $gpu->price }} kn</p>
             </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
         <hr class="border border-green-400">
-        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">SLIKE:</p>
+        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl text-shadow">SLIKE:</p>
         <div class="flex flex-wrap items-center justify-center p-2 space-x-2 space-y-2">
             @foreach ($images as $key => $image)
                 <div class="w-5/12 ">

@@ -20,17 +20,12 @@
       
         <p class="lg:w-2/12 w-full lg:text-left text-center lg:my-0 my-2 mr-2">{{ number_format($cpu->price,2) }} kn</p>
         <div class="lg:w-1/12 w-full  mr-2">
-            <form action="{{ route('build.cpu.remove', ['id'=>$cpu->id]) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <div class="lg:ml-0 ml-6 flex items-center justify-center">
-                    <p class="lg:hidden">BRISANJE</p>
-                    <button class="btn-green-remove lg:mx-auto mr-4 ml-6"  type="submit">
-                        X
-                    </button>
-                </div>
-                
-            </form>
+            <div class="lg:ml-0 ml-6 flex items-center justify-center">
+                <p class="lg:hidden">REMOVE</p>
+                <button class="btn-green-remove lg:mx-auto mr-4 ml-6"  type="submit" wire:click='$emit("openModal", "modals.conf-delete", @json(["component_id" => "$cpu->id", "component" => "Cpu"]))'>
+                    X
+                </button>
+            </div>
         </div>
       
         

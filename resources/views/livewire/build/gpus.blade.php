@@ -25,17 +25,9 @@
                     </div>
                     <p class="lg:w-2/12 lg:text-left text-center lg:my-0 my-2 mr-2">{{ number_format($gpu->price,2) }} kn</p>
                     <div class="lg:w-1/12 mr-2">
-                        <form action="{{ route('build.gpu.remove', ['id'=>$gpu->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <div class="flex justify-center items-center">
-                                <p class="lg:hidden mr-6">BRISANJE</p>
-                                <button class="btn-green-remove"  type="submit">
-                                    X
-                                </button>
-                            </div>
-                           
-                        </form>
+                        <button class="btn-green-remove lg:mx-auto mr-4 ml-6"  type="submit" wire:click='$emit("openModal", "modals.conf-delete", @json(["component_id" => "$gpu->id", "component" => "Gpu"]))'>
+                            X
+                        </button>
                     </div>
                 </div>
                 @endforeach

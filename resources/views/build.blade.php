@@ -445,12 +445,13 @@
         </div>
         @endif
         <div class="">
-            <div class="lg:flex hidden  pb-2 pl-3 bg-green-400 bg-opacity-70 shadow-2xl font-light text-gray-900 pt-2">
-                <p class="w-2/12 border-r border-gray-900 mr-4">KOMPONENTA</p>
-                <p class="w-6/12 border-r border-gray-900 mr-4 ">ODABIR</p>
-                <p class="w-3/12 border-r border-gray-900 mr-4">PROIZVOĐAČ</p>
-                <p class="w-2/12 border-r border-gray-900 mr-4">MSRP</p>
-                <p class="w-1/12 mr-2 ">BRISANJE</p>
+            <div class="lg:flex hidden  pb-2 pl-3 bg-green-400 bg-opacity-70 shadow-2xl font-light text-gray-900 pt-2 
+            ">
+                <p class="w-2/12 border-r border-gray-900 mr-4 font-semibold">COMPONENT</p>
+                <p class="w-6/12 border-r border-gray-900 mr-4 font-semibold">SELECTION</p>
+                <p class="w-3/12 border-r border-gray-900 mr-4 font-semibold">MANUFACTURER</p>
+                <p class="w-2/12 border-r border-gray-900 mr-4 font-semibold">MSRP</p>
+                <p class="w-1/12 mr-2 font-semibold">DELETE</p>
             </div>
 
          

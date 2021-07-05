@@ -15,7 +15,7 @@ use App\Models\Storage;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
-class Test extends ModalComponent
+class ConfDelete extends ModalComponent
 {
     public $name;
     public $component;
@@ -52,7 +52,6 @@ class Test extends ModalComponent
         elseif ($this->component == "Storage") {
             $this->foundComponent = Storage::find($this->component_id);
         }
-    
         $this->images = $this->foundComponent->images()->first();
         $this->name = strtolower($this->component);
         
@@ -61,6 +60,6 @@ class Test extends ModalComponent
     public function render()
     {
         
-        return view('livewire.modals.test');
+        return view('livewire.modals.conf-delete');
     }
 }
