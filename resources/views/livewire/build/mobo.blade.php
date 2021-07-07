@@ -19,18 +19,9 @@
         </div>
         <p class="lg:w-2/12 mr-2  text-center lg:text-left lg:my-0 my-2">{{ number_format($mobo->price,2) }} kn</p>
         <div class="lg:w-1/12 mr-2 ">
-            <form action="{{ route('build.mobo.remove', ['id'=>$mobo->id]) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <div class="flex items-center  justify-center">
-                    <p class="mr-6 lg:hidden">BRISANJE</p>
-                    <button class="btn-green-remove"  type="submit">
-                        X
-                    </button>
-
-                </div>
-                
-            </form>
+            <button class="btn-green-remove lg:mx-auto mr-4 ml-6"  type="submit" wire:click='$emit("openModal", "modals.conf-delete", @json(["component_id" => "$mobo->id", "component" => "Mobo"]))'>
+                X
+            </button>
         </div>
     </div>
 </div>

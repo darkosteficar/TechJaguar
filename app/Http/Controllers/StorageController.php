@@ -24,8 +24,8 @@ class StorageController extends Controller
         ]);
         $storage = Storage::find($r->id);
         session()->flash('item',$storage->name);
-        session()->flash('success', 'Radna memorija ' );
-        session()->flash('success2', ' uspješno dodana!' );
+        session()->flash('success', 'Storage ' );
+        session()->flash('success2', ' added successfully.' );
         return redirect()->route('build');
 
     }
@@ -34,7 +34,7 @@ class StorageController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $storage = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\storage')->where('buildable_id',$r->id)->first();
         $storage->delete();
-        session()->flash('success', 'Radna memorija uspješno obrisana!' );
+        session()->flash('success', 'Storage component successfully removed.' );
         return redirect()->route('build');   
     }
 

@@ -1,29 +1,29 @@
 <div>
-    <div class="bg-green-600 shadow-2xl p-2">
+    <div class="bg-green-600 shadow-2xl p-2 text-shadow">
         <div class="flex items-center justify-between">
             <p class="text-2xl text-gray-200 font-semibold ml-2">{{ $cooler->name }}</p>
             @if ($cooler->water_cooled == 0)
-                <p class="text-xl text-gray-300 font-semibold mr-2">ZRAČNO HLAĐENJE</p>
+                <p class="text-xl text-gray-300 font-semibold mr-2">AIR COOLING</p>
             @else
-                <p class="text-xl text-gray-300 font-semibold mr-2">VODENO HLAĐENJE</p>
+                <p class="text-xl text-gray-300 font-semibold mr-2">WATER COOLING</p>
             @endif
         </div>
        
     </div>
     
-    <div class="bg-gray-800 ">
+    <div class="bg-gray-900 ">
         <p class="ml-2 py-1 font-semibold text-green-400 text-xl">SPECIFIKACIJE:</p>
-        <div class="flex flex-wrap space-x-8  items-center text-green-400 text-lg p-2">
+        <div class="grid grid-cols-3 space-x-8 space-y-4 items-center text-green-400 text-lg p-2">
             <div class="ml-8">
                 <p class="font-normal">MSRP</p>
                 <p class="font-semibold">{{ $cooler->price }} kn</p>
             </div>
             <div>
-                <p class="font-normal">PROIZVOĐAČ</p>
+                <p class="font-normal">MANUFACTURER</p>
                 <p class="font-semibold">{{ $cooler->manufacturer->name }} </p>
             </div>
             <div>
-                <p class="font-normal">RAZINA BUKE</p>
+                <p class="font-normal">NOISE LEVEL</p>
                 <p class="font-semibold">{{ $cooler->noise_level }} db </p>
             </div>
             <div>
@@ -31,11 +31,11 @@
                 <p class="font-semibold">{{ $cooler->max_power }} W </p>
             </div>
             <div>
-                <p class="font-normal">DIMENZIJE (DxŠxV)</p>
+                <p class="font-normal">DIMENSIONS (LxWxH)</p>
                 <p class="font-semibold">{{ $cooler->length }} x {{ $cooler->width }} x {{ $cooler->height }} mm </p>
             </div>
-            <div class="mt-3">
-                <p class="font-normal">BRZINA VENTILATORA</p>
+            <div class="">
+                <p class="font-normal">FAN SPEED</p>
                 <p class="font-semibold">{{ $cooler->fan_rpm }} RPM </p>
             </div>
         </div>

@@ -24,8 +24,8 @@ class FanController extends Controller
         ]);
         $fan = Fan::find($r->id);
         session()->flash('item',$fan->name);
-        session()->flash('success', 'Ventilator ' );
-        session()->flash('success2', ' uspješno dodan!' );
+        session()->flash('success', 'Fan ' );
+        session()->flash('success2', ' added successfully!' );
         return redirect()->route('build');
 
     }
@@ -34,7 +34,7 @@ class FanController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $fan = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Fan')->where('buildable_id',$r->id)->first();
         $fan->delete();
-        session()->flash('success', 'Ventilator uspješno obrisan!' );
+        session()->flash('success', 'Fan removed successfully!' );
         return redirect()->route('build');   
     }
 }
