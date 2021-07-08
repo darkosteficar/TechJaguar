@@ -15,54 +15,54 @@
                 <p class="font-semibold">{{ $pcCase->price }} kn</p>
             </div>
             <div>
-                <p class="font-normal">PROIZVOĐAČ</p>
+                <p class="font-normal">MANUFACTURER</p>
                 <p class="font-semibold">{{ $pcCase->manufacturer->name }} </p>
             </div>
             <div>
-                <p class="font-normal">BROJ 2,5" POSTOLJA</p>
+                <p class="font-normal">2,5" BAYS</p>
                 <p class="font-semibold">{{ $pcCase->num_2_5_bays }} mm </p>
             </div>
             <div>
-                <p class="font-normal">BROJ 3,5" POSTOLJA</p>
+                <p class="font-normal">3,5" BAYS</p>
                 <p class="font-semibold">{{ $pcCase->num_3_5_bays }} mm </p>
             </div>
             <div>
-                <p class="font-normal">MAKSIMALNA DUŽINA GRAFIČKE</p>
+                <p class="font-normal">MAX GPU LENGTH</p>
                 <p class="font-semibold">{{ $pcCase->max_gpu_length }} mm </p>
             </div>
             <div>
-                <p class="font-normal">BROJ SLOTOVA ZA PROŠIRENJE</p>
+                <p class="font-normal">EXPANSION SLOTS</p>
                 <p class="font-semibold">{{ $pcCase->expansion_slots }} mm </p>
             </div>
             <div>
-                <p class="font-normal">PODRŽANE VELIČINE MATIČNIH</p>
+                <p class="font-normal">MAX MOBO SIZE</p>
                 <p class="font-semibold">{{ $pcCase->motherboard_form_factor }} mm </p>
             </div>
             <div>
-                <p class="font-normal">STAKLENI BOČNI PROZOR</p>
+                <p class="font-normal">GLASS SIDE PANEL</p>
                 @if ($pcCase->side_panel_glass == 0)
-                    <p class="font-semibold">Ne </p>
+                    <p class="font-semibold">No </p>
                 @else
-                    <p class="font-semibold">Da</p>
+                    <p class="font-semibold">Yes</p>
                 @endif
             </div>
             <div>
-                <p class="font-normal">POKROV NAPAJANJA</p>
+                <p class="font-normal">PSU SHROUD</p>
                 @if ($pcCase->power_supply_shroud == 0)
-                    <p class="font-semibold">Ne </p>
+                    <p class="font-semibold">No </p>
                 @else
-                    <p class="font-semibold">Da</p>
+                    <p class="font-semibold">Yes</p>
                 @endif
                
             </div>
             <div>
-                <p class="font-normal">DIMENZIJE (DxŠxV)</p>
+                <p class="font-normal">DIMENSIONS (LxWxH)</p>
                 <p class="font-semibold">{{ $pcCase->length }} x {{ $pcCase->width }} x {{ $pcCase->height }} mm </p>
             </div>
 
         </div>
         <hr class="border border-green-400">
-        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">SLIKE:</p>
+        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">IMAGES:</p>
         <div class="flex flex-wrap items-center justify-center p-2 space-x-2 space-y-2">
             @foreach ($images as $key => $image)
                 <div class="w-5/12 ">

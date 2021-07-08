@@ -20,8 +20,8 @@ class PsuController extends Controller
         $build->save();
         $psu = Psu::find($r->id);
         session()->flash('item',$psu->name);
-        session()->flash('success', 'Napajanje ' );
-        session()->flash('success2', ' uspješno dodano!' );
+        session()->flash('success', 'Power Supply ' );
+        session()->flash('success2', ' added successfully!' );
         return redirect()->route('build');
 
     }
@@ -30,7 +30,7 @@ class PsuController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $build->psu_id = null;
         $build->save();
-        session()->flash('success', 'Napajanje uspješno obrisano!' );
+        session()->flash('success', 'Power supply removed successfully!' );
         return redirect()->route('build');   
     }
 }

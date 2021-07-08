@@ -20,12 +20,12 @@
                     <div class="bg-gray-900 bg-opacity-70">
                         <div class="flex text-green-400 items-center pl-2 mb-2 pt-2">
                             <i class="fas fa-save fa-lg mr-2"></i>
-                            <p class="text-lg text-gray-300 font-semibold">SPREMI KONFIGURACIJU:</p>
+                            <p class="text-lg text-gray-300 font-semibold">SAVE THE BUILD:</p>
                         </div>
                         
-                        <label for="name" class="mx-2 text-gray-300">Ime konfiguracije:</label>
+                        <label for="name" class="mx-2 text-gray-300">Build Name:</label>
                         <input type="text" class=" bg-gray-800 border-green-400 border h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
-                        <button class="btn-green-select ml-4">Spremi</button>
+                        <button class="btn-green-select ml-4">Store</button>
                     </div>
                 </form>
             @else
@@ -34,12 +34,12 @@
                     <div class="bg-gray-900 bg-opacity-70">
                         <div class="flex text-green-400 items-center pl-2 mb-2 pt-2">
                             <i class="fas fa-plus fa-lg mr-2"></i>
-                            <p class="text-lg text-gray-300 font-semibold">NOVA KONFIGURACIJA:</p>
+                            <p class="text-lg text-gray-300 font-semibold">NEW BUILD:</p>
                         </div>
                         
-                        <label for="name" class="mx-2 text-gray-300">Ime konfiguracije:</label>
+                        <label for="name" class="mx-2 text-gray-300">Build Name:</label>
                         <input name="name" type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 2xl:ml-0 2xl:mt-0 mt-2 ml-2 text-white  font-semibold focus:outline-none focus:ring-0" placeholder=" npr. AMD konfiguracija">
-                        <button class="btn-green-select ml-2">kreiraj</button>
+                        <button class="btn-green-select ml-2">Store</button>
                     </div>
                 </form>
             @endif
@@ -47,10 +47,10 @@
                 <div class="bg-gray-900 bg-opacity-70 mb-2" x-data="{show: false}">
                     <div class="flex text-green-400 items-center pl-2 mb-1 pt-2">
                         <i class="fas fa-list fa-lg mr-2"></i>
-                        <p class="text-lg text-gray-300 font-semibold">SPREMLJENE KONFIGURACIJE</p>
+                        <p class="text-lg text-gray-300 font-semibold">SAVED BUILDS</p>
                     </div>
-                    <button x-show='!show'  class="btn-green-select ml-4 py-1 px-2" @click="show = true">PRIKAŽI</button>
-                    <button x-show='show' class="btn-green-select ml-4 py-1 px-2" @click="show = false">SAKRIJ</button>
+                    <button x-show='!show'  class="btn-green-select ml-4 py-1 px-2" @click="show = true">SHOW</button>
+                    <button x-show='show' class="btn-green-select ml-4 py-1 px-2" @click="show = false">HIDE</button>
                     <div x-show='show' x-transition:enter="transition ease-out duration-300"
                         x-transition:enter-start="opacity-0 transform scale-90"
                         x-transition:enter-end="opacity-100 transform scale-100"
@@ -65,7 +65,7 @@
                                     @csrf
                                     <input type="hidden" name="build_id" value="{{ $build->id }}">
                                     <p class="text-gray-300 ml-2">{{ $build->name }}</p>
-                                    <button class="btn-green-select mr-4 py-1 px-2">Odaberi</button>
+                                    <button class="btn-green-select mr-4 py-1 px-2">SELECT</button>
                                 </form>
                                 @if ($build->id != request()->cookie('build_id'))
                                     
@@ -81,7 +81,7 @@
                                             <div class="h-auto p-4 mx-2 text-left bg-gray-900 rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0 " @click.away="open = false">
                                                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                                 <h3 class="text-lg font-medium leading-6 text-gray-200">
-                                                    Jeste li sigurni da želite izbrisati ovu konfiguraciju?
+                                                    Are you sure you want to delete this build?
                                                 </h3>
                                     
                                                 <div class="mt-2">
@@ -97,11 +97,11 @@
                                                         @csrf
                                                         <input type="hidden" name="build_id" value="{{ $build->id }}">
                                                         <button  class="btn-green-select">
-                                                            IZBRIŠI
+                                                            DELETE
                                                         </button>
                                                     </form>
                                                     <button @click="open = false" class="btn-green-select">
-                                                        ODUSTANI
+                                                        CANCEL
                                                     </button>
                                                 </span>
                                                 </div>
@@ -212,13 +212,13 @@
         <div class="border border-red-500 font-semibold text-lg mt-2 text-gray-300 p-2 bg-gray-900 bg-opacity-70">
             <div class="flex items-center">
                 <i class="fas fa-exclamation-circle mr-2 text-red-500"></i>
-                <p>GREŠKE KOMPATIBILNOSTI:</p>
+                <p>BUILD ERRORS:</p>
             </div>
             
             <div class="bg-gray-900 text-red-500 ">
                 <div>
                     @if (count($errors['mobo_case']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/KUČIŠTE</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MOTHERBOARD/CASE</p>
                         @foreach ($errors['mobo_case'] as $key => $error)
                         @php
                             $counter = (int)$key;
@@ -229,7 +229,7 @@
                 </div>
                 <div>
                     @if (count($errors['mobo_cpu']) > 0)
-                        <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
+                        <p class="text-md text-gray-200 font-normal pt-1 pl-1">MOTHERBOARD/PROCCESOR</p>
                         @foreach ($errors['mobo_cpu'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -243,7 +243,7 @@
                 </div>
                 <div>
                     @if (count($errors['psu']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">NAPAJANJE</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">POWER SUPPLY</p>
                         @foreach ($errors['psu'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -257,7 +257,7 @@
                 </div>
                 <div>
                     @if (count($errors['gpus']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">GRAFIČKA KARTICA</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">GPU</p>
                         @foreach ($errors['gpus'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -271,7 +271,7 @@
                 </div>
                 <div>
                     @if (count($errors['rams']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">RADNA MEMORIJA</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">RAM</p>
                         @foreach ($errors['rams'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -285,7 +285,7 @@
                 </div>
                 <div>
                     @if (count($errors['storages']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">POHRANA PODATAKA</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">DATA STORAGE</p>
                         @foreach ($errors['storages'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -299,7 +299,7 @@
                 </div>
                 <div>
                     @if (count($errors['fans']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">VENTILATORI</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">FANS</p>
                         @foreach ($errors['fans'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -313,7 +313,7 @@
                 </div>
                 <div>
                     @if (count($errors['cooler']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">HLADNJAK</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">COOLER</p>
                         @foreach ($errors['cooler'] as $key => $error)
                             @php
                                 $counter = (int)$key;
@@ -331,13 +331,13 @@
         <div class="border border-yellow-500 font-semibold text-lg mt-2 text-gray-300 p-2 bg-gray-900 bg-opacity-70">
             <div class="flex items-center">
                 <i class="fas fa-exclamation-triangle mr-2 text-yellow-500"></i>
-                <p>UPOZORENJA:</p>
+                <p>WARNINGS:</p>
             </div>
             
             <div class="bg-gray-900 text-yellow-500 ">
                 <div>
                     @if (count($warnings['mobo_cpu']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">MATIČNA PLOČA/PROCESOR</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1"> MOTHERBOARD/PROCCESOR</p>
                     
                         @foreach ($warnings['mobo_cpu'] as $key => $warning)
                         @php
@@ -349,7 +349,7 @@
                 </div>
                 <div>
                     @if (count($warnings['psu']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">NAPAJANJE</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">POWER SUPPLY</p>
                         @foreach ($warnings['psu'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
@@ -363,7 +363,7 @@
                 </div>
                 <div>
                     @if (count($warnings['gpus']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">GRAFIČKA KARTICA</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1"> GPU</p>
                         @foreach ($warnings['gpu'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
@@ -377,7 +377,7 @@
                 </div>
                 <div>
                     @if (count($warnings['rams']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">RADNA MEMORIJA</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">RAM</p>
                         @foreach ($warnings['rams'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
@@ -391,7 +391,7 @@
                 </div>
                 <div>
                     @if (count($warnings['storages']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">POHRANA PODATAKA</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">DATA STORAGE</p>
                         @foreach ($warnings['storage'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
@@ -405,7 +405,7 @@
                 </div>
                 <div>
                     @if (count($warnings['fans']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">VENTILATORI</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">FANS</p>
                         @foreach ($warnings['fans'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
@@ -419,7 +419,7 @@
                 </div>
                 <div>
                     @if (count($warnings['cooler']) > 0)
-                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">HLADNJAK</p>
+                    <p class="text-md text-gray-200 font-normal pt-1 pl-1">COOLER</p>
                         @foreach ($warnings['cooler'] as $key => $warning)
                             @php
                                 $counter = (int)$key;
@@ -445,7 +445,7 @@
         </div>
         @endif
         <div class="">
-            <div class="lg:flex hidden  pb-2 pl-3 text-green-400 bg-opacity-70 shadow-2xl font-light bg:text-gray-900 pt-2 
+            <div class="lg:flex hidden   pb-2 pl-3 text-green-400 bg-opacity-70 shadow-2xl font-light bg:text-gray-900 pt-2 
             ">
                 <p class="w-2/12 border-r border-green-400 mr-4 font-semibold">COMPONENT</p>
                 <p class="w-6/12 border-r border-green-400 mr-4 font-semibold">SELECTION</p>
@@ -615,10 +615,10 @@
         </div>        
            
             <div class="flex items-center border border-green-400 text-xl p-4">
-                <p class="text-gray-300 mr-2 font-medium">UKUPNO:</p>
+                <p class="text-gray-300 mr-2 font-medium">TOTAL:</p>
                 <p class="font-semibold">{{ number_format($total,2) }} kn</p>
             </div>
-            <p class="text-gray-300 ml-2 py-1 text-sm font-light">Ukupna cijena koja se prikazuje je zbroj preporučenih cijena od strane proizvođača</p>
+            <p class="text-gray-300 ml-2 py-1 text-sm font-light">Total price is a sum of the MSRPs of the parts</p>
 
         </div>
 

@@ -20,8 +20,8 @@ class PcCaseController extends Controller
         $build->save();
         $pc_case = PcCase::find($r->id);
         session()->flash('item',$pc_case->name);
-        session()->flash('success', 'Kućište ' );
-        session()->flash('success2', ' uspješno dodano!' );
+        session()->flash('success', 'Case ' );
+        session()->flash('success2', ' successfully added!' );
         return redirect()->route('build');
     }
 
@@ -30,7 +30,7 @@ class PcCaseController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $build->pc_case_id = null;
         $build->save();
-        session()->flash('success', 'Kućište uspješno obrisano!' );
+        session()->flash('success', 'Case removed successfully!' );
         return redirect()->route('build');
     }
 }

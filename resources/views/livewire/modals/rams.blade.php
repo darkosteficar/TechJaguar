@@ -16,43 +16,43 @@
                 <p class="font-semibold">{{ $ram->price }} kn</p>
             </div>
             <div>
-                <p class="font-normal">PROIZVOĐAČ</p>
+                <p class="font-normal">MANUFACTURER</p>
                 <p class="font-semibold">{{ $ram->manufacturer->name }} </p>
             </div>
            
             <div>
-                <p class="font-normal">BRZINA</p>
+                <p class="font-normal">FREQUENCY</p>
                 <p class="font-semibold">{{ $ram->speed }} Mhz </p>
             </div>
             <div>
-                <p class="font-normal">TIP</p>
+                <p class="font-normal">TYPE</p>
                 <p class="font-semibold">{{ $ram->type }}  </p>
             </div>
             <div>
-                <p class="font-normal">KAPACITET</p>
+                <p class="font-normal">CAPACITY</p>
                 <p class="font-semibold">{{ $ram->size }} GB </p>
             </div>
             <div>
-                <p class="font-normal">HLAĐENJE</p>
+                <p class="font-normal">COOLING</p>
                 @if ($ram->heat_spreader == 0)
-                <p class="font-semibold">Ne</p>
+                <p class="font-semibold">No</p>
                 @else
-                <p class="font-semibold">Da</p> 
+                <p class="font-semibold">Yes</p> 
                 @endif
                 
             </div>
             <div>
-                <p class="font-normal">VOLTAŽA</p>
+                <p class="font-normal">VOLTAGE</p>
                 <p class="font-semibold">{{ $ram->voltage }} V </p>
             </div>
             <div>
-                <p class="font-normal">VREMENA</p>
+                <p class="font-normal">TIMINGS</p>
                 <p class="font-semibold">{{ $ram->timings }}   </p>
             </div>
            
         </div>
         <hr class="border border-green-400">
-        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">SLIKE:</p>
+        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">IMAGES:</p>
         <div class="flex flex-wrap items-center justify-center p-2 space-x-2 space-y-2">
             @foreach ($images as $key => $image)
                 <div class="w-5/12 ">

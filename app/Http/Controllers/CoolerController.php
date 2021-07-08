@@ -21,8 +21,8 @@ class CoolerController extends Controller
         $build->save();
         $cooler = Cooler::find($r->id);
         session()->flash('item',$cooler->name);
-        session()->flash('success', 'Hladnjak ' );
-        session()->flash('success2', ' uspješno dodan!' );
+        session()->flash('success', 'Cooler ' );
+        session()->flash('success2', ' successfully added!' );
         return redirect()->route('build');
 
     }
@@ -31,7 +31,7 @@ class CoolerController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $build->cooler_id = null;
         $build->save();
-        session()->flash('success', 'Hladnjak uspješno obrisan!' );
+        session()->flash('success', 'Cooler added successfully!' );
         return redirect()->route('build');   
     }
 }

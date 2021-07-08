@@ -20,8 +20,8 @@ class MoboController extends Controller
         $build->save();
         $mobo = Mobo::find($r->id);
         session()->flash('item',$mobo->name);
-        session()->flash('success', 'Matična ploča ' );
-        session()->flash('success2', ' uspješno dodana!' );
+        session()->flash('success', 'Motherboard ' );
+        session()->flash('success2', ' successfully added!' );
         return redirect()->route('build');
     }
 
@@ -30,7 +30,7 @@ class MoboController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $build->mobo_id = null;
         $build->save();
-        session()->flash('success', 'Matična ploča uspješno obrisana!' );
+        session()->flash('success', 'Motherboard removed successfully!' );
         return redirect()->route('build');
     }
 }

@@ -24,8 +24,8 @@ class RamController extends Controller
         ]);
         $ram = Ram::find($r->id);
         session()->flash('item',$ram->name);
-        session()->flash('success', 'Radna memorija ' );
-        session()->flash('success2', ' uspješno dodana!' );
+        session()->flash('success', 'Memory ' );
+        session()->flash('success2', ' added successfully!' );
         return redirect()->route('build');
 
     }
@@ -34,7 +34,7 @@ class RamController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $ram = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Ram')->where('buildable_id',$r->id)->first();
         $ram->delete();
-        session()->flash('success', 'Radna memorija uspješno obrisana!' );
+        session()->flash('success', 'Memory removed successfully!' );
         return redirect()->route('build');   
     }
 }

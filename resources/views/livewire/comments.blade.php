@@ -1,5 +1,5 @@
 <div class="antialiased mx-auto w-3/4 ">
-    <h3 class="mb-4 text-xl font-semibold text-green-400">Komentari</h3>
+    <h3 class="mb-4 text-xl font-semibold text-green-400">Comments</h3>
         @if (session('message'))
             <div class="bg-green-500 text-white font-semibold border border-white py-1 px-2 rounded full mb-2">
                 {{ session('message') }}
@@ -10,15 +10,15 @@
       <div class="flex mx-auto items-center justify-center shadow-lg   mb-4 ">
         <form class="w-full  bg-gray-800 border border-green-400 rounded-sm px-4 pt-2 " wire:submit.prevent="addComment">
         <div class="flex flex-wrap -mx-3 mb-6 ">
-            <h2 class="px-4 pt-3 pb-2 text-gray-300 text-lg">Dodaj komentar</h2>
+            <h2 class="px-4 pt-3 pb-2 text-gray-300 text-lg">Add a Comment</h2>
             <div class="w-full md:w-full px-3 mb-2 mt-2">
-                <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:border-green-500 focus:border-2 focus:outline-none focus:bg-white focus:ring-0" name="body" placeholder='Vaš komentar' wire:model="comment" required></textarea>
+                <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 text-green-400 focus:border-green-500 focus:border-2 focus:outline-none focus:bg-gray-900 focus:ring-0" name="body" placeholder='Vaš komentar' wire:model="comment" required></textarea>
             </div>
             <div class="w-full md:w-full flex items-end justify-end md:w-full px-3">
 
                 <div class="-mr-1">
                      <button type='submit' class="bg-green-400 text-gray-700 font-medium py-1 px-4 border border-green-400 rounded-lg tracking-wide mr-1 hover:bg-green-600 hover:text-white">
-                        Objavi
+                        Post
                     </button>
                         
                 </div>

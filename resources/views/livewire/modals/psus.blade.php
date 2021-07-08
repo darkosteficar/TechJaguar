@@ -59,7 +59,7 @@
             
         </div>
         <hr class="border border-green-400">
-        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">SLIKE:</p>
+        <p class="ml-2 pt-1 font-semibold text-green-400 text-xl">IMAGES:</p>
         <div class="flex flex-wrap items-center justify-center p-2 space-x-2 space-y-2">
             @foreach ($images as $key => $image)
                 <div class="w-5/12 ">

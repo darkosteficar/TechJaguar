@@ -24,8 +24,8 @@ class GpuController extends Controller
         ]);
         $gpu = Gpu::find($r->id);
         session()->flash('item',$gpu->name);
-        session()->flash('success', 'Grafička kartica ' );
-        session()->flash('success2', ' uspješno dodana!' );
+        session()->flash('success', 'Graphics card ' );
+        session()->flash('success2', ' successfully added!' );
         return redirect()->route('build');
 
     }
@@ -34,7 +34,7 @@ class GpuController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $gpu = Buildable::where('build_id', $build->id)->where('buildable_type','App\Models\Gpu')->where('buildable_id',$r->id)->first();
         $gpu->delete();
-        session()->flash('success', 'Grafička kartica uspješno obrisana!' );
+        session()->flash('success', 'Graphics card removed successfully!' );
         return redirect()->route('build');   
     }
 }

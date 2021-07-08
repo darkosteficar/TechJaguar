@@ -20,8 +20,8 @@ class CpuController extends Controller
         $build->save();
         $cpu = Cpu::find($r->id);
         session()->flash('item',$cpu->name);
-        session()->flash('success', 'Procesor ' );
-        session()->flash('success2', ' uspješno dodan!' );
+        session()->flash('success', 'Processor ' );
+        session()->flash('success2', ' successfully added!' );
         return redirect()->route('build');
 
     }
@@ -30,7 +30,7 @@ class CpuController extends Controller
         $build = Build::find(request()->cookie('build_id'));
         $build->cpu_id = null;
         $build->save();
-        session()->flash('success', 'Procesor uspješno obrisan!' );
+        session()->flash('success', 'Processor removed successfully!' );
         return redirect()->route('build');   
     }
 }
