@@ -25,13 +25,13 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-md text-green-400 p-2 bg-gray-900 bg-opacity-50 leading-5">
-                    {!! __('Prikazuje se') !!}
+                    {!! __('Showing') !!}
                     <span class="font-semibold text-gray-300">{{ $paginator->firstItem() }}</span>
-                    {!! __('do') !!}
+                    {!! __('to') !!}
                     <span class="font-semibold text-gray-300">{{ $paginator->lastItem() }}</span>
-                    {!! __('od') !!}
+                    {!! __('of') !!}
                     <span class="font-semibold text-gray-300">{{ $paginator->total() }}</span>
-                    {!! __('rezultata') !!}
+                    {!! __('results') !!}
                 </p>
             </div>
 

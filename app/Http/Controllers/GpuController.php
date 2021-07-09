@@ -16,6 +16,7 @@ class GpuController extends Controller
 
     public function add(Request $r)
     {
+        
         $build = Build::find(request()->cookie('build_id'));
         Buildable::create([
             'build_id'=>$build->id,

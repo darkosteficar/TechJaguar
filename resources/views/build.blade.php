@@ -24,7 +24,7 @@
                         </div>
                         
                         <label for="name" class="mx-2 text-gray-300">Build Name:</label>
-                        <input type="text" class=" bg-gray-800 border-green-400 border h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="npr. AMD konfiguracija">
+                        <input type="text" class=" bg-gray-800 border-green-400 border h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0" placeholder="e.g. AMD Build">
                         <button class="btn-green-select ml-4">Store</button>
                     </div>
                 </form>
@@ -38,7 +38,7 @@
                         </div>
                         
                         <label for="name" class="mx-2 text-gray-300">Build Name:</label>
-                        <input name="name" type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 2xl:ml-0 2xl:mt-0 mt-2 ml-2 text-white  font-semibold focus:outline-none focus:ring-0" placeholder=" npr. AMD konfiguracija">
+                        <input name="name" type="text" class=" bg-gray-800 border-green-400 border  h-8 rounded-sm focus:border-gray-600 focus:bg-gray-700 2xl:ml-0 2xl:mt-0 mt-2 ml-2 text-white  font-semibold focus:outline-none focus:ring-0" placeholder=" e.g. AMD Build">
                         <button class="btn-green-select ml-2">Store</button>
                     </div>
                 </form>

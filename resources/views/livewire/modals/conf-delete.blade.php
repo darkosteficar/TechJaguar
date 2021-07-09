@@ -1,5 +1,5 @@
 <div>
-    <p class="bg-green-400 text-gray-900 p-4 font-semibold">REMOVAL CONFIRMATION</p>
+    <p class="bg-green-400 text-gray-900 p-4 text-lg font-semibold" style="text-shadow: none">REMOVAL CONFIRMATION</p>
     <div class="flex bg-gray-900 justify-between pr-4">
         <div>
             <p class=" text-green-400 p-4 font-semibold text-2xl text-shadow-green">{{ $foundComponent->name }}</p>

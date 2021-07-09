@@ -12,7 +12,7 @@
         <div class="flex flex-wrap -mx-3 mb-6 ">
             <h2 class="px-4 pt-3 pb-2 text-gray-300 text-lg">Add a Comment</h2>
             <div class="w-full md:w-full px-3 mb-2 mt-2">
-                <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 text-green-400 focus:border-green-500 focus:border-2 focus:outline-none focus:bg-gray-900 focus:ring-0" name="body" placeholder='Vaš komentar' wire:model="comment" required></textarea>
+                <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 text-green-400 focus:border-green-500 focus:border-2 focus:outline-none focus:bg-gray-900 focus:ring-0" name="body" placeholder='Your comment' wire:model="comment" required></textarea>
             </div>
             <div class="w-full md:w-full flex items-end justify-end md:w-full px-3">
 

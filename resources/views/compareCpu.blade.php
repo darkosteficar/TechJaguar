@@ -175,12 +175,12 @@
         <div class=" w-1/3 bg-gray-900 bg-opacity-70 2xl:text-lg text-center text-green-400">
             
             <p class="my-2 ">Socket:</p>
-            <p class="mb-2 ">Proizvođač:</p>
-            <p class="mb-2 ">Radni takt:</p>
-            <p class="mb-2 ">Maks. radni takt:</p>
-            <p class="mb-2 ">Broj jezgri:</p>
+            <p class="mb-2 ">Manufacturer:</p>
+            <p class="mb-2 ">Base Clock:</p>
+            <p class="mb-2 ">Boost Clock:</p>
+            <p class="mb-2 ">Core Count:</p>
             <p class="mb-2 ">TDP:</p>
-            <p class="mb-2 ">Integirana grafika:</p>
+            <p class="mb-2 ">Integrated Graphics:</p>
             <p class="mb-2 ">SMT:</p>
             
         </div>

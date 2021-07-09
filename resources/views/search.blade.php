@@ -5,10 +5,10 @@
 <div class="bg-gray-900 bg-opacity-70 w-10/12 mx-auto my-12 p-4 ">
     @if (count($posts) < 1)
     
-        <p class="text-green-400 text-xl ">Nema rezultata pretrage za: {{ request()->key }} </p>
+        <p class="text-green-400 text-xl ">No results for this search: {{ request()->key }} </p>
     
     @else
-    <p class="text-green-400 text-xl pb-2 border-b border-green-400 mb-6">Rezultati pretrage za: {{ request()->key }} </p>
+    <p class="text-green-400 text-xl pb-2 border-b border-green-400 mb-6">Search results for: {{ request()->key }} </p>
     @foreach ($posts as $post)
      <div class="lg:flex lg:space-x-10 justify-center mb-4 ">
          

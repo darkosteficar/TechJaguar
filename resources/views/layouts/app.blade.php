@@ -40,13 +40,13 @@
                             <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
                             hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
                                 <p class="text-green-400 font-bold   ">
-                            Novosti</p>
+                            News</p>
                             </button>
                         
                             <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900  justify-between  px-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex lg:w-[450px]" id="news-dropdown">
                                 <div class="mr-4">
                                     <div class="bg-gray-700 mt-2 py-1 ">
-                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">PROIZVOĐAČI</p>
+                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">MANUFACTURERS</p>
                                     </div>
                                     @foreach ($allManus as $manu)
                                         <div class="bg-gray-900 bg-opacity-80 p-1 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="lg:mr-4">
                                     <div class="bg-gray-700 mt-2 py-1 ">
-                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">KATEGORIJE</p>
+                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">CATEGORIES</p>
                                     </div>
                                     @foreach ($allCats as $cat)
                                         <div class="bg-gray-900 bg-opacity-80 py-1 px-4 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
@@ -76,20 +76,20 @@
                             <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
                             hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
                                 <p class="text-green-400 font-bold   ">
-                            Usporedi</p>
+                            Compare</p>
                             </button>
                         
                             <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900  justify-between   pl-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex w-64" id="news-dropdown">
                                 <div class="ml-2">
                                     <div class="bg-gray-700 mt-2 py-1 ">
-                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">Komponente</p>
+                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">COMPONENTS</p>
                                     </div>
                                     
                                     <div class="bg-gray-900 bg-opacity-80 p-2 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
-                                        <a href="{{ route('compareCpu', []) }}"><p class="text-center">Procesori</p></a>
+                                        <a href="{{ route('compareCpu', []) }}"><p class="text-center">Processors</p></a>
                                     </div>
                                     <div class="bg-gray-900 bg-opacity-80 py-2 px-4 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
-                                        <a href="{{ route('compareGpu', []) }}"><p class="text-center">Grafičke kartice</p></a>
+                                        <a href="{{ route('compareGpu', []) }}"><p class="text-center">Graphics Cards</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                         <a href="{{ route('build', []) }}">
                         <p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
                         hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
-                            Konfiguracija</p>
+                            Build</p>
                         </a>
                     </div>
                     <div class="lg:flex lg:items-center justify-center">
@@ -135,7 +135,7 @@
                             <form action="{{ route('search', []) }}">
                                 <input type="text"
                                     class=" bg-gray-800 border-green-400 border-2 w-full h-10 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0"
-                                    placeholder="Pretraga" name="key">
+                                    placeholder="Search" name="key">
                                 <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
                                     <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -164,7 +164,7 @@
     <footer>
         <div class="w-3/4 mx-auto ">
             <div class="bg-gray-900 bg-opacity-70 text-gray-400  ">
-                <p class="text-center pt-10 pb-5 font-semibold">BCompare Copyright &copy;2021. All rights reserved.</p>
+                <p class="text-center pt-10 pb-5 font-semibold">Techuar Copyright &copy;2021. All rights reserved.</p>
 
             </div>
 

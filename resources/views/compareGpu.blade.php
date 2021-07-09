@@ -174,19 +174,19 @@
     <div class=" text-green-400 flex justify-center lg:w-2/3 mx-auto border-b-4 border-green-400 bg-gray-900 bg-opacity-80 mb-4">
         <div class=" w-1/3 bg-gray-900 bg-opacity-70 2xl:text-lg ">
             
-            <p class="text-center text-green-400 my-2 ">Serija:</p>
-            <p class="text-center text-green-400 mb-2 ">Proizvođač:</p>
+            <p class="text-center text-green-400 my-2 ">Series:</p>
+            <p class="text-center text-green-400 mb-2 ">Manufacturer:</p>
             <p class="text-center text-green-400 mb-2 ">BUS:</p>
-            <p class="text-center text-green-400 mb-2 ">VRAM količina:</p>
-            <p class="text-center text-green-400 mb-2 ">VRAM tip:</p>
-            <p class="text-center text-green-400 mb-2 ">Dužina:</p>
+            <p class="text-center text-green-400 mb-2 ">VRAM Capacity:</p>
+            <p class="text-center text-green-400 mb-2 ">VRAM Type:</p>
+            <p class="text-center text-green-400 mb-2 ">Length:</p>
             <p class="text-center text-green-400 mb-2 ">TDP:</p>
-            <p class="text-center text-green-400 mb-2 ">Min. napajanje:</p>
-            <p class="text-center text-green-400 mb-2 ">Takt memorije:</p>
-            <p class="text-center text-green-400 mb-2 ">Standardni takt:</p>
-            <p class="text-center text-green-400 mb-2 ">Maksimalni takt:</p>
+            <p class="text-center text-green-400 mb-2 ">Power Requirement:</p>
+            <p class="text-center text-green-400 mb-2 ">Memory Clock:</p>
+            <p class="text-center text-green-400 mb-2 ">Base Clock:</p>
+            <p class="text-center text-green-400 mb-2 ">Boost Clock:</p>
             <p class="text-center text-green-400 mb-2 ">Crossfire/SLI:</p>
-            <p class="text-center text-green-400 mb-2 ">Veličina procesa:</p>
+            <p class="text-center text-green-400 mb-2 ">Process Size:</p>
             
         </div>
         <div class="text-center w-1/3 justify-center 2xl:text-lg">

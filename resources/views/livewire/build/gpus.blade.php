@@ -34,8 +34,9 @@
             </div>
         </div>
         @if ($gpus[0]->crossfire == 0)
-            <form action="{{ route('build.gpu.add', ['id'=>$gpus[0]->gpu_id]) }}" method="POST">
+            <form action="{{ route('build.gpu.add', []) }}" method="POST">
                 @csrf
+                <input type="hidden" name="id" value="{{ $gpus[0]->id }}">
                 <div class="flex lg:justify-start justify-center ">
                     <button class="btn-green-select mb-4 text-sm lg:ml-4">
                         Add another GPU

@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Carbon::setLocale('hr'); // <---
+        //Carbon::setLocale('hr'); // <---
         $allCats = Category::all();
         $allManus = Manufacturer::all();
         View::share('allCats', $allCats);

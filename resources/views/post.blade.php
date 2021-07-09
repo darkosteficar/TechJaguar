@@ -2,14 +2,7 @@
 
 @section('content')
 
-@php
-    if(str_contains($post->comments_count,'1')){
-        $pad = 'komentar';
-    }
-    else{
-        $pad = 'komentara';
-    }
-@endphp
+
 
 <div class="mt-5  bg-gray-900 ml-2 md:ml-32 pb-8">
     <div class="bg-green-400 inline-block">
@@ -21,7 +14,7 @@
     <div class="flex items-center mt-2">
         <p class="text-gray-500 text-lg mx-3">Objavljeno: {{ $post->created_at->isoFormat('LLL') }}</p>
         <i class="fas fa-comments text-green-400 ml-2"></i>
-        <p class="text-gray-500 text-lg ml-2">{{ $post->comments_count }} {{ $pad }}</p>
+        <p class="text-gray-500 text-lg ml-2">{{ $post->comments_count }} comments</p>
     </div>
     
 
@@ -62,7 +55,7 @@
                                 
                             </tr>
                             <tr class=" hover:bg-gray-800 bg-gray-700  border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Serija</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Series</td>
                                 <td class="">{{ $components['gpu']->series }}</td>
                                 
                             </tr>
@@ -71,19 +64,19 @@
                                 <td class="">{{ $components['gpu']->gpu_bus }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">VRAM Memorija</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">VRAM Type</td>
                                 <td class="">{{ $components['gpu']->vram_type }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">VRAM Kapacitet</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">VRAM Capacity</td>
                                 <td class="">{{ $components['gpu']->vram }} GB</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
                                 <td class="bg-gray-800 text-gray-300 font-bold py-1">Crossfire</td>
                                 <td class="">@if ($components['gpu']->crossfire)
-                                    Da
+                                    Yes
                                     @else
-                                    Ne
+                                    No
                                 @endif</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
@@ -91,23 +84,23 @@
                                 <td class="px-12">{{ $components['gpu']->tdp }} W</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Preporučeno napajanje</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Recommended PSU</td>
                                 <td class="">{{ $components['gpu']->power_req }} W</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Veličina procesa</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Process Size</td>
                                 <td class=""> {{ $components['gpu']->process_size }}nm</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Takt memorije</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Memory Clock</td>
                                 <td class="">{{ $components['gpu']->memory_clock }} Mhz</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Radni takt</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Base Clock</td>
                                 <td class="">{{ $components['gpu']->base_clock }} Mhz</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Maksimalni takt</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Boost Clock</td>
                                 <td class="">{{ $components['gpu']->boost_clock }} Mhz</td>
                             </tr>
                             
@@ -130,15 +123,15 @@
                         </div>
                         <tbody class="text-center text-md font-medium text-gray-300 ">
                             <tr class=" hover:bg-gray-800 border border-gray-600 bg-gray-700 ">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Proizvođač</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Manufacturer</td>
                                 <td class="">{{ $components['cpu']->manufacturer->name }}</td>
                             </tr>
                             <tr class=" hover:bg-gray-800 bg-gray-700  border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Standardni takt</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Base Clock</td>
                                 <td class="">{{ $components['cpu']->base_clock }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Maksimalni takt</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Boost Clock</td>
                                 <td class="">{{ $components['cpu']->boost_clock }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
@@ -146,35 +139,35 @@
                                 <td class="">{{ $components['cpu']->tdp }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Mikroarhitektura</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Microarhictecture</td>
                                 <td class="">{{ $components['cpu']->microarchitecture }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Jezgre</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Core Count</td>
                                 <td class="">{{ $components['cpu']->core_count }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
                                 <td class="bg-gray-800 text-gray-300 font-bold py-1">SMT</td>
                                 <td class="">@if ($components['cpu']->smt)
-                                    Da
+                                    Yes
                                 @else
-                                    Ne
+                                    No
                                 @endif </td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Serija</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Series</td>
                                 <td class="">{{ $components['cpu']->series }} </td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Obitelj procesora</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Core Family</td>
                                 <td class="">{{ $components['cpu']->core_family }} </td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Integirana grafika</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Integrated Graphics</td>
                                 <td class="">@if ($components['cpu']->integrated_graphics)
-                                    Da
+                                    Yes
                                 @else
-                                    Ne
+                                    No
                                 @endif</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
@@ -206,7 +199,7 @@
                         </div>
                         <tbody class="text-center text-md font-medium text-gray-300 ">
                             <tr class=" hover:bg-gray-800 border border-gray-600 bg-gray-700 ">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Proizvođač</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Manufacturer</td>
                                 <td class="">{{ $components['mobo']->manufacturer->name }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
@@ -219,32 +212,32 @@
                                 
                             </tr>
                             <tr class=" hover:bg-gray-800 bg-gray-700  border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Maks. kapacitet memorije</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Max Memory Capacity</td>
                                 <td class="">{{ $components['mobo']->max_memory }} GB</td>
                                 
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">DIMM utori</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">DIMM Slots</td>
                                 <td class="">{{ $components['mobo']->memory_slots }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Tip memorije</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Memory Type</td>
                                 <td class="">{{ $components['mobo']->memory_type }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Veličina</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">Form Factor</td>
                                 <td class="">{{ $components['mobo']->form_factor }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
                                 <td class="bg-gray-800 text-gray-300 font-bold py-1">WiFi</td>
                                 <td class="">@if ($components['mobo']->wireless_support)
-                                    Da
+                                    Yes
                                 @else
-                                    Ne
+                                    No
                                 @endif</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">
-                                <td class="bg-gray-800 text-gray-300 font-bold py-1">M.2 utori</td>
+                                <td class="bg-gray-800 text-gray-300 font-bold py-1">M.2 Slots</td>
                                 <td class="">{{ $components['mobo']->m_2_slots }}</td>
                             </tr>
                             <tr class="hover:bg-gray-800 bg-gray-700 border border-gray-600">

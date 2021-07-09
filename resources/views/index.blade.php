@@ -17,7 +17,7 @@
             
                 <div class="  -top-2 lg:absolute z-10 lg:w-full lg:right-12 ">
                     <div class="2xl:w-4/6 bg-gray-900 p-4 bg-opacity-70 lg:w-2/4 border-t border-green-400">
-                        <p class="font-semibold text-green-400 text-2xl ">Popularno danas</p>
+                        <p class="font-semibold text-green-400 text-2xl ">Popular Today</p>
                         <a href="">
                             <a href="{{ route('post.view', ['post'=>$popular[0]->id]) }}">
                             <p class="font-bold text-white 2xl:text-6xl md:text-4xl   hover:text-gray-600 transition duration-100 ease-in ">
@@ -51,7 +51,7 @@
         <div class=" lg:my-80 my-20  flex items-center  ">
             <div class=" relative w-full ">
                 <p class="font-semibold text-2xl text-green-400 pl-10  w-full py-14  bg-gray-900 bg-opacity-70 border-t border-green-400">
-                    Najnovije</p>
+                    Newest</p>
                 <div class="lg:flex lg:absolute lg:w-10/12 left-52 top-12 md:w-7/12 md:mx-auto ">
                     @foreach ($news as $post)
                         <div class=" lg:mr-6 lg:ml-0 mx-24 my-2">
@@ -74,7 +74,7 @@
             <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                 <div class="md:w-1/2 w-full px-5">
                     <a href="{{ route('category', ['category'=>3]) }}">
-                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">GRAFIČKE KARTICE</p>
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">GRAPHICS CARDS</p>
                     </a>
                     <a href="{{ route('post.view', ['post'=>$categories['gpus'][0]->id]) }}">
                     <div class="image image__overlay_border">
@@ -115,7 +115,7 @@
             <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                 <div class="md:w-1/2 w-full px-5">
                     <a href="{{ route('category', ['category'=>3]) }}">
-                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">PROCESORI</p>
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">PROCESSORS</p>
                     </a>
                     <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
                     <div class="image image__overlay_border">
@@ -160,7 +160,7 @@
             <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                 <div class="md:w-1/2 w-full px-5">
                     <a href="{{ route('category', ['category'=>3]) }}">
-                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">RADNE MEMORIJE</p>
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">MEMORY</p>
                     </a>
                     <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
                     <div class="image image__overlay_border">
@@ -201,7 +201,7 @@
             <div class="sm:flex flex-row bg-gray-900 bg-opacity-70 pr-4">
                 <div class="md:w-1/2 w-full px-5">
                     <a href="{{ route('category', ['category'=>3]) }}">
-                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">SOFTVER</p>
+                      <p class="text-green-400 2xl:text-2xl text-xl font-semibold my-6 border-b border-transparent hover:text-gray-200 hover:border-green-400 inline-block">SOFTWARE</p>
                     </a>
                     <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
                     <div class="image image__overlay_border">
@@ -254,7 +254,7 @@
                 <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            HARDVER</p>
+                            HARDWARE</p>
                         <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_hard['amd'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
@@ -273,7 +273,7 @@
                 <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            SOFTVER</p>
+                            SOFTWARE</p>
                         <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_soft['amd'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
@@ -308,7 +308,7 @@
                 <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            HARDVER</p>
+                            HARDWARE</p>
                         <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_hard['nvidia'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
@@ -327,7 +327,7 @@
                 <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            SOFTVER</p>
+                            SOFTWARE</p>
                         <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_soft['nvidia'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
@@ -362,7 +362,7 @@
                 <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            HARDVER</p>
+                            HARDWARE</p>
                         <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_hard['intel'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
@@ -381,7 +381,7 @@
                 <div class=" 2xl:mb-52  mb-12 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            SOFTVER</p>
+                            SOFTWARE</p>
                         <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
                             @foreach ($manu_soft['intel'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
