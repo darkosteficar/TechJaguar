@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Ažuriranje grafičke kartice</h1>
+    <h1>Updating the GPU</h1>
     <a href="{{ route('gpus.index', []) }}">
-        <button class="btn btn-success ml-5">Grafičke kartice</button>
+        <button class="btn btn-success ml-5">Graphics Cards</button>
     </a>
 </div>
    
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{ $gpu->name }}">
                             </div>
                         </div>
@@ -40,15 +40,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="series">Serija</label>
+                                <label for="series">Series</label>
                                 <input class="form-control" type="text" name="series" data="green" value="{{ $gpu->series }}">
                             </div>
                             <div class="col-3">
-                                <label for="gpu_bus">GPU bus </label>
+                                <label for="gpu_bus">GPU Bus </label>
                                 <input class="form-control" type="text" name="gpu_bus" data="green" value="{{ $gpu->gpu_bus }}">
                             </div>
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{ $gpu->price }}">
                             </div>
                         </div>
@@ -56,11 +56,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Duljina grafičke kartice</label>
+                                <label for="length">Length</label>
                                 <input class="form-control" type="text" name="length" data="green" value="{{ $gpu->length }}">
                             </div>
                             <div class="col-3">
-                                <label for="vram">Količina VRAM-a</label>
+                                <label for="vram">VRAM Type</label>
                                 <input class="form-control" type="text" name="vram" data="green" value="{{ $gpu->vram }}">
                             </div>
                             <div class="col-3">
@@ -74,15 +74,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="power_req">Minimalna snaga napajanja</label>
+                                <label for="power_req">Power Requirement</label>
                                 <input class="form-control" type="text" name="power_req" data="green" value="{{ $gpu->power_req }}">
                             </div>
                             <div class="col-3">
-                                <label for="power_connector">Priključak napajanja</label>
+                                <label for="power_connector">Power Connector</label>
                                 <input class="form-control" type="text" name="power_connector" data="green" value="{{ $gpu->power_connector }}">
                             </div>
                             <div class="col-3">
-                                <label for="interface">Sučelje</label>
+                                <label for="interface">Interface</label>
                                 <input class="form-control" type="text" name="interface" data="green" value="{{ $gpu->interface }}">
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                 <input class="form-control" type="text" name="tdp" data="green" value="{{ $gpu->tdp }}">
                             </div>
                             <div class="col-3">
-                                <label for="power_req">Veličina procesa</label>
+                                <label for="power_req">Process Node</label>
                                 <input class="form-control" type="text" name="process_size" data="green" value="{{ $gpu->process_size }}">
                             </div>
                         </div>
@@ -103,15 +103,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="interface">Takt memorije</label>
+                                <label for="interface">Memory Clock</label>
                                 <input class="form-control" type="text" name="memory_clock" data="green" value="{{ $gpu->memory_clock }}">
                             </div>
                             <div class="col-3">
-                                <label for="power_req">Standarni takt</label>
+                                <label for="power_req">Base Clock</label>
                                 <input class="form-control" type="text" name="base_clock" data="green" value="{{ $gpu->base_clock }}">
                             </div>
                             <div class="col-3">
-                                <label for="power_connector">Maksimalni takt</label>
+                                <label for="power_connector">Boost Clock</label>
                                 <input class="form-control" type="text" name="boost_clock" data="green" value="{{ $gpu->boost_clock }}">
                             </div>
                         </div>
@@ -119,14 +119,14 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="crossfire">Crossfire/SLI podrška</label>
+                                <label for="crossfire">Crossfire/SLI Support</label>
                                 <select class="form-control" name="crossfire" style="background-color: #27293D">
                                     @if ($gpu->crossfire == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     @endif
                                </select>
                             </div>
@@ -140,7 +140,7 @@
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if ($gpu->manufacturer_id == $manufacturer->id) selected
@@ -156,20 +156,15 @@
                         @endforeach
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
+                       
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
         </div>

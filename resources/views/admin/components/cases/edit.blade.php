@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Promjena kućišta</h1>
+    <h1>Updating Case</h1>
     <a href="{{ route('cases.index', []) }}">
-        <button class="btn btn-success ml-5">Kućišta</button>
+        <button class="btn btn-success ml-5">Cases</button>
     </a>
 </div>
    
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{ $case->name }}">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">Price</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{ $case->price }}">
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Dužina</label>
+                                <label for="length">Length</label>
                                 <input class="form-control" type="text" name="length" data="green" value="{{ $case->length }}">
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="height">Visina</label>
+                                <label for="height">Height</label>
                                 <input class="form-control" type="text" name="height" data="green" value="{{ $case->height }}">
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="width">Širina</label>
+                                <label for="width">Width</label>
                                 <input class="form-control" type="text" name="width" data="green" value="{{ $case->width }}">
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="type">Tip</label>
+                                <label for="type">Type</label>
                                 <input class="form-control" type="text" name="type" data="green" value="{{ $case->type }}">
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="num_2_5_bays">Broj 2.5 inčnih postolja</label>
+                                <label for="num_2_5_bays">Number of 2,5" bays</label>
                                 <input class="form-control" type="text" name="num_2_5_bays" data="green" value="{{ $case->num_2_5_bays }}">
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="num_3_5_bays">Broj 3.5 inčnih postolja</label>
+                                <label for="num_3_5_bays">Number of 3,5" bays</label>
                                 <input class="form-control" type="text" name="num_3_5_bays" data="green" value="{{ $case->num_3_5_bays }}">     
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="max_gpu_length">Maksimalna duljina grafičke kartice</label>
+                                <label for="max_gpu_length">Max GPU length</label>
                                 <input class="form-control" type="text" name="max_gpu_length" data="green" value="{{ $case->max_gpu_length }}">     
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="expansion_slots">Broj ekspanzijskih slotova</label>
+                                <label for="expansion_slots">Expansion Slots</label>
                                 <input class="form-control" type="text" name="expansion_slots" data="green" value="{{ $case->expansion_slots }}">     
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="front_panel_usb">Broj USB portova na prednjem panelu</label>
+                                <label for="front_panel_usb">Front Panel USB Headers Count</label>
                                 <input class="form-control" type="text" name="front_panel_usb" data="green" value="{{ $case->front_panel_usb }}">     
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="motherboard_form_factor">Podržane veličine matičnih ploča</label>
+                                <label for="motherboard_form_factor">Supported Mobo Form Factor</label>
                                 <input class="form-control" type="text" name="motherboard_form_factor" data="green" value="{{ $case->motherboard_form_factor }}">     
                             </div>
                         </div>
@@ -129,31 +129,31 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="side_panel_glass">Stakleni lijevi panel</label>
+                                <label for="side_panel_glass">Glass Side Panel</label>
                                 <select class="form-control" name="side_panel_glass" style="background-color: #27293D">
                                     @if ($case->side_panel_glass == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     @endif
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="power_supply_shroud">Kavez za napajanje</label>
+                                <label for="power_supply_shroud">Power Supply Shroud</label>
                                 <select class="form-control" name="power_supply_shroud" style="background-color: #27293D">
                                     @if ($case->power_supply_shroud == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     @endif
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if ($case->manufacturer_id == $manufacturer->id) selected
@@ -164,27 +164,21 @@
                             </div>
                         </div>
                     </div>
-                    <label for="">Trenutne slike</label>
+                    <label for="">Current Image</label>
                     <div class="form-row mb-3">
                         @foreach ($images as $image)
                             <img src=" {{ asset('images/'.$image->path) }}" alt="" width="200">
                         @endforeach
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

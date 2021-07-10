@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novi chipset</h1>
+    <h1>New Chipset</h1>
     <a href="{{ route('chipsets.index', []) }}">
-        <button class="btn btn-success ml-5">Chipsetovi</button>
+        <button class="btn btn-success ml-5">Chipsets</button>
     </a>
 </div>
    
@@ -29,15 +29,15 @@
         
                     @csrf
                     <div class="form-group">
-                        <label for="chipset_name">Ime</label>
+                        <label for="chipset_name">Name</label>
                         <input class="form-control" type="text" name="chipset_name" data="green">
                     </div>
                     <div class="form-group">
-                        <label for="chipset_description">Opis</label>
+                        <label for="chipset_description">Description</label>
                         <textarea class="form-control" name="chipset_description" data="green" style=" height:750px;"></textarea>
                     </div>
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

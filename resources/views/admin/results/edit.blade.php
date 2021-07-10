@@ -3,9 +3,9 @@
 @section('content')
 <div class="content">
     <div class="d-flex">
-        <h1>Ažuriranje rezultata</h1>
+        <h1>Updating Results</h1>
         <a href="{{ route('results.index', []) }}">
-            <button class="btn btn-success ml-5">Rezultati</button>
+            <button class="btn btn-success ml-5">Results</button>
         </a>
     </div>
    
@@ -33,11 +33,11 @@
                         <div class="row">
 
                         <div class="col-sm-6">
-                            <label for="chipset_name">Rezultat</label>
+                            <label for="chipset_name">Score</label>
                             <input class="form-control" type="text" name="score" data="green" value="{{ $result->score }}">
                         </div>
                         <div class="col-sm-6">
-                            <label for="chipset_name">Minimalni rezultat</label>
+                            <label for="chipset_name">Min Score</label>
                             <input class="form-control" type="text" name="min_score" data="green" value="{{ $result->min_score }}">  
                         </div>
                        
@@ -48,7 +48,7 @@
                         <div class="row mb-3">
                            
                             <div class="col-sm">
-                                <label for="">Procesor</label>
+                                <label for="">Processor</label>
                                 <select name="cpu_id" id="">
                                     @foreach ($cpus as $cpu)
                                         <option value="{{ $cpu->id }}" @if ($cpu->id == $result->cpu_id)
@@ -60,7 +60,7 @@
                             </div>
                             
                             <div class="col-sm-6">
-                                <label for="gpu">Grafička kartica</label>
+                                <label for="gpu">Graphics Card</label>
                                 <select name="gpu_id" id="">
                                     @foreach ($gpus as $gpu)
                                         <option value="{{ $gpu->id }}" @if ($gpu->id == $result->gpu_id)
@@ -74,7 +74,7 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                <label for="app">Aplikacija</label>
+                                <label for="app">App</label>
                                 <select name="app_id" id="">
                                     @foreach ($apps as $app)
                                         <option value="{{ $app->id }}" @if ($app->id == $result->app_id)
@@ -85,7 +85,7 @@
                                 </select>
                             </div>
                             <div class="col-sm">
-                                <label for="">Matična ploča</label>
+                                <label for="">Motherboard</label>
                                 <select name="mobo_id" id="">
                                     @foreach ($mobos as $mobo)
                                         <option value="{{ $mobo->id }}" @if ($mobo->id == $result->mobo_id)
@@ -96,7 +96,7 @@
                                 </select>
                             </div>
                             <div class="col-sm">
-                                <label for="ram">Radna memorija</label>
+                                <label for="ram">RAM</label>
                                 <select name="ram_id" id="">
                                     @foreach ($rams as $ram)
                                         <option value="{{ $ram->id }}" @if ($ram->id == $result->ram_id)
@@ -112,7 +112,7 @@
                     </div>
                    
                   
-                   <button type="submit" class="btn btn-success">Spremi</button>
+                   <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
         </div>

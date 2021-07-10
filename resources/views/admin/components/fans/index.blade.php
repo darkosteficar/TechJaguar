@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Ventilatori</h2>
+    <h2>Fans</h2>
     <a href="{{ route('fans.create', []) }}">
-        <button class="btn btn-success ml-5">Novi ventilator</button>
+        <button class="btn btn-success ml-5">New Fan</button>
     </a>
 </div>
      
@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Priključak</th>
-                        <th>Broj okretaja</th>
-                        <th>Protok zraka</th>
+                        <th>Name</th>
+                        <th>MSPR</th>
+                        <th>Manufacturer</th>
+                        <th>Power Connector</th>
+                        <th>RPM</th>
+                        <th>Air Flow</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -48,9 +48,6 @@
                             <td>{{ $fan->air_flow }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('fans.edit', ['fan'=>$fan->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

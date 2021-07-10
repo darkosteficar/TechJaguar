@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novi proizvođač</h1>
+    <h1>New Manufacturer</h1>
     <a href="{{ route('manufacturers.index', []) }}">
-        <button class="btn btn-success ml-5">Proizvođači</button>
+        <button class="btn btn-success ml-5">Manufacturers</button>
     </a>
 </div>
    
@@ -31,14 +31,14 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime:</label>
+                                <label for="name">Name:</label>
                                 <input class="form-control" type="text" name="name" data="green" >
                             </div>
                         </div>
                        
                     </div>
                     <div class="form-group">
-                        <label for="description">Opis:</label>
+                        <label for="description">Description:</label>
                         <textarea name="description" id="post_content" cols="30" rows="10" class="form-control my-editor"></textarea>
                     </div>
                     
@@ -46,18 +46,12 @@
                     <div class=" form-row">
                         <label for="image"> &nbsp; Logo: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="image" onchange="showImageHereFuncAddPost();"  />
-                        <label for="showImageHere" class="mr-3">Preview slike -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of an Image -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

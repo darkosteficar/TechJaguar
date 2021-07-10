@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <h1>Nova objava</h1>
+    <h1>Updating Post</h1>
         @if ($errors->any())
         <div class="alert alert-danger">
         <ul>
@@ -28,11 +28,11 @@
                     <input type="hidden" name="post_id" value="{{ $post->id }}">
                     @csrf
                     <div class="form-group">
-                        <label for="post_title">Naslov</label>
+                        <label for="post_title">Title</label>
                         <input class="form-control" type="text" name="post_title" data="green" value="{{ $post->post_title }}">
                     </div>
                     <div class="form-group">
-                        <label for="post_content">Sadržaj</label>
+                        <label for="post_content">Content</label>
                         <textarea name="post_content" id="post_content" cols="70" rows="10" class="form-control my-editor" value="">{{ $post->body }}</textarea>
                     </div>
 
@@ -42,7 +42,13 @@
                                 <label for="">GPU</label>
                                 <select name="gpu_id" id="select-gpu">
                                     <option value=""></option>
-                                    <option value="22">Basdasd</option>
+                                    <option value=""></option>
+                                    @foreach ($gpus as $gpu)
+                                    
+                                    <option value="{{ $gpu->id }}"  @if ($post->gpu_id === $gpu->id)
+                                        selected
+                                    @endif> {{ $gpu->name }}</option>
+                                    @endforeach
                                    
                                 </select>
                             </div>
@@ -50,15 +56,24 @@
                                 <label for="">CPU</label>
                                 <select name="cpu_id" id="select-cpu">
                                     <option value=""></option>
-                                    <option value="22">Basdasd</option>
+                                    @foreach ($cpus as $cpu)
+                                        <option value="{{ $cpu->id }}"  @if ($post->cpu_id === $cpu->id)
+                                            selected
+                                        @endif> {{ $cpu->name }}</option>
+                                    @endforeach
                                    
                                 </select>
                             </div>
                             <div class="col-3">
-                                <label for="">Matična ploča</label>
+                                <label for="">Motherboard</label>
                                 <select name="mobo_id" id="select-mobo">
-                                    <option value=""></option>
-                                    <option value="22">Basdadfgdfgdfgdfgdfgdfgdfgdfgdfgdfgsd dfgdfgdfgdfg sdfsdf sdf sdfsdf</option>
+                                    
+                                    @foreach ($mobos as $mobo)
+                                        <option value="{{ $mobo->id }}" @if ($post->mobo_id === $mobo->id)
+                                            selected
+                                        @endif> {{ $mobo->name }}</option>
+                                    @endforeach
+                                    
                                    
                                 </select>
                             </div>
@@ -69,7 +84,7 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Kategorija</label>
+                                <label for="exampleFormControlSelect1">Category</label>
                                 <select class="form-control" name="category_id" style="background-color: #27293D">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" @if ($category->id === $post->category_id)
@@ -80,7 +95,7 @@
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Proizvođač</label>
+                                <label for="exampleFormControlSelect1">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if($post->manufacturer_id === $manufacturer->id)selected @endif>{{ $manufacturer->name }}</option>
@@ -90,19 +105,19 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Glavna slika: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Cover Image: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="post_image" onchange="showImageHereFuncAddPost();"  />
                         <label for="showImageHere" class="mr-3">Preview slike -></label>
                         <div class="valid-feedback">
-                            Super!
+                            Great!
                         </div>
                         <div class="invalid-feedback">
-                            Slika je obavezna.
+                            Image is required.
                         </div>
                         <div id="showImageHereAddPost"></div>
                     </div>
                   
-                   <button type="submit" class="btn btn-success">Objavi</button>
+                   <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
         </div>

@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Ažuriranje ventilatora</h1>
+    <h1>Updating Fan</h1>
     <a href="{{ route('fans.index', []) }}">
-        <button class="btn btn-success ml-5">Ventilatori</button>
+        <button class="btn btn-success ml-5">Fans</button>
     </a>
 </div>
    
@@ -32,11 +32,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{ $fan->name }}">
                             </div>
                             <div class="col-3">
-                                <label for="diameter">Promjer</label>
+                                <label for="diameter">Diameter</label>
                                 <input class="form-control" type="text" name="diameter" data="green" value="{{ $fan->diameter }}">     
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{ $fan->price }}">
                             </div>
                             <div class="col-3">
@@ -54,7 +54,7 @@
                                 <input class="form-control" type="text" name="led" data="green" value="{{ $fan->led }}">
                             </div>
                             <div class="col-3">
-                                <label for="speed">Broj okretaja</label>
+                                <label for="speed">Fan Speed</label>
                                 <input class="form-control" type="text" name="speed" data="green" value="{{ $fan->speed }}">
                             </div>
                         </div>
@@ -62,15 +62,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="noise">Razina buke</label>
+                                <label for="noise">Noise Level</label>
                                 <input class="form-control" type="text" name="noise" data="green" value="{{ $fan->noise }}">
                             </div>
                             <div class="col-3">
-                                <label for="bearings">Tip ležaja</label>
+                                <label for="bearings">Bearings</label>
                                 <input class="form-control" type="text" name="bearings" data="green" value="{{ $fan->bearings }}">
                             </div>
                             <div class="col-3">
-                                <label for="power_consumption">Potrošnja energije (MAX)</label>
+                                <label for="power_consumption">Power Consumption (MAX)</label>
                                 <input class="form-control" type="text" name="power_consumption" data="green" value="{{ $fan->power_consumption }}">
                             </div>
                         </div>
@@ -80,15 +80,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="air_flow">Protok zraka</label>
+                                <label for="air_flow">Air Flow</label>
                                 <input class="form-control" type="text" name="air_flow" data="green" value="{{ $fan->air_flow }}">     
                             </div>
                             <div class="col-3">
-                                <label for="life">Sati rada</label>
+                                <label for="life">Life Span</label>
                                 <input class="form-control" type="text" name="life" data="green" value="{{ $fan->life }}">     
                             </div>
                             <div class="col-3">
-                                <label for="power_connector">Priključak</label>
+                                <label for="power_connector">Power Connector</label>
                                 <input class="form-control" type="text" name="power_connector" data="green" value="{{ $fan->power_connector }}">     
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if ($fan->manufacturer_id == $manufacturer->id) selected
@@ -112,20 +112,14 @@
                         @endforeach
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Spremi promjene</button>
+                   <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
         </div>

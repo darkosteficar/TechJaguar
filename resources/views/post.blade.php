@@ -12,7 +12,7 @@
         <p class="text-white font-bold text-2xl">{{ $post->post_title }}</p>
     </div>
     <div class="flex items-center mt-2">
-        <p class="text-gray-500 text-lg mx-3">Objavljeno: {{ $post->created_at->isoFormat('LLL') }}</p>
+        <p class="text-gray-500 text-lg mx-3">Posted: {{ $post->created_at->isoFormat('LLL') }}</p>
         <i class="fas fa-comments text-green-400 ml-2"></i>
         <p class="text-gray-500 text-lg ml-2">{{ $post->comments_count }} comments</p>
     </div>

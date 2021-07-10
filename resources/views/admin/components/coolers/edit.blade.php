@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Promjena hladnjaka</h1>
+    <h1>Updating Cooler</h1>
     <a href="{{ route('coolers.index', []) }}">
-        <button class="btn btn-success ml-5">Hladnjaci</button>
+        <button class="btn btn-success ml-5">Coolers</button>
     </a>
 </div>
    
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{  $cooler->name }}">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{  $cooler->price }}">
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="type">Razina buke</label>
+                                <label for="type">Noise Level</label>
                                 <input class="form-control" type="text" name="noise_level" data="green" value="{{  $cooler->noise_level}}">
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="max_power">Potrošnja</label>
+                                <label for="max_power">Max TDP</label>
                                 <input class="form-control" type="text" name="max_power" data="green" value="{{  $cooler->max_power }}">
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="width">Širina</label>
+                                <label for="width">Width</label>
                                 <input class="form-control" type="text" name="width" data="green" value="{{  $cooler->width }}">
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="height">Visina</label>
+                                <label for="height">Height</label>
                                 <input class="form-control" type="text" name="height" data="green" value="{{ $cooler->height }}">     
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Duljina</label>
+                                <label for="length">Length</label>
                                 <input class="form-control" type="text" name="length" data="green" value="{{ $cooler->length }}">     
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="fan_rpm">Brzina ventilatora</label>
+                                <label for="fan_rpm">Fan Speed</label>
                                 <input class="form-control" type="text" name="fan_rpm" data="green" value="{{ $cooler->fan_rpm }}">     
                             </div>
                         </div>
@@ -97,19 +97,19 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="water_cooled">Vodeno Hlađenje</label>
+                                <label for="water_cooled">Water Cooler</label>
                                 <select class="form-control" name="water_cooled" style="background-color: #27293D">
                                     @if ($cooler->water_cooled == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     @endif
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if ($cooler->manufacturer_id == $manufacturer->id) selected
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <label for="">Trenutne slike</label>
+                    <label for="">Current Images</label>
                     <div class="form-row mb-3">
                         @foreach ($images as $image)
                             <img src=" {{ asset('images/'.$image->path) }}" alt="" width="200">
@@ -128,20 +128,15 @@
                        
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
+                       
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Spremi</button>
+                   <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
         </div>

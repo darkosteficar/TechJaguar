@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Napajanja</h2>
+    <h2>Power Supplies</h2>
     <a href="{{ route('psus.create', []) }}">
-        <button class="btn btn-success ml-5">Novo napajanje</button>
+        <button class="btn btn-success ml-5">New Power Supply</button>
     </a>
 </div>
      
@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Snaga</th>
-                        <th>Tip</th>
-                        <th>Učinkovitost</th>
+                        <th>Name</th>
+                        <th>MSRP</th>
+                        <th>Manufacturer</th>
+                        <th>Wattage</th>
+                        <th>Type</th>
+                        <th>Efficiency</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -48,9 +48,6 @@
                             <td>{{ $psu->efficiency_rating }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('psus.edit', ['psu'=>$psu->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Nova grafička kartica</h1>
+    <h1>New GPU</h1>
     <a href="{{ route('gpus.index', []) }}">
-        <button class="btn btn-success ml-5">Grafičke kartice</button>
+        <button class="btn btn-success ml-5">Graphics Cards</button>
     </a>
 </div>
    
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" >
                             </div>
                         </div>
@@ -40,15 +40,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">Price</label>
                                 <input class="form-control" type="text" name="price" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="series">Serija</label>
+                                <label for="series">Series</label>
                                 <input class="form-control" type="text" name="series" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="gpu_bus">GPU bus </label>
+                                <label for="gpu_bus">GPU Bus </label>
                                 <input class="form-control" type="text" name="gpu_bus" data="green" >
                             </div>
                         </div>
@@ -57,15 +57,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="vram_type">Vrsta VRAM-a</label>
+                                <label for="vram_type">Type of VRAM</label>
                                 <input class="form-control" type="text" name="vram_type" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="vram">Količina VRAM-a</label>
+                                <label for="vram"> VRAM Capacity</label>
                                 <input class="form-control" type="text" name="vram" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="length">Duljina grafičke kartice</label>
+                                <label for="length">Length</label>
                                 <input class="form-control" type="text" name="length" data="green" >
                             </div>
                         </div>
@@ -74,15 +74,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="interface">Sučelje</label>
+                                <label for="interface">Interface</label>
                                 <input class="form-control" type="text" name="interface" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="power_req">Minimalna snaga napajanja</label>
+                                <label for="power_req">Power Requirements</label>
                                 <input class="form-control" type="text" name="power_req" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="power_connector">Priključak napajanja</label>
+                                <label for="power_connector">Power Connector</label>
                                 <input class="form-control" type="text" name="power_connector" data="green" >
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 <input class="form-control" type="text" name="tdp" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="power_req">Veličina procesa</label>
+                                <label for="power_req">Process Size</label>
                                 <input class="form-control" type="text" name="process_size" data="green" >
                             </div>
                         </div>
@@ -104,15 +104,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="interface">Takt memorije</label>
+                                <label for="interface">Memory Clock</label>
                                 <input class="form-control" type="text" name="memory_clock" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="power_req">Standarni takt</label>
+                                <label for="power_req">Base Clock</label>
                                 <input class="form-control" type="text" name="base_clock" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="power_connector">Maksimalni takt</label>
+                                <label for="power_connector">Boost Clock</label>
                                 <input class="form-control" type="text" name="boost_clock" data="green" >
                             </div>
                         </div>
@@ -121,10 +121,10 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="crossfire">Crossfire/SLI podrška</label>
+                                <label for="crossfire">Crossfire/SLI Support</label>
                                 <select class="form-control" name="crossfire" style="background-color: #27293D">
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                </select>
                             </div>
                             <div class="col-4">
@@ -136,7 +136,7 @@
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
@@ -146,20 +146,13 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

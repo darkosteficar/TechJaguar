@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\File;
 
 class ManufacturerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function read_manufacturer()
     {
         $manufacturers = Manufacturer::paginate(10);

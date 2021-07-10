@@ -15,13 +15,13 @@
 
 </head>
 
-<body class="bg-gray-800 font-poppins bg-vanishing-stripes text-shadow">
+<body class="bg-black font-poppins  bg-vanishing-stripes text-shadow">
     
     <div class="bg-gray-900 pb-3 bg-opacity-70 ">
         <div class="w-10/12 mx-auto "> 
             <nav>
                 <div class="xl:flex justify-between mt-5 pt-2 ">
-                    <div class="lg:flex items-center justify-center text-lg">
+                    <div class="lg:flex items-center justify-center xl:text-xl text-lg ">
                         
                         <div class="flex lg:mb-0 mb-3 items-center text-green-400 hover:text-gray-600">
                             <!-- Logo 2 <img src="../images/logo.png" alt="" width="40" class="mr-4"> -->
@@ -38,7 +38,7 @@
                     
                         <div class="relative " x-data="{show: false}">
                             <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
-                            hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
+                            hover:text-green-50 transition ease-in duration-500 hover:border-green-400 lg:mb-0 mb-2 mr-12 lg:w-auto w-full text-left">
                                 <p class="text-green-400 font-bold   ">
                             News</p>
                             </button>
@@ -74,8 +74,8 @@
                            
                         <div class="relative " x-data="{show: false}">
                             <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
-                            hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 ">
-                                <p class="text-green-400 font-bold   ">
+                            hover:text-green-50 transition ease-in duration-500 hover:border-green-400 mr-12 lg:mb-0 mb-2 lg:w-auto w-full text-left">
+                                <p class="text-green-400 font-bold  ">
                             Compare</p>
                             </button>
                         
@@ -96,31 +96,43 @@
                         </div>
                         <a href="{{ route('build', []) }}">
                         <p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
-                        hover:text-green-50 transition duration-500 ease-in hover:border-green-400">
+                        hover:text-green-50 transition duration-500 ease-in hover:border-green-400 lg:mb-0 mb-2">
                             Build</p>
                         </a>
                     </div>
-                    <div class="lg:flex lg:items-center justify-center">
-                        <div class="2xl:flex items-center text-lg">
-                            @auth
-                            <a href="{{ route('profile.index', []) }}"><p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
-                                hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
-                            {{ auth()->user()->username }}</p>
-                            </a>
-                            <a href="{{ route('admin.dashboard', []) }}"><p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
-                                hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
-                            Admin Panel</p>
-                            </a>
-                            <form action="{{ route('logout', []) }}" method="post">
-                                @csrf
-                                <button type="submit" class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
-                                hover:text-green-50 transition ease-in duration-500 hover:border-green-400">Logout
+                    <div class="lg:flex lg:items-center justify-center ">
+                        @auth
+                            <div class="relative" x-data="{show: false}">
+                                <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
+                                hover:text-green-50 transition ease-in lg:text-xl text-lg duration-500 hover:border-green-400 mr-12 lg:w-auto w-full text-left ">
+                                    <p class="text-green-400 font-bold   ">
+                                        {{ auth()->user()->username }}
+                                    </p>
                                 </button>
-                            
-                            </form>
-                            
-                            @endauth
-                        </div>
+                                <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900 bg-opacity-90  justify-between pl-5 pb-4 pt-2 text-green-400 font-semibold lg:text-xl rounded-sm border border-green-100 w-64 flex flex-col space-y-2" id="profile-dropdown">
+                                    <a href="{{ route('profile.index', []) }}">
+                                        <p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
+                                        hover:text-green-50 transition ease-in duration-500 hover:border-green-400 ">
+                                            Profile
+                                        </p>
+                                    </a>
+                                    @if (auth()->user()->role === 'admin')
+                                        <a href="{{ route('admin.dashboard', []) }}"><p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
+                                            hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
+                                        Admin Panel</p>
+                                        </a>
+                                    @endif
+                                   
+                                    <form action="{{ route('logout', []) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
+                                        hover:text-green-50 transition ease-in duration-500 hover:border-green-400">Logout
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        @endauth
                        
                         <div>
                             @guest
@@ -134,7 +146,7 @@
                         <div class="pt-2 relative  text-white">
                             <form action="{{ route('search', []) }}">
                                 <input type="text"
-                                    class=" bg-gray-800 border-green-400 border-2 w-full h-10 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white  font-semibold focus:outline-none focus:ring-0"
+                                    class=" bg-gray-800 border-green-400 border-2 w-full h-10 rounded-sm focus:border-gray-600 focus:bg-gray-700 pl-4 text-white lg:text-base text-sm font-semibold focus:outline-none focus:ring-0"
                                     placeholder="Search" name="key">
                                 <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
                                     <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"

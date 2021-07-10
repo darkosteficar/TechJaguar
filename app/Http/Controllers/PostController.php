@@ -13,6 +13,12 @@ use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function store(Request $request)
     {
      
@@ -79,8 +85,8 @@ class PostController extends Controller
     public function read()
     {
 
-        $posts = Post::paginate(10);
-
+        $posts = Post::withCount('comments')->paginate(10);
+        
         return view('admin.posts',['posts'=>$posts]);
     }
 
@@ -97,8 +103,11 @@ class PostController extends Controller
     public function update(Post $post)
     {
         $categories = Category::all();
+        $gpus = Gpu::all();
+        $mobos = Mobo::all();
+        $cpus = Cpu::all();
         $manufacturers = Manufacturer::all();
-        return view('admin.update',['post'=>$post,'categories'=>$categories,'manufacturers'=>$manufacturers]);
+        return view('admin.update',['post'=>$post,'categories'=>$categories,'manufacturers'=>$manufacturers,'gpus'=>$gpus,'cpus'=>$cpus,'mobos'=>$mobos]);
     }
 
     public function save(Request $request)

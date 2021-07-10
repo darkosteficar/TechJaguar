@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novo napajanje</h1>
+    <h1>New Power Supply</h1>
     <a href="{{ route('psus.index', []) }}">
-        <button class="btn btn-success ml-5">Napajanja</button>
+        <button class="btn btn-success ml-5">Power Supplies</button>
     </a>
 </div>
    
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" >
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" >
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="efficiency_rating">Ocjena učinkovitosti</label>
+                                <label for="efficiency_rating">Efficiency Rating</label>
                                 <input class="form-control" type="text" name="efficiency_rating" data="green" >
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="type">Tip</label>
+                                <label for="type">Type</label>
                                 <input class="form-control" type="text" name="type" data="green" >
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="modular">Modularno</label>
+                                <label for="modular">Modular</label>
                                 <input class="form-control" type="text" name="modular" data="green" >
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="wattage">Snaga</label>
+                                <label for="wattage">Wattage</label>
                                 <input class="form-control" type="text" name="wattage" data="green" >     
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Duljina</label>
+                                <label for="length">Length</label>
                                 <input class="form-control" type="text" name="length" data="green" >     
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="molex_4pin_connectors">Broj MOLEX 4-pin konektora</label>
+                                <label for="molex_4pin_connectors"> MOLEX 4-pin Connectors</label>
                                 <input class="form-control" type="text" name="molex_4pin_connectors" data="green" >     
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="sata_connectors">Broj SATA konektora</label>
+                                <label for="sata_connectors"> SATA Connectors</label>
                                 <input class="form-control" type="text" name="sata_connectors" data="green" >     
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="pcie_6_2_pin_connectors">Broj PCIE 6+2-pin konektora</label>
+                                <label for="pcie_6_2_pin_connectors"> PCIE 6+2-pin Connectors</label>
                                 <input class="form-control" type="text" name="pcie_6_2_pin_connectors" data="green" >     
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
@@ -122,20 +122,14 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

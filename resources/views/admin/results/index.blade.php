@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>REZULTATI</h2>
+    <h2>RESULTS</h2>
     <a href="{{ route('results.create', []) }}">
-        <button class="btn btn-success ml-5">Novi rezultat</button>
+        <button class="btn btn-success ml-5">New Result</button>
     </a>
 </div>
      
@@ -26,11 +26,11 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Rezultat</th>
-                        <th>Aplikacija</th>
-                        <th>Procesor</th>
-                        <th>Grafička kartica</th>
-                        <th>Radna memorija</th>
+                        <th>Score</th>
+                        <th>App</th>
+                        <th>Processor</th>
+                        <th>Graphics Card</th>
+                        <th>RAM</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -45,9 +45,6 @@
                             <td>{{ $result->gpu->name }}</td>
                             <td>{{ $result->ram->name }}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('results.edit', ['result'=>$result->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

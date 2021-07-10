@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novi procesor</h1>
+    <h1>New Processor</h1>
     <a href="{{ route('cpus.index', []) }}">
-        <button class="btn btn-success ml-5">Procesori</button>
+        <button class="btn btn-success ml-5">Processors</button>
     </a>
 </div>
    
@@ -31,11 +31,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="core_family">Kodno ime</label>
+                                <label for="core_family">Core Family</label>
                                 <input class="form-control" type="text" name="core_family" data="green" >
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" >
                             </div>
                             <div class="col-3">
@@ -52,7 +52,7 @@
                                 <input class="form-control" type="text" name="socket" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="base_clock">Standarni takt</label>
+                                <label for="base_clock">Base Clock</label>
                                 <input class="form-control" type="text" name="base_clock" data="green" >
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="boost_clock">Pojačani takt</label>
+                                <label for="boost_clock">Boost Clock</label>
                                 <input class="form-control" type="text" name="boost_clock" data="green" >
                             </div>
                             <div class="col-3">
@@ -69,7 +69,7 @@
                                 <input class="form-control" type="text" name="tdp" data="green" >
                             </div>
                             <div class="col-3">
-                                <label for="microarchitecture">Mikroarhitektura</label>
+                                <label for="microarchitecture">Microarchitecture</label>
                                 <input class="form-control" type="text" name="microarchitecture" data="green" >
                             </div>
                         </div>
@@ -78,15 +78,15 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="core_count">Broj jezgri</label>
+                                <label for="core_count">Core Count</label>
                                 <input class="form-control" type="text" name="core_count" data="green" >     
                             </div>
                             <div class="col-3">
-                                <label for="litography">Litografija</label>
+                                <label for="litography">Litography</label>
                                 <input class="form-control" type="text" name="litography" data="green" >     
                             </div>
                             <div class="col-3">
-                                <label for="series">Serija procesora</label>
+                                <label for="series">Series</label>
                                 <input class="form-control" type="text" name="series" data="green" >     
                             </div>
                         </div>
@@ -108,19 +108,19 @@
                             <div class="col-4">
                                 <label for="smt">SMT</label>
                                 <select class="form-control" name="smt" style="background-color: #27293D">
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="integrated_graphics">Integrirana grafika</label>
+                                <label for="integrated_graphics">Integrated Graphics</label>
                                 <select class="form-control" name="integrated_graphics" style="background-color: #27293D">
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
@@ -130,20 +130,14 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

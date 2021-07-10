@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Nova radna memorija</h1>
+    <h1>New Memory</h1>
     <a href="{{ route('rams.index', []) }}">
-        <button class="btn btn-success ml-5">Radne memorije</button>
+        <button class="btn btn-success ml-5">RAMs</button>
     </a>
 </div>
    
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="ram_name">Ime</label>
+                                <label for="ram_name">Name</label>
                                 <input class="form-control" type="text" name="ram_name" data="green" value="{{ old('ram_name') }}">
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_price">Cijena</label>
+                                <label for="ram_price">MSRP</label>
                                 <input class="form-control" type="text" name="ram_price" data="green" value="{{ old('ram_price') }}">
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_type">Tip memorije</label>
+                                <label for="ram_type">Memory Type</label>
                                 <input class="form-control" type="text" name="ram_type" data="green" value="{{ old('ram_type') }}">
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_speed">Brzina memorije</label>
+                                <label for="ram_speed">Memory Speed</label>
                                 <input class="form-control" type="text" name="ram_speed" data="green" value="{{ old('ram_speed') }}">
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_size">Kapacitet memorije</label>
+                                <label for="ram_size">Capacity</label>
                                 <input class="form-control" type="text" name="ram_size" data="green" value="{{ old('ram_size') }}">
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_voltage">Radni napon</label>
+                                <label for="ram_voltage">Voltage</label>
                                 <input class="form-control" type="text" name="ram_voltage" data="green" value="{{ old('ram_voltage') }}">
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_timings">Vremenena</label>
+                                <label for="ram_timings">Timings</label>
                                 <input class="form-control" type="text" name="ram_timings" data="green" value="{{ old('ram_timings') }}">     
                             </div>
                         </div>
@@ -88,14 +88,14 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Hlađenje</label>
+                                <label for="exampleFormControlSelect1">Header Spreader</label>
                                 <select class="form-control" name="ram_heat_spreader" style="background-color: #27293D">
-                                    <option value="0">Ne</option>
-                                    <option value="1">Da</option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Proizvođač</label>
+                                <label for="exampleFormControlSelect1">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="ram_manufacturer">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
@@ -105,20 +105,14 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="ram_images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

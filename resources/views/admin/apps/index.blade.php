@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>REZULTATI</h2>
+    <h2>APPS</h2>
     <a href="{{ route('apps.create', []) }}">
-        <button class="btn btn-success ml-5">Nova aplikacija</button>
+        <button class="btn btn-success ml-5">New App</button>
     </a>
 </div>
      
@@ -26,10 +26,10 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Aplikacija</th>
-                        <th>Rezolucija</th>
+                        <th>App Name</th>
+                        <th>Resolution</th>
                         <th>Tag</th>
-                        <th>Tip</th>
+                        <th>Type</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -43,9 +43,6 @@
                             <td>{{ $app->tag }}</td>
                             <td>{{ $app->type }}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('apps.edit', ['app'=>$app->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

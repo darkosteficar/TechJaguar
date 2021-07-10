@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Ažuriranje kategorije</h1>
+    <h1>Updating the category</h1>
     <a href="{{ route('categories.index', []) }}">
-        <button class="btn btn-success ml-5">Kategorije</button>
+        <button class="btn btn-success ml-5">Categories</button>
     </a>
 </div>
    
@@ -32,20 +32,20 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{ $category->name }}">
                             </div>
                         </div>
                        
                     </div>
                     <div class="form-group">
-                        <label for="description">Opis:</label>
+                        <label for="description">Description:</label>
                         <textarea name="description" id="post_content" cols="30" rows="10" class="form-control my-editor">{{ $category->description }}</textarea>
                     </div>
                     
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

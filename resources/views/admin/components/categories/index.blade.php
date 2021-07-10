@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Kategorije</h2>
+    <h2>Categories</h2>
     <a href="{{ route('categories.create', []) }}">
-        <button class="btn btn-success ml-5">Nova kategorija</button>
+        <button class="btn btn-success ml-5">New Category</button>
     </a>
 </div>
 
@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
+                        <th>Name</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -38,9 +38,6 @@
                             <td>{{ $category->name }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('categories.edit', ['category'=>$category->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

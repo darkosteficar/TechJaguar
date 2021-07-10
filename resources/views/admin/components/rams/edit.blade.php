@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <h1>Promjena radne memorije</h1>
+    <h1>Updating RAM</h1>
    
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="ram_name">Ime</label>
+                                <label for="ram_name">Name</label>
                                 <input class="form-control" type="text" name="ram_name" data="green" value="{{ $ram->name }}">
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_price">Cijena</label>
+                                <label for="ram_price">Price</label>
                                 <input class="form-control" type="text" name="ram_price" data="green" value="{{ $ram->price }}">
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_type">Tip memorije</label>
+                                <label for="ram_type">Type of Memory</label>
                                 <input class="form-control" type="text" name="ram_type" data="green" value="{{$ram->type}}">
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_speed">Brzina memorije</label>
+                                <label for="ram_speed">Memory Speed</label>
                                 <input class="form-control" type="text" name="ram_speed" data="green" value="{{ $ram->speed }}">
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_size">Kapacitet memorije</label>
+                                <label for="ram_size">Capacity</label>
                                 <input class="form-control" type="text" name="ram_size" data="green" value="{{ $ram->size }}">
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_voltage">Radni napon</label>
+                                <label for="ram_voltage">Voltage</label>
                                 <input class="form-control" type="text" name="ram_voltage" data="green" value="{{ $ram->voltage }}">
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="ram_timings">Vremenena</label>
+                                <label for="ram_timings">Timings</label>
                                 <input class="form-control" type="text" name="ram_timings" data="green" value="{{$ram->timings}}">     
                             </div>
                         </div>
@@ -84,19 +84,19 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Hlađenje</label>
+                                <label for="exampleFormControlSelect1">Header Spreader</label>
                                 <select class="form-control" name="ram_heat_spreader" style="background-color: #27293D">
                                     @if ($ram->heat_spreader == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     @endif
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Proizvođač</label>
+                                <label for="exampleFormControlSelect1">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="ram_manufacturer">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if ($ram->manufacturer_id == $manufacturer->id) selected
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <label for="">Trenutne slike</label>
+                    <label for="">Current Images</label>
                     <div class="form-row mb-3">
                         @foreach ($images as $image)
                             <img src=" {{ asset('images/'.$image->path) }}" alt="" width="200">
@@ -116,20 +116,14 @@
                     </div>
 
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="ram_images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                    
                   
-                   <button type="submit" class="btn btn-success">Spremi promjene</button>
+                   <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
         </div>

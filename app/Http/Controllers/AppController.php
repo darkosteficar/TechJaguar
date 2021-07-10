@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         $apps = App::paginate(10);
@@ -29,7 +35,7 @@ class AppController extends Controller
 
         App::create($r->all());
 
-        return redirect()->back()->with('status','Aplikacija je uspješno dodana.');
+        return redirect()->back()->with('status','App successfully created.');
 
     }
 
@@ -54,7 +60,19 @@ class AppController extends Controller
             'type'=>$r->type
         ]);
 
-        return redirect()->route('apps.index')->with('status', 'Aplikacija uspješno ažurirana!');
+        return redirect()->route('apps.index')->with('status', 'App successfully updated!');
         
+    }
+
+    public function delete(Request $r)
+    {
+        $app = App::find($r->id);
+        if($app !== null){
+            $app->delete();
+            session()->flash('status','App'.$r->name.' deleted successfully!');
+            return redirect()->route('apps.index');
+        }
+        session()->flash('error','App does not exist!');
+        return redirect()->route('apps.index');
     }
 }

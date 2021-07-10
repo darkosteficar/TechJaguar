@@ -40,40 +40,34 @@
           </a>
         </div>
         <ul class="nav">
-          <li class="active ">
-            <a href="{{ route('admin.dashboard', []) }}">
-              <i class="tim-icons icon-chart-pie-36"></i>
-              <p class=" font-weight-normal font-12">Dashboard</p>
-            </a>
-          </li>
           <li>
             <a href="{{ route('posts.create', []) }}">
               <i class="tim-icons icon-atom"></i>
-              <p class=" font-weight-normal font-12">Nova objava</p>
+              <p class=" font-weight-normal font-12">New Post</p>
             </a>
           </li>
           <li>
             <a href="{{ route('posts.read', []) }}">
               <i class="tim-icons icon-pin"></i>
-              <p class=" font-weight-normal font-12">Objave</p>
+              <p class=" font-weight-normal font-12">Posts</p>
             </a>
           </li>
           <li>
             <a href="{{ route('admin.components.index', []) }}">
               <i class="tim-icons icon-components"></i>
-              <p class=" font-weight-normal font-12">Komponente</p>
+              <p class=" font-weight-normal font-12">Components</p>
             </a>
           </li>
           <li>
             <a href="{{ route('apps.create', []) }}">
               <i class="tim-icons icon-single-02"></i>
-              <p class=" font-weight-normal font-12">Aplikacije</p>
+              <p class=" font-weight-normal font-12">Apps</p>
             </a>
           </li>
           <li>
             <a href="{{ route('results.index', []) }}">
               <i class="tim-icons icon-puzzle-10"></i>
-              <p class=" font-weight-normal font-12">Rezultati</p>
+              <p class=" font-weight-normal font-12">Results</p>
             </a>
           </li>
           <li>
@@ -109,7 +103,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="{{ route('index', []) }}">Dashboard</a>
+            <a class="navbar-brand" href="{{ route('index', []) }}">EXIT ADMIN AREA</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -118,31 +112,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
+              
+             
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
-                    <img src="../assets/img/anime3.png" alt="Profile Photo">
+                    <img src="{{ asset('images/'. auth()->user()->image) }}" alt="Profile Photo">
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
@@ -150,10 +125,12 @@
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                  
+                  <li class="nav-link"><form action="{{ route('logout', []) }}" method="post">
+                    @csrf
+                    <button type="submit" class="nav-item dropdown-item">Logout
+                    </button>
+                </form></li>
                 </ul>
               </li>
               <li class="separator d-lg-none"></li>
@@ -176,9 +153,9 @@
       <!-- End Navbar -->
       <div class="content">
             <div class="d-flex">
-                <h1>Novi rezultat</h1>
+                <h1>New Result</h1>
                 <a href="{{ route('results.index', []) }}">
-                    <button class="btn btn-success ml-5">Rezultati</button>
+                    <button class="btn btn-success ml-5">Results</button>
                 </a>
             </div>
            
@@ -206,11 +183,11 @@
                                 <div class="row">
 
                                 <div class="col-sm-6">
-                                    <label for="chipset_name">Rezultat</label>
+                                    <label for="chipset_name">Score</label>
                                     <input class="form-control" type="text" name="score" data="green">
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="chipset_name">Minimalni rezultat</label>
+                                    <label for="chipset_name">Minimum Score</label>
                                     <input class="form-control" type="text" name="min_score" data="green">  
                                 </div>
                                
@@ -221,7 +198,7 @@
                                 <div class="row mb-3">
                                    
                                     <div class="col-sm">
-                                        <label for="">Procesor</label>
+                                        <label for="">Processor</label>
                                         <select name="cpu_id" id="">
                                             @foreach ($cpus as $cpu)
                                                 <option value="{{ $cpu->id }}">{{ $cpu->name }}</option>
@@ -231,7 +208,7 @@
                                     </div>
                                     
                                     <div class="col-sm-6">
-                                        <label for="gpu_id">Grafička kartica</label>
+                                        <label for="gpu_id"> Graphics Card</label>
                                         <select name="gpu_id" id="">
                                             @foreach ($gpus as $gpu)
                                                 <option value="{{ $gpu->id }}">{{ $gpu->name }}</option>
@@ -243,7 +220,7 @@
 
                                 <div class="row">
                                     <div class="col-sm">
-                                        <label for="app_id">Aplikacija</label>
+                                        <label for="app_id">App</label>
                                         <select name="app_id" id="">
                                             @foreach ($apps as $app)
                                                 <option value="{{ $app->id }}">{{ $app->name }}</option>
@@ -252,7 +229,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm">
-                                        <label for="mobo_id">Matična ploča</label>
+                                        <label for="mobo_id">Motherboard</label>
                                         <select name="mobo_id" id="">
                                             @foreach ($mobos as $mobo)
                                                 <option value="{{ $mobo->id }}">{{ $mobo->name }}</option>
@@ -261,7 +238,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm">
-                                        <label for="ram_id">Radna memorija</label>
+                                        <label for="ram_id">RAM</label>
                                         <select name="ram_id" id="">
                                             @foreach ($rams as $ram)
                                                 <option value="{{ $ram->id }}">{{ $ram->name }}</option>
@@ -275,7 +252,7 @@
                             </div>
                            
                           
-                           <button type="submit" class="btn btn-success">Kreiraj</button>
+                           <button type="submit" class="btn btn-success">Create</button>
                         </form>
                     </div>
                 </div>
@@ -311,46 +288,7 @@
       </footer>
     </div>
   </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Background</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger background-color">
-            <div class="badge-colors text-center">
-              <span class="badge filter badge-primary active" data-color="primary"></span>
-              <span class="badge filter badge-info" data-color="blue"></span>
-              <span class="badge filter badge-success" data-color="green"></span>
-            </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="adjustments-line text-center color-change">
-          <span class="color-label">LIGHT MODE</span>
-          <span class="badge light-badge mr-2"></span>
-          <span class="badge dark-badge ml-2"></span>
-          <span class="color-label">DARK MODE</span>
-        </li>
-        <li class="button-container">
-          <a href="https://www.creative-tim.com/product/black-dashboard" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
-          <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
-            Documentation
-          </a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-          <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  
   <!--   Core JS Files   -->
 
   <script src="{{ asset('js/admin/popper.min.js') }}"></script>

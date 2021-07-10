@@ -20,6 +20,12 @@ use Illuminate\Support\Facades\File;
 
 class ComponentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         return view('admin.components.index');

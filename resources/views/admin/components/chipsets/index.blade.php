@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>CHIPSETOVI</h2>
+    <h2>Chipsets</h2>
     <a href="{{ route('chipsets.create', []) }}">
-        <button class="btn btn-success ml-5">Novi chipset</button>
+        <button class="btn btn-success ml-5">New Chipset</button>
     </a>
 </div>
      
@@ -26,8 +26,8 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Opis</th>
+                        <th>Name</th>
+                        <th>Description</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -39,9 +39,6 @@
                             <td>{{ $chipset->name }}</td>
                             <td>{{ Str::limit($chipset->description,50)  }}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('chipsets.edit', ['chipset'=>$chipset->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

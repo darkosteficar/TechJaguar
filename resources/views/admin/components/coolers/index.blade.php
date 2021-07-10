@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Hladnjaci procesora</h2>
+    <h2>Coolers</h2>
     <a href="{{ route('coolers.create', []) }}">
-        <button class="btn btn-success ml-5">Novi hladnjak procesora</button>
+        <button class="btn btn-success ml-5">New Cooler</button>
     </a>
 </div>
      
@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Vodeno hlađenje</th>
-                        <th>Razina buke</th>
-                        <th>Potrošnja</th>
+                        <th>Name</th>
+                        <th>MSRP</th>
+                        <th>Manufacturer</th>
+                        <th>Water Cooling</th>
+                        <th>Noise Level</th>
+                        <th>Max TDP</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -43,14 +43,12 @@
                             <td>{{ $cooler->name }}</td>
                             <td>{{ $cooler->price }} kn</td>
                             <td>{{ $cooler->manufacturer->name }}</td>
-                            <td> @if ($cooler->water_cooled == 1)Da @else Ne @endif</td>
+                            <td> @if ($cooler->water_cooled == 1)Yes @else No @endif</td>
                             <td>{{ $cooler->noise_level }} db</td>
                             <td>{{ $cooler->max_power }} W</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
+                               
                                 <a href="{{ route('coolers.edit', ['cooler'=>$cooler->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

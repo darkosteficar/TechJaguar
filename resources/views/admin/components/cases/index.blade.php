@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Kućišta</h2>
+    <h2>Cases</h2>
     <a href="{{ route('cases.create', []) }}">
-        <button class="btn btn-success ml-5">Novo kućište</button>
+        <button class="btn btn-success ml-5">New Case</button>
     </a>
 </div>
      
@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Dužina</th>
-                        <th>Tip</th>
-                        <th>Broj slotova za proširenje</th>
+                        <th>Name</th>
+                        <th>MSRP</th>
+                        <th>Manufacturer</th>
+                        <th>Length</th>
+                        <th>Type</th>
+                        <th>Expansion Slots</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -48,9 +48,6 @@
                             <td>{{ $case->expansion_slots }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('cases.edit', ['case'=>$case->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

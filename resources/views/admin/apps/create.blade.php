@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Nova aplikacija</h1>
-    <a href="{{ route('chipsets.index', []) }}">
-        <button class="btn btn-success ml-5">Aplikacije</button>
+    <h1>New App</h1>
+    <a href="{{ route('apps.index', []) }}">
+        <button class="btn btn-success ml-5">Apps</button>
     </a>
 </div>
    
@@ -30,7 +30,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-3"> <label for="chipset_name">Ime</label>
+                            <div class="col-3"> <label for="chipset_name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green">
                             </div>
                             <div class="col-3"> <label for="chipset_name">Tag</label>
@@ -41,19 +41,19 @@
                     <div class="form-group">
                         <div class="row">
                                 <div class="col-4">
-                                    <label for="smt">Rezolucija</label>
+                                    <label for="smt">Resolution</label>
                                     <select class="form-control"  style="background-color: #27293D" name="resolution">
-                                            <option value="1080p">1920x1080 piksela</option>
-                                            <option value="1440p">2560x1440 piksela</option>
-                                            <option value="4K">3840x2160 piksela</option>
+                                            <option value="1080p">1920x1080p</option>
+                                            <option value="1440p">2560x1440p</option>
+                                            <option value="4K">3840x2160p</option>
                                    </select>
                                 </div>
                                 <div class="col-4">
-                                    <label for="smt">Tip</label>
+                                    <label for="smt">Type</label>
                                     <select class="form-control"  style="background-color: #27293D" name="type">
                                             <option value="benchmark">Benchmark</option>
-                                            <option value="game">Igra</option>
-                                            <option value="productivity">Program</option>
+                                            <option value="game">Game</option>
+                                            <option value="productivity">Productivity</option>
                                    </select>
                                 </div>
                            
@@ -61,7 +61,7 @@
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

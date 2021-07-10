@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <h1>Nova objava</h1>
+    <h1>New Post</h1>
         @if ($errors->any())
         <div class="alert alert-danger">
         <ul>
@@ -20,11 +20,11 @@
         
                     @csrf
                     <div class="form-group">
-                        <label for="post_title">Naslov</label>
+                        <label for="post_title">Title</label>
                         <input class="form-control" type="text" name="post_title" data="green">
                     </div>
                     <div class="form-group">
-                        <label for="post_content">Sadržaj</label>
+                        <label for="post_content">Content</label>
                         <textarea name="post_content" id="post_content" cols="30" rows="10" class="form-control my-editor"></textarea>
                     </div>
 
@@ -52,7 +52,7 @@
                                 </select>
                             </div>
                             <div class="col-3">
-                                <label for="">Matična ploča</label>
+                                <label for="">Motherboard</label>
                                 <select name="mobo" id="select-mobo">
                                     <option value="0">-</option>
                                     @foreach ($mobos as $mobo)
@@ -68,7 +68,7 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Kategorija</label>
+                                <label for="exampleFormControlSelect1">Category</label>
                                 <select class="form-control" name="category_id" style="background-color: #27293D">
                                     <option value=""></option>
                                     @foreach ($categories as $category)
@@ -78,7 +78,7 @@
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="exampleFormControlSelect1">Proizvođač</label>
+                                <label for="exampleFormControlSelect1">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     <option value=""></option>
                                     @foreach ($manufacturers as $manufacturer)
@@ -89,19 +89,19 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Glavna slika: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Cover Image: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="post_image" onchange="showImageHereFuncAddPost();"  />
-                        <label for="showImageHere" class="mr-3">Preview slike -></label>
+                        <label for="showImageHere" class="mr-3">Preview of an Image -></label>
                         <div class="valid-feedback">
-                            Super!
+                            Great!
                         </div>
                         <div class="invalid-feedback">
-                            Slika je obavezna.
+                            Image is required.
                         </div>
                         <div id="showImageHereAddPost"></div>
                     </div>
                   
-                   <button type="submit" class="btn btn-success">Objavi</button>
+                   <button type="submit" class="btn btn-success">Publish</button>
                 </form>
             </div>
         </div>

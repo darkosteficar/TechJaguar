@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Procesori</h2>
+    <h2>Processor</h2>
     <a href="{{ route('cpus.create', []) }}">
-        <button class="btn btn-success ml-5">Novi procesor</button>
+        <button class="btn btn-success ml-5">New Processor</button>
     </a>
 </div>
      
@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Litografija</th>
+                        <th>Name</th>
+                        <th>MSRP</th>
+                        <th>Manufacturer</th>
+                        <th>Litography</th>
                         <th>Socket</th>
-                        <th>Kodno ime</th>
+                        <th>Core Family</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -48,9 +48,6 @@
                             <td>{{ $cpu->core_family }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('cpus.edit', ['cpu'=>$cpu->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

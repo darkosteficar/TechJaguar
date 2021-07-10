@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Novi hladnjak procesora</h1>
+    <h1>New Cooler</h1>
     <a href="{{ route('coolers.index', []) }}">
-        <button class="btn btn-success ml-5">Hladnjaci</button>
+        <button class="btn btn-success ml-5">Coolers</button>
     </a>
 </div>
    
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" >
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">Price</label>
                                 <input class="form-control" type="text" name="price" data="green" >
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="noise_level">Razina buke</label>
+                                <label for="noise_level">Noise Level</label>
                                 <input class="form-control" type="text" name="noise_level" data="green" >
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="max_power">Potrošnja</label>
+                                <label for="max_power">MAX TDP</label>
                                 <input class="form-control" type="text" name="max_power" data="green" >
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="width">Širina</label>
+                                <label for="width">Width</label>
                                 <input class="form-control" type="text" name="width" data="green" >
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="height">Visina</label>
+                                <label for="height">Height</label>
                                 <input class="form-control" type="text" name="height" data="green" >     
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="length">Duljina</label>
+                                <label for="length">Length</label>
                                 <input class="form-control" type="text" name="length" data="green" >     
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="fan_rpm">Brzina ventilatora</label>
+                                <label for="fan_rpm">Fan Speed</label>
                                 <input class="form-control" type="text" name="fan_rpm" data="green" >     
                             </div>
                         </div>
@@ -96,14 +96,14 @@
                     <div class="form-group mt-3">
                         <div class="row">
                             <div class="col-4">
-                                <label for="nvme">Vodeno Hlađenje</label>
+                                <label for="nvme">Water Cooler</label>
                                 <select class="form-control" name="water_cooled" style="background-color: #27293D">
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
@@ -113,20 +113,14 @@
                         </div>
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

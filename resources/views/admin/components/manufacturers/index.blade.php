@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Proizvođači</h2>
+    <h2>Manufacturers</h2>
     <a href="{{ route('manufacturers.create', []) }}">
-        <button class="btn btn-success ml-5">Novi proizvođač</button>
+        <button class="btn btn-success ml-5">New Manufacturer</button>
     </a>
 </div>
 
@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
+                        <th>Name</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -38,9 +38,6 @@
                             <td>{{ $manufacturer->name }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('manufacturers.edit', ['manufacturer'=>$manufacturer->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

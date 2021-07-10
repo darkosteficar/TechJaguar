@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Grafičke kartice</h2>
+    <h2>Graphics Cards</h2>
     <a href="{{ route('gpus.create', []) }}">
-        <button class="btn btn-success ml-5">Nova grafička kartica</button>
+        <button class="btn btn-success ml-5">New Graphics Card</button>
     </a>
 </div>
      
@@ -26,11 +26,11 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Dužina</th>
-                        <th>Serija</th>
+                        <th>Name</th>
+                        <th>MSRP</th>
+                        <th>Manufacturer</th>
+                        <th>Length</th>
+                        <th>Series</th>
                         <th>Chipset</th>
                         <th class="text-right">Actions</th>
                     </tr>
@@ -48,9 +48,6 @@
                             <td>{{ $gpu->chipset->name }}</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('gpus.edit', ['gpu'=>$gpu->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>
