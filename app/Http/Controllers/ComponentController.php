@@ -54,7 +54,7 @@ class ComponentController extends Controller
             'description'=>$r->chipset_description,
         ]);
 
-        session()->flash('status','Chipset uspješno kreiran');
+        session()->flash('status','Chipset successfully created');
         return redirect()->back();
     }
 
@@ -63,7 +63,7 @@ class ComponentController extends Controller
         $chipset = Chipset::find($request->id);
         $chipset->delete();
 
-        session()->flash('status','Sljedeći chipset je uspješno obrisan: ');
+        session()->flash('status','The following Chipset is successfully deleted: ');
         session()->flash('title', $request->chipset_name );
         return redirect()->route('chipsets.index');
     }
@@ -87,11 +87,11 @@ class ComponentController extends Controller
 
             $chipset->save();
 
-            session()->flash('status','Chipset uspješno ažuriran.');
+            session()->flash('status','Chipset successfully updated.');
             return redirect()->route('chipsets.index');
         }
         
-        session()->flash('error','Chipset ne postoji!');
+        session()->flash('error','Chipset does not exist!');
         return redirect()->route('chipsets.index');
     }
 
@@ -166,7 +166,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Procesor uspješno dodan.');
+        session()->flash('status','CPU added successfully.');
         return redirect()->route('cpus.index');
        
     }
@@ -185,7 +185,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Procesor '.$r->name.' uspješno obrisan.');
+        session()->flash('status','Processor '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -274,12 +274,12 @@ class ComponentController extends Controller
 
             $cpu->save();
             
-            session()->flash('status','Procesor uspješno ažuriran.');
+            session()->flash('status','Processor successfully updated.');
             return redirect()->route('cpus.index');
     
         }
 
-        session()->flash('error','Procesor ne postoji!');
+        session()->flash('error','Processor does not exist!');
         return redirect()->route('cpus.index');
     
     
@@ -356,7 +356,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Grafička kartica uspješno dodana.');
+        session()->flash('status','Graphics Card added successfully.');
         return redirect()->route('gpus.index');
        
     }
@@ -372,7 +372,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Grafička kartica '.$r->name.' uspješno obrisana.');
+        session()->flash('status','Graphics Card '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -454,12 +454,12 @@ class ComponentController extends Controller
 
             $gpu->save();
             
-            session()->flash('status','Procesor uspješno ažuriran.');
+            session()->flash('status','Graphics Card updated successfully.');
             return redirect()->route('gpus.index');
     
         }
 
-        session()->flash('error','Procesor ne postoji!');
+        session()->flash('error','GPU does not exist!');
         return redirect()->route('gpus.index');
     
     
@@ -518,7 +518,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Radna memorija uspješno dodana.');
+        session()->flash('status','RAM added successfully.');
         return redirect()->route('rams.index');
        
     }
@@ -535,7 +535,7 @@ class ComponentController extends Controller
             $array[] = $image->path;
         }
         $images->delete();
-        session()->flash('status','Radna memorija '.$r->ram_name.' uspješno obrisana.');
+        session()->flash('status','RAM '.$r->ram_name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -596,12 +596,12 @@ class ComponentController extends Controller
 
             $ram->save();
             
-            session()->flash('status','Radna memorija uspješno ažurirana.');
+            session()->flash('status','RAM updated successfully.');
             return redirect()->route('rams.index');
     
         }
 
-        session()->flash('error','Radna memorija ne postoji!');
+        session()->flash('error','RAM does not exist!');
         return redirect()->route('rams.index');
     
     
@@ -657,7 +657,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Uređaj uspješno dodan.');
+        session()->flash('status','Storage Device added successfully.');
         return redirect()->route('storages.index');
        
     }
@@ -673,7 +673,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Uređaj '.$r->name.' uspješno obrisan.');
+        session()->flash('status','Storage Device '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -733,12 +733,12 @@ class ComponentController extends Controller
 
             $storage->save();
             
-            session()->flash('status','Uređaj uspješno ažuriran.');
+            session()->flash('status','Storage Device updated successfully.');
             return redirect()->route('storages.index');
     
         }
 
-        session()->flash('error','Uređaj ne postoji!');
+        session()->flash('error','Storage Device does not exist!');
         return redirect()->route('storages.index');
     
     
@@ -798,7 +798,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Hladnjak uspješno dodan.');
+        session()->flash('status','Cooler added successfully.');
         return redirect()->route('coolers.index');
        
     }
@@ -814,7 +814,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Hladnjak '.$r->name.' uspješno obrisan.');
+        session()->flash('status','Cooler '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -878,12 +878,12 @@ class ComponentController extends Controller
 
             $cooler->save();
             
-            session()->flash('status','Hladnjak uspješno ažuriran.');
+            session()->flash('status','Cooler updated successfully.');
             return redirect()->route('coolers.index');
     
         }
 
-        session()->flash('error','Hladnjak ne postoji!');
+        session()->flash('error','Cooler does not exist!');
         return redirect()->route('coolers.index');
     
     
@@ -946,7 +946,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Napajanje uspješno dodano.');
+        session()->flash('status','Power Supply created successfully.');
         return redirect()->route('psus.index');
        
     }
@@ -962,7 +962,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Napajanje '.$r->name.' uspješno obrisano.');
+        session()->flash('status','Power Supply '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -1028,12 +1028,12 @@ class ComponentController extends Controller
 
             $psu->save();
             
-            session()->flash('status','Napajanje uspješno ažurirano.');
+            session()->flash('status','Power Supply updated successfully.');
             return redirect()->route('psus.index');
     
         }
 
-        session()->flash('error','Napajanje ne postoji!');
+        session()->flash('error','Power Supply does not exist!');
         return redirect()->route('psus.index');
     
     
@@ -1104,7 +1104,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Kućište uspješno dodano.');
+        session()->flash('status','Case created successfully.');
         return redirect()->route('cases.index');
        
     }
@@ -1120,7 +1120,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Kućište '.$r->name.' uspješno obrisano.');
+        session()->flash('status','Case '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -1194,12 +1194,12 @@ class ComponentController extends Controller
 
             $case->save();
             
-            session()->flash('status','Kućište uspješno ažurirano.');
+            session()->flash('status','Case updated successfully.');
             return redirect()->route('cases.index');
     
         }
 
-        session()->flash('error','Kućište ne postoji!');
+        session()->flash('error','Case does not exist!');
         return redirect()->route('cases.index');
     
     
@@ -1278,7 +1278,7 @@ class ComponentController extends Controller
             ]);
         }
         
-        session()->flash('status','Matična ploča uspješno dodana.');
+        session()->flash('status','Motheboard created successfully.');
         return redirect()->route('mobos.index');
        
     }
@@ -1294,7 +1294,7 @@ class ComponentController extends Controller
             File::delete(public_path('images/'.$image->path));
         }
         $images->delete();
-        session()->flash('status','Matična ploča '.$r->name.' uspješno obrisana.');
+        session()->flash('status','Motherboard '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -1378,12 +1378,12 @@ class ComponentController extends Controller
 
             $mobo->save();
             
-            session()->flash('status','Matična ploča uspješno ažurirana.');
+            session()->flash('status','Motherboard updated successfully.');
             return redirect()->route('mobos.index');
     
         }
 
-        session()->flash('error','Matična ploča ne postoji!');
+        session()->flash('error','Motheboard does not exist!');
         return redirect()->route('mobos.index');
     
     
@@ -1450,7 +1450,7 @@ class ComponentController extends Controller
              ]);
          }
          
-         session()->flash('status','Ventilator uspješno dodan.');
+         session()->flash('status','Fan created successfully.');
          return redirect()->route('fans.index');
         
      }
@@ -1467,7 +1467,7 @@ class ComponentController extends Controller
              $array[] = $image->path;
          }
          $images->delete();
-         session()->flash('status','Ventilator '.$r->name.' uspješno obrisan.');
+         session()->flash('status','Fan '.$r->name.' deleted successfully.');
          return redirect()->back();
      }
  
@@ -1535,13 +1535,13 @@ class ComponentController extends Controller
  
              $fan->save();
              
-             session()->flash('status','Ventilator uspješno ažuriran.');
+             session()->flash('status','Fan updated successfully.');
              return redirect()->route('fans.index');
      
          }
  
-         session()->flash('error','Ventilator ne postoji!');
-         return redirect()->route('fans.index');
+        session()->flash('error','Fan does not exist!');
+        return redirect()->route('fans.index');
      
      
      }

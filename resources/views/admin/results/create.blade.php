@@ -42,7 +42,7 @@
         <ul class="nav">
           <li>
             <a href="{{ route('posts.create', []) }}">
-              <i class="tim-icons icon-atom"></i>
+              <i class="tim-icons icon-simple-add"></i>
               <p class=" font-weight-normal font-12">New Post</p>
             </a>
           </li>
@@ -60,34 +60,17 @@
           </li>
           <li>
             <a href="{{ route('apps.create', []) }}">
-              <i class="tim-icons icon-single-02"></i>
+              <i class="tim-icons icon-controller"></i>
               <p class=" font-weight-normal font-12">Apps</p>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="{{ route('results.index', []) }}">
-              <i class="tim-icons icon-puzzle-10"></i>
+              <i class="tim-icons icon-chart-bar-32"></i>
               <p class=" font-weight-normal font-12">Results</p>
             </a>
           </li>
-          <li>
-            <a href="./typography.html">
-              <i class="tim-icons icon-align-center"></i>
-              <p class=" font-weight-normal font-12">Typography</p>
-            </a>
-          </li>
-          <li>
-            <a href="./rtl.html">
-              <i class="tim-icons icon-world"></i>
-              <p class=" font-weight-normal font-12">RTL Support</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="tim-icons icon-spaceship"></i>
-              <p class=" font-weight-normal font-12">Upgrade to PRO</p>
-            </a>
-          </li>
+          
         </ul>
       </div>
     </div>

@@ -36,7 +36,7 @@ class NewsController extends Controller
             $manu_news = Manufacturer::where('name',$value)->first()->posts;
             $array = $array1 = array();
             foreach($manu_news as $post){
-                if($post->category->name == 'Softver' ){
+                if($post->category->name == 'Softver' || $post->category->name == 'Software'){
                     if(sizeof($array) < 6){
                         array_push($array,$post);
                     }

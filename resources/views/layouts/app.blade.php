@@ -117,7 +117,7 @@
                                         </p>
                                     </a>
                                     @if (auth()->user()->role === 'admin')
-                                        <a href="{{ route('admin.dashboard', []) }}"><p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
+                                        <a href="{{ route('posts.read', []) }}"><p class="text-green-400 font-bold  mr-12 border-t-4  border-transparent rounded-sm
                                             hover:text-green-50 transition ease-in duration-500 hover:border-green-400">
                                         Admin Panel</p>
                                         </a>

@@ -40,7 +40,7 @@ class ManufacturerController extends Controller
         ]);
         $r->image->move(public_path('images'), $imageName);
        
-        session()->flash('status','Proizvođač uspješno dodan.');
+        session()->flash('status','Manufacturer added successfully.');
         return redirect()->route('manufacturers.index');
        
     }
@@ -50,7 +50,7 @@ class ManufacturerController extends Controller
         $manu = Manufacturer::find($r->id);
         File::delete(public_path('images/'.$manu->image));
         $manu->delete();
-        session()->flash('status','Proizvođač '.$r->name.' uspješno obrisan.');
+        session()->flash('status','Manufacturer '.$r->name.' deleted successfully.');
         return redirect()->back();
     }
 
@@ -85,10 +85,10 @@ class ManufacturerController extends Controller
 
             $manu->save();
            
-            session()->flash('status','Proizvođač uspješno ažuriran.');
+            session()->flash('status','Manufacturer updated successfully.');
             return redirect()->route('manufacturers.index');
         }
-        session()->flash('error','Proizvođač ne postoji!');
+        session()->flash('error','Manufacturer does not exist!');
         return redirect()->route('manufacturers.index');
     
     

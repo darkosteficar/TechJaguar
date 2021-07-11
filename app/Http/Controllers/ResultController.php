@@ -59,7 +59,7 @@ class ResultController extends Controller
         ]);
         */
 
-        session()->flash('status','Rezultat uspješno kreiran.');
+        session()->flash('status','Result created successfully.');
         return redirect()->back();
 
     }
@@ -99,16 +99,16 @@ class ResultController extends Controller
                 $result->min_score = $r->min_score;
             }
             $result->save();
-            return redirect()->route('results.index')->with('status','Rezultat uspješno ažuriran!');
+            return redirect()->route('results.index')->with('status','Result updated successfully!');
         }
-        return redirect()->route('results.index')->with('error','Rezultat ne postoji!');
+        return redirect()->route('results.index')->with('error','Result does not exist!');
     }
 
     public function delete(Request $request)
     {
         $result = Result::find($request->id);
         $result->delete();
-        session()->flash('status','Rezultat uspješno izbrisan');
+        session()->flash('status','Result deleted successfully.');
         return redirect()->route('results.index');
     }
 

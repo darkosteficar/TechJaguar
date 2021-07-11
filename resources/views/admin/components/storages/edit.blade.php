@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h1>Promjena uređaja</h1>
+    <h1>Updating Storage Device</h1>
     <a href="{{ route('storages.index', []) }}">
-        <button class="btn btn-success ml-5">Uređaji</button>
+        <button class="btn btn-success ml-5">Storage Device</button>
     </a>
 </div>
    
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-5">
-                                <label for="name">Ime</label>
+                                <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" value="{{  $storage->name }}">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="price">Cijena</label>
+                                <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" value="{{  $storage->price }}">
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="type">Tip</label>
+                                <label for="type">Type</label>
                                 <input class="form-control" type="text" name="type" data="green" value="{{  $storage->type}}">
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="capacity">Kapacitet</label>
+                                <label for="capacity">Capacity</label>
                                 <input class="form-control" type="text" name="capacity" data="green" value="{{  $storage->capacity }}">
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="interface">Sučelje</label>
+                                <label for="interface">Interface</label>
                                 <input class="form-control" type="text" name="interface" data="green" value="{{ $storage->interface }}">     
                             </div>
                         </div>
@@ -84,16 +84,16 @@
                                 <label for="nvme">NVME</label>
                                 <select class="form-control" name="nvme" style="background-color: #27293D">
                                     @if ($storage->nvme == 0)
-                                        <option value="0">Ne</option>
-                                        <option value="1">Da</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     @else
-                                        <option value="1">Da</option>
-                                        <option value="0">Ne</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     @endif
                                </select>
                             </div>
                             <div class="col-4">
-                                <label for="manufacturer_id">Proizvođač</label>
+                                <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)
                                         <option value="{{ $manufacturer->id }}" @if ($storage->manufacturer_id == $manufacturer->id) selected
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                    <label for="">Trenutne slike</label>
+                    <label for="">Current Images</label>
                     <div class="form-row mb-3">
                         @foreach ($images as $image)
                             <img src=" {{ asset('images/'.$image->path) }}" alt="" width="200">
@@ -112,20 +112,14 @@
                        
                     </div>
                     <div class=" form-row">
-                        <label for="uploadImageFile"> &nbsp; Slike: &nbsp; </label>
+                        <label for="uploadImageFile"> &nbsp; Images: &nbsp; </label>
                         <input class="form-control" type="file" id="uploadImageFileAddPost" name="images[]" onchange="showImageHereFuncAddPost();" multiple />
-                        <label for="showImageHere" class="mr-3">Preview slika -></label>
-                        <div class="valid-feedback">
-                            Super!
-                        </div>
-                        <div class="invalid-feedback">
-                            Slika je obavezna.
-                        </div>
+                        <label for="showImageHere" class="mr-3">Preview of Images -></label>
                         <div id="showImageHereAddPost"></div>
                     </div>
                     
                   
-                   <button type="submit" class="btn btn-success">Kreiraj</button>
+                   <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>
         </div>

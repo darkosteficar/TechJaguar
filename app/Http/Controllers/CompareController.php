@@ -80,7 +80,7 @@ class CompareController extends Controller
                 return view('compareCpu',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids,'picked'=>$picked]);
             }
 
-            session()->flash('error','You have to select both CPUs for comparison');
+            session()->flash('error','You have to select different and both CPUs for a comparison');
             return redirect()->route('compareCpu');
         }
        
@@ -158,7 +158,7 @@ class CompareController extends Controller
                 return view('compareGpu',['results'=>$overall,'apps'=>$apps,'names'=>$names,'gpus'=>$gpus,'gpu_ids'=>$gpu_ids,'picked'=>$picked]);
             }
 
-            session()->flash('error','You have to select both GPUs for comparison');
+            session()->flash('error','You have to select both and different GPUs for a comparison');
             return redirect()->route('compareGpu');
         }
        

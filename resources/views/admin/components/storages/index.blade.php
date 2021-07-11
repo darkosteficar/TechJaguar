@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex">
-    <h2>Pohrana podataka</h2>
+    <h2>Storage Devices</h2>
     <a href="{{ route('storages.create', []) }}">
-        <button class="btn btn-success ml-5">Novi uređaj</button>
+        <button class="btn btn-success ml-5">New Storage Device</button>
     </a>
 </div>
      
@@ -26,12 +26,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th>Ime</th>
-                        <th>Cijena</th>
-                        <th>Proizvođač</th>
-                        <th>Tip</th>
-                        <th>Kapacitet</th>
-                        <th>Sučelje</th>
+                        <th>Name</th>
+                        <th>MSRP</th>
+                        <th>Manufacturer</th>
+                        <th>Type</th>
+                        <th>Capacity</th>
+                        <th>Interface</th>
                         <th>Cache</th>
                         <th class="text-right">Actions</th>
                     </tr>
@@ -50,9 +50,6 @@
                             <td>{{ $storage->cache }} MB</td>
                             
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </button>
                                 <a href="{{ route('storages.edit', ['storage'=>$storage->id]) }}">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                         <i class="tim-icons icon-settings"></i>

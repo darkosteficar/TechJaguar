@@ -38,19 +38,19 @@ class CategoryController extends Controller
             'description'=>$request->description
         ]);
         $category->save();
-        session()->flash('status','Kategorija uspješno kreirana!');
+        session()->flash('status','Category created successfully!');
         return redirect()->route('categories.index');
     }
 
-    public function delete_category(Request $request)
+    public function delete_category(Request $r)
     {
-        $cat = Category::find($request->id);
-        if(!$cat->isEmpty()){
+        $cat = Category::find($r->id);
+        if($cat){
             $cat->delete();
-            session()->flash('status','Kategorija'.$r->name.' uspješno obrisana!');
+            session()->flash('status','Category '.$r->name.' successfully deleted!');
             return redirect()->route('categories.index');
         }
-        session()->flash('error','Kategorija ne postoji!');
+        session()->flash('error','Category does not exist!');
         return redirect()->route('categories.index');
     }
 
@@ -70,10 +70,10 @@ class CategoryController extends Controller
             $cat->name = $request->name;
             $cat->description = $request->description;
             $cat->save();
-            session()->flash('status','Kategorija uspješno ažurirana!');
+            session()->flash('status','Category successfully updated!');
             return redirect()->route('categories.index');
         }
-        session()->flash('error','Kategorija ne postoji!');
+        session()->flash('error','Category does not exist!');
         return redirect()->route('categories.index');
     }
 }

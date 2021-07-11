@@ -95,7 +95,7 @@ class PostController extends Controller
         $post = Post::find($request->id);
         $post->delete();
 
-        session()->flash('status','Sljedeća objava je uspješno obrisana: ');
+        session()->flash('status','The following post is deleted successfully: ');
         session()->flash('title', $request->post_title );
         return redirect()->route('posts.read');
     }
@@ -150,12 +150,12 @@ class PostController extends Controller
 
             $post->save();
             
-            session()->flash('status','Objava uspješno ažurirana.');
+            session()->flash('status','Post updated successfully.');
             return redirect()->route('posts.read');
     
         }
 
-        session()->flash('error','Objava ne postoji!');
+        session()->flash('error','Post does not exist!');
         return redirect()->route('posts.read');
         
     }

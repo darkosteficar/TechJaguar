@@ -7,13 +7,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
-            <h2>Komponente</h2>
+            <h2>Components</h2>
             <div class="container">
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Procesori</h3>
+                        <h3 class="my-auto mr-4">Processors</h3>
                         <a href="{{ route('cpus.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                         
                     </div>
@@ -21,72 +21,72 @@
                 <hr>
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Grafičke kartice</h3>
+                        <h3 class="my-auto mr-4">Graphics Cards</h3>
                         <a href="{{ route('gpus.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Radne memorije</h3>
+                        <h3 class="my-auto mr-4">RAMs</h3>
                         <a href="{{ route('rams.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Pohrana podataka</h3>
+                        <h3 class="my-auto mr-4">Storage Devices</h3>
                         <a href="{{ route('storages.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Matične ploče</h3>
+                        <h3 class="my-auto mr-4">Motherboards</h3>
                         <a href="{{ route('mobos.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Kućišta</h3>
+                        <h3 class="my-auto mr-4">Cases</h3>
                         <a href="{{ route('cases.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Napajanja</h3>
+                        <h3 class="my-auto mr-4">Power Supplies</h3>
                         <a href="{{ route('psus.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Hlađenje</h3>
+                        <h3 class="my-auto mr-4">Coolers</h3>
                         <a href="{{ route('coolers.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h3 class="my-auto mr-4">Ventilatori</h3>
+                        <h3 class="my-auto mr-4">Fans</h3>
                         <a href="{{ route('fans.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
@@ -97,27 +97,27 @@
             <div class="container">
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h4 class="my-auto mr-4">Proizvođači</h4>
+                        <h4 class="my-auto mr-4">Manufacturers</h4>
                         <a href="{{ route('manufacturers.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h4 class="my-auto mr-4">Kategorije</h4>
+                        <h4 class="my-auto mr-4">Categories</h4>
                         <a href="{{ route('categories.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                     </div>
                 </div>
                 <hr>
                 <div class="row ">
                     <div class="d-flex flex-row align-items-center justify-content-between w-50">
-                        <h4 class="my-auto mr-4">Chipsetovi</h4>
+                        <h4 class="my-auto mr-4">Chipsets</h4>
                         <a href="{{ route('chipsets.index', []) }}">
-                            <button class="btn btn-success btn-small">Pregled</button>
+                            <button class="btn btn-success btn-small">Overview</button>
                         </a>
                         
                     </div>
