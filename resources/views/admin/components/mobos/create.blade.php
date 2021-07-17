@@ -34,19 +34,10 @@
                                 <label for="name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green" >
                             </div>
-                        </div>
-                       
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="price">MSRP</label>
                                 <input class="form-control" type="text" name="price" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="socket">Socket</label>
                                 <input class="form-control" type="text" name="socket" data="green" >
@@ -59,18 +50,10 @@
                                 <label for="max_memory">Max Memory Capacity</label>
                                 <input class="form-control" type="text" name="max_memory" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="memory_slots">Memory Slots</label>
                                 <input class="form-control" type="text" name="memory_slots" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="form_factor">Form Factor</label>
                                 <input class="form-control" type="text" name="form_factor" data="green" >
@@ -83,18 +66,10 @@
                                 <label for="pci_e_x16_slots"> PCI-E X16 Slots</label>
                                 <input class="form-control" type="text" name="pci_e_x16_slots" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="pci_e_x8_slots"> PCI-E X8 Slots</label>
                                 <input class="form-control" type="text" name="pci_e_x8_slots" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="pci_e_x4_slots"> PCI-E X4 Slots</label>
                                 <input class="form-control" type="text" name="pci_e_x4_slots" data="green" >
@@ -107,42 +82,27 @@
                                 <label for="pci_e_x1_slots"> PCI-E X1 Slots</label>
                                 <input class="form-control" type="text" name="pci_e_x1_slots" data="green" >
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="memory_type">Memory Type</label>
                                 <input class="form-control" type="text" name="memory_type" data="green" >     
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="m_2_slots"> M.2 Slots</label>
                                 <input class="form-control" type="text" name="m_2_slots" data="green" >     
                             </div>
                         </div>
                     </div>
+                   
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
                                 <label for="sata_ports"> SATA Ports</label>
                                 <input class="form-control" type="text" name="sata_ports" data="green" >     
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="usb_2_0_headers"> USB 2.0 Headers</label>
                                 <input class="form-control" type="text" name="usb_2_0_headers" data="green" >     
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
                             <div class="col-3">
                                 <label for="usb_3_2_gen1_headers"> USB 3.0 gen 1 Headers</label>
                                 <input class="form-control" type="text" name="usb_3_2_gen1_headers" data="green" >     
@@ -154,6 +114,10 @@
                             <div class="col-3">
                                 <label for="usb_3_2_gen2_headers"> USB 3.0 gen 2 Headers</label>
                                 <input class="form-control" type="text" name="usb_3_2_gen2_headers" data="green" >     
+                            </div>
+                            <div class="col-3">
+                                <label for="fan_headers"> Fan Headers</label>
+                                <input class="form-control" type="text" name="fan_headers" data="green" >     
                             </div>
                         </div>
                     </div>

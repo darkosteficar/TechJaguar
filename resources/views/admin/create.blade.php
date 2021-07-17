@@ -10,10 +10,14 @@
             @endforeach
         </ul>
         </div><br />
+        
         @endif
         @if (session()->has('status'))
+        <div class="alert alert-success">
             {{ session('status') }}
+        </div>
         @endif
+       
         <div class="card">
             <div class="card-body">
                 <form method="post" action="{{ route('post.store', []) }}" enctype="multipart/form-data">

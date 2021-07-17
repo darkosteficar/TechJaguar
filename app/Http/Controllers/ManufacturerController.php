@@ -30,15 +30,15 @@ class ManufacturerController extends Controller
         $this->validate($r,[
             'name'=>'required',
             'description'=>'required',
-            'image'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            //'image'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
-        $imageName = time().rand().'.'.$r->image->extension();  
+        //$imageName = time().rand().'.'.$r->image->extension();  
         $manu = Manufacturer::create([
             'name'=>$r->name,
             'description'=>$r->description,
-            'image'=>$imageName
+            //'image'=>$imageName
         ]);
-        $r->image->move(public_path('images'), $imageName);
+        //$r->image->move(public_path('images'), $imageName);
        
         session()->flash('status','Manufacturer added successfully.');
         return redirect()->route('manufacturers.index');

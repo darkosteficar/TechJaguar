@@ -632,6 +632,7 @@ class ComponentController extends Controller
             'interface'=>'required',
             'nvme'=>'required|boolean',
             'price'=>'required|numeric',
+            'speed'=>'required',
             'images'=>"required|array",
             'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
@@ -645,6 +646,7 @@ class ComponentController extends Controller
             'interface'=>$r->interface,
             'nvme'=>$r->nvme,
             'price'=>$r->price,
+            'speed'=>$r->speed
         ]);
 
         foreach($r->images as $image){
@@ -700,6 +702,7 @@ class ComponentController extends Controller
                 'interface'=>'required',
                 'nvme'=>'required|boolean',
                 'price'=>'required|numeric',
+                'speed'=>'required'
                 
             ]);
             $storage->name = $request->name;
@@ -709,6 +712,7 @@ class ComponentController extends Controller
             $storage->manufacturer_id = $request->manufacturer_id;
             $storage->interface = $request->interface;
             $storage->nvme = $request->nvme;
+            $storage->speed = $request->speed;
             $storage->price = $request->price;
             if($request->images !== null){
                 $this->validate($request,[
@@ -719,12 +723,12 @@ class ComponentController extends Controller
                     File::delete(public_path('images/'.$image->path));
                 }
                 $imagesModel->delete();
-                foreach($request->ram_images as $image){
+                foreach($request->images as $image){
                     $imageName = time().rand().'.'.$image->extension();  
                     $image->move(public_path('images'), $imageName);
                     Image::create([
                         'path'=>$imageName,
-                        'imageable_id' => $cooler->id,
+                        'imageable_id' => $storage->id,
                         'imageable_type'=> 'App\Models\Storage',
                     ]);
                 }
@@ -1066,6 +1070,8 @@ class ComponentController extends Controller
             'length'=>'required|integer',
             'num_3_5_bays'=>'required',
             'max_gpu_length'=>'required',
+            'fans'=>'required|integer',
+            'water_cooling'=>'required',
             'expansion_slots'=>'required|integer',
             'front_panel_usb'=>'required|integer',
             'motherboard_form_factor'=>'required',
@@ -1085,6 +1091,8 @@ class ComponentController extends Controller
             'num_2_5_bays'=>$r->num_2_5_bays,
             'num_3_5_bays'=>$r->num_3_5_bays,
             'length'=>$r->length,
+            'fans'=>$r->fans,
+            'water_cooling'=>$r->water_cooling,
             'max_gpu_length'=>$r->max_gpu_length,
             'expansion_slots'=>$r->expansion_slots,
             'front_panel_usb'=>$r->front_panel_usb,
@@ -1147,7 +1155,9 @@ class ComponentController extends Controller
                 'type'=>'required',
                 'num_2_5_bays'=>'required|integer',
                 'length'=>'required|integer',
+                'fans'=>'required|integer',
                 'num_3_5_bays'=>'required',
+                'water_cooling'=>'required',
                 'max_gpu_length'=>'required',
                 'expansion_slots'=>'required|integer',
                 'front_panel_usb'=>'required|integer',
@@ -1168,6 +1178,8 @@ class ComponentController extends Controller
             $case->expansion_slots = $request->expansion_slots;
             $case->front_panel_usb = $request->front_panel_usb;
             $case->type = $request->type;
+            $case->fans = $request->fans;
+            $case->water_cooling = $request->water_cooling;
             $case->motherboard_form_factor = $request->motherboard_form_factor;
             $case->side_panel_glass = $request->side_panel_glass;
             $case->power_supply_shroud = $request->power_supply_shroud;
@@ -1241,6 +1253,7 @@ class ComponentController extends Controller
             'usb_2_0_headers'=>'required|integer',
             'usb_3_2_gen1_headers'=>'required|integer',
             'usb_3_2_gen2_headers'=>'required|integer',
+            'fan_headers'=>'required|integer',
             'wireless_support'=>'required',
             'images'=>"required|array",
             'images.*'=>"required|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
@@ -1264,6 +1277,7 @@ class ComponentController extends Controller
             'sata_ports'=>$r->sata_ports,
             'usb_2_0_headers'=>$r->usb_2_0_headers,
             'usb_3_2_gen1_headers'=>$r->usb_3_2_gen1_headers,
+            'fan_headers'=>$r->fan_headers,
             'usb_3_2_gen2_headers'=>$r->usb_3_2_gen2_headers,
             'wireless_support'=>$r->wireless_support,
         ]);
@@ -1332,6 +1346,7 @@ class ComponentController extends Controller
                 'usb_2_0_headers'=>'required|integer',
                 'usb_3_2_gen1_headers'=>'required|integer',
                 'usb_3_2_gen2_headers'=>'required|integer',
+                'fan_headers'=>'required|integer',
                 'wireless_support'=>'required',
                 
             ]);
@@ -1353,6 +1368,7 @@ class ComponentController extends Controller
             $mobo->usb_2_0_headers = $request->usb_2_0_headers;
             $mobo->usb_3_2_gen1_headers = $request->usb_3_2_gen1_headers;
             $mobo->usb_3_2_gen2_headers = $request->usb_3_2_gen2_headers;
+            $mobo->fan_headers = $request->fan_headers;
             $mobo->wireless_support = $request->wireless_support;
 
             if($request->images !== null){

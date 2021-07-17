@@ -60,11 +60,11 @@
                                 <input class="form-control" type="text" name="length" data="green" value="{{ $gpu->length }}">
                             </div>
                             <div class="col-3">
-                                <label for="vram">VRAM Type</label>
+                                <label for="vram">VRAM</label>
                                 <input class="form-control" type="text" name="vram" data="green" value="{{ $gpu->vram }}">
                             </div>
                             <div class="col-3">
-                                <label for="vram_type">Vrsta VRAM-a</label>
+                                <label for="vram_type">VRAM Type</label>
                                 <input class="form-control" type="text" name="vram_type" data="green" value="{{ $gpu->vram_type }}">
                             </div>
                         </div>

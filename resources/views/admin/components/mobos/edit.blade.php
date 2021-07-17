@@ -121,6 +121,10 @@
                                 <label for="usb_3_2_gen1_headers"> USB 3.0 Gen 1 Headers</label>
                                 <input class="form-control" type="text" name="usb_3_2_gen1_headers" data="green" value="{{ $mobo->usb_3_2_gen1_headers }}">     
                             </div>
+                            <div class="col-3">
+                                <label for="fan_headers"> Fan Headers</label>
+                                <input class="form-control" type="text" name="fan_headers" data="green" value="{{ $mobo->fan_headers }}">     
+                            </div>
                         </div>
                     </div>
                    

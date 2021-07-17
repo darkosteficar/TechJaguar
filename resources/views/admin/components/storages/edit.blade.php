@@ -102,6 +102,10 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-4">
+                                <label for="manufacturer_id">Speed</label>
+                                <input class="form-control" type="text" name="speed" data="green" value="{{ $storage->speed }}">    
+                            </div>
                         </div>
                     </div>
                     <label for="">Current Images</label>

@@ -94,6 +94,10 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-4">
+                                <label for="manufacturer_id">Speed</label>
+                                <input class="form-control" type="text" name="speed" data="green" value="{{ old('speed') }}">    
+                            </div>
                         </div>
                     </div>
                     <div class=" form-row">

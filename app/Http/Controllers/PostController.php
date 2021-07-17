@@ -23,7 +23,7 @@ class PostController extends Controller
     {
      
         $this->validate($request,[
-            'post_title'=>'required|max:50',
+            'post_title'=>'required|max:100',
             'post_content'=>'required',
             'post_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id'=> 'required',
@@ -116,7 +116,7 @@ class PostController extends Controller
         $post = Post::find($request->post_id);
         if($post !== null){
             $this->validate($request,[
-                'post_title'=>'required|max:40',
+                'post_title'=>'required|max:100',
                 'post_content'=>'required',
             ]);
             $post->post_title = $request->post_title;

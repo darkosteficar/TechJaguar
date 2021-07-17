@@ -16,7 +16,10 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $popular = Post::take(1)->orderByDesc('views')->get();
+        //$popular = Post::take(1)->orderByDesc('views')->get();
+        $popular1 = Post::find(5);
+        $popular = array();
+        array_push($popular,$popular1);
         $body = preg_replace('/<img[\s\S]+?>/', '', $popular[0]->body);
         $body = substr($body,0,310) . '...';
         $popular[0]->body = $body;
@@ -25,6 +28,7 @@ class NewsController extends Controller
         $keys = array('gpus'=>'Grafičke kartice','cpus'=>'Procesori','rams'=>'Radne memorije','soft'=>'Softver');
         foreach($keys as $key => $value){
             $categories_news = Category::where('name',$value)->first()->posts;
+            
             if(sizeof($categories_news) != 0){
                 $body = $this->filter_body($categories_news[0]);
                 $categories_news[0]->body = $body;
@@ -37,12 +41,12 @@ class NewsController extends Controller
             $array = $array1 = array();
             foreach($manu_news as $post){
                 if($post->category->name == 'Softver' || $post->category->name == 'Software'){
-                    if(sizeof($array) < 6){
+                    if(sizeof($array) < 5){
                         array_push($array,$post);
                     }
                 }
                 else{
-                    if(sizeof($array1) < 6){
+                    if(sizeof($array1) < 5){
                         array_push($array1,$post);
                     }
                 }

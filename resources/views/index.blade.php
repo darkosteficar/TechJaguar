@@ -14,13 +14,13 @@
             </div>
             @endif
             <div class="mt-20 w-3/4 lg:relative mx-auto ">
-            
+                
                 <div class="  -top-2 lg:absolute z-10 lg:w-full lg:right-12 ">
                     <div class="2xl:w-4/6 bg-gray-900 p-4 bg-opacity-70 lg:w-2/4 border-t border-green-400">
                         <p class="font-semibold text-green-400 text-2xl ">Popular Today</p>
                         <a href="">
                             <a href="{{ route('post.view', ['post'=>$popular[0]->id]) }}">
-                            <p class="font-bold text-white 2xl:text-6xl md:text-4xl   hover:text-gray-600 transition duration-100 ease-in ">
+                            <p class="font-bold text-white 2xl:text-5xl md:text-4xl   hover:text-gray-600 transition duration-100 ease-in ">
                                 {{ $popular[0]->post_title }}
                             </p>
                             </a>
@@ -61,7 +61,7 @@
                                     <div class="image__overlay "></div>
                                 </div>
                             </a>
-                            <p class="font-semibold border-b border-white text-white  bg-gray-900 bg-opacity-70 py-2 pl-2 h-24">{{ $post->post_title }}</p>
+                            <p class="font-semibold border-b border-white text-white  bg-gray-900 bg-opacity-70 py-2 pl-2 ">{{ $post->post_title }}</p>
                         </div>    
                     @endforeach
                 </div>
@@ -87,7 +87,7 @@
                     <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['gpus'][0]->body }}</p>
                     <a href="{{ route('post.view', ['post'=>$categories['gpus'][0]->id]) }}">
                         <button
-                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Details
                         </button>
                     </a>
                 </div>
@@ -128,7 +128,7 @@
                     <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['cpus'][0]->body }}</p>
                     <a href="{{ route('post.view', ['post'=>$categories['cpus'][0]->id]) }}">
                         <button
-                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Details
                         </button>
                     </a>
                 </div>
@@ -173,7 +173,7 @@
                     <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['rams'][0]->body }}</p>
                     <a href="{{ route('post.view', ['post'=>$categories['rams'][0]->id]) }}">
                         <button
-                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Details
                         </button>
                     </a>
                 </div>
@@ -214,7 +214,7 @@
                     <p class="text-gray-300 font-light my-5 2xl:text-base text-sm"> {{ $categories['soft'][0]->body }}</p>
                     <a href="{{ route('post.view', ['post'=>$categories['soft'][0]->id]) }}">
                         <button
-                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Detaljnije
+                        class="bg-gradient-to-r from-green-700 to-green-800 py-1 2xl:text-base text-sm px-5 text-green-100 font-normal  shadow-2xl rounded-sm mb-4 hover:from-green-800 hover:to-green-900 hover:text-white hover:border-green-400 border border-transparent ">Details
                         </button>
                     </a>
                 </div>
@@ -251,11 +251,11 @@
             
             <div class="w-5/6 mx-auto ">
             
-                <div class=" 2xl:mb-52  mb-12 flex items-center">
+                <div class=" 2xl:mb-64  mb-24 flex items-center">
                     <div class=" relative w-full">
                         <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
                             HARDWARE</p>
-                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
+                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-10 ">
                             @foreach ($manu_hard['amd'] as $post)
                                 <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
                                     <a href="{{ route('post.view', ['post'=>$post->id]) }}">
@@ -264,7 +264,7 @@
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
-                                    <p class="h-16 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
+                                    <p class="h-24 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -283,7 +283,7 @@
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
-                                    <p class="h-16 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
+                                    <p class="h-24 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
@@ -297,7 +297,7 @@
     </div>
 
     <div class="lg:mx-32 mb-16 border-t border-green-400">
-        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
+        <div class="bg-gray-900 bg-opacity-70 pb-8 pt-4">
             <a href="{{ route('manufacturer', ['manufacturer'=>2]) }}">
                 <p class="font-semibold md:text-4xl text-2xl pl ml-10 pb-4 text-green-400 w-1/4 hover:text-gray-200 inline-block">Nvidia</p>
             </a>
@@ -318,31 +318,13 @@
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
-                                    <p class="h-16 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
+                                    <p class="h-24 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class=" 2xl:mb-52  mb-12 flex items-center">
-                    <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            SOFTWARE</p>
-                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
-                            @foreach ($manu_soft['nvidia'] as $post)
-                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
-                                    <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
-                                            <div class="image__overlay "></div>
-                                        </div>
-                                    </a>
-                                    <p class="h-16 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
-                                </div>    
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         
         </div>
@@ -350,8 +332,8 @@
         
     </div>
 
-    <div class="lg:mx-32 mb-16 border-t border-green-400">
-        <div class="bg-gray-900 bg-opacity-70 pb-2 pt-4">
+    <div class="lg:mx-32 mb-16 border-t border-green-400 ">
+        <div class="bg-gray-900 bg-opacity-70 pt-4 pb-8 ">
             <a href="{{ route('manufacturer', ['manufacturer'=>2]) }}">
                 <p class="font-semibold md:text-4xl text-2xl pl ml-10 pb-4 text-green-400 w-1/4 hover:text-gray-200 inline-block">Intel</p>
             </a>
@@ -372,31 +354,13 @@
                                             <div class="image__overlay "></div>
                                         </div>
                                     </a>
-                                    <p class="h-16 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
+                                    <p class="h-24 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
                                 </div>    
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class=" 2xl:mb-52  mb-12 flex items-center">
-                    <div class=" relative w-full">
-                        <p class="font-semibold text-xl text-green-400 pl-14 bg-gray-700 bg-opacity-20 w-full py-6 border-t border-green-400 ">
-                            SOFTWARE</p>
-                        <div class="2xl:flex 2xl:absolute grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2 left-48 top-12 ">
-                            @foreach ($manu_soft['intel'] as $post)
-                                <div class="mr-6  mt-2 lg:w-4/6 mx-auto mb-2">
-                                    <a href="{{ route('post.view', ['post'=>$post->id]) }}">
-                                        <div class="image image__overlay_border border border-green-400 ">
-                                            <img src="{{ '/images/'. $post->post_image }}" alt="" width="170" class="object-cover w-full" >
-                                            <div class="image__overlay "></div>
-                                        </div>
-                                    </a>
-                                    <p class="h-16 font-semibold border-b  border-white text-white text-sm bg-gray-900 bg-opacity-90 p-2 ">{{ $post->post_title }}</p>
-                                </div>    
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         
         </div>

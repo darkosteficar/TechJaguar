@@ -67,7 +67,7 @@
                             <div class="col-3">
                                 <label for="">Motherboard</label>
                                 <select name="mobo_id" id="select-mobo">
-                                    
+                                    <option value=""></option>
                                     @foreach ($mobos as $mobo)
                                         <option value="{{ $mobo->id }}" @if ($post->mobo_id === $mobo->id)
                                             selected
