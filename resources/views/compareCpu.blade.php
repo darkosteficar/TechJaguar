@@ -150,9 +150,18 @@
 </div>
 
 @if (session()->has('status')))
-    <div class="bg-green-600 text-white font-semibold w-1/2 mx-auto text-center py-3 mb-12 rounded-sm ">
+    <div class="bg-gray-900 text-green-400 border-green-400 border font-semibold w-1/2 mx-auto text-center py-3  rounded-sm ">
         {{ session('status') }}
     </div>
+    <div class="bg-gray-900 text-green-400 border-gray-100 border-b-2 font-semibold w-1/2 mx-auto text-center py-3 mb-12 rounded-sm flex justify-between text-lg">
+        <div class="ml-6">
+            CPU 1: <p class="text-gray-200">{{ session('cpu1') }}</p>
+        </div>
+        <div class="mr-6">
+            CPU 2:   <p class="text-gray-200">{{ session('cpu2') }}</p>
+        </div>
+    </div>
+
 @endif
 
 

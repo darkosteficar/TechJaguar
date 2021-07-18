@@ -97,6 +97,18 @@
                                 <label for="power_req">Process Node</label>
                                 <input class="form-control" type="text" name="process_size" data="green" value="{{ $gpu->process_size }}">
                             </div>
+                            <div class="col-4">
+                                <label for="aib">AIB Card</label>
+                                <select class="form-control" name="aib" style="background-color: #27293D">
+                                    @if ($gpu->aib == 0)
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    @else
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    @endif
+                               </select>
+                            </div>
                         </div>
                     </div>
 

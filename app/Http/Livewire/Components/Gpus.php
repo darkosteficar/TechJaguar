@@ -33,7 +33,7 @@ class Gpus extends Component
     
     public function render()
     {
-        $gpus = Gpu::query()->search($this->search)->orderBy($this->sortBy,$this->sortDirection)->paginate($this->perPage);
+        $gpus = Gpu::query()->where('aib',1)->search($this->search)->orderBy($this->sortBy,$this->sortDirection)->paginate($this->perPage);
         
         return view('livewire.components.gpus',['gpus'=>$gpus]);
     }

@@ -19,6 +19,7 @@ class Rams extends Component
     public function render()
     {
         $erors = $this->errors;
+        
         return view('livewire.build.rams',['erors'=>$erors]);
     }
 }

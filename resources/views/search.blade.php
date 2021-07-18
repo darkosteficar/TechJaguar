@@ -31,7 +31,7 @@
             <div class="flex justify-between items-center">
                 <div class=" lg:text-base text-sm">
                     <p class="text-gray-300 mb-2 mx-3">{{ $post->created_at->isoFormat('LLL') }}</p>
-                    <p class="text-gray-300 mb-2 mx-3 text-sm">Autor: {{ $post->user->username }}</p>
+                    <p class="text-gray-300 mb-2 mx-3 text-sm">Author: {{ $post->user->username }}</p>
                 </div>
                 
                 <div class=" flex lg:text-base text-sm">

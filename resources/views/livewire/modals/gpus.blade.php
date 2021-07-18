@@ -1,12 +1,8 @@
 <div>
     <div class="bg-green-600 shadow-2xl p-2">
-        <div class="flex items-center justify-between text-shadow">
+        <div class="flex space-x-12 items-center justify-between text-shadow">
             <p class="text-2xl text-gray-200 font-semibold ml-2 ">{{ $gpu->name }}</p>
-            @if ($gpu->manufacturer->name == 'AMD')
-                <p class="text-xl text-gray-300 font-semibold mr-2">AMD</p>
-            @else
-                <p class="text-xl text-gray-300 font-semibold mr-2">NVIDIA</p>
-            @endif
+            <p class="text-xl text-gray-300 font-semibold mr-4">{{ $gpu->manufacturer->name }}</p>
         </div>
        
     </div>

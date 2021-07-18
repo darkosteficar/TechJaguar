@@ -105,7 +105,7 @@
                             <div class="relative" x-data="{show: false}">
                                 <button  @click="show = true" class="border-t-4  border-transparent rounded-sm
                                 hover:text-green-50 transition ease-in lg:text-xl text-lg duration-500 hover:border-green-400 mr-12 lg:w-auto w-full text-left ">
-                                    <p class="text-green-400 font-bold   ">
+                                    <p class="text-gray-200 font-bold   ">
                                         {{ auth()->user()->username }}
                                     </p>
                                 </button>

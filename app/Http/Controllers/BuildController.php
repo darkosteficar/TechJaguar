@@ -73,7 +73,7 @@ class BuildController extends Controller
                         $power_req += 3;
                     }
                     $this->cooler = $cooler;
-                    $others['cooler'] = ($cooler->water_cooled == 1) ? 'Vodeno' : 'Zračno';
+                    $others['cooler'] = ($cooler->water_cooled == 1) ? 'Water Cooling' : 'Air';
                     
                 }
         
@@ -90,7 +90,7 @@ class BuildController extends Controller
                     $components['gpus'] = $gpus;
                     foreach($components['gpus'] as $gpu){
                         $total += $gpu->price;
-                        $power_req += $gpu->power_req;
+                        $power_req += $gpu->tdp;
                     }
 
                 }
@@ -284,9 +284,6 @@ class BuildController extends Controller
                     array_push($warningsM,'Risk of VRAM throtlling after CPU overclock. ');
                 }
             }
-            else{
-                array_push($warningsM,'Risk of VRAM throtlling after CPU overclock. ');
-            }
         }
         $errors['mobo_cpu'] = $mobo_cpu;
         $warnings['mobo_cpu'] = $warningsM;
@@ -454,14 +451,17 @@ class BuildController extends Controller
         
         $capacity = 0;
         if($num_rams > 0){
+            
             if($num_rams != 4 && $num_rams != 2){
                 array_push($warningsM,'Dual Channel or Quad Channel will be disabled if there are not going to be 2 or 4 memory modules in the build.');
                 array_push($errors_components,'rams');
+               
             }
             foreach($rams as $ram){
                 if($ram->id == $rams[0]->id){
                     array_push($warningsM,'Possible risk of system instability due to the different memory modules that are being used, if the modules have different rated speeds then all the modules will run on the speed of the slowest module.');
-                    array_push($errors_components,'rams');
+                    //array_push($errors_components,'rams');
+                    
                 }
                 $capacity += $ram->size;
             }
@@ -471,7 +471,8 @@ class BuildController extends Controller
                     array_push($errors_components,'mobo','rams');
                 }
                 foreach($rams as $ram){
-                    if($mobo->memory_type == $ram->type){
+                    if($mobo->memory_type != $ram->type){
+                     
                         array_push($rams_1,'This memory module is not compatible with this Motherboard, type of memory: '. $ram->type .'supported type: '. $mobo->memory_type );
                         array_push($errors_components,'mobo','rams');
                     }

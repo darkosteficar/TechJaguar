@@ -136,6 +136,13 @@
                                 </select>
                             </div>
                             <div class="col-4">
+                                <label for="aib">AIB Card</label>
+                                <select class="form-control" name="aib" style="background-color: #27293D">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                               </select>
+                            </div>
+                            <div class="col-4">
                                 <label for="manufacturer_id">Manufacturer</label>
                                 <select class="form-control" style="background-color: #27293D" name="manufacturer_id">
                                     @foreach ($manufacturers as $manufacturer)

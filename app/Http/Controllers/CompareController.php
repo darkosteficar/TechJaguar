@@ -64,13 +64,15 @@ class CompareController extends Controller
                        
                     }
                 }
-               array_push($names,$moboName->name,$ramName->name);
+              
                //dd($overall);
                 if(count($overall) == 0){
-                    session()->flash('status','No matching comparisons found');
+                    session()->flash('status','No matching comparisons found for these selected CPUs: ');
+                    session()->flash('cpu1', $cpu1->name);
+                    session()->flash('cpu2', $cpu2->name);
                     return redirect()->route('compareCpu');
                 }
-                
+                array_push($names,$moboName->name,$ramName->name);
                 foreach($overall as $result){
                     array_push($appNames, $result[2]);
                 }
@@ -93,7 +95,7 @@ class CompareController extends Controller
         $gpu_win = array();
         $cpus = $graph1 = array();
         $appNames = array();
-        $gpus = Gpu::all();
+        $gpus = Gpu::where('aib','=',0)->get();
         if($request->has('gpu1') && $request->has('gpu1')){
             if($request->gpu1 != null && $request->gpu2 != null  && ($request->gpu1 != $request->gpu2)){
                 $gpu1 = Gpu::find($request->gpu1);
@@ -142,19 +144,21 @@ class CompareController extends Controller
                     }
                 }
 
-               array_push($names,$moboName->name,$ramName->name);
+               
               
                 if(count($overall) == 0){
-                    session()->flash('status','No matching comparisons found');
+                    session()->flash('status','No matching comparisons found for these selected GPUs: ');
+                    session()->flash('gpu1', $gpu1->name);
+                    session()->flash('gpu2', $gpu2->name);
                     return redirect()->route('compareGpu');
                 }
+                array_push($names,$moboName->name,$ramName->name);
                 //dd($overall);
                 foreach($overall as $result){
                     array_push($appNames, $result[2]);
                 }
                 $apps = App::whereIn('name',$appNames)->get();
-                //dd($usedApps[2][0]->id);
-                //dd($apps);
+               
                 return view('compareGpu',['results'=>$overall,'apps'=>$apps,'names'=>$names,'gpus'=>$gpus,'gpu_ids'=>$gpu_ids,'picked'=>$picked]);
             }
 

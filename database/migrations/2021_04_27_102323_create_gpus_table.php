@@ -34,6 +34,7 @@ class CreateGpusTable extends Migration
             $table->string('power_connector');
             $table->integer('power_req');
             $table->boolean('crossfire');
+            $table->boolean('aib');
             $table->timestamps();
         });
     }

@@ -151,7 +151,7 @@
                 
                 @foreach ($gpus as $gpu)
                     <div class=" items-center pl-3 bg-gray-900 bg-opacity-70 border border-green-400  text-shadow">
-                        <div class="flex items-center justify-between space-x-3 pr-2">
+                        <div class="flex items-center justify-between space-x-3 pr-2 mb-4 mt-2">
                             <div class="w-2/12">
                                 <div class="flex items-center py-2 ">
                                     <img src="../images/{{ $gpu->images()->first()->path }}" alt="" width="60" class="border-green-500 border">
@@ -172,21 +172,21 @@
                                 DETAILS
                             </button>
                         </div>
-                        <div class="flex">
-                            <div class=" w-4/12">
+                        <div class="flex justify-between mr-4 ml-2">
+                            <div class=" ">
                                 <p class="font-light text-sm">MANUFACTURER</p>
                                 <p>{{ $gpu->manufacturer->name }}</p>
                             </div>
-                            <div class="w-4/12 ">
+                            <div class=" ">
                                 <p class="font-light text-sm">SERIES</p>
                                 <p>{{ $gpu->series }} </p>
                             </div>
-                            <div class="w-4/12">
+                            <div class="">
                                 <p class="font-light text-sm">VRAM</p>
                                 <p>{{ $gpu->vram  }}  GB</p>
                             </div>
                         </div>
-                        <div class="flex my-2">
+                        <div class="flex ml-2 my-2">
                             <div class="w-4/12">
                                 <p class="font-light text-sm">VRAM TYPE</p>
                                 <p>{{ $gpu->vram_type }} </p>
@@ -199,8 +199,10 @@
                 
 
             </div>
+            <div class="bg-white py-2 px-2 border-gray-900 border-4 border-rounded-sm" style="text-shadow: none">
+                {{ $gpus->links() }}
+            </div>
             
-            {{ $gpus->links('pagination::tailwind-jag') }}
 
         </div>
         <!--
