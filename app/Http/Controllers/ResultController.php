@@ -30,7 +30,7 @@ class ResultController extends Controller
     {
         $cpus = Cpu::all();
         $apps = App::all();
-        $gpus = Gpu::all();
+        $gpus = Gpu::where('aib',0)->get();
         $mobos = Mobo::all();
         $rams = Ram::all();
         return view('admin.results.create',['cpus'=>$cpus,'apps'=>$apps,'gpus'=>$gpus,'mobos'=>$mobos,'rams'=>$rams]);

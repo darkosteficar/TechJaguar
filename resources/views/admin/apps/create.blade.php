@@ -30,7 +30,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-3"> <label for="chipset_name">Name</label>
+                            <div class="col-6"> <label for="chipset_name">Name</label>
                                 <input class="form-control" type="text" name="name" data="green">
                             </div>
                             <div class="col-3"> <label for="chipset_name">Tag</label>

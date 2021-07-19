@@ -206,15 +206,15 @@
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->vram }} GB</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->vram_type }}</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->length }} mm</p>
-            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->TDP }} W</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->tdp }} W</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->power_req }} W</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->memory_clock }} Ghz</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->base_clock }} Ghz</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->boost_clock }} Ghz</p>
             <p class=" my-2 hover:bg-gray-800">@if ($picked[0]->crossfire)
-                Da
+                Yes
             @else
-                Ne
+                No
             @endif</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[0]->process_size }} nm</p>
         </div>
@@ -225,15 +225,15 @@
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->vram }} GB</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->vram_type }}</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->length }} mm</p>
-            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->TDP }} W</p>
+            <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->tdp }} W</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->power_req }} W</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->memory_clock }} Ghz</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->base_clock }} Ghz</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->boost_clock }} Ghz</p>
             <p class=" my-2 hover:bg-gray-800">@if ($picked[1]->crossfire)
-                Da
+                Yes
             @else
-                Ne
+                No
             @endif</p>
             <p class=" my-2 hover:bg-gray-800">{{ $picked[1]->process_size }} nm</p>
         </div>
@@ -254,7 +254,7 @@
                 </label>
                 <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
                     <span class="ml-2 mr-2">4K</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="4K" checked onchange="filter(this)">
                 </label>
                 <p class="text-lg mt-4 font-semibold">Apps</p>
                 @foreach ($apps as $app)
@@ -263,14 +263,14 @@
                         <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="{{ $app->tag }}" checked onchange="filter(this)">
                     </label>
                 @endforeach
-                <p class="text-lg mt-4 font-semibold">CPU Wins</p>
+                <p class="text-lg mt-4 font-semibold">GPU Wins</p>
                 <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
-                    <span class="ml-2 mr-2">CPU 1 Wins</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="cpu1_win" checked onchange="filter(this)">
+                    <span class="ml-2 mr-2">GPU 1 Wins</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm " id="gpu1_win" checked onchange="filter(this)">
                 </label>
                 <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
-                    <span class="ml-2 mr-2">CPU 2 Wins</span>
-                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="cpu2_win" checked onchange="filter(this)" >
+                    <span class="ml-2 mr-2">GPU 2 Wins</span>
+                    <input type="checkbox" class="form-checkbox text-green-500 h-5 w-5 rounded-sm" id="gpu2_win" checked onchange="filter(this)" >
                 </label>
                 <label class="flex justify-between items-center bg-transparent hover:bg-gray-800 mr-10">
                     <span class="ml-2 mr-2"> {{ '<15% Win' }} </span>
