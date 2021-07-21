@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Carbon::setLocale('hr'); // <---
         $allCats = Category::all();
-        $allManus = Manufacturer::all();
+        $allManus = Manufacturer::all()->take(3);
         View::share('allCats', $allCats);
         View::share('allManus', $allManus);
     }

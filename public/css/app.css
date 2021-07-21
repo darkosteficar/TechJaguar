@@ -1249,6 +1249,9 @@ video {
 .w-64{
 	width: 16rem;
 }
+.w-96{
+	width: 24rem;
+}
 .max-w-xl{
 	max-width: 36rem;
 }
@@ -1843,6 +1846,10 @@ video {
 .text-xs{
 	font-size: 0.75rem;
 	line-height: 1rem;
+}
+.text-base{
+	font-size: 1rem;
+	line-height: 1.5rem;
 }
 .font-semibold{
 	font-weight: 600;
@@ -2545,6 +2552,24 @@ video {
 	}
 	.lg\:w-\[450px\]{
 		width: 450px;
+	}
+	.lg\:w-96{
+		width: 24rem;
+	}
+	.lg\:w-\[650px\]{
+		width: 650px;
+	}
+	.lg\:w-\[550px\]{
+		width: 550px;
+	}
+	.lg\:w-\[500px\]{
+		width: 500px;
+	}
+	.lg\:w-\[480px\]{
+		width: 480px;
+	}
+	.lg\:w-\[470px\]{
+		width: 470px;
 	}
 	.lg\:grid-cols-3{
 		grid-template-columns: repeat(3, minmax(0, 1fr));

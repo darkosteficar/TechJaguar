@@ -320,8 +320,8 @@
             
         </div>
         <div class="lg:w-2/12 w-full bg-gray-900 bg-opacity-90 ml-4 text-green-400 border-l-2 border-green-400 mb-4">
-            <div class="p-4">
-                <p class="font-semibold 2xl:text-lg text-gray-200">Config 1</p>
+            <div class="p-4 2xl:text-lg">
+                <p class="font-semibold  text-gray-200">Config 1</p>
                 <p>CPU: {{ $names[0] }}</p>
                 <p>RAM: {{ $names[2] }}</p>
                 <p>MOBO: {{ $names[3] }}</p>

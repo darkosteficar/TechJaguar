@@ -43,11 +43,12 @@
                             News</p>
                             </button>
                         
-                            <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900  justify-between  px-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex lg:w-[450px]" id="news-dropdown">
+                            <div  x-show.transition.origin.top.left="show" @click.away="show = false" class=" absolute top-10 z-20 bg-gray-900  justify-between  px-5 pb-4 pt-2 text-green-400 font-semibold text-xl rounded-sm border border-green-100 flex lg:w-[470px] lg:text-xl text-base" id="news-dropdown">
                                 <div class="mr-4">
                                     <div class="bg-gray-700 mt-2 py-1 ">
-                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">MANUFACTURERS</p>
+                                        <p class="text-center lg:text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">MANUFACTURERS</p>
                                     </div>
+                                    
                                     @foreach ($allManus as $manu)
                                         <div class="bg-gray-900 bg-opacity-80 p-1 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm ">
                                             <a href="{{ route('manufacturer', ['manufacturer'=>$manu->id]) }}"><p class="text-center">{{ $manu->name }}</p></a>
@@ -56,18 +57,15 @@
                                     
                                     
                                 </div>
-                                <div class="lg:mr-4">
+                                <div class=" ">
                                     <div class="bg-gray-700 mt-2 py-1 ">
-                                        <p class="text-center text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">CATEGORIES</p>
+                                        <p class="text-center lg:text-xl bg-gray-900 bg-opacity-80 px-4 py-2 text-white ">CATEGORIES</p>
                                     </div>
                                     @foreach ($allCats as $cat)
                                         <div class="bg-gray-900 bg-opacity-80 py-1 px-4 border border-gray-700 hover:border-green-500 hover:bg-gray-800 hover:text-gray-200 transition ease-in duration-500 rounded-sm">
                                             <a href="{{ route('category', ['category'=>$cat->id]) }}"><p class="text-center">{{ $cat->name }}</p></a>
                                         </div>
                                     @endforeach
-                                   
-                                    
-                                   
                                 </div>
                             </div>
                         </div>

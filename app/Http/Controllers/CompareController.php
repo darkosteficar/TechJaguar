@@ -30,12 +30,12 @@ class CompareController extends Controller
                 $picked = array($cpu1,$cpu2);
                 $overall = array();
                 $apps = App::all();
-        
+              
                 foreach($apps as $app){
                     $graph = Result::where('app_id','=',$app->id)->where(function($query) use($cpu1_id,$cpu2_id){
                         $query->where('cpu_id','=',$cpu1_id)->orWhere('cpu_id','=',$cpu2_id);
                     })->get()->toArray();
-                    if(count($graph) >= 2){
+                    if(count($graph) >= 2 && $graph[0]['cpu_id'] !== $graph[1]['cpu_id']){
                         
                         foreach($graph as $graphy){
                             array_push($gpus,$graphy['gpu_id']);
@@ -44,11 +44,12 @@ class CompareController extends Controller
                         $duplicateGpus = array_values(array_unique(array_diff_assoc($gpus,array_unique($gpus))));
                         
                         foreach($graph as $graphy){
-                            if($graphy['gpu_id'] == $duplicateGpus[0]){
-                                if(count($graph1) < 2){
-                                    array_push($graph1,$graphy);
+                                if($graphy['gpu_id'] == $duplicateGpus[0]){
+                                
+                                    if(count($graph1) < 2){
+                                        array_push($graph1,$graphy);
+                                    }
                                 }
-                            }
                         }
                         $gpuName = Gpu::find($graphy['gpu_id']);
                         $moboName = Mobo::find($graphy['mobo_id']);
@@ -60,6 +61,7 @@ class CompareController extends Controller
 
                         array_push($graph1,$app->name,$app->type,$gpuName->name,$cpuWin);
                         array_push($overall,$graph1);
+                        
                         $graph1 = $gpus = array();
                        
                     }

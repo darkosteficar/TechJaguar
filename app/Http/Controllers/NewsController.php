@@ -25,7 +25,7 @@ class NewsController extends Controller
         $popular[0]->body = $body;
         $news = Post::take(5)->orderByDesc('created_at')->get();
         $categories = $manu_hard = $manu_soft = array();
-        $keys = array('gpus'=>'Grafičke kartice','cpus'=>'Procesori','rams'=>'Radne memorije','soft'=>'Softver');
+        $keys = array('gpus'=>'Graphics Cards','cpus'=>'Processors','rams'=>'RAMs','soft'=>'Software');
         foreach($keys as $key => $value){
             $categories_news = Category::where('name',$value)->first()->posts;
             
