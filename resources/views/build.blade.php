@@ -123,6 +123,18 @@
                 </div>
             </div>
             @endauth
+            @guest
+                <div class="bg-gray-900 bg-opacity-70 px-2 py-1 mb-2 border border-green-400">
+                    <div class="flex items-center justify-center">
+                        <a href="{{ route('login', []) }}"><button class="btn-green-select">Login</button></a>
+                        <p class="text-green-400 px-2 text-xl">or</p>
+                        <a href="{{ route('register', []) }}"><button class="btn-green-select">Signup</button></a>
+                        
+                    </div>
+                    <p class="text-green-400 text-lg text-center">to be able to save your build</p>
+                    
+                </div>
+            @endguest
         </div>
         <div class=" bg-gray-900 bg-opacity-70 border border-green-400 p-2">
             

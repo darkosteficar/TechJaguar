@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
 
     public function index()
     {
-        return view('index');
+        $users = User::paginate();
+        return view('admin.users.index', ['users'=>$users]);
     }
 
     public function login()
@@ -93,7 +95,7 @@ class UserController extends Controller
             $this->validate($r,[
                 'password'=>'required|confirmed'
             ]);
-            $user->password = Hash::make($request->password);
+            $user->password = Hash::make($r->password);
         }
         if($r->image != null){
             $this->validate($r,[
@@ -106,7 +108,7 @@ class UserController extends Controller
             $user->image = $imageName;
         }
         $user->save();
-        return redirect()->route('index',[])->with('message','Korisnički račun uspješno ažuriran.');
+        return redirect()->route('index',[])->with('message','Account successfully updated.');
     }
 
     public function register()
@@ -118,5 +120,25 @@ class UserController extends Controller
     {
         auth()->logout();
         return redirect()->route('index');
+    }
+
+    public function delete(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->delete();
+        return redirect()->route('users');
+    }
+
+    public function comments_index()
+    {
+        $comments = Comment::paginate();
+        return view('admin.comments.index', ['comments'=>$comments]);
+    }
+
+    public function comments_delete(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        $comment->delete();
+        return redirect()->route('comments');
     }
 }

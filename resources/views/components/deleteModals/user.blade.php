@@ -1,20 +1,20 @@
-@props(['storage'=>$storage])
+@props(['user'=>$user])
 
-    <form action="{{ route('storages.delete', ['id'=>$storage->id]) }}" method="post">
+    <form action="{{ route('users.delete', ['id'=>$user->id]) }}" method="post">
         @csrf
         @method('DELETE')
-        <input type="hidden" name="name" value="{{ $storage->name }}">
-        <div class="modal fade modal-black" tabindex="-1" role="dialog" id="deleteModal{{ $storage->id }}">
+        <input type="hidden" name="name" value="{{ $user->name }}">
+        <div class="modal fade modal-black" tabindex="-1" role="dialog" id="deleteModal{{ $user->id }}">
             <div class="modal-dialog " role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title">Removal confirmation</h5>
+                <h5 class="modal-title">Removal Confirmation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     <i class="tim-icons icon-simple-remove"></i>
                 </button>
                 </div>
                 <div class="modal-body ">
-                <p>Are you sure you want to delete this storage device?</p>
+                <p>Are you sure you want to delete this user?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Delete</button>

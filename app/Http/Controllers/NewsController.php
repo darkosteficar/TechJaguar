@@ -18,6 +18,7 @@ class NewsController extends Controller
     {
         //$popular = Post::take(1)->orderByDesc('views')->get();
         $popular1 = Post::find(5);
+       
         $popular = array();
         array_push($popular,$popular1);
         $body = preg_replace('/<img[\s\S]+?>/', '', $popular[0]->body);
@@ -85,7 +86,7 @@ class NewsController extends Controller
 
     public function category(Category $category)
     {
-        $jj = (new DateTime('now -7 days'))->format('Y-m-d H:i:s');
+        $jj = (new DateTime('now -317 days'))->format('Y-m-d H:i:s');
         $postsPopular = Post::whereDate('created_at','>=',$jj)->orderBy('views','DESC')->take(5)->get();
         $posts = $category->posts()->paginate(10);
         
@@ -94,7 +95,7 @@ class NewsController extends Controller
 
     public function manufacturer(Manufacturer $manufacturer)
     {
-        $jj = (new DateTime('now -7 days'))->format('Y-m-d H:i:s');
+        $jj = (new DateTime('now -317 days'))->format('Y-m-d H:i:s');
         $posts = $manufacturer->posts()->paginate(10);
         $postsPopular = Post::whereDate('created_at','>=',$jj)->orderBy('views','DESC')->take(5)->get();
         return view('manufacturer',['manufacturer'=>$manufacturer,'posts'=>$posts,'postsPopular'=>$postsPopular]);

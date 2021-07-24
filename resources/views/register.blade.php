@@ -59,7 +59,7 @@
             <label for="" class="self-center font-bold text-gray-600 w-9/12 text-lg">Confirm Password</label>
             <input type="password" class="input-registration" placeholder="Confirm Password" name="password_confirmation">
             <div class="w-1/3 ml-28 mb-12">
-                <label for="name" class="self-center font-bold text-gray-600 w-9/12 text-lg">Slika profila:</label>
+                <label for="name" class="self-center font-bold text-gray-600 w-9/12 text-lg">Profile Image:</label>
                 <input type="file" class="text-white bg-green-500" name="image">
             </div>
            

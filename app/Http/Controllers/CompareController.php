@@ -84,7 +84,7 @@ class CompareController extends Controller
                 return view('compareCpu',['results'=>$overall,'apps'=>$apps,'names'=>$names,'cpus'=>$cpus,'cpu_ids'=>$cpu_ids,'picked'=>$picked]);
             }
 
-            session()->flash('error','You have to select different and both CPUs for a comparison');
+            session()->flash('error','You have to select non-identical CPUs for a comparison');
             return redirect()->route('compareCpu');
         }
        

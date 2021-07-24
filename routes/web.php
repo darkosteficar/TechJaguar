@@ -103,6 +103,13 @@ Route::get('/posts/{post}/edit',[PostController::class,'update'])->name('posts.u
 Route::post('/posts/update',[PostController::class,'save'])->name('posts.save');
 Route::get('/posts/all',[PostController::class,'read'])->name('posts.read');
 
+Route::delete('/users/delete',[UserController::class,'delete'])->name('users.delete');
+Route::get('/users',[UserController::class,'index'])->name('users');
+
+Route::delete('/comments/delete',[UserController::class,'comments_delete'])->name('comments.delete');
+Route::get('/comments',[UserController::class,'comments_index'])->name('comments');
+
+
 Route::get('/admin/components',[ComponentController::class,'index'])->name('admin.components.index');
 
 Route::get('/admin/components/chipsets',[ComponentController::class,'read_chipset'])->name('chipsets.index');

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Comment;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Carbon;
 
 class Comments extends Component
 {
@@ -25,7 +26,8 @@ class Comments extends Component
         ]);
         
         $this->emit('posted',$posted->id);
-        
+        session()->flash('message', 'Comment successfully posted.');
+        session()->flash('time', Carbon::now());
     
     }
 

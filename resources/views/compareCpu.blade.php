@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="search-box">
-                    <input type="text" class="bg-gray-900 bg-opacity-90 text-green-400  focus:ring-3 focus:border-green-400 focus:border-2 disable-outline" placeholder="RX 5700 XT,RTX 3060 Ti..." />
+                    <input type="text" class="bg-gray-900 bg-opacity-90 text-green-400  focus:ring-3 focus:border-green-400 focus:border-2 disable-outline" placeholder="Intel Core i9 10900K, Intel Core i5 10600K..." />
                 </div>
             </div>
         </div>
@@ -323,14 +323,14 @@
             <div class="p-4 2xl:text-lg">
                 <p class="font-semibold  text-gray-200">Config 1</p>
                 <p>CPU: {{ $names[0] }}</p>
-                <p>RAM: {{ $names[2] }}</p>
-                <p>MOBO: {{ $names[3] }}</p>
+                <p>RAM: {{ $names[3] }}</p>
+                <p>MOBO: {{ $names[2] }}</p>
             </div>
             <div class="p-4 2xl:text-lg " >
                 <p class="font-semibold  text-gray-200">Config 2</p>
                 <p>CPU: {{ $names[1] }}</p>
-                <p>RAM: {{ $names[2] }}</p>
-                <p>MOBO: {{ $names[3] }}</p>
+                <p>RAM: {{ $names[3] }}</p>
+                <p>MOBO: {{ $names[2] }}</p>
             </div>
         </div>
     </div>

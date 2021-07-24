@@ -58,6 +58,22 @@
               <p class=" font-weight-normal font-12">Posts</p>
             </a>
           </li>
+        <li @if (Request::is('users/all'))
+            class="active"
+            @endif>
+            <a href="{{ route('users', []) }}">
+            <i class="tim-icons icon-single-02"></i>
+            <p class=" font-weight-normal font-12">Users</p>
+        </a>
+        </li>
+        <li @if (Request::is('comments/all'))
+            class="active"
+            @endif>
+            <a href="{{ route('comments', []) }}">
+            <i class="tim-icons icon-notes"></i>
+            <p class=" font-weight-normal font-12">Comments</p>
+            </a>
+        </li>
           <li @if (Request::is('admin/components'))
           class="active"
       @endif>
